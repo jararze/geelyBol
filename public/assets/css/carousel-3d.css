@@ -1,0 +1,227 @@
+/* public/css/carousel-3d.css */
+.carousel-3d-scene {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    perspective: 1000px;
+    overflow: hidden;
+}
+
+.carousel-3d-stage {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    height: 100%;
+    transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.position-left,
+.position-right {
+    transform: scale(0.75);
+    opacity: 0.8;
+    transition: all 0.6s ease;
+}
+
+.position-center {
+    transform: scale(1);
+    opacity: 1;
+    z-index: 10;
+    transition: all 0.6s ease;
+}
+
+.vehicle-content {
+    text-align: center;
+    transition: all 0.6s ease;
+}
+
+.vehicle-card {
+    transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.vehicle-card.center {
+    transform: translateZ(20px);
+}
+
+.vehicle-card.left,
+.vehicle-card.right {
+    transform: translateZ(-10px);
+}
+
+/* Efecto de rotación durante transición */
+.transitioning .carousel-3d-stage {
+    transform: rotateY(5deg) scale(0.98);
+}
+
+.transitioning .position-left {
+    transform: scale(0.7) translateX(20px) rotateY(-5deg);
+}
+
+.transitioning .position-right {
+    transform: scale(0.7) translateX(-20px) rotateY(5deg);
+}
+
+.transitioning .position-center {
+    transform: scale(1.05) translateZ(30px);
+}
+
+/* Estilos de vehículos */
+.vehicle-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.vehicle-description {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.vehicle-side-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.vehicle-image-wrapper {
+    position: relative;
+    margin: 1rem 0;
+}
+
+.vehicle-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 5;
+}
+
+.vehicle-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.6s ease;
+}
+
+.vehicle-card.center .vehicle-image {
+    max-width: 32rem;
+}
+
+.vehicle-card.left .vehicle-image,
+.vehicle-card.right .vehicle-image {
+    max-width: 20rem;
+}
+
+.vehicle-pricing {
+    margin: 1rem 0;
+}
+
+.price-old {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 0.5rem;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+.price-container {
+    display: inline-flex;
+    align-items: center;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.price-container.large {
+    padding: 0.75rem 1.5rem;
+    gap: 0.75rem;
+}
+
+.price-container.small {
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+}
+
+.price-label {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.price-container.large .price-label {
+    font-size: 0.875rem;
+}
+
+.price-container.small .price-label {
+    font-size: 0.75rem;
+}
+
+.price-current {
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.price-container.large .price-current {
+    font-size: 1.5rem;
+}
+
+.price-container.small .price-current {
+    font-size: 1.125rem;
+}
+
+.vehicle-button {
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.vehicle-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Navegación */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 20;
+    backdrop-filter: blur(10px);
+}
+
+.nav-btn:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.nav-prev {
+    left: 1rem;
+}
+
+.nav-next {
+    right: 1rem;
+}
