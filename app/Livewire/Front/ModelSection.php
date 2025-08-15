@@ -14,10 +14,11 @@ class ModelSection extends Component
     public $currentIndex = 0;
     public $totalVehicles = 0;
 
+
     public $modelsConfig = [
         'section_settings' => [
-            'background_color' => 'bg-gray-50',
-            'padding_y' => 'py-20',
+            'background_color' => 'bg-white',
+            'padding_y' => 'py-0',
             'show_arrows' => true,
             'autoplay' => false,
             'autoplay_interval' => 5000,
@@ -72,12 +73,12 @@ class ModelSection extends Component
 
                     'pricing' => [
                         'currency_before' => 'Bs.',
-                        'price_before' => '500,000',
+                        'price_before' => '500000',
                         'price_before_color' => 'text-gray-500',
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '39,000',
+                        'price_now' => '39000',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-2xl',
                         'price_now_weight' => 'font-bold',
@@ -117,12 +118,12 @@ class ModelSection extends Component
 
                     'pricing' => [
                         'currency_before' => 'Bs.',
-                        'price_before' => '500,000',
+                        'price_before' => '500000',
                         'price_before_color' => 'text-gray-500',
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '39,000',
+                        'price_now' => '39000',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-xl',
                         'price_now_weight' => 'font-bold',
@@ -159,12 +160,12 @@ class ModelSection extends Component
 
                     'pricing' => [
                         'currency_before' => 'Bs.',
-                        'price_before' => '500,000',
+                        'price_before' => '500000',
                         'price_before_color' => 'text-gray-500',
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '39,000',
+                        'price_now' => '39000',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-xl',
                         'price_now_weight' => 'font-bold',
@@ -206,12 +207,12 @@ class ModelSection extends Component
 
                     'pricing' => [
                         'currency_before' => 'Bs.',
-                        'price_before' => '600,000',
+                        'price_before' => '600000',
                         'price_before_color' => 'text-gray-500',
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '45,000',
+                        'price_now' => '45000',
                         'price_now_color' => 'text-green-600',
                         'price_now_size' => 'text-2xl',
                         'price_now_weight' => 'font-bold',
@@ -253,12 +254,12 @@ class ModelSection extends Component
 
                     'pricing' => [
                         'currency_before' => 'Bs.',
-                        'price_before' => '450,000',
+                        'price_before' => '450000',
                         'price_before_color' => 'text-gray-500',
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '35,000',
+                        'price_now' => '35000',
                         'price_now_color' => 'text-orange-600',
                         'price_now_size' => 'text-2xl',
                         'price_now_weight' => 'font-bold',

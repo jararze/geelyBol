@@ -1,23 +1,22 @@
 {{-- resources/views/livewire/front/model-section.blade.php --}}
 <section class="{{ $modelsConfig['section_settings']['background_color'] }} {{ $modelsConfig['section_settings']['padding_y'] }}">
     <div class="container mx-auto px-4">
-        {{-- Header --}}
-        <div class="{{ $modelsConfig['header']['text_align'] }} {{ $modelsConfig['header']['margin_bottom'] }}">
-            <h2 class="{{ $modelsConfig['header']['title_color'] }} {{ $modelsConfig['header']['title_size'] }} {{ $modelsConfig['header']['title_weight'] }}">
-                {{ $modelsConfig['header']['title'] }}
-            </h2>
-            <p class="{{ $modelsConfig['header']['subtitle_color'] }} {{ $modelsConfig['header']['subtitle_size'] }} {{ $modelsConfig['header']['subtitle_max_width'] }} mx-auto mt-4">
-                {{ $modelsConfig['header']['subtitle'] }}
-            </p>
-        </div>
 
-        {{-- Categories Navigation --}}
-        <div class="flex justify-center mb-16">
-            <div class="flex space-x-12">
+        {{-- Header con título a la izquierda y tabs a la derecha --}}
+        <div class="flex items-center justify-between mb-16">
+            {{-- Título MODELOS a la izquierda --}}
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 {{ $modelsConfig['header']['title_color'] }} {{ $modelsConfig['header']['title_size'] }} {{ $modelsConfig['header']['title_weight'] }}">
+                    {{ $modelsConfig['header']['title'] }}
+                </h2>
+            </div>
+
+            {{-- Categories Navigation a la derecha --}}
+            <div class="flex space-x-8">
                 @foreach($modelsConfig['categories'] as $category)
                     <button
                         wire:click="setActiveCategory('{{ $category['id'] }}')"
-                        class="relative px-4 py-2 font-medium text-lg transition-all duration-200
+                        class="relative  py-2 font-medium text-lg transition-all duration-200 font-geely-title pr-25
                                {{ $activeCategory === $category['id']
                                   ? 'text-purple-600'
                                   : 'text-gray-400 hover:text-purple-600' }}"
@@ -47,3 +46,6 @@
         @endif
     </div>
 </section>
+@push('scripts')
+{{--    <script src="{{ asset('assets/js/carousel-3d.js') }}"></script>--}}
+@endpush
