@@ -55,9 +55,9 @@ class Footer extends Component
                 'id' => 'services',
                 'title' => '',
                 'links' => [
-                    ['text' => 'Test Drive', 'route' => 'test-drive'],
-                    ['text' => 'Concesionario', 'route' => 'dealership'],
-                    ['text' => 'Promo & Event', 'route' => 'promotions']
+//                    ['text' => 'Test Drive', 'route' => 'test-drive'],
+//                    ['text' => 'Concesionario', 'route' => 'dealership'],
+//                    ['text' => 'Promo & Event', 'route' => 'promotions']
                 ]
             ]
         ];
@@ -71,9 +71,9 @@ class Footer extends Component
         ];
 
         $this->legalLinks = [
-            ['text' => 'Privacidad & Política', 'route' => 'privacy'],
-            ['text' => 'Política de cookies', 'route' => 'cookies'],
-            ['text' => 'Términos y Condiciones', 'route' => 'terms']
+//            ['text' => 'Privacidad & Política', 'route' => 'privacy'],
+//            ['text' => 'Política de cookies', 'route' => 'cookies'],
+//            ['text' => 'Términos y Condiciones', 'route' => 'terms']
         ];
     }
 

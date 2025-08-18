@@ -29,17 +29,14 @@
             <div class="footer__contact">
                 <div class="footer__contact-info">
                     <div class="footer__contact-item">
-                        <span class="footer__contact-label">Servicio y línea de atención telefónica</span>
-                        <a href="tel:{{ $phone }}" class="footer__contact-value">
-                            <i class="footer__contact-icon">📞</i>
-                            {{ $phone }}
-                        </a>
-                    </div>
-                    <div class="footer__contact-item">
                         <span class="footer__contact-label">Oficina Coprorativa:</span>
                         <a href="mailto:{{ $email }}" class="footer__contact-value">
                             <i class="footer__contact-icon">✉️</i>
                             {{ $email }}
+                        </a>
+                        <a href="tel:{{ $phone }}" class="footer__contact-value">
+                            <i class="footer__contact-icon">📞</i>
+                            {{ $phone }}
                         </a>
                     </div>
                 </div>
