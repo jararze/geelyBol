@@ -1,8 +1,8 @@
 <x-layouts.frontend.front>
-{{--    --}}{{-- Hero Section --}}
-{{--    <section id="inicio" class="scroll-animate">--}}
-{{--        <livewire:front.hero-section />--}}
-{{--    </section>--}}
+    {{-- Hero Section --}}
+    <section id="inicio" class="scroll-animate">
+        <livewire:front.hero-section />
+    </section>
 
 {{--    --}}{{-- Models Section --}}
 {{--    <section id="modelos" class="scroll-animate">--}}

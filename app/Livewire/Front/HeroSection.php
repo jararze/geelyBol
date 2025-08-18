@@ -13,6 +13,8 @@ class HeroSection extends Component
     public $videoDuration = 0;
     public $isPaused = false;
 
+    public $isMobile = false;
+
     public $heroConfig = [
         'autoplay' => true,
         'autoplay_interval' => 8000,
@@ -30,13 +32,15 @@ class HeroSection extends Component
             [
                 'id' => 1,
                 'media_type' => 'image', // image, video
-                'media_src' => 'frontend/images/vehicles/starray/starray.jpg',
-                'media_fit' => 'cover', // cover, contain, fill, scale-down
+                'media_src' => 'frontend/images/Banner 1.jpg',
+                'media_src_mobile' => 'frontend/images/Banner Mobile.jpg',
+                'media_fit' => 'contain', // cover, contain, fill, scale-down
                 'media_position' => 'center', // center, top, bottom, left, right
-                'media_background' => 'bg-gray-900', // Color de fondo si la imagen no cubre todo
+                'media_background' => 'bg-black', // Color de fondo si la imagen no cubre todo
                 'object_position_mobile' => '20% 40%', // En móvil enfoca el auto (parte inferior)
                 'object_position_desktop' => '50% 50%', // En desktop enfoca el centro
                 'overlay_opacity' => 0.4,
+                'only_image' => true,
 
                 'title' => [
                     'text' => 'BIENVENIDO A GEELY',
@@ -126,15 +130,20 @@ class HeroSection extends Component
 
             [
                 'id' => 2,
-                'media_type' => 'video',
-                'media_src' => 'frontend/images/vehicles/Geely1.mp4',
+                'media_type' => 'image',
+                'media_src' => 'frontend/images/Banner Web 2.jpg',
+                'media_src_mobile' => 'frontend/images/Banner Mobile 2.jpg',
                 'video_poster' => 'frontend/images/vehicles/starray/starray.jpg',
+                'media_background' => 'bg-black',
                 'video_autoplay' => true,
                 'video_muted' => true,
                 'video_loop' => true,
                 'video_preload' => 'auto', // auto, metadata, none
                 'video_quality' => 'high', // high, medium, low
                 'overlay_opacity' => 0.5,
+                'only_image' => true,
+                'media_fit' => 'contain', // cover, contain, fill, scale-down
+                'media_position' => 'center', // center, top, bottom, left, right
 
 
                 'title' => [
@@ -194,13 +203,15 @@ class HeroSection extends Component
             [
                 'id' => 3,
                 'media_type' => 'image',
-                'media_src' => 'frontend/images/vehicles/monjaro/bg-banner-monjaro.jpg',
-                'media_fit' => 'cover', // cover, contain, fill, scale-down
+                'media_src' => 'frontend/images/Banner Web 3.jpg',
+                'media_src_mobile' => 'frontend/images/Banner Mobile 3.jpg',
+                'media_fit' => 'contain', // cover, contain, fill, scale-down
                 'media_position' => 'center', // center, top, bottom, left, right
-                'media_background' => 'bg-gray-900', // Color de fondo si la imagen no cubre todo
+                'media_background' => 'bg-black', // Color de fondo si la imagen no cubre todo
                 'object_position_mobile' => '50% 70%', // En móvil enfoca el auto (parte inferior)
                 'object_position_desktop' => '50% 50%', // En desktop enfoca el centro
                 'overlay_opacity' => 0.3,
+                'only_image' => true,
 
                 'title' => [
                     'text' => 'GX3 PRO LLEGÓ',
@@ -268,6 +279,22 @@ class HeroSection extends Component
     public function videoEnded()
     {
         $this->nextSlide();
+    }
+
+    public function isOnlyImage($slide)
+    {
+        return isset($slide['only_image']) && $slide['only_image'] === true;
+    }
+
+    public function mount()
+    {
+        $this->isMobile = $this->detectMobile();
+    }
+
+    private function detectMobile()
+    {
+        $userAgent = request()->header('User-Agent');
+        return preg_match('/(android|iphone|ipad|mobile)/i', $userAgent);
     }
 
     public function pauseVideo()

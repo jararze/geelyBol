@@ -6,10 +6,11 @@ use Livewire\Component;
 
 class Footer extends Component
 {
-    public $companyName = 'PT GEELY AUTO BOLIVIA';
+    public $companyName = 'Geely Bolivia
+';
     public $copyrightYear = 2025;
-    public $phone = '0000-0000-000';
-    public $email = '...@geely.com';
+    public $phone = '(591-2)279 500';
+    public $email = 'Av. Costanera # 1003, Los Pinos - La Paz, Bolivia';
     public $backgroundColor = '#000000';
     public $textColor = '#ffffff';
     public $linkColor = '#cccccc';
@@ -18,7 +19,7 @@ class Footer extends Component
     public $legalLinks;
 
     public $logo = [
-        'image' => 'frontend/images/logo-negro.svg',
+        'image' => '/frontend/images/logo-blanco.svg',
         'alt' => 'Geely Bolivia',
     ];
 
@@ -34,20 +35,20 @@ class Footer extends Component
                 'id' => 'models',
                 'title' => '',
                 'links' => [
-                    ['text' => 'EX5', 'route' => 'models.ex5'],
-                    ['text' => 'Book Now', 'route' => 'book.now'],
-                    ['text' => 'Posventa', 'route' => 'posventa'],
-                    ['text' => 'Notifícame', 'route' => 'notify']
+//                    ['text' => 'EX5', 'route' => 'models.ex5'],
+//                    ['text' => 'Book Now', 'route' => 'book.now'],
+//                    ['text' => 'Posventa', 'route' => 'posventa'],
+//                    ['text' => 'Notifícame', 'route' => 'notify']
                 ]
             ],
             [
                 'id' => 'company',
                 'title' => '',
                 'links' => [
-                    ['text' => 'Acerca de nosotros', 'route' => 'about'],
-                    ['text' => 'Calculadora', 'route' => 'calculator'],
-                    ['text' => 'Noticias', 'route' => 'news'],
-                    ['text' => 'Contáctanos', 'route' => 'contact']
+                    ['text' => 'Acerca de nosotros', 'route' => 'https://www.geely.com/en/brand/see-the-world-in-full'],
+//                    ['text' => 'Calculadora', 'route' => 'calculator'],
+                    ['text' => 'Noticias', 'route' => 'https://global.geely.com/en/news'],
+//                    ['text' => 'Contáctanos', 'route' => 'contact']
                 ]
             ],
             [
@@ -62,10 +63,9 @@ class Footer extends Component
         ];
 
         $this->socialNetworks = [
-            ['name' => 'WhatsApp', 'icon' => 'whatsapp', 'url' => 'https://wa.me/59100000000'],
+//            ['name' => 'WhatsApp', 'icon' => 'whatsapp', 'url' => 'https://wa.me/59100000000'],
             ['name' => 'Facebook', 'icon' => 'facebook', 'url' => 'https://www.facebook.com/profile.php?id=61579700183059'],
             ['name' => 'Instagram', 'icon' => 'instagram', 'url' => 'https://www.instagram.com/geelybolivia'],
-            ['name' => 'LinkedIn', 'icon' => 'linkedin', 'url' => 'https://linkedin.com/company/geelybolivia'],
             ['name' => 'YouTube', 'icon' => 'youtube', 'url' => 'http://www.youtube.com/@Geely.Bolivia'],
             ['name' => 'TikTok', 'icon' => 'tiktok', 'url' => 'https://www.tiktok.com/@geely.bo']
         ];
