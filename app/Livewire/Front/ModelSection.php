@@ -65,6 +65,8 @@ class ModelSection extends Component
             'SUV' => [
                 [
                     'id' => 1,
+                    'slug' => 'starray', // AGREGAR
+                    'category' => 'suv', // AGREGAR
                     'name' => 'STARRAY',
                     'description' => 'SUV de alta gama con avanzada tecnología y completa seguridad',
                     'image' => 'frontend/images/vehicles/starray/new-okavango2024_1_1_.png',
@@ -111,6 +113,8 @@ class ModelSection extends Component
                 [
                     'id' => 2,
                     'name' => 'CITIRAY',
+                    'slug' => 'citiray', // AGREGAR
+                    'category' => 'suv', // AGREGAR
                     'description' => 'SUV urbano con diseño moderno',
                     'image' => 'frontend/images/vehicles/starray/IMAGEN-TARJETA-MODELO-425x165-.png',
                     'position' => 'left',
@@ -153,6 +157,8 @@ class ModelSection extends Component
                 [
                     'id' => 3,
                     'name' => 'GX3 PRO',
+                    'slug' => 'gx3-pro', // AGREGAR
+                    'category' => 'suv', // AGREGAR
                     'description' => 'SUV compacto de alta performance',
                     'image' => 'frontend/images/vehicles/starray/ex5-580x328-3.webp',
                     'position' => 'right',
@@ -200,6 +206,8 @@ class ModelSection extends Component
                 [
                     'id' => 4,
                     'name' => 'GALAXY E5',
+                    'slug' => 'galaxy-e5', // AGREGAR
+                    'category' => 'electricos', // AGREGAR
                     'description' => 'SUV 100% eléctrico con autonomía extendida',
                     'image' => 'frontend/images/vehicles/starray/starray.jpg',
                     'position' => 'center',
@@ -247,6 +255,8 @@ class ModelSection extends Component
                 [
                     'id' => 5,
                     'name' => 'PICKUP T60',
+                    'slug' => 'pickup-t60', // AGREGAR
+                    'category' => 'camionetas', // AGREGAR
                     'description' => 'Camioneta robusta para trabajo y aventura',
                     'image' => 'frontend/images/vehicles/starray/new-okavango2024_1_1_.png',
                     'position' => 'center',

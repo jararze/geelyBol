@@ -1,0 +1,276 @@
+<div>
+    {{-- Loader específico para este componente --}}
+    <div wire:loading class="fixed inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="loader-spinner mb-4"></div>
+            <p class="text-gray-600">Cargando...</p>
+        </div>
+    </div>
+
+    {{-- Loader específico para diferentes acciones --}}
+    <div wire:loading.delay wire:target="testSlowTab" class="fixed inset-0 bg-blue-500 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="text-center text-white">
+            <div class="loader-spinner mb-4 border-white border-t-blue-200"></div>
+            <p>Cambiando tab...</p>
+        </div>
+    </div>
+
+    <div wire:loading.delay wire:target="testSlowColor" class="fixed inset-0 bg-green-500 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="text-center text-white">
+            <div class="loader-spinner mb-4 border-white border-t-green-200"></div>
+            <p>Cambiando color...</p>
+        </div>
+    </div>
+
+    <div wire:loading.delay wire:target="testSlowView" class="fixed inset-0 bg-purple-500 bg-opacity-75 flex items-center justify-center z-50">
+        <div class="text-center text-white">
+            <div class="loader-spinner mb-4 border-white border-t-purple-200"></div>
+            <p>Cambiando vista...</p>
+        </div>
+    </div>
+
+    <section class="vehicle-versions {{ $versionsData['section_background'] }} {{ $versionsData['section_padding'] }}">
+        <div class="container mx-auto px-4">
+
+            {{-- Header --}}
+            <div class="text-left mb-12">
+                <h2 class="{{ $versionsData['header']['title_size'] }} font-bold text-gray-900 mb-4">
+                    {{ $versionsData['header']['title'] }}
+                </h2>
+                <p class="{{ $versionsData['header']['subtitle_size'] }} text-gray-600">
+                    {{ $versionsData['header']['subtitle'] }}
+                </p>
+            </div>
+
+            {{-- Caja única con gradiente --}}
+            <div class="relative rounded-lg overflow-hidden shadow-lg"
+                 style="background: linear-gradient(135deg, #e3f2fd 0%, #f8f9fa 70%, rgba(248,249,250,0) 100%);">
+
+                <div class="grid grid-cols-1 lg:grid-cols-3">
+
+                    {{-- Panel Izquierdo: Configuración (1/3) --}}
+                    <div class="p-6 lg:p-8">
+
+                        {{-- Selector de Versión --}}
+                        <div class="mb-6">
+                            <select wire:model.live="selectedVersion"
+                                    class="w-full bg-[#194BFF] text-white p-3 rounded font-medium text-lg">
+                                @foreach($versionsData['versions'] as $key => $version)
+                                    <option value="{{ $key }}">{{ $version['name'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        {{-- Especificaciones --}}
+                        <div class="mb-6">
+                            @php $currentVersion = $this->getCurrentVersion(); @endphp
+                            @foreach($currentVersion['specs'] ?? [] as $label => $value)
+                                <div class="flex justify-between py-2 border-b border-gray-200">
+                                    <span class="text-gray-600 text-sm">{{ $label }}</span>
+                                    <span class="font-medium text-gray-900 text-sm">{{ $value }}</span>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        {{-- Tabs --}}
+                        <div class="mb-6">
+                            <div class="flex flex-wrap gap-2">
+                                @foreach($versionsData['tabs'] as $key => $tab)
+                                    <button wire:click="selectTab('{{ $key }}')"
+                                            class="py-2 px-4 text-xs font-medium rounded transition-colors {{ $selectedTab === $key ? 'bg-[#194BFF] text-white' : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-300' }}">
+                                        {{ $tab['label'] }}
+                                    </button>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        {{-- Contenido dinámico según el tab --}}
+                        <div class="mb-6">
+                            @if($selectedTab === 'precio')
+                                {{-- Información de Precio --}}
+                                @php $pricing = $this->getCurrentTabContent(); @endphp
+                                <div class="space-y-2">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Año Comercial:</span>
+                                        <span class="font-medium text-sm">{{ $pricing['year'] ?? 'N/A' }}</span>
+                                    </div>
+
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Precio de lista:</span>
+                                        <span class="font-medium text-sm">{{ $pricing['currency'] ?? '$' }}{{ number_format($pricing['list_price'] ?? 0) }}</span>
+                                    </div>
+
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Descuento:</span>
+                                        <span class="font-medium text-green-600 text-sm">{{ $pricing['currency'] ?? '$' }} {{ number_format($pricing['discount'] ?? 0) }}</span>
+                                    </div>
+
+                                    <div class="flex justify-between text-lg font-bold border-t pt-2 mt-3">
+                                        <span class="text-[#194BFF]">Precio final:</span>
+                                        <span class="text-[#194BFF]">{{ $pricing['currency'] ?? '$' }} {{ number_format($pricing['final_price'] ?? 0) }}</span>
+                                    </div>
+                                </div>
+
+                            @elseif($selectedTab === 'motor')
+                                {{-- Información del Motor --}}
+                                @php $motor = $this->getCurrentTabContent(); @endphp
+                                <div class="space-y-2">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Tipo de motor:</span>
+                                        <span class="font-medium text-sm">{{ $motor['tipo_motor'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Potencia:</span>
+                                        <span class="font-medium text-sm">{{ $motor['potencia'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Torque:</span>
+                                        <span class="font-medium text-sm">{{ $motor['torque'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Combustible:</span>
+                                        <span class="font-medium text-sm">{{ $motor['combustible'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Consumo ciudad:</span>
+                                        <span class="font-medium text-sm">{{ $motor['consumo_ciudad'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Consumo carretera:</span>
+                                        <span class="font-medium text-sm">{{ $motor['consumo_carretera'] ?? 'N/A' }}</span>
+                                    </div>
+                                </div>
+
+                            @elseif($selectedTab === 'equipamiento')
+                                {{-- Información del Equipamiento --}}
+                                @php $equipamiento = $this->getCurrentTabContent(); @endphp
+                                <div class="space-y-2">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Pantalla:</span>
+                                        <span class="font-medium text-sm">{{ $equipamiento['pantalla'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Asientos:</span>
+                                        <span class="font-medium text-sm">{{ $equipamiento['asientos'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Climatizador:</span>
+                                        <span class="font-medium text-sm">{{ $equipamiento['climatizador'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Cámara:</span>
+                                        <span class="font-medium text-sm">{{ $equipamiento['camara'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Sensores:</span>
+                                        <span class="font-medium text-sm">{{ $equipamiento['sensores'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Conectividad:</span>
+                                        <span class="font-medium text-sm">{{ $equipamiento['conectividad'] ?? 'N/A' }}</span>
+                                    </div>
+                                </div>
+
+                            @elseif($selectedTab === 'seguridad')
+                                {{-- Información de Seguridad --}}
+                                @php $seguridad = $this->getCurrentTabContent(); @endphp
+                                <div class="space-y-2">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Airbags:</span>
+                                        <span class="font-medium text-sm">{{ $seguridad['airbags'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Sistema ABS:</span>
+                                        <span class="font-medium text-sm">{{ $seguridad['abs'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Control estabilidad:</span>
+                                        <span class="font-medium text-sm">{{ $seguridad['control_estabilidad'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Asistente frenado:</span>
+                                        <span class="font-medium text-sm">{{ $seguridad['asistente_frenado'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Control tracción:</span>
+                                        <span class="font-medium text-sm">{{ $seguridad['control_traccion'] ?? 'N/A' }}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600 text-sm">Cinturones:</span>
+                                        <span class="font-medium text-sm">{{ $seguridad['cinturones'] ?? 'N/A' }}</span>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+
+
+                        {{-- Botones de Acción --}}
+                        <div class="space-y-3">
+                            <button wire:click="requestQuote"
+                                    class="w-full py-3 bg-black text-white rounded font-medium transition-colors hover:bg-gray-800">
+                                {{ $versionsData['buttons']['quote']['text'] }}
+                            </button>
+
+                            <button wire:click="downloadCatalog"
+                                    class="w-full py-2 border border-gray-400 text-gray-700 rounded font-medium transition-colors hover:bg-gray-50 text-sm">
+                                {{ $versionsData['buttons']['catalog']['text'] }}
+                            </button>
+
+                            <button wire:click="scheduleTestDrive"
+                                    class="w-full py-2 border border-gray-400 text-gray-700 rounded font-medium transition-colors hover:bg-gray-50 text-sm">
+                                {{ $versionsData['buttons']['test_drive']['text'] }}
+                            </button>
+                        </div>
+                    </div>
+
+                    {{-- Panel Derecho: Visualización (2/3) --}}
+                    <div class="lg:col-span-2 p-6 lg:p-8 flex flex-col">
+
+                        {{-- Toggle Exterior/Interior --}}
+                        <div class="flex justify-center mb-6">
+                            <div class="flex bg-gray-200 rounded-full p-1">
+                                <button wire:click="selectView('exterior')"
+                                        class="px-6 py-2 rounded-full font-medium transition-colors {{ $selectedView === 'exterior' ? 'bg-white text-gray-900 shadow' : 'text-gray-600' }}">
+                                    Exterior
+                                </button>
+                                <button wire:click="selectView('interior')"
+                                        class="px-6 py-2 rounded-full font-medium transition-colors {{ $selectedView === 'interior' ? 'bg-black text-white shadow' : 'text-gray-600' }}">
+                                    Interior
+                                </button>
+                            </div>
+                        </div>
+
+                        {{-- Imagen del Vehículo --}}
+                        <div class="flex-1 flex items-center justify-center">
+                            <div class="">
+                                <img src="{{ asset($this->getCurrentImage()) }}"
+                                     alt="Starray {{ $selectedView }}"
+                                     class="object-contain transition-opacity duration-300">
+                            </div>
+                        </div>
+
+                        {{-- Selector de Colores (solo para exterior) --}}
+                        @if($selectedView === 'exterior')
+                            <div class="flex justify-center space-x-3 mt-6">
+                                @foreach($versionsData['colors'] as $colorKey => $color)
+                                    <button wire:click="selectColor('{{ $colorKey }}')"
+                                            class="w-10 h-10 rounded-full border-4 transition-all duration-200 {{ $selectedColor === $colorKey ? 'border-gray-800 scale-110' : 'border-gray-300 hover:border-gray-400' }}"
+                                            style="background-color: {{ $color['hex'] }};"
+                                            title="{{ $color['name'] }}">
+                                    </button>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            {{-- Mensajes Flash --}}
+            @if (session()->has('message'))
+                <div class="mt-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                    {{ session('message') }}
+                </div>
+            @endif
+        </div>
+    </section>
+</div>

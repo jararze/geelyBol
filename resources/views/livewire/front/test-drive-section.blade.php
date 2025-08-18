@@ -30,7 +30,7 @@
                     @if($sectionData['show_image'])
                         <div class="{{ $imageHeight['image'] }} flex items-center justify-center py-8">
                             <div class="max-w-4xl w-full h-full">
-                                <img src="{{ $sectionData['background_image'] }}"
+                                <img src="{{ asset($sectionData['background_image']) }}"
                                      alt="Test Drive"
                                      class="w-full h-full object-cover rounded-lg shadow-lg">
                             </div>
@@ -88,7 +88,7 @@
 
             @if($sectionData['show_image'])
                 <div class="absolute inset-0 z-0 w-full h-full">
-                    <img src="{{ $sectionData['background_image'] }}"
+                    <img src="{{ asset($sectionData['background_image']) }}"
                          alt="Test Drive"
                          style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
                 </div>

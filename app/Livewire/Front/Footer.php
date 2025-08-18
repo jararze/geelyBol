@@ -63,11 +63,11 @@ class Footer extends Component
 
         $this->socialNetworks = [
             ['name' => 'WhatsApp', 'icon' => 'whatsapp', 'url' => 'https://wa.me/59100000000'],
-            ['name' => 'Facebook', 'icon' => 'facebook', 'url' => 'https://facebook.com/geelybolivia'],
-            ['name' => 'Instagram', 'icon' => 'instagram', 'url' => 'https://instagram.com/geelybolivia'],
+            ['name' => 'Facebook', 'icon' => 'facebook', 'url' => 'https://www.facebook.com/profile.php?id=61579700183059'],
+            ['name' => 'Instagram', 'icon' => 'instagram', 'url' => 'https://www.instagram.com/geelybolivia'],
             ['name' => 'LinkedIn', 'icon' => 'linkedin', 'url' => 'https://linkedin.com/company/geelybolivia'],
-            ['name' => 'YouTube', 'icon' => 'youtube', 'url' => 'https://youtube.com/@geelybolivia'],
-            ['name' => 'TikTok', 'icon' => 'tiktok', 'url' => 'https://tiktok.com/@geelybolivia']
+            ['name' => 'YouTube', 'icon' => 'youtube', 'url' => 'http://www.youtube.com/@Geely.Bolivia'],
+            ['name' => 'TikTok', 'icon' => 'tiktok', 'url' => 'https://www.tiktok.com/@geely.bo']
         ];
 
         $this->legalLinks = [

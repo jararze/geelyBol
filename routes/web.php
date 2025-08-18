@@ -1,11 +1,14 @@
 <?php
 
+use App\Livewire\Front\VehicleDetail;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Route::get('/', function () {
-    return view('indexFront');
+    return view('home');
 })->name('home');
+
+Route::get('/vehiculos/{category}/{slug}', VehicleDetail::class)->name('vehicle.detail');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

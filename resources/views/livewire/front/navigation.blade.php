@@ -6,7 +6,7 @@
             <div class="flex-shrink-0">
                 <a href="/" class="block">
                     <img
-                        src="{{ $logo['image'] }}"
+                        src="{{ asset($logo['image']) }}"
                         alt="{{ $logo['alt'] }}"
                         class="h-6 lg:h-12 w-auto object-contain"
                     />
@@ -16,7 +16,7 @@
 
             {{-- Desktop Menu --}}
             <div class="hidden lg:flex items-center space-x-8">
-                @foreach($menuItems as $item)
+                @foreach($this->menuItems as $item)
                     <div class="relative group" x-data="{ open: false }">
                         @if($item['has_dropdown'])
                             <button
@@ -44,20 +44,20 @@
                                 class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2"
                             >
                                 @foreach($item['dropdown_items'] as $dropdownItem)
-                                    <a
-                                        href="{{ $dropdownItem['url'] }}"
-                                        class="geely-dropdown-item block px-4 py-2 hover:bg-gray-50 hover:text-geely-blue transition-colors duration-200"
+
+                                    <a href="{{ $dropdownItem['url'] }}"
+                                    class="geely-dropdown-item block px-4 py-2 hover:bg-gray-50 hover:text-geely-blue transition-colors duration-200"
                                     >
-                                        {{ $dropdownItem['label'] }}
+                                    {{ $dropdownItem['label'] }}
                                     </a>
                                 @endforeach
                             </div>
                         @else
-                            <a
-                                href="{{ $item['url'] }}"
-                                class="geely-nav-item transition-colors duration-200 py-2 hover:text-geely-blue {{ $item['active'] ? 'text-geely-blue border-b-2 border-geely-blue' : '' }}"
+
+                            <a href="{{ $item['url'] }}"
+                            class="geely-nav-item transition-colors duration-200 py-2 hover:text-geely-blue {{ $item['active'] ? 'text-geely-blue border-b-2 border-geely-blue' : '' }}"
                             >
-                                {{ $item['label'] }}
+                            {{ $item['label'] }}
                             </a>
                         @endif
                     </div>
@@ -122,4 +122,5 @@
             </div>
         </div>
     @endif
+
 </header>

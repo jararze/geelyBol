@@ -8,7 +8,7 @@
                 {{-- Imagen (2/3 del espacio) --}}
                 @if($sectionData['show_image'])
                     <div class="relative lg:col-span-2">
-                        <img src="{{ $sectionData['building_image'] }}"
+                        <img src="{{ asset($sectionData['building_image']) }}"
                              alt="{{ $sectionData['title'] }}"
                              class="w-full h-full object-cover min-h-[500px]">
                     </div>
@@ -52,7 +52,7 @@
                     {{-- Imagen (2/3 del espacio) --}}
                     @if($sectionData['show_image'])
                         <div class="lg:col-span-2">
-                            <img src="{{ $sectionData['building_image'] }}"
+                            <img src="{{ asset($sectionData['building_image']) }}"
                                  alt="{{ $sectionData['title'] }}"
                                  class="w-full h-auto rounded-lg shadow-lg">
                         </div>
@@ -90,7 +90,7 @@
         <section class="posventa-overlay relative {{ $sectionData['section_height'] }}">
             @if($sectionData['show_image'])
                 <div class="absolute inset-0 z-0">
-                    <img src="{{ $sectionData['building_image'] }}"
+                    <img src="{{ asset($sectionData['building_image']) }}"
                          alt="{{ $sectionData['title'] }}"
                          style="width: 100%; height: 100%; object-fit: cover;">
                 </div>

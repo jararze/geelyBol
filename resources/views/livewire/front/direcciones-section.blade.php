@@ -13,7 +13,7 @@
                     @if($sectionData['show_map'])
                         <div class="flex justify-center">
                             <div class="relative">
-                                <img src="{{ $sectionData['map_image'] }}"
+                                <img src="{{ asset($sectionData['map_image']) }}"
                                      alt="Mapa de Bolivia"
                                      class="w-full max-w-md h-auto">
                             </div>

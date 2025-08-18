@@ -34,9 +34,11 @@
 
         {{-- Botón Ver modelo --}}
         @if($vehicle['button_primary']['show'] ?? false)
-            <button class="view-model-btn {{ $buttonTextSize }} {{ $buttonPadding }} {{ $isCenter ? 'min-w-[140px]' : 'min-w-[100px]' }}">
+            <a
+                href="{{ route('vehicle.detail', ['category' => strtolower($vehicle['category']), 'slug' => $vehicle['slug']]) }}"
+                class="view-model-btn {{ $buttonTextSize }} {{ $buttonPadding }} {{ $isCenter ? 'min-w-[140px]' : 'min-w-[100px]' }}">
                 {{ $isCenter ? $vehicle['button_primary']['text'] : 'Ver más' }}
-            </button>
+            </a>
         @endif
     </div>
 </div>
