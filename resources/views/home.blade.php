@@ -1,25 +1,20 @@
 <x-layouts.frontend.front>
-    {{-- Hero Section --}}
     <section id="inicio" class="scroll-animate">
         <livewire:front.hero-section />
     </section>
 
-{{--    --}}{{-- Models Section --}}
 {{--    <section id="modelos" class="scroll-animate">--}}
 {{--        <livewire:front.model-section />--}}
 {{--    </section>--}}
 
-{{--    --}}{{-- Action Boxes --}}
 {{--    <section id="servicios" class="scroll-animate">--}}
 {{--        <livewire:front.action-boxes-section />--}}
 {{--    </section>--}}
 
-{{--    --}}{{-- Benefits --}}
 {{--    <section id="beneficios" class="scroll-animate">--}}
 {{--        <livewire:front.BenefitsSection />--}}
 {{--    </section>--}}
 
-{{--    --}}{{-- About Sections --}}
 {{--    <section id="nosotros" class="scroll-animate">--}}
 {{--        <livewire:front.about-section--}}
 {{--            :sectionData="[--}}
@@ -38,7 +33,6 @@
 {{--            ]"--}}
 {{--        />--}}
 
-{{--        --}}{{-- Layout con imagen a la izquierda y texto a la derecha --}}
 {{--        <livewire:front.about-section layout="split-right"--}}
 {{--                                      :sectionData="[--}}
 {{--                    'logo' => 'frontend/images/logo-blanco.svg',--}}
@@ -64,7 +58,6 @@
 {{--        />--}}
 {{--    </section>--}}
 
-{{--    --}}{{-- Test Drive Section --}}
 {{--    <section id="test-drive" class="scroll-animate">--}}
 {{--        <livewire:front.test-drive-section--}}
 {{--            layout="hero"--}}
@@ -73,7 +66,6 @@
 {{--                'show_features' => true--}}
 {{--            ]"/>--}}
 
-{{--        --}}{{-- Con imagen--}}
 {{--        <livewire:front.test-drive-section--}}
 {{--            layout="overlay-left"--}}
 {{--            :sectionData="[--}}
@@ -83,18 +75,15 @@
 {{--        ]"/>--}}
 
 
-{{--        --}}{{-- Banner sin imagen --}}
 {{--        <livewire:front.test-drive-section--}}
 {{--            layout="banner"--}}
 {{--            :sectionData="[--}}
 {{--        'show_image' => false--}}
 {{--        ]"/>--}}
 
-{{--        --}}{{-- Banner delgado --}}
 {{--        <livewire:front.test-drive-section layout="banner-thin"/>--}}
 {{--    </section>--}}
 
-{{--    --}}{{-- Postventa Section --}}
 {{--    <section id="postventa" class="scroll-animate">--}}
 {{--        <livewire:front.postventa-section--}}
 {{--            layout="split-right"--}}
@@ -103,7 +92,6 @@
 {{--            ]"--}}
 {{--        />--}}
 
-{{--        --}}{{-- Layout 2: Compacto --}}
 {{--        <livewire:front.postventa-section--}}
 {{--            layout="compact"--}}
 {{--            :sectionData="[--}}
@@ -111,7 +99,6 @@
 {{--            ]"--}}
 {{--        />--}}
 
-{{--        --}}{{-- Layout 3: Overlay con subtítulo --}}
 {{--        <livewire:front.postventa-section--}}
 {{--            layout="overlay-left"--}}
 {{--            :sectionData="[--}}
@@ -122,7 +109,6 @@
 {{--        />--}}
 {{--    </section>--}}
 
-{{--    --}}{{-- Direcciones Section --}}
 {{--    <section id="direcciones" class="scroll-animate">--}}
 {{--        <livewire:front.direcciones-section--}}
 {{--            layout="map-cards"--}}
@@ -132,7 +118,6 @@
 
 {{--    </section>--}}
 
-    {{-- Botón Volver Arriba --}}
     <div id="back-to-top" class="fixed bottom-8 right-8 z-50 hidden">
         <button onclick="scrollToTop()"
                 class="bg-black hover:bg-gray-800 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110">

@@ -176,14 +176,14 @@
                     <img
                         src="{{ $slide['media_src_mobile'] }}"
                         alt="Hero background mobile"
-                        class="absolute inset-0 w-full h-full object-{{ $slide['media_fit'] ?? 'cover' }} object-{{ $slide['media_position'] ?? 'center' }} block sm:hidden
+                        class="absolute inset-0 w-full h-full object-{{ $slide['media_fit'] ?? 'cover' }} object-{{ $slide['media_position'] ?? 'center' }} block sm:hidden"
                         style="object-position: {{ $slide['object_position_mobile'] ?? '50% 50%' }};"
                     />
                 @else
                     <img
                         src="{{ $slide['media_src'] }}"
                         alt="Hero background"
-                        class="absolute inset-0 w-full h-full object-{{ $slide['media_fit'] ?? 'cover' }} object-{{ $slide['media_position'] ?? 'center' }} block sm:hidden
+                        class="absolute inset-0 w-full h-full object-{{ $slide['media_fit'] ?? 'cover' }} object-{{ $slide['media_position'] ?? 'center' }} block sm:hidden"
                         style="object-position: {{ $slide['object_position_mobile'] ?? '50% 50%' }};"
                     />
                 @endif
