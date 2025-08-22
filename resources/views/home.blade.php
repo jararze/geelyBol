@@ -3,120 +3,120 @@
         <livewire:front.hero-section />
     </section>
 
-{{--    <section id="modelos" class="scroll-animate">--}}
-{{--        <livewire:front.model-section />--}}
-{{--    </section>--}}
+    <section id="modelos" class="scroll-animate">
+        <livewire:front.model-section />
+    </section>
 
-{{--    <section id="servicios" class="scroll-animate">--}}
-{{--        <livewire:front.action-boxes-section />--}}
-{{--    </section>--}}
+    <section id="servicios" class="scroll-animate">
+        <livewire:front.action-boxes-section />
+    </section>
 
-{{--    <section id="beneficios" class="scroll-animate">--}}
-{{--        <livewire:front.BenefitsSection />--}}
-{{--    </section>--}}
+    <section id="beneficios" class="scroll-animate">
+        <livewire:front.BenefitsSection />
+    </section>
 
-{{--    <section id="nosotros" class="scroll-animate">--}}
-{{--        <livewire:front.about-section--}}
-{{--            :sectionData="[--}}
-{{--                'logo' => 'frontend/images/logo-blanco.svg',--}}
-{{--                'background_color' => '#000',--}}
-{{--                'text_color' => '#fff'--}}
-{{--            ]"--}}
-{{--        />--}}
+    <section id="nosotros" class="scroll-animate">
+        <livewire:front.about-section
+            :sectionData="[
+                'logo' => 'frontend/images/logo-blanco.svg',
+                'background_color' => '#000',
+                'text_color' => '#fff'
+            ]"
+        />
 
-{{--        <livewire:front.about-section--}}
-{{--            layout="split-left"--}}
-{{--            :sectionData="[--}}
-{{--                'logo' => 'frontend/images/logo-blanco.svg',--}}
-{{--                'background_color' => '#000',--}}
-{{--                'text_color' => '#fff'--}}
-{{--            ]"--}}
-{{--        />--}}
+        <livewire:front.about-section
+            layout="split-left"
+            :sectionData="[
+                'logo' => 'frontend/images/logo-blanco.svg',
+                'background_color' => '#000',
+                'text_color' => '#fff'
+            ]"
+        />
 
-{{--        <livewire:front.about-section layout="split-right"--}}
-{{--                                      :sectionData="[--}}
-{{--                    'logo' => 'frontend/images/logo-blanco.svg',--}}
-{{--                    'background_color' => '#000',--}}
-{{--                    'text_color' => '#fff'--}}
-{{--                ]"--}}
-{{--        />--}}
+        <livewire:front.about-section layout="split-right"
+                                      :sectionData="[
+                    'logo' => 'frontend/images/logo-blanco.svg',
+                    'background_color' => '#000',
+                    'text_color' => '#fff'
+                ]"
+        />
 
-{{--        <livewire:front.about-section layout="compact-right"--}}
-{{--                                      :sectionData="[--}}
-{{--                    'logo' => 'frontend/images/logo-negro.svg',--}}
-{{--                    'background_color' => '#fff',--}}
-{{--                    'text_color' => '#000'--}}
-{{--                ]"--}}
-{{--        />--}}
+        <livewire:front.about-section layout="compact-right"
+                                      :sectionData="[
+                    'logo' => 'frontend/images/logo-negro.svg',
+                    'background_color' => '#fff',
+                    'text_color' => '#000'
+                ]"
+        />
 
-{{--        <livewire:front.about-section layout="compact-left"--}}
-{{--                                      :sectionData="[--}}
-{{--                    'logo' => 'frontend/images/logo-negro.svg',--}}
-{{--                    'background_color' => '#fff',--}}
-{{--                    'text_color' => '#000'--}}
-{{--                ]"--}}
-{{--        />--}}
-{{--    </section>--}}
+        <livewire:front.about-section layout="compact-left"
+                                      :sectionData="[
+                    'logo' => 'frontend/images/logo-negro.svg',
+                    'background_color' => '#fff',
+                    'text_color' => '#000'
+                ]"
+        />
+    </section>
 
-{{--    <section id="test-drive" class="scroll-animate">--}}
-{{--        <livewire:front.test-drive-section--}}
-{{--            layout="hero"--}}
-{{--            :sectionData="[--}}
-{{--                'image_position' => 'top-third',--}}
-{{--                'show_features' => true--}}
-{{--            ]"/>--}}
+    <section id="test-drive" class="scroll-animate">
+        <livewire:front.test-drive-section
+            layout="hero"
+            :sectionData="[
+                'image_position' => 'top-third',
+                'show_features' => true
+            ]"/>
 
-{{--        <livewire:front.test-drive-section--}}
-{{--            layout="overlay-left"--}}
-{{--            :sectionData="[--}}
-{{--                'section_height' => 'min-h-[600px]',--}}
-{{--                'show_image' => true,--}}
-{{--                'background_image' => 'frontend/images/7080348 1.png'--}}
-{{--        ]"/>--}}
+        <livewire:front.test-drive-section
+            layout="overlay-left"
+            :sectionData="[
+                'section_height' => 'min-h-[600px]',
+                'show_image' => true,
+                'background_image' => 'frontend/images/7080348 1.png'
+        ]"/>
 
 
-{{--        <livewire:front.test-drive-section--}}
-{{--            layout="banner"--}}
-{{--            :sectionData="[--}}
-{{--        'show_image' => false--}}
-{{--        ]"/>--}}
+        <livewire:front.test-drive-section
+            layout="banner"
+            :sectionData="[
+        'show_image' => false
+        ]"/>
 
-{{--        <livewire:front.test-drive-section layout="banner-thin"/>--}}
-{{--    </section>--}}
+        <livewire:front.test-drive-section layout="banner-thin"/>
+    </section>
 
-{{--    <section id="postventa" class="scroll-animate">--}}
-{{--        <livewire:front.postventa-section--}}
-{{--            layout="split-right"--}}
-{{--            :sectionData="[--}}
-{{--                'section_height' => 'min-h-[600px]'--}}
-{{--            ]"--}}
-{{--        />--}}
+    <section id="postventa" class="scroll-animate">
+        <livewire:front.postventa-section
+            layout="split-right"
+            :sectionData="[
+                'section_height' => 'min-h-[600px]'
+            ]"
+        />
 
-{{--        <livewire:front.postventa-section--}}
-{{--            layout="compact"--}}
-{{--            :sectionData="[--}}
-{{--                'section_height' => 'min-h-[600px]'--}}
-{{--            ]"--}}
-{{--        />--}}
+        <livewire:front.postventa-section
+            layout="compact"
+            :sectionData="[
+                'section_height' => 'min-h-[600px]'
+            ]"
+        />
 
-{{--        <livewire:front.postventa-section--}}
-{{--            layout="overlay-left"--}}
-{{--            :sectionData="[--}}
-{{--                'subtitle' => 'SERVICIO',--}}
-{{--                'title' => 'POSVENTA DE CALIDAD GLOBAL',--}}
-{{--                'section_height' => 'min-h-[900px]'--}}
-{{--            ]"--}}
-{{--        />--}}
-{{--    </section>--}}
+        <livewire:front.postventa-section
+            layout="overlay-left"
+            :sectionData="[
+                'subtitle' => 'SERVICIO',
+                'title' => 'POSVENTA DE CALIDAD GLOBAL',
+                'section_height' => 'min-h-[900px]'
+            ]"
+        />
+    </section>
 
-{{--    <section id="direcciones" class="scroll-animate">--}}
-{{--        <livewire:front.direcciones-section--}}
-{{--            layout="map-cards"--}}
-{{--            :sectionData="[--}}
-{{--                'background_color' => '#ffffff'--}}
-{{--            ]" />--}}
+    <section id="direcciones" class="scroll-animate">
+        <livewire:front.direcciones-section
+            layout="map-cards"
+            :sectionData="[
+                'background_color' => '#ffffff'
+            ]" />
 
-{{--    </section>--}}
+    </section>
 
     <div id="back-to-top" class="fixed bottom-8 right-8 z-50 hidden">
         <button onclick="scrollToTop()"
