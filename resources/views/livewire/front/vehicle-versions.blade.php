@@ -54,9 +54,10 @@
                         {{-- Selector de Versión --}}
                         <div class="mb-6">
                             <select wire:model.live="selectedVersion"
-                                    class="w-full bg-[#194BFF] text-white p-3 rounded font-medium text-lg">
+                                    class="w-full bg-[#194BFF] text-white p-3 pr-10 rounded font-medium text-lg appearance-none"
+                                    style="font-family: 'GeelyTitle', sans-serif;">
                                 @foreach($versionsData['versions'] as $key => $version)
-                                    <option value="{{ $key }}">{{ $version['name'] }}</option>
+                                    <option class="bg-white text-black" value="{{ $key }}">{{ $version['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -77,7 +78,7 @@
                             <div class="flex flex-wrap gap-2">
                                 @foreach($versionsData['tabs'] as $key => $tab)
                                     <button wire:click="selectTab('{{ $key }}')"
-                                            class="py-2 px-4 text-xs font-medium rounded transition-colors {{ $selectedTab === $key ? 'bg-[#194BFF] text-white' : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-300' }}">
+                                            class="py-2 px-2 text-xs font-small rounded transition-colors {{ $selectedTab === $key ? 'bg-[#194BFF] text-white' : 'bg-white text-gray-600 hover:bg-[#194BFF] hover:text-white border border-gray-300' }}">
                                         {{ $tab['label'] }}
                                     </button>
                                 @endforeach
@@ -212,12 +213,12 @@
                             </button>
 
                             <button wire:click="downloadCatalog"
-                                    class="w-full py-2 border border-gray-400 text-gray-700 rounded font-medium transition-colors hover:bg-gray-50 text-sm">
+                                    class="w-full py-2 border border-gray-400 text-gray-700 rounded font-medium transition-colors hover:bg-black hover:text-white text-sm">
                                 {{ $versionsData['buttons']['catalog']['text'] }}
                             </button>
 
                             <button wire:click="scheduleTestDrive"
-                                    class="w-full py-2 border border-gray-400 text-gray-700 rounded font-medium transition-colors hover:bg-gray-50 text-sm">
+                                    class="w-full py-2 border border-gray-400 text-gray-700 rounded font-medium transition-colors hover:bg-black hover:text-white text-sm">
                                 {{ $versionsData['buttons']['test_drive']['text'] }}
                             </button>
                         </div>
@@ -251,10 +252,10 @@
 
                         {{-- Selector de Colores (solo para exterior) --}}
                         @if($selectedView === 'exterior')
-                            <div class="flex justify-center space-x-3 mt-6">
+                            <div class="flex justify-center space-x-3 mt-6 bg-white rounded-full py-3 px-5 w-fit mx-auto">
                                 @foreach($versionsData['colors'] as $colorKey => $color)
                                     <button wire:click="selectColor('{{ $colorKey }}')"
-                                            class="w-10 h-10 rounded-full border-4 transition-all duration-200 {{ $selectedColor === $colorKey ? 'border-gray-800 scale-110' : 'border-gray-300 hover:border-gray-400' }}"
+                                            class="relative w-10 h-10 rounded-full transition-all duration-200 {{ $selectedColor === $colorKey ? 'border-gray-800 scale-110' : 'border-gray-300 hover:border-gray-400' }} before:absolute before:inset-0 before:bg-white before:opacity-0 hover:before:opacity-30 before:transition-opacity before:duration-200 before:rounded-full"
                                             style="background-color: {{ $color['hex'] }};"
                                             title="{{ $color['name'] }}">
                                     </button>
@@ -273,4 +274,15 @@
             @endif
         </div>
     </section>
+
+    <style>
+        select {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 26px;
+            padding-right: 40px !important;
+        }
+    </style>
 </div>
+

@@ -105,6 +105,10 @@ class FeatureSliderSection extends Component
             $this->featureData['thumbnails'] = $featureData['thumbnails'];
         }
 
+        if ($this->featureData['autoplay']['enabled']) {
+            $this->dispatch('startAutoplay', delay: $this->featureData['autoplay']['delay']);
+        }
+
         $this->currentSlide = 0;
     }
 

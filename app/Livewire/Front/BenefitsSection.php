@@ -9,6 +9,7 @@ class BenefitsSection extends Component
     public $sectionTitle = 'CON GEELY OBTIENES MÁS';
     public $sectionDescription = 'Geely te da los mejores beneficios y condiciones del mercado para que puedas empezar a conducir con total tranquilidad.';
 
+
 // Configuración de fondo
     public $backgroundType = 'gradient'; // 'gradient' o 'image'
     public $backgroundColor = '#3b82f6';
@@ -26,14 +27,13 @@ class BenefitsSection extends Component
         $this->loadBenefits();
 
         // Ejemplo 1: Degradado azul (por defecto)
-        // $this->setGradientBackground('#3b82f6', '#1e40af', '135deg');
+         $this->setGradientBackground('#3b82f6', '#1e40af', '135deg');
 
         // Ejemplo 2: Degradado morado
         // $this->setGradientBackground('#8b5cf6', '#5b21b6', '135deg');
 
         // Ejemplo 3: Imagen de fondo con overlay
-        $this->setImageBackground('assets/images/geely-hero-bg.png', true, 0.5, -90);
-
+//        $this->setImageBackground('assets/images/geely-hero-bg.png', true, 0.5, -90);
 
         // Ejemplo 4: Imagen sin overlay
         // $this->setImageBackground('/images/geely-hero-bg.jpg', false);

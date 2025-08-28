@@ -3,7 +3,8 @@
         <div class="container mx-auto px-4">
 
             {{-- Header --}}
-            <div class="{{ $featuresData['header']['text_align'] ?? 'text-left' }} {{ $featuresData['header']['margin_bottom'] ?? 'mb-12' }}">
+            <div
+                class="{{ $featuresData['header']['text_align'] ?? 'text-left' }} {{ $featuresData['header']['margin_bottom'] ?? 'mb-12' }}">
                 <h2 class="{{ $featuresData['header']['title_size'] ?? 'text-3xl lg:text-4xl' }} {{ $featuresData['header']['title_weight'] ?? 'font-bold' }}"
                     style="color: {{ $featuresData['header']['title_color'] ?? '#1f2937' }};">
                     {{ $featuresData['header']['title'] }}
@@ -16,38 +17,66 @@
                     </p>
                 @endif
             </div>
+        </div>
 
-            {{-- Grid de Features --}}
-            <div class="grid {{ $featuresData['grid_settings']['columns_mobile'] }} {{ $featuresData['grid_settings']['columns_tablet'] }} {{ $featuresData['grid_settings']['columns_desktop'] }} {{ $featuresData['grid_settings']['gap'] }}">
+        {{-- Grid de Features --}}
+        <div
+            class="w-full grid {{ $featuresData['grid_settings']['columns_mobile'] }} {{ $featuresData['grid_settings']['columns_tablet'] }} {{ $featuresData['grid_settings']['columns_desktop'] }} {{ $featuresData['grid_settings']['gap'] }}">
 
-                @foreach($featuresData['features'] as $feature)
-                    <div class="feature-card relative {{ $featuresData['grid_settings']['aspect_ratio'] }} rounded-lg overflow-hidden group cursor-pointer">
+            @foreach($featuresData['features'] as $feature)
+                <div
+                    class="feature-card relative {{ $featuresData['grid_settings']['aspect_ratio'] }} overflow-hidden group cursor-pointer">
 
-                        {{-- Imagen de fondo --}}
-                        <div class="absolute inset-0">
-                            <img src="{{ asset($feature['image']) }}"
-                                 alt="{{ $feature['title'] }}"
-                                 class="w-full h-full object-cover transition-transform duration-500 {{ $feature['hover_effect'] ? 'group-hover:scale-110' : '' }}">
+                    {{-- Imagen de fondo --}}
+                    <div class="absolute inset-0">
+                        <img src="{{ asset($feature['image']) }}"
+                             alt="{{ $feature['title'] }}"
+                             class="w-full h-full object-cover transition-transform duration-500 {{ $feature['hover_effect'] ? 'group-hover:scale-110' : '' }}">
 
 
-                        </div>
+                    </div>
 
-                        {{-- Contenido de texto --}}
-                        <div class="absolute inset-0 flex items-end justify-start p-6 z-10">
-                            @if($feature['text_position'] === 'bottom-left')
-                                <div class="text-left">
-                                    <h3 class="text-2xl lg:text-3xl font-bold mb-2 transition-transform duration-300 {{ $feature['hover_effect'] ? 'group-hover:translate-y-[-4px]' : '' }}"
-                                        style="color: {{ $feature['text_color'] }};">
-                                        {{ $feature['title'] }}
-                                    </h3>
-                                    <p class="text-sm lg:text-base transition-opacity duration-300 {{ $feature['hover_effect'] ? 'group-hover:opacity-90' : '' }}"
-                                       style="color: {{ $feature['text_color'] }};">
-                                        {{ $feature['subtitle'] }}
-                                    </p>
-                                </div>
+                    {{-- Contenido de texto --}}
+                    <div class="absolute inset-0 flex items-end justify-start p-6 z-10">
+                        @if($feature['text_position'] === 'bottom-left')
+                            <div class="text-left">
+                                <h3 class="text-2xl lg:text-3xl font-bold mb-2 transition-transform duration-300 {{ $feature['hover_effect'] ? 'group-hover:translate-y-[-4px]' : '' }}"
+                                    style="color: {{ $feature['text_color'] }};">
+                                    {{ $feature['title'] }}
+                                </h3>
+                                <p class="text-sm lg:text-base transition-opacity duration-300 {{ $feature['hover_effect'] ? 'group-hover:opacity-90' : '' }}"
+                                   style="color: {{ $feature['text_color'] }};">
+                                    {{ $feature['subtitle'] }}
+                                </p>
+                            </div>
 
-                            @elseif($feature['text_position'] === 'bottom-center')
-                                <div class="text-center w-full">
+                        @elseif($feature['text_position'] === 'bottom-center')
+                            <div class="text-center w-full">
+                                <h3 class="text-2xl lg:text-3xl font-bold mb-2"
+                                    style="color: {{ $feature['text_color'] }};">
+                                    {{ $feature['title'] }}
+                                </h3>
+                                <p class="text-sm lg:text-base"
+                                   style="color: {{ $feature['text_color'] }};">
+                                    {{ $feature['subtitle'] }}
+                                </p>
+                            </div>
+
+                        @elseif($feature['text_position'] === 'bottom-right')
+                            <div class="text-right ml-auto">
+                                <h3 class="text-2xl lg:text-3xl font-bold mb-2"
+                                    style="color: {{ $feature['text_color'] }};">
+                                    {{ $feature['title'] }}
+                                </h3>
+                                <p class="text-sm lg:text-base"
+                                   style="color: {{ $feature['text_color'] }};">
+                                    {{ $feature['subtitle'] }}
+                                </p>
+                            </div>
+
+                        @elseif($feature['text_position'] === 'center')
+                            <div class="absolute inset-0 flex items-center justify-center text-center">
+                                <div>
                                     <h3 class="text-2xl lg:text-3xl font-bold mb-2"
                                         style="color: {{ $feature['text_color'] }};">
                                         {{ $feature['title'] }}
@@ -57,43 +86,19 @@
                                         {{ $feature['subtitle'] }}
                                     </p>
                                 </div>
-
-                            @elseif($feature['text_position'] === 'bottom-right')
-                                <div class="text-right ml-auto">
-                                    <h3 class="text-2xl lg:text-3xl font-bold mb-2"
-                                        style="color: {{ $feature['text_color'] }};">
-                                        {{ $feature['title'] }}
-                                    </h3>
-                                    <p class="text-sm lg:text-base"
-                                       style="color: {{ $feature['text_color'] }};">
-                                        {{ $feature['subtitle'] }}
-                                    </p>
-                                </div>
-
-                            @elseif($feature['text_position'] === 'center')
-                                <div class="absolute inset-0 flex items-center justify-center text-center">
-                                    <div>
-                                        <h3 class="text-2xl lg:text-3xl font-bold mb-2"
-                                            style="color: {{ $feature['text_color'] }};">
-                                            {{ $feature['title'] }}
-                                        </h3>
-                                        <p class="text-sm lg:text-base"
-                                           style="color: {{ $feature['text_color'] }};">
-                                            {{ $feature['subtitle'] }}
-                                        </p>
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-
-                        {{-- Efecto hover adicional --}}
-                        @if($feature['hover_effect'])
-                            <div class="absolute inset-0 border-2 border-white border-opacity-0 group-hover:border-opacity-30 transition-all duration-300 rounded-lg"></div>
+                            </div>
                         @endif
                     </div>
-                @endforeach
-            </div>
+
+                    {{-- Efecto hover adicional --}}
+                    @if($feature['hover_effect'])
+                        <div
+                            class="absolute inset-0 border-2 border-white border-opacity-0 group-hover:border-opacity-30 transition-all duration-300"></div>
+                    @endif
+                </div>
+            @endforeach
         </div>
+
     </section>
 
     <style>
@@ -109,7 +114,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             transition: left 0.5s;
             z-index: 15;
         }
