@@ -217,7 +217,7 @@ class VehicleVersions extends Component
 
     public function requestQuote()
     {
-        session()->flash('message', 'Solicitud de cotización enviada correctamente.');
+        return redirect()->route('forms.base');
     }
 
     public function downloadCatalog()

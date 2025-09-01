@@ -20,7 +20,7 @@
 
                 <div class="flex items-center justify-center gap-4">
                     <!-- Card 5 años -->
-                    <div class="benefit-card-custom bg-white/20 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center text-center">
+                    <div class="benefit-card-custom {{--bg-white/20 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center text-center--}}">
                         <div class="benefit-number">5</div>
                         <div class="benefit-unit text-white/90 font-medium">AÑOS</div>
                     </div>
@@ -29,7 +29,7 @@
                     <div class="text-white connector-text">ó</div>
 
                     <!-- Card 150.000 KM -->
-                    <div class="benefit-card-custom bg-white/20 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center text-center">
+                    <div class="benefit-card-custom {{--bg-white/20 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center text-center--}}">
                         <div class="benefit-unit">150.000</div>
                         <div class="benefit-number text-white/90 font-medium">KM</div>
                     </div>
@@ -44,7 +44,7 @@
 
                 <div class="flex items-center justify-center gap-4">
                     <!-- Card 6 servicios -->
-                    <div class="benefit-card-custom bg-white/20 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center text-center">
+                    <div class="benefit-card-custom {{--bg-white/20 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center text-center--}}">
                         <div class="benefit-number">6</div>
                         <div class="text-sm benefit-unit text-white/90 font-medium" style="font-size: 20px">SERVICIOS</div>
                     </div>
@@ -53,7 +53,7 @@
                     <div class="text-white connector-text" >EN</div>
 
                     <!-- Card 3 años -->
-                    <div class="benefit-card-custom bg-white/20 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center text-center">
+                    <div class="benefit-card-custom {{--bg-white/20 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center text-center--}}">
                         <div class="benefit-number">3</div>
                         <div class="benefit-unit text-white/90 font-medium">AÑOS</div>
                     </div>
@@ -76,15 +76,30 @@
             padding: 16px;
             font-family: 'GeelyTitle', sans-serif;
             position: relative;
-            border-radius: 16px;
-            background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.2) 0%,
-            rgba(255, 255, 255, 0.05) 100%);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow:
-                0 8px 32px rgba(31, 38, 135, 0.37),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+            background-color: transparent;
+
+            /*border-radius: 16px;*/
+            /*background: linear-gradient(135deg,*/
+            /*rgba(255, 255, 255, 0.2) 0%,*/
+            /*rgba(255, 255, 255, 0.05) 100%);*/
+            /*backdrop-filter: blur(20px);*/
+            /*border: 1px solid rgba(255, 255, 255, 0.25);*/
+            /*box-shadow:*/
+            /*    0 8px 32px rgba(31, 38, 135, 0.37),*/
+            /*    inset 0 1px 0 rgba(255, 255, 255, 0.3);*/
+
+            background-image: url('/{{ $cardBackgroundImage }}');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
         }
 
         /*.benefit-card-custom::before {*/

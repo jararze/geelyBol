@@ -11,23 +11,26 @@ class BenefitsSection extends Component
 
 
 // Configuración de fondo
-    public $backgroundType = 'gradient'; // 'gradient' o 'image'
+    public $backgroundType = 'image'; // 'gradient' o 'image'
+
+    public $backgroundImage = 'assets/images/bg-benefits.png'; // Tu imagen de fondo
+    public $backgroundOverlay = true; // Mantener overlay para legibilidad del texto
     public $backgroundColor = '#3b82f6';
     public $gradientEndColor = '#1e40af';
-    public $gradientDirection = '135deg';
-    public $backgroundImage = null; // URL de la imagen
-    public $backgroundOverlay = true; // Overlay oscuro sobre la imagen
-    public $overlayOpacity = 0.7; // Opacidad del overlay (0-1)
+    public $gradientDirection = '0';
+    public $overlayOpacity = 0; // Opacidad del overlay (0-1)
 
     public $footerText = 'Lo que sucede primero';
     public $benefits;
+
+    public $cardBackgroundImage = 'assets/images/box.png';
 
     public function mount()
     {
         $this->loadBenefits();
 
         // Ejemplo 1: Degradado azul (por defecto)
-         $this->setGradientBackground('#3b82f6', '#1e40af', '135deg');
+//         $this->setGradientBackground('#3b82f6', '#1e40af', '135deg');
 
         // Ejemplo 2: Degradado morado
         // $this->setGradientBackground('#8b5cf6', '#5b21b6', '135deg');

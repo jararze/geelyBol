@@ -55,37 +55,61 @@
 
     <livewire:front.feature-slider-section :featureData="[
     'header' => [
-        'title' => 'TECNOLOGÍA AVANZADA'
-    ],
-    'layout' => [
-        'direction' => 'right'
-    ],
-    'slides' => [
-        [
-            'title' => 'CONECTIVIDAD TOTAL',
-            'subtitle' => 'Sistema multimedia avanzado',
-            'description' => 'Pantalla táctil de última generación con conectividad completa.',
-            'main_image' => 'frontend/images/interior-tech.jpg'
-        ]
-    ]
-]" />
-
-    <livewire:front.feature-slider-section :featureData="[
-    'header' => [
-        'title' => 'TECNOLOGÍA AVANZADA'
+        'title' => 'POTENTE Y DINAMICO'
     ],
     'layout' => [
         'direction' => 'left'
     ],
-    'slides' => [
-        [
-            'title' => 'CONECTIVIDAD TOTAL',
-            'subtitle' => 'Sistema multimedia avanzado',
-            'description' => 'Pantalla táctil de última generación con conectividad completa.',
-            'main_image' => 'frontend/images/interior-tech.jpg'
+
+    ]" />
+
+    <livewire:front.feature-slider-section :featureData="[
+        'header' => [
+            'title' => 'INTERIOR LUJOSO Y TOTALMENTE EQUIPADO'
+        ],
+        'layout' => [
+            'direction' => 'right'
+        ],
+    ]" />
+
+    <livewire:front.feature-slider-section :featureData="[
+    'header' => [
+        'title' => 'TECNOLOGIA: TABLET, HUD HOLOGRADICO Y MAS'
+    ],
+    'layout' => [
+        'direction' => 'left'
+    ],
+
+    ]" />
+
+    <livewire:front.feature-slider-section :featureData="[
+        'header' => [
+            'title' => 'SEGURIDAD TOAL: MAS DE 8 ASISTENTES SMART'
+        ],
+        'layout' => [
+            'direction' => 'right'
+        ],
+    ]" />
+
+    <livewire:front.mosaic-gallery-section />
+
+    {{-- Mosaico personalizado --}}
+    <livewire:front.mosaic-gallery-section :galleryData="[
+        'layout' => [
+            'columns' => 4,
+            'gap' => 'gap-2',
+            'container_height' => 'h-[700px]'
+        ],
+        'images' => [
+            ['column' => 1, 'row_span' => 1, 'image' => 'frontend/images/mosaico/1.png', 'alt' => 'Image 1'],
+            ['column' => 1, 'row_span' => 1, 'image' => 'frontend/images/mosaico/2.jpg', 'alt' => 'Image 2'],
+            ['column' => 2, 'row_span' => 2, 'image' => 'frontend/images/mosaico/3.jpg', 'alt' => 'Image 3'],
+            ['column' => 3, 'row_span' => 2, 'image' => 'frontend/images/mosaico/4.png', 'alt' => 'Image 4'],
+            ['column' => 4, 'row_span' => 1, 'image' => 'frontend/images/mosaico/5.png', 'alt' => 'Image 5'],
+            ['column' => 4, 'row_span' => 1, 'image' => 'frontend/images/mosaico/1.png', 'alt' => 'Image 6']
         ]
-    ]
-]" />
+    ]" />
+
 
 
 

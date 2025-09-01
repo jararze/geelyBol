@@ -32,7 +32,8 @@ class FeatureSliderSection extends Component
                 'title' => 'MOTOR 2.0 TURBO',
                 'subtitle' => '2.0 Turbo Motor - 215 hp Potencia',
                 'description' => 'Diseño ultra moderno y vanguardista que destaca en todos los espacios urbanos, citadinos y en los viajes más largos.',
-                'main_image' => 'frontend/images/features/motor-turbo-main.jpg',
+                'main_image' => 'frontend/images/features/principal1.jpg',
+                'thumbnail_image' => 'frontend/images/features/Rectangle 3.png',
                 'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
             ],
             [
@@ -40,7 +41,8 @@ class FeatureSliderSection extends Component
                 'title' => 'ESTABILIDAD CON PLATAFORMA CMA',
                 'subtitle' => '115 HP DE POTENCIA',
                 'description' => 'Diseño ultra moderno y vanguardista que destaca en todos los espacios urbanos, citadinos y en los viajes más largos.',
-                'main_image' => 'frontend/images/features/estabilidad-main.jpg',
+                'main_image' => 'frontend/images/features/principal2.jpg',
+                'thumbnail_image' => 'frontend/images/features/2.png',
                 'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
             ],
             [
@@ -48,29 +50,16 @@ class FeatureSliderSection extends Component
                 'title' => 'TECNOLOGÍA AVANZADA',
                 'subtitle' => '115 HP DE POTENCIA',
                 'description' => 'Sistema de tracción inteligente que se adapta a cualquier terreno para máxima seguridad.',
-                'main_image' => 'frontend/images/features/tecnologia-main.jpg',
+                'main_image' => 'frontend/images/features/principal3.jpg',
+                'thumbnail_image' => 'frontend/images/features/3.png',
                 'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'
             ]
         ],
 
-        'thumbnails' => [
-            [
-                'image' => 'frontend/images/features/motor-thumb.jpg',
-                'title' => '115 HP DE POTENCIA'
-            ],
-            [
-                'image' => 'frontend/images/features/estabilidad-thumb.jpg',
-                'title' => 'ESTABILIDAD CON PLATAFORMA CMA'
-            ],
-            [
-                'image' => 'frontend/images/features/tecnologia-thumb.jpg',
-                'title' => '115 HP DE POTENCIA'
-            ]
-        ],
 
         'autoplay' => [
             'enabled' => true,
-            'delay' => 5000
+            'delay' => 7000
         ],
 
         'navigation' => [
@@ -101,10 +90,6 @@ class FeatureSliderSection extends Component
             $this->featureData['slides'] = $featureData['slides'];
         }
 
-        if (isset($featureData['thumbnails'])) {
-            $this->featureData['thumbnails'] = $featureData['thumbnails'];
-        }
-
         if ($this->featureData['autoplay']['enabled']) {
             $this->dispatch('startAutoplay', delay: $this->featureData['autoplay']['delay']);
         }
@@ -121,6 +106,12 @@ class FeatureSliderSection extends Component
     {
         $totalSlides = count($this->featureData['slides']);
         $this->currentSlide = ($this->currentSlide + 1) % $totalSlides;
+
+        // Forzar re-render
+        $this->dispatch('slideChanged', [
+            'currentSlide' => $this->currentSlide,
+            'timestamp' => now()->timestamp
+        ]);
     }
 
     public function prevSlide()
@@ -129,9 +120,56 @@ class FeatureSliderSection extends Component
         $this->currentSlide = ($this->currentSlide - 1 + $totalSlides) % $totalSlides;
     }
 
+    public function getFirstVisibleThumbnailIndex()
+    {
+        // Buscar el primer índice que NO sea el slide actual
+        for ($i = 0; $i < count($this->featureData['slides']); $i++) {
+            if ($i !== $this->currentSlide) {
+                return $i;
+            }
+        }
+        return null;
+    }
+
+
     public function getCurrentSlide()
     {
-        return $this->featureData['slides'][$this->currentSlide] ?? [];
+        $slide = $this->featureData['slides'][$this->currentSlide] ?? [];
+
+        // Solo validar main_image hasta que implementes la validación en admin
+        if (!isset($slide['main_image']) || empty($slide['main_image'])) {
+            $slide['main_image'] = 'frontend/images/default-placeholder.png';
+        }
+
+        return $slide;
+    }
+    public function getOrderedThumbnails()
+    {
+        $totalSlides = count($this->featureData['slides']);
+        $thumbnails = [];
+
+        // Crear orden que asegure que todos los slides sean primer thumbnail
+        for ($i = 1; $i < $totalSlides; $i++) {
+            $index = ($this->currentSlide + $i) % $totalSlides;
+            $thumbnails[] = [
+                'index' => $index,
+                'slide' => $this->featureData['slides'][$index]
+            ];
+        }
+
+        return $thumbnails;
+    }
+
+    public function shouldShowDescription($thumbnailPosition, $direction = 'left')
+    {
+        if ($direction === 'right') {
+            // En RIGHT, el último thumbnail (posición más alta) muestra descripción
+            $totalThumbnails = count($this->featureData['slides']) - 1; // -1 porque uno está en principal
+            return $thumbnailPosition === ($totalThumbnails - 1);
+        }
+
+        // En LEFT, el primer thumbnail (posición 0) muestra descripción
+        return $thumbnailPosition === 0;
     }
     public function render()
     {
