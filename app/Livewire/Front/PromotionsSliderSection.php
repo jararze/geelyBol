@@ -16,7 +16,7 @@ class PromotionsSliderSection extends Component
 
         'header' => [
             'title' => 'PROMOCIONES Y OFERTAS',
-            'subtitle' => 'Elige tu versión de Starray',
+            'subtitle' => 'Por Pre-venta',
             'title_size' => 'text-3xl lg:text-4xl',
             'subtitle_size' => 'text-lg'
         ],
@@ -24,11 +24,11 @@ class PromotionsSliderSection extends Component
         'slides' => [
             [
                 'id' => 'starray-50-discount',
-                'title' => '50%',
+                'title' => '$us. 1,000',
                 'subtitle' => 'DE DESCUENTO',
-                'description' => 'Si pagas en dólares o USDT. Válido hasta el 1 de septiembre. Aplica en todos los modelos.',
+                'description' => 'Aprovecha los precios de preventa para comprar tu Geely Starray. Válido en todas sus versiones.',
                 'vehicle_model' => 'STARRAY',
-                'vehicle_subtitle' => 'GEA GLOBAL INTELLIGENT NEW ENERGY ARCHITECTURE',
+                'vehicle_subtitle' => 'El SUV ultra moderno',
                 'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
                 'text_color' => 'text-gray-800',
                 'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
@@ -38,38 +38,38 @@ class PromotionsSliderSection extends Component
                     'style' => 'bg-white text-blue-600 hover:bg-gray-100'
                 ]
             ],
-            [
-                'id' => 'starray-financing',
-                'title' => '0%',
-                'subtitle' => 'DE INTERÉS',
-                'description' => 'Financiamiento especial a 48 meses. Sin enganche. Válido para todos los modelos SUV.',
-                'vehicle_model' => 'STARRAY',
-                'vehicle_subtitle' => 'TECNOLOGÍA HÍBRIDA AVANZADA',
-                'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
-                'text_color' => 'text-gray-800',
-                'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
-                'image' => 'frontend/images/prom1.png',
-                'button' => [
-                    'text' => 'Más información',
-                    'style' => 'bg-white text-green-600 hover:bg-gray-100'
-                ]
-            ],
-            [
-                'id' => 'starray-exchange',
-                'title' => 'TU AUTO',
-                'subtitle' => 'COMO PARTE DE PAGO',
-                'description' => 'Recibe hasta $15,000 adicionales por tu vehículo usado. Evaluación gratuita incluida.',
-                'vehicle_model' => 'STARRAY',
-                'vehicle_subtitle' => 'PROGRAMA DE INTERCAMBIO',
-                'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
-                'text_color' => 'text-gray-800',
-                'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
-                'image' => 'frontend/images/prom1.png',
-                'button' => [
-                    'text' => 'Evaluar mi auto',
-                    'style' => 'bg-white text-purple-600 hover:bg-gray-100'
-                ]
-            ]
+//            [
+//                'id' => 'starray-financing',
+//                'title' => '0%',
+//                'subtitle' => 'DE INTERÉS',
+//                'description' => 'Financiamiento especial a 48 meses. Sin enganche. Válido para todos los modelos SUV.',
+//                'vehicle_model' => 'STARRAY',
+//                'vehicle_subtitle' => 'TECNOLOGÍA HÍBRIDA AVANZADA',
+//                'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
+//                'text_color' => 'text-gray-800',
+//                'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
+//                'image' => 'frontend/images/prom1.png',
+//                'button' => [
+//                    'text' => 'Más información',
+//                    'style' => 'bg-white text-green-600 hover:bg-gray-100'
+//                ]
+//            ],
+//            [
+//                'id' => 'starray-exchange',
+//                'title' => 'TU AUTO',
+//                'subtitle' => 'COMO PARTE DE PAGO',
+//                'description' => 'Recibe hasta $15,000 adicionales por tu vehículo usado. Evaluación gratuita incluida.',
+//                'vehicle_model' => 'STARRAY',
+//                'vehicle_subtitle' => 'PROGRAMA DE INTERCAMBIO',
+//                'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
+//                'text_color' => 'text-gray-800',
+//                'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
+//                'image' => 'frontend/images/prom1.png',
+//                'button' => [
+//                    'text' => 'Evaluar mi auto',
+//                    'style' => 'bg-white text-purple-600 hover:bg-gray-100'
+//                ]
+//            ]
         ],
 
         'autoplay' => [

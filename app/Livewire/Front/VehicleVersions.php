@@ -68,14 +68,26 @@ class VehicleVersions extends Component
                         'cinturones' => 'Pretensores y limitadores'
                     ]
                 ],
-                'images' => [
-                    'exterior' => [
-                        'azul' => 'frontend/images/Starray silver20 1.png',
-                        'negro' => 'frontend/images/Starray silver70 1.png',
-                        'blanco' => 'frontend/images/starray/exterior-blanco.jpg'
+                'colors' => [
+                    'silver' => [
+                        'name' => 'Plata',
+                        'hex' => '#C0C0C0',
+                        'image' => 'frontend/images/vehicles/starray/Starray silver20 1.png'
                     ],
+                    'negro' => [
+                        'name' => 'Negro',
+                        'hex' => '#1a1a1a',
+                        'image' => 'frontend/images/vehicles/starray/Starray Lado Izquierdo Negra PNG.png'
+                    ],
+                    'blanco' => [
+                        'name' => 'Blanco',
+                        'hex' => '#FFFFFF',
+                        'image' => 'frontend/images/vehicles/starray/Starray Lado Izquierdo Blanca PNG.png'
+                    ]
+                ],
+                'images' => [
                     'interior' => [
-                        'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior_360.png'
+                        'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior.jpg'
                     ]
                 ]
             ],
@@ -120,14 +132,26 @@ class VehicleVersions extends Component
                         'cinturones' => 'Pretensores y limitadores'
                     ]
                 ],
-                'images' => [
-                    'exterior' => [
-                        'azul' => 'frontend/images/starray/gk25-exterior-azul.jpg',
-                        'negro' => 'frontend/images/starray/gk25-exterior-negro.jpg',
-                        'blanco' => 'frontend/images/starray/gk25-exterior-blanco.jpg'
+                'colors' => [
+                    'silver' => [
+                        'name' => 'Plata',
+                        'hex' => '#C0C0C0',
+                        'image' => 'frontend/images/vehicles/starray/Starray silver20 1.png'
                     ],
+                    'negro' => [
+                        'name' => 'Negro',
+                        'hex' => '#1a1a1a',
+                        'image' => 'frontend/images/vehicles/starray/Starray Lado Izquierdo Negra PNG.png'
+                    ],
+                    'blanco' => [
+                        'name' => 'Blanco',
+                        'hex' => '#FFFFFF',
+                        'image' => 'frontend/images/vehicles/starray/Starray Lado Izquierdo Blanca PNG.png'
+                    ]
+                ],
+                'images' => [
                     'interior' => [
-                        'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior_360.png'
+                        'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior.jpg'
                     ]
                 ]
             ]
@@ -138,12 +162,6 @@ class VehicleVersions extends Component
             'motor' => ['label' => 'MOTOR', 'active' => false],
             'equipamiento' => ['label' => 'EQUIPAMIENTO', 'active' => false],
             'seguridad' => ['label' => 'SEGURIDAD', 'active' => false]
-        ],
-
-        'colors' => [
-            'azul' => ['name' => 'Azul Metalizado', 'hex' => '#4A90E2'],
-            'negro' => ['name' => 'Negro Metalizado', 'hex' => '#2C3E50'],
-            'blanco' => ['name' => 'Blanco Perlado', 'hex' => '#ECF0F1']
         ],
 
         'buttons' => [
@@ -182,6 +200,12 @@ class VehicleVersions extends Component
         } else {
             $this->selectedVersion = array_key_first($this->versionsData['versions']);
         }
+
+        // Inicializar el color seleccionado
+        $currentVersion = $this->getCurrentVersion();
+        if (isset($currentVersion['colors']) && !empty($currentVersion['colors'])) {
+            $this->selectedColor = array_key_first($currentVersion['colors']);
+        }
     }
 
     public function selectVersion($version)
@@ -192,7 +216,7 @@ class VehicleVersions extends Component
     public function selectView($view)
     {
         $this->selectedView = $view;
-        $this->dispatch('viewChanged'); // Disparar evento personalizado
+        $this->dispatch('viewChanged');
     }
 
     public function selectColor($color)
@@ -207,13 +231,21 @@ class VehicleVersions extends Component
 
     public function getCurrentImage()
     {
-        $version = $this->getCurrentVersion();
+        $currentVersion = $this->getCurrentVersion();
 
         if ($this->selectedView === 'interior') {
-            return $version['images']['interior']['default'] ?? 'frontend/images/default-interior.jpg';
+            return $currentVersion['images']['interior']['default'] ?? '';
         }
 
-        return $version['images']['exterior'][$this->selectedColor] ?? 'frontend/images/default-exterior.jpg';
+        // Para exterior, usar el color seleccionado
+        $colors = $currentVersion['colors'] ?? [];
+
+        // Si selectedColor está vacío, usar el primer color disponible
+        if (empty($this->selectedColor) && !empty($colors)) {
+            $this->selectedColor = array_key_first($colors);
+        }
+
+        return $colors[$this->selectedColor]['image'] ?? '';
     }
 
     public function requestQuote()

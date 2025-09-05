@@ -45,7 +45,7 @@
                             <div class="space-y-6">
                                 {{-- Offer Title con degradado --}}
                                 <div class="space-y-2">
-                                    <h3 class="text-5xl lg:text-6xl font-bold leading-none {{ $currentSlide['title_gradient'] ?? 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent' }}">
+                                    <h3 class="text-3xl lg:text-4xl font-bold leading-none {{ $currentSlide['title_gradient'] ?? 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent' }}">
                                         {{ $currentSlide['title'] ?? '' }}
                                     </h3>
                                     <h4 class="text-2xl lg:text-3xl font-semibold {{ $currentSlide['title_gradient'] ?? 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent' }}">

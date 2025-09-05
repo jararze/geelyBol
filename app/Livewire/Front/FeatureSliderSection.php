@@ -32,28 +32,10 @@ class FeatureSliderSection extends Component
                 'title' => 'MOTOR 2.0 TURBO',
                 'subtitle' => '2.0 Turbo Motor - 215 hp Potencia',
                 'description' => 'Diseño ultra moderno y vanguardista que destaca en todos los espacios urbanos, citadinos y en los viajes más largos.',
-                'main_image' => 'frontend/images/features/principal1.jpg',
-                'thumbnail_image' => 'frontend/images/features/Rectangle 3.png',
+                'main_image' => 'frontend/images/vehicles/starray/potenteydinamico/Geely_Bolivia_Starray_Potente0.jpg',
+                'thumbnail_image' => 'frontend/images/vehicles/starray/potenteydinamico/Geely_Bolivia_Starray_Potente0.jpg',
                 'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
             ],
-            [
-                'id' => 'estabilidad-cma',
-                'title' => 'ESTABILIDAD CON PLATAFORMA CMA',
-                'subtitle' => '115 HP DE POTENCIA',
-                'description' => 'Diseño ultra moderno y vanguardista que destaca en todos los espacios urbanos, citadinos y en los viajes más largos.',
-                'main_image' => 'frontend/images/features/principal2.jpg',
-                'thumbnail_image' => 'frontend/images/features/2.png',
-                'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
-            ],
-            [
-                'id' => 'tecnologia-avanzada',
-                'title' => 'TECNOLOGÍA AVANZADA',
-                'subtitle' => '115 HP DE POTENCIA',
-                'description' => 'Sistema de tracción inteligente que se adapta a cualquier terreno para máxima seguridad.',
-                'main_image' => 'frontend/images/features/principal3.jpg',
-                'thumbnail_image' => 'frontend/images/features/3.png',
-                'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'
-            ]
         ],
 
 

@@ -188,10 +188,15 @@
             </div>
 
         @else
-            <div class="flex items-start gap-5">
-                <!-- Thumbnails - se cortan en la izquierda -->
-                <div class="w-1/3 flex gap-3 pl-0" style="margin-left: -100px;">
-                    @foreach($this->getOrderedThumbnails() as $position => $thumbnailData)
+            <div class="flex items-start gap-6">
+                <!-- Thumbnails - overflow solo del lado izquierdo -->
+                <div class="w-1/3 flex gap-4" style="margin-left: -295px; min-width: calc(48%);">
+                    @php
+                        $allThumbnails = $this->getOrderedThumbnails();
+                        $limitedThumbnails = array_reverse(array_slice($allThumbnails, -3));
+                    @endphp
+
+                    @foreach($limitedThumbnails as $position => $thumbnailData)
                         <div wire:key="thumbnail-right-{{ $thumbnailData['index'] }}-active-{{ $currentSlide }}"
                              wire:click="goToSlide({{ $thumbnailData['index'] }})"
                              class="flex-shrink-0 cursor-pointer transition-all duration-500 ease-in-out transform hover:scale-105"
@@ -202,15 +207,14 @@
                                      class="w-full h-full object-cover transition-all duration-500" alt="">
 
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
-                                    <div class="absolute bottom-2 right-3 text-white text-right">
+                                    <div class="absolute bottom-2 left-3 text-white">
                                         <p class="text-xs font-semibold">{{ $thumbnailData['slide']['subtitle'] }}</p>
                                     </div>
                                 </div>
                             </div>
 
-                            {{-- Descripción en el último thumbnail para RIGHT --}}
-                            @if($this->shouldShowDescription($position, 'right'))
-                                <div class="mt-3 px-1 text-right transition-all duration-500 animate-fade-in"
+                            @if($position === 2)
+                                <div class="mt-3 px-1 transition-all duration-500 animate-fade-in"
                                      wire:key="description-right-{{ $thumbnailData['index'] }}-{{ $currentSlide }}">
                                     <h4 class="font-bold text-sm text-gray-900 leading-tight mb-1">
                                         {{ $thumbnailData['slide']['title'] }}
@@ -225,7 +229,7 @@
                 </div>
 
                 <!-- Imagen Principal -->
-                <div class="w-2/3">
+                <div class="w-2/3 mr-10 flex-shrink-0">
                     <div class="relative h-[500px] rounded-2xl overflow-hidden bg-gray-200 main-image-container shadow-2xl">
                         <img
                             src="{{ asset($this->getCurrentSlide()['main_image']) }}"
