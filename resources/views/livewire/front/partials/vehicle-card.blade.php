@@ -27,7 +27,7 @@
     @endif
 
     {{-- Vehicle Image --}}
-    <div class="{{ $imageHeight }} flex items-center justify-center bg-gray-50">
+    <div class="{{ $imageHeight }} flex items-center justify-center ">
         <img
             src="{{ asset($vehicle['image']) }}"
             alt="{{ $vehicle['name'] }}"
@@ -46,7 +46,9 @@
             @endif
 
             {{-- Usar el nuevo componente de pricing --}}
-            @include('livewire.front.partials.vehicle-pricing', ['vehicle' => $vehicle, 'position' => $position])
+            @if($vehicle['featured'])
+                @include('livewire.front.partials.vehicle-pricing', ['vehicle' => $vehicle, 'position' => $position])
+            @endif
         </div>
     @endif
 </div>
@@ -55,6 +57,8 @@
 @if($position === 'center')
     <div class="text-center mt-6">
         {{-- Usar el nuevo componente de pricing --}}
-        @include('livewire.front.partials.vehicle-pricing', ['vehicle' => $vehicle, 'position' => $position])
+        @if($vehicle['featured'])
+            @include('livewire.front.partials.vehicle-pricing', ['vehicle' => $vehicle, 'position' => $position])
+        @endif
     </div>
 @endif

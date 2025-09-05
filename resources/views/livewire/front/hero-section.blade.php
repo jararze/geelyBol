@@ -1,6 +1,8 @@
 <!-- resources/views/livewire/hero-section.blade.php -->
 {{--<section class="relative min-h-[65vh] sm:min-h-[75vh] md:min-h-[80vh] lg:min-h-[85vh] xl:min-h-[90vh] overflow-hidden"--}}
-<section class="relative min-h-[85vh] sm:min-h-[55vh] overflow-hidden"
+<section class="relative overflow-hidden"
+         style="height: calc(100vh - 64px); height: calc(100svh - 64px);"
+         class="lg:!h-[calc(100vh-80px)] lg:!h-[calc(100svh-80px)]"
          x-data="{
                 currentSlide: @entangle('currentSlide'),
                 totalSlides: {{ count($heroConfig['slides']) }},
@@ -162,41 +164,27 @@
                     }
                 @endphp
 
-                {{-- Imagen Desktop --}}
-                <img
-                    src="{{ $slide['media_src'] }}"
-                    alt="Hero background"
-                    class="absolute inset-0 w-full h-full object-{{ $slide['media_fit'] ?? 'cover' }} object-{{ $slide['media_position'] ?? 'center' }} hidden sm:block
-               origin-center slide-{{ $index }}"
-                    style="object-position: {{ $slide['object_position_desktop'] ?? '50% 50%' }};"
-                />
-
-                {{-- Imagen Mobile --}}
-                @if(isset($slide['media_src_mobile']) && $slide['media_src_mobile'])
-                    <img
-                        src="{{ $slide['media_src_mobile'] }}"
-                        alt="Hero background mobile"
-                        class="absolute inset-0 w-full h-full object-{{ $slide['media_fit'] ?? 'cover' }} object-{{ $slide['media_position'] ?? 'center' }} block sm:hidden"
-                        style="object-position: {{ $slide['object_position_mobile'] ?? '50% 50%' }};"
-                    />
-                @else
+                    {{-- Imagen Desktop --}}
                     <img
                         src="{{ $slide['media_src'] }}"
                         alt="Hero background"
-                        class="absolute inset-0 w-full h-full object-{{ $slide['media_fit'] ?? 'cover' }} object-{{ $slide['media_position'] ?? 'center' }} block sm:hidden"
-                        style="object-position: {{ $slide['object_position_mobile'] ?? '50% 50%' }};"
+                        class="absolute inset-0 w-full h-full object-fill hidden sm:block"
                     />
-                @endif
 
-
-
-                <style>
-                    @media (min-width: 640px) {
-                        .slide-{{ $index }}  {
-                            object-position: {{ $slide['object_position_desktop'] ?? '50% 50%' }}  !important;
-                        }
-                    }
-                </style>
+                    {{-- Imagen Mobile --}}
+                    @if(isset($slide['media_src_mobile']) && $slide['media_src_mobile'])
+                        <img
+                            src="{{ $slide['media_src_mobile'] }}"
+                            alt="Hero background mobile"
+                            class="absolute inset-0 w-full h-full object-fill block sm:hidden"
+                        />
+                    @else
+                        <img
+                            src="{{ $slide['media_src'] }}"
+                            alt="Hero background"
+                            class="absolute inset-0 w-full h-full object-fill block sm:hidden"
+                        />
+                    @endif
             @endif
 
             {{-- Overlay --}}
@@ -424,20 +412,22 @@
     {{-- Navigation Arrows --}}
     @if($heroConfig['show_arrows'] && count($heroConfig['slides']) > 1)
         <button
-            wire:click="prevSlide"
-            class="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm rounded-full p-3 text-white hover:bg-white/30 transition-all z-20"
+            wire:click="nextSlide"
+            class="absolute right-6 top-1/2 transform -translate-y-1/2 rounded-full p-3 text-white transition-all z-20"
+            style="background-color: rgba(0, 0, 0, 0.7) !important; backdrop-filter: blur(4px) !important;"
         >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
         </button>
 
         <button
-            wire:click="nextSlide"
-            class="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm rounded-full p-3 text-white hover:bg-white/30 transition-all z-20"
+            wire:click="prevSlide"
+            class="absolute left-6 top-1/2 transform -translate-y-1/2 rounded-full p-3 text-white transition-all z-20"
+            style="background-color: rgba(0, 0, 0, 0.7) !important; backdrop-filter: blur(4px) !important;"
         >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
         </button>
     @endif

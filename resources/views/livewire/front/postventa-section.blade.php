@@ -7,7 +7,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-3">
                 {{-- Imagen (2/3 del espacio) --}}
                 @if($sectionData['show_image'])
-                    <div class="relative lg:col-span-2">
+                    <div class="relative lg:col-span-2 order-2 lg:order-1">
                         <img src="{{ asset($sectionData['building_image']) }}"
                              alt="{{ $sectionData['title'] }}"
                              class="w-full h-full object-cover min-h-[500px]">
@@ -15,7 +15,7 @@
                 @endif
 
                 {{-- Contenido (1/3 del espacio) --}}
-                <div class="lg:col-span-1 flex items-center justify-center p-8 lg:p-12"
+                <div class="lg:col-span-1 flex items-center justify-center p-8 lg:p-12 order-1 lg:order-2"
                      style="background: linear-gradient(135deg, #ffffff 0%, #f1f3f4 100%);">
                     <div class="max-w-lg text-center lg:text-left">
                         <h2 class="text-3xl lg:text-4xl font-bold mb-8" style="color: {{ $sectionData['text_color'] }};">

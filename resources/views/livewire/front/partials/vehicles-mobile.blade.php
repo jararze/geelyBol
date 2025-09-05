@@ -15,33 +15,35 @@
                      class="w-full h-auto max-w-sm mx-auto">
             </div>
 
-            {{-- Pricing --}}
+            {{-- Pricing idéntico al desktop --}}
             <div class="mb-6">
-                <div class="text-sm text-gray-500 mb-1">
-                    {{ $vehicle['pricing']['from_label'] }}
-                    <span class="{{ $vehicle['pricing']['price_before_color'] }} {{ $vehicle['pricing']['price_before_decoration'] }}">
-                        {{ $vehicle['pricing']['currency_before'] }} {{ $vehicle['pricing']['price_before'] }}
-                    </span>
-                </div>
-
-                <div class="flex justify-center items-center space-x-2 mb-4">
-                    <span class="{{ $vehicle['pricing']['discount_label_color'] }} text-sm font-medium">
-                        {{ $vehicle['pricing']['discount_label'] }}
-                    </span>
-                    <span class="{{ $vehicle['pricing']['price_now_color'] }} text-2xl {{ $vehicle['pricing']['price_now_weight'] }}">
-                        {{ $vehicle['pricing']['currency_now'] }} {{ $vehicle['pricing']['price_now'] }}
-                    </span>
-                </div>
-
-                {{-- Button --}}
-                @if($vehicle['button_primary']['show'])
-                    <button class="{{ $vehicle['button_primary']['bg_color'] }} {{ $vehicle['button_primary']['text_color'] }}
-                                   {{ $vehicle['button_primary']['hover_bg'] }} px-8 py-3
-                                   {{ $vehicle['button_primary']['border_radius'] }} {{ $vehicle['button_primary']['font_weight'] }}
-                                   transition-colors duration-200 mb-4">
-                        {{ $vehicle['button_primary']['text'] }}
-                    </button>
+                {{-- Precio anterior arriba --}}
+                @if($vehicle['pricing']['price_before'] ?? false)
+                    <div class="text-center text-sm text-gray-500 mb-2">
+                        Desde {{ $vehicle['pricing']['currency_before'] }}{{ number_format($vehicle['pricing']['price_before']) }}
+                    </div>
                 @endif
+
+                {{-- Contenedor tipo píldora unificado --}}
+                <div class="inline-flex items-center bg-white rounded-full shadow-lg overflow-hidden border border-gray-200 mx-auto">
+                    {{-- Sección del precio (lado izquierdo) --}}
+                    <div class="px-6 py-3 bg-gray-50">
+                        <div class="text-center">
+                            <span class="text-blue-600 text-xs font-medium block mb-1">{{ $vehicle['pricing']['discount_label'] }}</span>
+                            <span class="text-gray-900 text-lg font-bold">
+                    {{ $vehicle['pricing']['currency_now'] }} {{ number_format($vehicle['pricing']['price_now']) }}
+                </span>
+                        </div>
+                    </div>
+
+                    {{-- Botón (lado derecho) --}}
+                    @if($vehicle['button_primary']['show'] ?? false)
+                        <a href="{{ route('vehicle.detail', ['category' => strtolower($vehicle['category']), 'slug' => $vehicle['slug']]) }}"
+                           class="px-6 py-3 bg-black text-white font-medium hover:bg-gray-800 transition-colors">
+                            {{ $vehicle['button_primary']['text'] }}
+                        </a>
+                    @endif
+                </div>
             </div>
 
             {{-- Description --}}

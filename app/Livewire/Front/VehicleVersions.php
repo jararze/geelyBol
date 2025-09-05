@@ -28,44 +28,44 @@ class VehicleVersions extends Component
 
         'versions' => [
             'gk-2-0' => [
-                'name' => 'STARRAY GK 2.0',
+                'name' => 'Starray Signature 1.5 Turbo',
                 'specs' => [
-                    'Cilindrada:' => '1.332 c.c. TURBO con 147 HP',
-                    'Transmisión:' => 'Manual de 6 velocidades',
-                    'Tracción:' => '4x2',
+                    'Cilindrada:' => '1.499 c.c. TURBO con 174 HP',
+                    'Transmisión:' => '7 velocidades doble embrague',
+                    'Tracción:' => 'FWD Delantera',
                     'Plataforma:' => 'CMA'
                 ],
                 'pricing' => [
-                    'year' => 2025,
-                    'list_price' => 59900,
+                    'year' => 2026,
+                    'list_price' => 53490,
                     'discount' => 1000,
-                    'final_price' => 58900,
+                    'final_price' => 52490,
                     'currency' => '$us.'
                 ],
                 'tab_content' => [
                     'motor' => [
-                        'tipo_motor' => '1.332 c.c. TURBO',
-                        'potencia' => '147 HP',
-                        'torque' => '220 Nm',
-                        'combustible' => 'Gasolina',
-                        'consumo_ciudad' => '8.5 L/100km',
-                        'consumo_carretera' => '6.2 L/100km'
+                        'tipo_motor' => 'Motor Turbo de 4 cilindros en línea',
+                        'potencia' => '174 HP',
+                        'torque' => '290/2000-3500 (Nm/rpm)',
+                        'combustible' => '',
+                        'consumo_ciudad' => 'FWD Delantera',
+                        'consumo_carretera' => 'Euro VI b'
                     ],
                     'equipamiento' => [
-                        'pantalla' => 'Táctil de 10.25"',
+                        'pantalla' => 'Táctil HD 13.2”',
                         'asientos' => 'Cuero sintético',
                         'climatizador' => 'Automático bi-zona',
-                        'camara' => 'Reversa + 360°',
-                        'sensores' => 'Estacionamiento',
-                        'conectividad' => 'Android Auto / Apple CarPlay'
+                        'camara' => 'Reversa + HD 360°',
+                        'sensores' => 'delantero y trasero',
+                        'conectividad' => 'Bluetooth, MP3, Radio Am/FM y Apple CarPlay'
                     ],
                     'seguridad' => [
-                        'airbags' => '6 airbags',
-                        'abs' => 'Sistema ABS + EBD',
+                        'airbags' => '6 bolsas de aire ',
+                        'abs' => 'ABS, EBD y BA',
                         'control_estabilidad' => 'ESP',
                         'asistente_frenado' => 'BAS',
-                        'control_traccion' => 'ASR/TCS',
-                        'cinturones' => 'Pretensores + limitadores'
+                        'control_traccion' => 'TCS',
+                        'cinturones' => 'Pretensores y limitadores'
                     ]
                 ],
                 'images' => [
@@ -75,49 +75,49 @@ class VehicleVersions extends Component
                         'blanco' => 'frontend/images/starray/exterior-blanco.jpg'
                     ],
                     'interior' => [
-                        'default' => 'frontend/images/starray/interior.jpg'
+                        'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior_360.png'
                     ]
                 ]
             ],
             'gk-2-5' => [
-                'name' => 'STARRAY GK 2.5',
+                'name' => 'Starray Platinum 2.0 Turbo',
                 'specs' => [
-                    'Cilindrada:' => '2.0 c.c. TURBO con 190 HP',
-                    'Transmisión:' => 'Automática CVT',
-                    'Tracción:' => 'AWD',
+                    'Cilindrada:' => '1.969 c.c. TURBO con 218 HP',
+                    'Transmisión:' => '7 velocidades doble embrague',
+                    'Tracción:' => 'FWD Delantera',
                     'Plataforma:' => 'CMA'
                 ],
                 'pricing' => [
-                    'year' => 2025,
-                    'list_price' => 69900,
-                    'discount' => 2000,
-                    'final_price' => 67900,
+                    'year' => 2026,
+                    'list_price' => 60490,
+                    'discount' => 1000,
+                    'final_price' => 59490,
                     'currency' => '$us.'
                 ],
                 'tab_content' => [
                     'motor' => [
-                        'tipo_motor' => '2.0 c.c. TURBO',
-                        'potencia' => '190 HP',
-                        'torque' => '300 Nm',
+                        'tipo_motor' => 'Motor Turbo de 4 cilindros en línea',
+                        'potencia' => '218 HP',
+                        'torque' => '325/1800-4500 (Nm/rpm)',
                         'combustible' => 'Gasolina',
-                        'consumo_ciudad' => '9.2 L/100km',
-                        'consumo_carretera' => '6.8 L/100km'
+                        'consumo_ciudad' => 'FWD Delantera',
+                        'consumo_carretera' => 'Euro VI'
                     ],
                     'equipamiento' => [
-                        'pantalla' => 'Táctil de 12.3"',
-                        'asientos' => 'Cuero premium',
-                        'climatizador' => 'Automático tri-zona',
-                        'camara' => 'Reversa + 360° + frontal',
-                        'sensores' => 'Estacionamiento + punto ciego',
-                        'conectividad' => 'Android Auto / Apple CarPlay + WiFi'
+                        'pantalla' => 'Táctil HD 13.2”',
+                        'asientos' => 'Cuero sintético',
+                        'climatizador' => 'Automático bi-zona',
+                        'camara' => 'Reversa + HD 360°',
+                        'sensores' => 'delantero y trasero',
+                        'conectividad' => 'Bluetooth, MP3, Radio Am/FM y Apple CarPlay'
                     ],
                     'seguridad' => [
-                        'airbags' => '8 airbags',
-                        'abs' => 'Sistema ABS + EBD + BA',
-                        'control_estabilidad' => 'ESP + VSC',
-                        'asistente_frenado' => 'BAS + Pre-colisión',
-                        'control_traccion' => 'ASR/TCS + AWD',
-                        'cinturones' => 'Pretensores + limitadores + alerta'
+                        'airbags' => '6 bolsas de aire ',
+                        'abs' => 'ABS, EBD y BA',
+                        'control_estabilidad' => 'ESP',
+                        'asistente_frenado' => 'BAS',
+                        'control_traccion' => 'TCS',
+                        'cinturones' => 'Pretensores y limitadores'
                     ]
                 ],
                 'images' => [
@@ -127,7 +127,7 @@ class VehicleVersions extends Component
                         'blanco' => 'frontend/images/starray/gk25-exterior-blanco.jpg'
                     ],
                     'interior' => [
-                        'default' => 'frontend/images/starray/gk25-interior.jpg'
+                        'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior_360.png'
                     ]
                 ]
             ]
@@ -192,6 +192,7 @@ class VehicleVersions extends Component
     public function selectView($view)
     {
         $this->selectedView = $view;
+        $this->dispatch('viewChanged'); // Disparar evento personalizado
     }
 
     public function selectColor($color)

@@ -322,7 +322,6 @@
 .price-before-external {
     font-size: 0.875rem;
     color: #6b7280;
-    text-decoration: line-through;
     margin-bottom: 8px;
     text-align: center;
 }

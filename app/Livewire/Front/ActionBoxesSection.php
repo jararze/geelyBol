@@ -27,7 +27,7 @@ class ActionBoxesSection extends Component
             ],
             [
                 'id' => 'cotiza',
-                'title' => 'COTIZA',
+                'title' => 'COTIZAR',
                 'svg_icon' => file_get_contents(public_path("assets/images/icons/credit.svg")),
                 'route' => 'cotizar',
                 'color' => '#2563eb'

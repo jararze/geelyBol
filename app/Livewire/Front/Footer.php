@@ -9,7 +9,7 @@ class Footer extends Component
     public $companyName = 'Geely Bolivia
 ';
     public $copyrightYear = 2025;
-    public $phone = '(591-2)279 500';
+    public $phone = '(591)2-2795000';
     public $email = 'Av. Costanera # 1003, Los Pinos - La Paz, Bolivia';
     public $backgroundColor = '#000000';
     public $textColor = '#ffffff';

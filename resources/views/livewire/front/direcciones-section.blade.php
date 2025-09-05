@@ -11,7 +11,7 @@
 
                     {{-- Mapa --}}
                     @if($sectionData['show_map'])
-                        <div class="flex justify-center">
+                        <div class="hidden lg:flex justify-center">
                             <div class="relative">
                                 <img src="{{ asset($sectionData['map_image']) }}"
                                      alt="Mapa de Bolivia"
@@ -56,7 +56,7 @@
 
                                         {{-- Icono de ubicación --}}
                                         <div class="ml-2">
-                                            <a href="{{ $location['map_link'] }}"
+                                            <a href="{{ $location['map_link'] }}" target="_blank"
                                                class="inline-flex items-center justify-center w-10 h-10 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300">
                                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                                     <path fill-rule="evenodd"

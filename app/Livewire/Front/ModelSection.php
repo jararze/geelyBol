@@ -26,6 +26,7 @@ class ModelSection extends Component
 
         'header' => [
             'title' => 'MODELOS',
+            'subtitle_mobile' => 'Accede a la pre-venta exclusiva de los 2 primeros modelos que llegarán a Bolivia.',
             'title_color' => 'text-gray-900',
             'title_size' => 'text-4xl md:text-5xl',
             'title_weight' => 'font-bold',
@@ -69,23 +70,23 @@ class ModelSection extends Component
                     'category' => 'suv', // AGREGAR
                     'name' => 'STARRAY',
                     'description' => 'SUV de alta gama con avanzada tecnología y completa seguridad',
-                    'image' => 'frontend/images/vehicles/starray/new-okavango2024_1_1_.png',
+                    'image' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Home.png',
                     'position' => 'center', // center, left, right
                     'featured' => true, // Si es el destacado en el centro
 
                     'pricing' => [
-                        'currency_before' => 'Bs.',
-                        'price_before' => '500000',
+                        'currency_before' => '$us.',
+                        'price_before' => '53990',
                         'price_before_color' => 'text-gray-500',
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '39000',
+                        'price_now' => '52990',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-2xl',
                         'price_now_weight' => 'font-bold',
 
-                        'discount_label' => 'Ahora',
+                        'discount_label' => 'Preventa',
                         'discount_label_color' => 'text-blue-600',
                         'show_from_label' => true,
                         'from_label' => 'Desde'
@@ -103,7 +104,7 @@ class ModelSection extends Component
                     ],
 
                     'features' => [
-                        'show_badge' => true,
+                        'show_badge' => false,
                         'badge_text' => 'NUEVO',
                         'badge_color' => 'bg-red-500 text-white',
                         'badge_position' => 'top-right'
@@ -112,11 +113,11 @@ class ModelSection extends Component
 
                 [
                     'id' => 2,
-                    'name' => 'CITIRAY',
-                    'slug' => 'citiray', // AGREGAR
+                    'name' => 'MUY PRONTO',
+                    'slug' => 'muy-pronto', // AGREGAR
                     'category' => 'suv', // AGREGAR
-                    'description' => 'SUV urbano con diseño moderno',
-                    'image' => 'frontend/images/vehicles/starray/IMAGEN-TARJETA-MODELO-425x165-.png',
+                    'description' => '',
+                    'image' => 'frontend/images/vehicles/citray/Geely_Bolivia_Cityray_Home_Cover.png',
                     'position' => 'left',
                     'featured' => false,
 
@@ -132,7 +133,7 @@ class ModelSection extends Component
                         'price_now_size' => 'text-xl',
                         'price_now_weight' => 'font-bold',
 
-                        'discount_label' => 'Ahora',
+                        'discount_label' => 'Preventa',
                         'discount_label_color' => 'text-blue-600',
                         'show_from_label' => true,
                         'from_label' => 'Desde'
@@ -160,23 +161,23 @@ class ModelSection extends Component
                     'slug' => 'gx3-pro', // AGREGAR
                     'category' => 'suv', // AGREGAR
                     'description' => 'SUV compacto de alta performance',
-                    'image' => 'frontend/images/vehicles/starray/ex5-580x328-3.webp',
+                    'image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Home.png',
                     'position' => 'right',
-                    'featured' => false,
+                    'featured' => true,
 
                     'pricing' => [
-                        'currency_before' => 'Bs.',
-                        'price_before' => '500000',
+                        'currency_before' => '$us',
+                        'price_before' => '26990',
                         'price_before_color' => 'text-gray-500',
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '39000',
+                        'price_now' => '26490',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-xl',
                         'price_now_weight' => 'font-bold',
 
-                        'discount_label' => 'Ahora',
+                        'discount_label' => 'Preventa',
                         'discount_label_color' => 'text-blue-600',
                         'show_from_label' => true,
                         'from_label' => 'Desde'
@@ -194,7 +195,7 @@ class ModelSection extends Component
                     ],
 
                     'features' => [
-                        'show_badge' => true,
+                        'show_badge' => false,
                         'badge_text' => 'POPULAR',
                         'badge_color' => 'bg-green-500 text-white',
                         'badge_position' => 'top-right'
@@ -205,13 +206,13 @@ class ModelSection extends Component
             'ELECTRICOS' => [
                 [
                     'id' => 4,
-                    'name' => 'GALAXY E5',
-                    'slug' => 'galaxy-e5', // AGREGAR
+                    'name' => 'MUY PRONTO',
+                    'slug' => 'muy-pronto', // AGREGAR
                     'category' => 'electricos', // AGREGAR
-                    'description' => 'SUV 100% eléctrico con autonomía extendida',
-                    'image' => 'frontend/images/vehicles/starray/starray.jpg',
+                    'description' => '',
+                    'image' => 'frontend/images/vehicles/electrico/Geely_Bolivia_Electrico_Home_Cover.png',
                     'position' => 'center',
-                    'featured' => true,
+                    'featured' => false,
 
                     'pricing' => [
                         'currency_before' => 'Bs.',
@@ -243,7 +244,7 @@ class ModelSection extends Component
                     ],
 
                     'features' => [
-                        'show_badge' => true,
+                        'show_badge' => false,
                         'badge_text' => 'ELÉCTRICO',
                         'badge_color' => 'bg-green-500 text-white',
                         'badge_position' => 'top-right'
@@ -254,13 +255,13 @@ class ModelSection extends Component
             'CAMIONETAS' => [
                 [
                     'id' => 5,
-                    'name' => 'PICKUP T60',
-                    'slug' => 'pickup-t60', // AGREGAR
+                    'name' => 'MUY PRONTO',
+                    'slug' => 'muy-pronto', // AGREGAR
                     'category' => 'camionetas', // AGREGAR
-                    'description' => 'Camioneta robusta para trabajo y aventura',
-                    'image' => 'frontend/images/vehicles/starray/new-okavango2024_1_1_.png',
+                    'description' => '',
+                    'image' => 'frontend/images/vehicles/camionetas/Geely_Bolivia_Riddara_Home_Cover.png',
                     'position' => 'center',
-                    'featured' => true,
+                    'featured' => false,
 
                     'pricing' => [
                         'currency_before' => 'Bs.',
@@ -292,7 +293,7 @@ class ModelSection extends Component
                     ],
 
                     'features' => [
-                        'show_badge' => true,
+                        'show_badge' => false,
                         'badge_text' => '4x4',
                         'badge_color' => 'bg-orange-500 text-white',
                         'badge_position' => 'top-right'
@@ -321,13 +322,21 @@ class ModelSection extends Component
     public function nextSlide()
     {
         $vehicles = $this->modelsConfig['vehicles'][$this->activeCategory] ?? [];
-        $this->currentIndex = ($this->currentIndex + 1) % count($vehicles);
+        $totalVehicles = count($vehicles);
+
+        if ($totalVehicles > 0) {
+            $this->currentSlide = ($this->currentSlide + 1) % $totalVehicles;
+        }
     }
 
     public function prevSlide()
     {
         $vehicles = $this->modelsConfig['vehicles'][$this->activeCategory] ?? [];
-        $this->currentIndex = $this->currentIndex > 0 ? $this->currentIndex - 1 : count($vehicles) - 1;
+        $totalVehicles = count($vehicles);
+
+        if ($totalVehicles > 0) {
+            $this->currentSlide = $this->currentSlide > 0 ? $this->currentSlide - 1 : $totalVehicles - 1;
+        }
     }
 
     public function getCurrentSet()

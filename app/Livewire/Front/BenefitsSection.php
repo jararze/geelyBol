@@ -20,7 +20,7 @@ class BenefitsSection extends Component
     public $gradientDirection = '0';
     public $overlayOpacity = 0; // Opacidad del overlay (0-1)
 
-    public $footerText = 'Lo que sucede primero';
+    public $footerText = 'Lo que ocurra primero';
     public $benefits;
 
     public $cardBackgroundImage = 'assets/images/box.png';

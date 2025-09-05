@@ -24,47 +24,47 @@
             ]"
         />
 
-        <livewire:front.about-section
-            layout="split-left"
-            :sectionData="[
-                'logo' => 'frontend/images/logo-blanco.svg',
-                'background_color' => '#000',
-                'text_color' => '#fff'
-            ]"
-        />
+{{--        <livewire:front.about-section--}}
+{{--            layout="split-left"--}}
+{{--            :sectionData="[--}}
+{{--                'logo' => 'frontend/images/logo-blanco.svg',--}}
+{{--                'background_color' => '#000',--}}
+{{--                'text_color' => '#fff'--}}
+{{--            ]"--}}
+{{--        />--}}
 
-        <livewire:front.about-section layout="split-right"
-                                      :sectionData="[
-                    'logo' => 'frontend/images/logo-blanco.svg',
-                    'background_color' => '#000',
-                    'text_color' => '#fff'
-                ]"
-        />
+{{--        <livewire:front.about-section layout="split-right"--}}
+{{--                                      :sectionData="[--}}
+{{--                    'logo' => 'frontend/images/logo-blanco.svg',--}}
+{{--                    'background_color' => '#000',--}}
+{{--                    'text_color' => '#fff'--}}
+{{--                ]"--}}
+{{--        />--}}
 
-        <livewire:front.about-section layout="compact-right"
-                                      :sectionData="[
-                    'logo' => 'frontend/images/logo-negro.svg',
-                    'background_color' => '#fff',
-                    'text_color' => '#000'
-                ]"
-        />
+{{--        <livewire:front.about-section layout="compact-right"--}}
+{{--                                      :sectionData="[--}}
+{{--                    'logo' => 'frontend/images/logo-negro.svg',--}}
+{{--                    'background_color' => '#fff',--}}
+{{--                    'text_color' => '#000'--}}
+{{--                ]"--}}
+{{--        />--}}
 
-        <livewire:front.about-section layout="compact-left"
-                                      :sectionData="[
-                    'logo' => 'frontend/images/logo-negro.svg',
-                    'background_color' => '#fff',
-                    'text_color' => '#000'
-                ]"
-        />
+{{--        <livewire:front.about-section layout="compact-left"--}}
+{{--                                      :sectionData="[--}}
+{{--                    'logo' => 'frontend/images/logo-negro.svg',--}}
+{{--                    'background_color' => '#fff',--}}
+{{--                    'text_color' => '#000'--}}
+{{--                ]"--}}
+{{--        />--}}
     </section>
 
     <section id="test-drive" class="scroll-animate">
-        <livewire:front.test-drive-section
-            layout="hero"
-            :sectionData="[
-                'image_position' => 'top-third',
-                'show_features' => true
-            ]"/>
+{{--        <livewire:front.test-drive-section--}}
+{{--            layout="hero"--}}
+{{--            :sectionData="[--}}
+{{--                'image_position' => 'top-third',--}}
+{{--                'show_features' => true--}}
+{{--            ]"/>--}}
 
         <livewire:front.test-drive-section
             layout="overlay-left"
@@ -75,13 +75,13 @@
         ]"/>
 
 
-        <livewire:front.test-drive-section
-            layout="banner"
-            :sectionData="[
-        'show_image' => false
-        ]"/>
+{{--        <livewire:front.test-drive-section--}}
+{{--            layout="banner"--}}
+{{--            :sectionData="[--}}
+{{--        'show_image' => false--}}
+{{--        ]"/>--}}
 
-        <livewire:front.test-drive-section layout="banner-thin"/>
+{{--        <livewire:front.test-drive-section layout="banner-thin"/>--}}
     </section>
 
     <section id="postventa" class="scroll-animate">
@@ -92,21 +92,21 @@
             ]"
         />
 
-        <livewire:front.postventa-section
-            layout="compact"
-            :sectionData="[
-                'section_height' => 'min-h-[600px]'
-            ]"
-        />
+{{--        <livewire:front.postventa-section--}}
+{{--            layout="compact"--}}
+{{--            :sectionData="[--}}
+{{--                'section_height' => 'min-h-[600px]'--}}
+{{--            ]"--}}
+{{--        />--}}
 
-        <livewire:front.postventa-section
-            layout="overlay-left"
-            :sectionData="[
-                'subtitle' => 'SERVICIO',
-                'title' => 'POSVENTA DE CALIDAD GLOBAL',
-                'section_height' => 'min-h-[900px]'
-            ]"
-        />
+{{--        <livewire:front.postventa-section--}}
+{{--            layout="overlay-left"--}}
+{{--            :sectionData="[--}}
+{{--                'subtitle' => 'SERVICIO',--}}
+{{--                'title' => 'POSVENTA DE CALIDAD GLOBAL',--}}
+{{--                'section_height' => 'min-h-[900px]'--}}
+{{--            ]"--}}
+{{--        />--}}
     </section>
 
     <section id="direcciones" class="scroll-animate">

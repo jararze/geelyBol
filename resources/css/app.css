@@ -62,6 +62,13 @@
 }
 
 @layer base {
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
     *,
     ::after,
     ::before,
@@ -557,6 +564,18 @@ select:focus[data-flux-control] {
             background-position: -200% 0;
         }
     }
+    .hero-image-stretch {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: fill;
+        object-position: center;
+    }
 
+    @layer components {
+        .mobile-full-height {
+            height: 100vh;
+            height: 100dvh; /* Dynamic viewport height - mejor para móvil */
+        }
+    }
 
 }

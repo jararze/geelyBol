@@ -6,7 +6,7 @@
     // Definir tamaños según posición
     $priceBeforeSize = $isCenter ? 'text-sm' : 'text-xs';
     $priceLabelSize = $isCenter ? 'text-base' : 'text-sm';
-    $priceAmountSize = $isCenter ? 'text-xl' : 'text-[1rem] !important';
+    $priceAmountSize = $isCenter ? 'text-xl' : 'text-[0.7rem] !important';
     $buttonTextSize = $isCenter ? 'text-base' : 'text-sm';
     $buttonPadding = $isCenter ? 'py-3 px-8' : 'py-2 px-6';
     $wrapperScale = $isCenter ? '' : 'scale-90';
@@ -25,6 +25,7 @@
         {{-- Sección de precios (solo precio actual) --}}
         <div class="price-section {{ $isCenter ? 'min-w-[200px]' : 'min-w-[160px]' }}">
             <div class="price-now">
+
                 <span class="price-now-label {{ $priceLabelSize }}">{{ $vehicle['pricing']['discount_label'] }}</span>
                 <span class="price-now-amount {{ $priceAmountSize }}">
                     {{ $vehicle['pricing']['currency_now'] }} {{ number_format($vehicle['pricing']['price_now']) }}

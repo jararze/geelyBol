@@ -22,20 +22,20 @@ class DireccionesSection extends Component
         'locations' => [
             [
                 'name' => 'SANTA CRUZ',
-                'address' => 'Av. Doble vía La Guardia, esquina calle Yuruma, entre 3er y 4to anillo.',
-                'phone' => 'Telf. 336 1909',
-                'hours' => '800-125000',
+                'address' => 'Av. Doble Vía La Guardia N° 3325 Esq. Calle Rio Vilcas, entre 3er y 4to anillo ',
+                'phone' => '',
+                'hours' => '',
                 'city' => 'Santa Cruz - Bolivia',
-                'map_link' => '#',
+                'map_link' => 'https://maps.app.goo.gl/YQfPVMbUyNH6RjrU8',
                 'icon' => 'location'
             ],
             [
                 'name' => 'LA PAZ',
-                'address' => 'Av. Doble vía La Guardia, esquina calle Yuruma, entre 3er y 4to anillo.',
-                'phone' => 'Telf. 336 1909',
-                'hours' => '800-125000',
-                'city' => 'Santa Cruz - Bolivia',
-                'map_link' => '#',
+                'address' => 'Av. 6 de Marzo N° 1306 Frente Regimiento Ingavi ',
+                'phone' => '',
+                'hours' => '',
+                'city' => 'El Alto - Bolivia',
+                'map_link' => 'https://maps.app.goo.gl/veuGtGn2iECCP9Ez8',
                 'icon' => 'location'
             ]
         ]

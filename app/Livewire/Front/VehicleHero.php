@@ -49,8 +49,8 @@ class VehicleHero extends Component
         'specs_label_size' => 'text-sm',
 
         'selected_specs' => [
-            'motor' => ['value' => '1.5', 'unit' => 'Turbo', 'label' => 'Motor'],
-            'potencia' => ['value' => '215', 'unit' => 'hp', 'label' => 'Potencia'],
+            'motor' => ['value' => 'Hasta 2.0', 'unit' => 'Turbo', 'label' => 'Motor'],
+            'potencia' => ['value' => 'Hasta 218', 'unit' => 'hp', 'label' => 'Potencia'],
             'velocidades' => ['value' => '7', 'unit' => 'Velocidades', 'label' => 'Transmisión DCT'],
             'plataforma' => ['value' => 'CMA', 'unit' => '', 'label' => 'Plataforma Europea']
         ],
