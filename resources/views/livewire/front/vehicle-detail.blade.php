@@ -67,26 +67,26 @@
             [
                 'id' => 'motor-turbo',
                 'title' => 'MOTOR 2.0 TURBO',
-                'subtitle' => '2.0 Turbo Motor - 215 hp Potencia',
-                'description' => 'Diseño ultra moderno y vanguardista que destaca en todos los espacios urbanos, citadinos y en los viajes más largos.',
+                'subtitle' => '2.0 Turbo Motor - 218 hp Potencia',
+                'description' => 'Motor 2.0 Turbo con 218 hp que te brinda respuesta rápida en ciudad y potencia constante en carretera. El poder que necesitas, cuando lo necesites.',
                 'main_image' => 'frontend/images/vehicles/starray/potenteydinamico/Geely_Bolivia_Starray_Potente0.jpg',
                 'thumbnail_image' => 'frontend/images/vehicles/starray/potenteydinamico/Geely_Bolivia_Starray_Potente0.jpg',
                 'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
             ],
             [
                 'id' => 'estabilidad-cma',
-                'title' => 'ESTABILIDAD CON PLATAFORMA CMA',
-                'subtitle' => '115 HP DE POTENCIA',
-                'description' => 'Diseño ultra moderno y vanguardista que destaca en todos los espacios urbanos, citadinos y en los viajes más largos.',
+                'title' => 'Estabilidad y Seguridad',
+                'subtitle' => 'PLATAFORMA CMA',
+                'description' => 'Una arquitectura modular e inteligente que garantiza agilidad, potencia y la máxima seguridad cada vez que conduzcas.',
                 'main_image' => 'frontend/images/vehicles/starray/potenteydinamico/Geely_Bolivia_Starray_Potente1.jpg',
                 'thumbnail_image' => 'frontend/images/vehicles/starray/potenteydinamico/Geely_Bolivia_Starray_Potente1.jpg',
                 'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
             ],
             [
                 'id' => 'tecnologia-avanzada',
-                'title' => 'TECNOLOGÍA AVANZADA',
-                'subtitle' => '115 HP DE POTENCIA',
-                'description' => 'Sistema de tracción inteligente que se adapta a cualquier terreno para máxima seguridad.',
+                'title' => 'POTENTE Y DINAMICO',
+                'subtitle' => 'Máxima Fluidez / Transmisión DCT de 7 Velocidades',
+                'description' => 'Te ofrece el arranque perfecto para cada situación, asegurando una respuesta inmediata al acelerador y una conducción excepcionalmente fluida.',
                 'main_image' => 'frontend/images/vehicles/starray/potenteydinamico/Geely_Bolivia_Starray_Potente2.jpg',
                 'thumbnail_image' => 'frontend/images/vehicles/starray/potenteydinamico/Geely_Bolivia_Starray_Potente2.jpg',
                 'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'

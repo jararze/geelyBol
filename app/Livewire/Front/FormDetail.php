@@ -12,13 +12,65 @@ class FormDetail extends Component
     public $activeTab = 'test-drive';
     public $selectedVehicle = null;
 
+    public $paisSeleccionado = 'bolivia';
+
     public $formData = [
         'nombre' => '',
         'email' => '',
         'telefono' => '',
         'ciudad' => '',
         'vehiculo' => '',
+        'mensaje' => '',
+        'codigo_pais' => '+591',
         'receive_offers' => false
+    ];
+
+    public $paises = [
+        'bolivia' => [
+            'codigo' => '+591',
+            'codigo_iso' => 'bo',
+            'nombre' => 'Bolivia'
+        ],
+        'argentina' => [
+            'codigo' => '+54',
+            'codigo_iso' => 'ar',
+            'nombre' => 'Argentina'
+        ],
+        'brasil' => [
+            'codigo' => '+55',
+            'codigo_iso' => 'br',
+            'nombre' => 'Brasil'
+        ],
+        'chile' => [
+            'codigo' => '+56',
+            'codigo_iso' => 'cl',
+            'nombre' => 'Chile'
+        ],
+        'peru' => [
+            'codigo' => '+51',
+            'codigo_iso' => 'pe',
+            'nombre' => 'Perú'
+        ],
+        'colombia' => [
+            'codigo' => '+57',
+            'codigo_iso' => 'co',
+            'nombre' => 'Colombia'
+        ],
+        'ecuador' => [
+            'codigo' => '+593',
+            'codigo_iso' => 'ec',
+            'nombre' => 'Ecuador'
+        ],
+        'paraguay' => [
+            'codigo' => '+595',
+            'codigo_iso' => 'py',
+            'nombre' => 'Paraguay'
+        ],
+        'uruguay' => [
+            'codigo' => '+598',
+            'codigo_iso' => 'uy',
+            'nombre' => 'Uruguay'
+        ]
     ];
 
     public $pageData = [
@@ -148,6 +200,13 @@ class FormDetail extends Component
         // Aquí puedes guardar en base de datos, enviar email, etc.
         \Log::info('Formulario enviado:', $data);
     }
+
+    public function cambiarPais($pais)
+    {
+        $this->paisSeleccionado = $pais;
+        $this->formData['codigo_pais'] = $this->paises[$pais]['codigo'];
+    }
+
     public function render()
     {
         return view('livewire.front.form-detail')->layout('components.layouts.frontend.front');

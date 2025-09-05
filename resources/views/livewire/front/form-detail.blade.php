@@ -16,15 +16,58 @@
                 </div>
 
                 {{-- Tabs --}}
-                <div class="max-w-6xl mx-auto">
-                    <div class="flex border-b border-gray-200 mb-8">
+                <div class=" mx-auto">
+                    {{-- Vista Desktop (Tabs) --}}
+                    <div class="hidden md:flex mb-8">
                         @foreach($pageData['tabs'] as $key => $tab)
-                            <button wire:click="setActiveTab('{{ $key }}')"
-                                    class="flex-1 py-4 px-6 text-center font-medium transition-colors duration-200
-                                       {{ $activeTab === $key ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50' : 'text-gray-500 hover:text-gray-700' }}">
-                                {{ $tab['title'] }}
-                            </button>
+                            <div class="flex-1">
+                                <button wire:click="setActiveTab('{{ $key }}')"
+                                        class="w-full p-6 text-left transition-all duration-300
+                               {{ $activeTab === $key ? 'border-t-4 border-blue-600' : 'border-t-4 border-gray-600 hover:border-blue-400' }}"
+                                        style="{{ $activeTab === $key ? 'background: linear-gradient(to bottom, #3b82f6 0%, rgba(59, 130, 246, 0.3) 20%, transparent 40%);' : 'background: transparent;' }}">
+                                    <h3 class="font-bold text-lg mb-2 {{ $activeTab === $key ? 'text-white' : 'text-gray-800' }}">
+                                        {{ $tab['title'] }}
+                                    </h3>
+                                    <p class="text-sm {{ $activeTab === $key ? 'text-gary-600 opacity-90' : 'text-gray-600' }}">
+                                        {{ $tab['description'] }}
+                                    </p>
+                                </button>
+                            </div>
                         @endforeach
+                    </div>
+
+                    {{-- Vista Móvil (Acordeón) --}}
+                    <div class="md:hidden">
+                        <div class="space-y-2">
+                            @foreach($pageData['tabs'] as $key => $tab)
+                                <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                                    {{-- Header del acordeón --}}
+                                    <button wire:click="setActiveTab('{{ $key }}')"
+                                            class="w-full p-4 text-left flex items-center justify-between transition-all duration-300
+                               {{ $activeTab === $key ? 'bg-blue-600 text-white' : 'bg-white text-gray-800 hover:bg-gray-50' }}">
+                                        <div>
+                                            <h3 class="font-bold text-base">
+                                                {{ $tab['title'] }}
+                                            </h3>
+                                            <p class="text-sm mt-1 {{ $activeTab === $key ? 'text-blue-100' : 'text-gray-500' }}">
+                                                {{ $tab['description'] }}
+                                            </p>
+                                        </div>
+                                        <svg class="w-5 h-5 transform transition-transform duration-300 {{ $activeTab === $key ? 'rotate-180' : '' }}"
+                                             fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </button>
+
+                                    {{-- Contenido con formulario --}}
+                                    @if($activeTab === $key)
+                                        <div class="p-4 bg-white animate-fade-in">
+                                            @include('livewire.front.partials.form-content')
+                                        </div>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
 
                     {{-- Contenido del formulario --}}
@@ -38,168 +81,52 @@
                         </div>
 
                         {{-- Formulario --}}
-                        <div class="order-1 lg:order-2">
+                        <div class="order-1 lg:order-2 hidden md:block">
                             <div class="bg-white rounded-xl shadow-lg p-8">
-
-                                {{-- Descripción del tab activo --}}
-                                <div class="mb-6">
-                                    <h3 class="text-xl font-bold text-blue-600 mb-2">
-                                        {{ $pageData['tabs'][$activeTab]['title'] }}
-                                    </h3>
-                                    <p class="text-gray-600">
-                                        {{ $pageData['tabs'][$activeTab]['description'] }}
-                                    </p>
-                                </div>
-
-                                {{-- Mostrar vehículo pre-seleccionado --}}
-                                @if($selectedVehicle)
-                                    <div class="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                                        <p class="text-sm text-blue-700">
-                                            <strong>Vehículo seleccionado:</strong> {{ $selectedVehicle['name'] }}
-                                        </p>
-                                    </div>
-                                @endif
-
-                                {{-- Formulario --}}
-                                <form wire:submit="submitForm" class="space-y-6">
-
-                                    {{-- Nombre --}}
-                                    <div>
-                                        <input type="text"
-                                               wire:model="formData.nombre"
-                                               placeholder="Nombre y Apellido"
-                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                        @error('formData.nombre') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                                    </div>
-
-                                    {{-- Email --}}
-                                    <div>
-                                        <input type="email"
-                                               wire:model="formData.email"
-                                               placeholder="ejemplo@email.com"
-                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                        @error('formData.email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                                    </div>
-
-                                    {{-- Teléfono --}}
-                                    <div class="flex">
-                                        <div class="flex items-center bg-gray-100 px-3 border border-r-0 border-gray-300 rounded-l-lg">
-                                            <img src="{{ asset('frontend/images/flag-bolivia.png') }}" alt="Bolivia" class="w-6 h-4 mr-2">
-                                            <span class="text-sm text-gray-600">+591</span>
-                                        </div>
-                                        <input type="tel"
-                                               wire:model="formData.telefono"
-                                               placeholder="70677777"
-                                               class="flex-1 px-4 py-3 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                    </div>
-                                    @error('formData.telefono') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-
-                                    {{-- Ciudad --}}
-                                    <div>
-                                        <select wire:model="formData.ciudad"
-                                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                            <option value="">Selecciona tu ciudad</option>
-                                            <option value="santa-cruz">Santa Cruz</option>
-                                            <option value="la-paz">La Paz</option>
-                                            <option value="cochabamba">Cochabamba</option>
-                                            <option value="el-alto">El Alto</option>
-                                            <option value="sucre">Sucre</option>
-                                            <option value="tarija">Tarija</option>
-                                            <option value="oruro">Oruro</option>
-                                            <option value="potosi">Potosí</option>
-                                            <option value="trinidad">Trinidad</option>
-                                        </select>
-                                        @error('formData.ciudad') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                                    </div>
-
-                                    {{-- Selector de vehículo (solo si no viene pre-seleccionado) --}}
-                                    @if(!$selectedVehicle)
-                                        <div>
-                                            <select wire:model="formData.vehiculo"
-                                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                                <option value="">Selecciona el vehículo de tu interés</option>
-                                                @foreach($this->getAllVehicles() as $vehicle)
-                                                    <option value="{{ $vehicle['value'] }}">{{ $vehicle['label'] }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('formData.vehiculo') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                                        </div>
-                                    @endif
-
-                                    {{-- Checkbox --}}
-                                    <div class="flex items-start">
-                                        <input type="checkbox"
-                                               wire:model="formData.receive_offers"
-                                               id="receive_offers"
-                                               class="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                        <label for="receive_offers" class="ml-2 text-sm text-gray-600">
-                                            Deseo recibir ofertas y promociones especiales de Geely por WhatsApp / Email
-                                        </label>
-                                    </div>
-
-                                    {{-- Botón enviar --}}
-                                    <button type="submit"
-                                            class="w-full bg-gray-400 hover:bg-gray-500 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200">
-                                        Enviar
-                                    </button>
-                                </form>
-
-                                {{-- Mensaje de éxito --}}
-                                @if (session()->has('message'))
-                                    <div class="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-                                        {{ session('message') }}
-                                    </div>
-                                @endif
+                                @include('livewire.front.partials.form-content')
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
         </section>
 
         {{-- Sección 2: Sucursales --}}
-        <section class="bg-white py-16">
-            <div class="container mx-auto px-4">
-                <h2 class="text-4xl font-bold text-gray-900 mb-6">
-                    {{ $pageData['sucursales']['title'] }}
-                </h2>
-                <div class="max-w-6xl mx-auto">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-                        {{-- Información de sucursales --}}
-                        <div>
-
-
-                            <p class="text-gray-600 mb-6">
-                                {{ $pageData['sucursales']['description'] }}
-                            </p>
-
-                            <p class="text-gray-600 mb-6">
-                                {{ $pageData['sucursales']['info'] }}
-                            </p>
-
-                            <ul class="space-y-2 mb-6">
-                                @foreach($pageData['sucursales']['locations'] as $location)
-                                    <li class="text-lg font-medium text-gray-900">
-                                        {{ $location }}
-                                    </li>
-                                @endforeach
-                            </ul>
-
-                            <p class="text-gray-600">
-                                {{ $pageData['sucursales']['additional_info'] }}
-                            </p>
-                        </div>
-
-                        {{-- Imagen de sucursal --}}
-                        <div>
-                            <img src="{{ asset($pageData['sucursales']['image']) }}"
-                                 alt="Sucursal Geely"
-                                 class="w-full h-[30vh] rounded-2xl shadow-lg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <livewire:front.direcciones-section
+            layout="map-cards"
+            :sectionData="[
+                'background_color' => '#ffffff'
+            ]"/>
     </div>
+
+    <style>
+        .tab-container {
+            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            border-radius: 12px;
+            padding: 4px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button-active {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .tab-button-inactive {
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button-inactive:hover {
+            background: rgba(255, 255, 255, 0.7);
+            transform: translateY(-0.5px);
+        }
+
+        .tabs-background {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%);
+        }
+    </style>
 </div>
