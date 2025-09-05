@@ -39,7 +39,7 @@
 
                 <div class="relative h-[500px] {{ $currentSlide['background_color'] ?? 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300' }}">
                     {{-- Slide Content --}}
-                    <div class="grid grid-cols-1 lg:grid-cols-2 h-full">
+                    <div class="flex flex-col lg:grid lg:grid-cols-2 h-full">
                         {{-- Left Content --}}
                         <div class="flex flex-col justify-center p-8 lg:p-16 {{ $currentSlide['text_color'] ?? 'text-gray-800' }}">
                             <div class="space-y-6">
@@ -74,9 +74,9 @@
                         </div>
 
                         {{-- Right Image --}}
-                        <div class="flex flex-col p-8">
-                            {{-- Imagen --}}
-                            <div class="flex-1 flex items-center justify-center">
+                        <div class="flex flex-col p-4 lg:p-8">
+                            {{-- Imagen - más arriba en móvil --}}
+                            <div class="flex-1 flex items-start lg:items-center justify-center">
                                 <div class="relative w-full h-full flex items-center justify-center">
                                     <img src="{{ asset($currentSlide['image'] ?? 'frontend/images/default-car.jpg') }}"
                                          alt="{{ $currentSlide['vehicle_model'] ?? 'Vehículo' }}"
@@ -84,11 +84,11 @@
                                 </div>
                             </div>
 
-                            {{-- Botón abajo a la derecha --}}
-                            <div class="flex justify-end mt-4">
+                            {{-- Botón - visible en móvil y desktop --}}
+                            <div class="flex justify-center lg:justify-end mt-4">
                                 <button
                                     wire:click="claimPromotion('{{ $currentSlide['id'] ?? '' }}')"
-                                    class="px-8 py-3 bg-black text-white rounded-lg font-semibold transition-colors hover:bg-gray-800">
+                                    class="px-6 py-2 lg:px-8 lg:py-3 bg-black text-white rounded-lg font-semibold transition-colors hover:bg-gray-800 text-sm lg:text-base">
                                     {{ $currentSlide['button']['text'] ?? 'Obtener promo' }}
                                 </button>
                             </div>

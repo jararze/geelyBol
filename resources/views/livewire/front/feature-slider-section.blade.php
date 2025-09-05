@@ -130,7 +130,7 @@
 
     <div class="feature-slider-container relative overflow-hidden w-full">
         @if($featureData['layout']['direction'] === 'left')
-            <div class="flex items-start gap-6">
+            <div class="hidden lg:flex items-start gap-6">
                 <!-- Imagen Principal -->
                 <div class="w-2/3 ml-10">
                     <div class="relative h-[500px] rounded-2xl overflow-hidden bg-gray-200 main-image-container shadow-2xl">
@@ -186,9 +186,11 @@
                     @endforeach
                 </div>
             </div>
-
+            <div class="lg:hidden">
+                @include('livewire.front.partials.feature-slider-mobile')
+            </div>
         @else
-            <div class="flex items-start gap-6">
+            <div class="hidden lg:flex items-start gap-6">
                 <!-- Thumbnails - overflow solo del lado izquierdo -->
                 <div class="w-1/3 flex gap-4" style="margin-left: -295px; min-width: calc(48%);">
                     @php
@@ -246,6 +248,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="lg:hidden">
+                @include('livewire.front.partials.feature-slider-mobile')
             </div>
         @endif
     </div>

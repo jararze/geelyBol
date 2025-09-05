@@ -64,7 +64,7 @@ class VehicleFeatures extends Component
 
         'grid_settings' => [
             'gap' => 'gap-0',
-            'columns_mobile' => 'grid-cols-1',
+            'columns_mobile' => 'grid-cols-2',
             'columns_tablet' => 'md:grid-cols-2',
             'columns_desktop' => 'lg:grid-cols-3',
             'aspect_ratio' => 'aspect-[4/3]'

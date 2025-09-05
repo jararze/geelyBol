@@ -20,20 +20,17 @@
         </div>
 
         {{-- Grid de Features --}}
-        <div
-            class="w-full grid {{ $featuresData['grid_settings']['columns_mobile'] }} {{ $featuresData['grid_settings']['columns_tablet'] }} {{ $featuresData['grid_settings']['columns_desktop'] }} {{ $featuresData['grid_settings']['gap'] }}">
+        <div class="w-full grid {{ $featuresData['grid_settings']['columns_mobile'] }} {{ $featuresData['grid_settings']['columns_tablet'] }} {{ $featuresData['grid_settings']['columns_desktop'] }} {{ $featuresData['grid_settings']['gap'] }}">
 
-            @foreach($featuresData['features'] as $feature)
-                <div
-                    class="feature-card relative {{ $featuresData['grid_settings']['aspect_ratio'] }} overflow-hidden group cursor-pointer">
+            @foreach($featuresData['features'] as $index => $feature)
+                <div class="feature-card relative {{ $featuresData['grid_settings']['aspect_ratio'] }} overflow-hidden group cursor-pointer
+                    {{ $index === 2 ? 'col-span-2 lg:col-span-1' : '' }}">
 
                     {{-- Imagen de fondo --}}
                     <div class="absolute inset-0">
                         <img src="{{ asset($feature['image']) }}"
                              alt="{{ $feature['title'] }}"
                              class="w-full h-full object-cover transition-transform duration-500 {{ $feature['hover_effect'] ? 'group-hover:scale-110' : '' }}">
-
-
                     </div>
 
                     {{-- Contenido de texto --}}
@@ -92,8 +89,7 @@
 
                     {{-- Efecto hover adicional --}}
                     @if($feature['hover_effect'])
-                        <div
-                            class="absolute inset-0 border-2 border-white border-opacity-0 group-hover:border-opacity-30 transition-all duration-300"></div>
+                        <div class="absolute inset-0 border-2 border-white border-opacity-0 group-hover:border-opacity-30 transition-all duration-300"></div>
                     @endif
                 </div>
             @endforeach

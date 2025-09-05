@@ -15,6 +15,9 @@ class VehicleVersions extends Component
 
     public $versionsData = [];
 
+    public $category;
+    public $slug;
+
     private $defaultVersionsData = [
         'section_background' => 'bg-gray-100',
         'section_padding' => 'py-16',
@@ -190,8 +193,10 @@ class VehicleVersions extends Component
         return $currentVersion['tab_content'][$this->selectedTab] ?? [];
     }
 
-    public function mount($versionsData = [])
+    public function mount($category, $slug,$versionsData = [])
     {
+        $this->category = $category;
+        $this->slug = $slug;
         $this->versionsData = array_merge($this->defaultVersionsData, $versionsData);
 
         // Verificar que versions existe y tiene elementos
@@ -250,17 +255,30 @@ class VehicleVersions extends Component
 
     public function requestQuote()
     {
-        return redirect()->route('forms.base');
+        return redirect()->route('forms.detail', [
+            'category' => $this->category,
+            'slug' => $this->slug
+        ]);
     }
 
     public function downloadCatalog()
     {
-        session()->flash('message', 'Descarga del catálogo iniciada.');
+        $pdfPath = 'frontend/images/vehicles/starray/Ficha Tecnica Geely Starray.pdf'; // Ruta relativa desde public/
+        $fullPath = public_path($pdfPath);
+
+        if (file_exists($fullPath)) {
+            return response()->download($fullPath, 'Catálogo-Geely-Starray.pdf');
+        }
+
+        session()->flash('error', 'El catálogo no está disponible en este momento.');
     }
 
     public function scheduleTestDrive()
     {
-        session()->flash('message', 'Test drive agendado correctamente.');
+        return redirect()->route('forms.detail', [
+            'category' => $this->category,
+            'slug' => $this->slug
+        ])->with('activeTab', 'test-drive');
     }
 
     public function render()

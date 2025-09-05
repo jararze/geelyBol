@@ -22,7 +22,10 @@
     </section>
 
     <section id="versiones" data-section="versiones">
-        <livewire:front.vehicle-versions />
+        <livewire:front.vehicle-versions
+            :category="$categorySlug"
+            :slug="$vehicleSlug"
+        />
     </section>
 
     {{-- Action Boxes --}}

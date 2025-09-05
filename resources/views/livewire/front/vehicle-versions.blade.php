@@ -49,7 +49,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-3">
 
                     {{-- Panel Izquierdo: Configuración (1/3) --}}
-                    <div class="p-6 lg:p-8">
+                    <div class="p-6 lg:p-8 order-2 lg:order-1">
 
                         {{-- Selector de Versión --}}
                         <div class="mb-6">
@@ -225,7 +225,7 @@
                     </div>
 
                     {{-- Panel Derecho: Visualización (2/3) --}}
-                    <div class="lg:col-span-2 p-6 lg:p-8 flex flex-col">
+                    <div class="lg:col-span-2 p-6 lg:p-8 flex flex-col order-1 lg:order-2">
 
                         {{-- Toggle Exterior/Interior --}}
                         <div class="flex justify-center mb-6">
