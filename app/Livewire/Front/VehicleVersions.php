@@ -14,6 +14,7 @@ class VehicleVersions extends Component
     public $selectedTab = 'precio';
 
     public $versionsData = [];
+    public $vehicle = [];
 
     public $category;
     public $slug;
@@ -174,6 +175,385 @@ class VehicleVersions extends Component
         ]
     ];
 
+    private function getVehicleConfig($slug)
+    {
+        $configs = [
+            'starray' => [
+                'header' => [
+                    'title' => 'VERSIONES Y PRECIOS',
+                    'subtitle' => 'Elige tu versión de Starray',
+                    'title_size' => 'text-3xl lg:text-4xl',
+                    'subtitle_size' => 'text-lg'
+                ],
+                'versions' => [
+                    'gk-2-0' => [
+                        'name' => 'Starray Signature 1.5 Turbo',
+                        'specs' => [
+                            'Cilindrada:' => '1.499 c.c. TURBO con 174 HP',
+                            'Transmisión:' => '7 velocidades doble embrague',
+                            'Tracción:' => 'FWD Delantera',
+                            'Plataforma:' => 'CMA'
+                        ],
+                        'pricing' => [
+                            'year' => 2026,
+                            'list_price' => 53490,
+                            'discount' => 1000,
+                            'final_price' => 52490,
+                            'currency' => '$us.'
+                        ],
+                        'tab_content' => [
+                            'motor' => [
+                                'tipo_motor' => 'Motor Turbo de 4 cilindros en línea',
+                                'potencia' => '174 HP',
+                                'torque' => '290/2000-3500 (Nm/rpm)',
+                                'combustible' => '',
+                                'consumo_ciudad' => 'FWD Delantera',
+                                'consumo_carretera' => 'Euro VI b'
+                            ],
+                            'equipamiento' => [
+                                'pantalla' => 'Táctil HD 13.2”',
+                                'asientos' => 'Cuero sintético',
+                                'climatizador' => 'Automático bi-zona',
+                                'camara' => 'Reversa + HD 360°',
+                                'sensores' => 'delantero y trasero',
+                                'conectividad' => 'Bluetooth, MP3, Radio Am/FM y Apple CarPlay'
+                            ],
+                            'seguridad' => [
+                                'airbags' => '6 bolsas de aire ',
+                                'abs' => 'ABS, EBD y BA',
+                                'control_estabilidad' => 'ESP',
+                                'asistente_frenado' => 'BAS',
+                                'control_traccion' => 'TCS',
+                                'cinturones' => 'Pretensores y limitadores'
+                            ]
+                        ],
+                        'colors' => [
+                            'silver' => [
+                                'name' => 'Plata',
+                                'hex' => '#C0C0C0',
+                                'image' => 'frontend/images/vehicles/starray/Starray silver20 1.png'
+                            ],
+                            'negro' => [
+                                'name' => 'Negro',
+                                'hex' => '#1a1a1a',
+                                'image' => 'frontend/images/vehicles/starray/Starray Lado Izquierdo Negra PNG.png'
+                            ],
+                            'blanco' => [
+                                'name' => 'Blanco',
+                                'hex' => '#FFFFFF',
+                                'image' => 'frontend/images/vehicles/starray/Starray Lado Izquierdo Blanca PNG.png'
+                            ]
+                        ],
+                        'images' => [
+                            'interior' => [
+                                'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior.jpg'
+                            ]
+                        ]
+                    ],
+                    'gk-2-5' => [
+                        'name' => 'Starray Platinum 2.0 Turbo',
+                        'specs' => [
+                            'Cilindrada:' => '1.969 c.c. TURBO con 218 HP',
+                            'Transmisión:' => '7 velocidades doble embrague',
+                            'Tracción:' => 'FWD Delantera',
+                            'Plataforma:' => 'CMA'
+                        ],
+                        'pricing' => [
+                            'year' => 2026,
+                            'list_price' => 60490,
+                            'discount' => 1000,
+                            'final_price' => 59490,
+                            'currency' => '$us.'
+                        ],
+                        'tab_content' => [
+                            'motor' => [
+                                'tipo_motor' => 'Motor Turbo de 4 cilindros en línea',
+                                'potencia' => '218 HP',
+                                'torque' => '325/1800-4500 (Nm/rpm)',
+                                'combustible' => 'Gasolina',
+                                'consumo_ciudad' => 'FWD Delantera',
+                                'consumo_carretera' => 'Euro VI'
+                            ],
+                            'equipamiento' => [
+                                'pantalla' => 'Táctil HD 13.2”',
+                                'asientos' => 'Cuero sintético',
+                                'climatizador' => 'Automático bi-zona',
+                                'camara' => 'Reversa + HD 360°',
+                                'sensores' => 'delantero y trasero',
+                                'conectividad' => 'Bluetooth, MP3, Radio Am/FM y Apple CarPlay'
+                            ],
+                            'seguridad' => [
+                                'airbags' => '6 bolsas de aire ',
+                                'abs' => 'ABS, EBD y BA',
+                                'control_estabilidad' => 'ESP',
+                                'asistente_frenado' => 'BAS',
+                                'control_traccion' => 'TCS',
+                                'cinturones' => 'Pretensores y limitadores'
+                            ]
+                        ],
+                        'colors' => [
+                            'silver' => [
+                                'name' => 'Plata',
+                                'hex' => '#C0C0C0',
+                                'image' => 'frontend/images/vehicles/starray/Starray silver20 1.png'
+                            ],
+                            'negro' => [
+                                'name' => 'Negro',
+                                'hex' => '#1a1a1a',
+                                'image' => 'frontend/images/vehicles/starray/Starray Lado Izquierdo Negra PNG.png'
+                            ],
+                            'blanco' => [
+                                'name' => 'Blanco',
+                                'hex' => '#FFFFFF',
+                                'image' => 'frontend/images/vehicles/starray/Starray Lado Izquierdo Blanca PNG.png'
+                            ]
+                        ],
+                        'images' => [
+                            'interior' => [
+                                'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior.jpg'
+                            ]
+                        ]
+                    ]
+                ],
+            ],
+
+            'gx3-pro' => [
+                'header' => [
+                    'title' => 'VERSIONES Y PRECIOS',
+                    'subtitle' => 'Elige tu versión de Gx3 Pro',
+                    'title_size' => 'text-3xl lg:text-4xl',
+                    'subtitle_size' => 'text-lg'
+                ],
+                'versions' => [
+                    'pro-mid-mt-1-5' => [
+                        'name' => 'GX3 Pro Mid MT 1.5',
+                        'specs' => [
+                            'Cilindrada:' => '1.498 cc con 103 HP',
+                            'Transmisión:' => 'Manual',
+                            'Tracción:' => '4x2 ',
+                            'Plataforma:' => ''
+                        ],
+                        'pricing' => [
+                            'year' => 2026,
+                            'list_price' => 26690,
+                            'discount' => 300,
+                            'final_price' => 26390,
+                            'currency' => '$us.'
+                        ],
+                        'tab_content' => [
+                            'motor' => [
+                                'tipo_motor' => '1.498 c.c con 103 HP',
+                                'potencia' => '103 HP',
+                                'torque' => '140',
+                                'combustible' => 'Gasolina',
+                                'consumo_ciudad' => '15.4 L/100km',
+                                'consumo_carretera' => '18 L/100km'
+                            ],
+                            'equipamiento' => [
+                                'pantalla' => 'Táctil de 8”',
+                                'asientos' => 'Cuero sintético',
+                                'climatizador' => 'Automático',
+                                'camara' => 'Reversa',
+                                'sensores' => 'Estacionamiento',
+                                'conectividad' => 'CarLink'
+                            ],
+                            'seguridad' => [
+                                'airbags' => '2 bolsas de aire ',
+                                'abs' => 'Sistema ABS + EBD',
+                                'control_estabilidad' => 'ESP',
+                                'asistente_frenado' => 'EBA',
+                                'control_traccion' => 'TCS',
+                                'cinturones' => 'Pretensores + limitadores'
+                            ]
+                        ],
+                        'colors' => [
+                            'red' => [
+                                'name' => 'Rojo',
+                                'hex' => '#a11218',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Roja PNG.png'
+                            ],
+                            'blanco' => [
+                                'name' => 'Blanco',
+                                'hex' => '#ffffff',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Blanca PNG.png'
+                            ],
+                            'gris' => [
+                                'name' => 'Gris',
+                                'hex' => '#64676c',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Gris PNG.png'
+                            ],
+                            'azul' => [
+                                'name' => 'Azul',
+                                'hex' => '#004a79',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Azul PNG.png'
+                            ],
+                            'dorado' => [
+                                'name' => 'Dorado',
+                                'hex' => '#7f776d',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Dorada PNG.png'
+                            ]
+                        ],
+                        'images' => [
+                            'interior' => [
+                                'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior.jpg'
+                            ]
+                        ]
+                    ],
+                    'pro-comfort-mt-1-5' => [
+                        'name' => 'GX3 Pro Comfort MT 1.5',
+                        'specs' => [
+                            'Cilindrada:' => '1.498 cc con 103 HP',
+                            'Transmisión:' => 'Manual',
+                            'Tracción:' => '4x2',
+                            'Plataforma:' => ''
+                        ],
+                        'pricing' => [
+                            'year' => 2026,
+                            'list_price' => 27690,
+                            'discount' => 300,
+                            'final_price' => 27390,
+                            'currency' => '$us.'
+                        ],
+                        'tab_content' => [
+                            'motor' => [
+                                'tipo_motor' => '1.498 c.c con 103 HP',
+                                'potencia' => '103 HP',
+                                'torque' => '140',
+                                'combustible' => 'Gasolina',
+                                'consumo_ciudad' => '15.4 L/100km',
+                                'consumo_carretera' => '18 L/100km'
+                            ],
+                            'equipamiento' => [
+                                'pantalla' => 'Táctil de 8”',
+                                'asientos' => 'Cuero sintético',
+                                'climatizador' => 'Automático',
+                                'camara' => 'Reversa',
+                                'sensores' => 'Estacionamiento',
+                                'conectividad' => 'CarLink'
+                            ],
+                            'seguridad' => [
+                                'airbags' => '2 bolsas de aire ',
+                                'abs' => 'Sistema ABS + EBD',
+                                'control_estabilidad' => 'ESP',
+                                'asistente_frenado' => 'EBA',
+                                'control_traccion' => 'TCS',
+                                'cinturones' => 'Pretensores + limitadores'
+                            ]
+                        ],
+                        'colors' => [
+                            'red' => [
+                                'name' => 'Rojo',
+                                'hex' => '#a11218',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Roja PNG.png'
+                            ],
+                            'blanco' => [
+                                'name' => 'Blanco',
+                                'hex' => '#ffffff',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Blanca PNG.png'
+                            ],
+                            'gris' => [
+                                'name' => 'Gris',
+                                'hex' => '#64676c',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Gris PNG.png'
+                            ],
+                            'azul' => [
+                                'name' => 'Azul',
+                                'hex' => '#004a79',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Azul PNG.png'
+                            ],
+                            'dorado' => [
+                                'name' => 'Dorado',
+                                'hex' => '#7f776d',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Dorada PNG.png'
+                            ]
+                        ],
+                        'images' => [
+                            'interior' => [
+                                'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior.jpg'
+                            ]
+                        ]
+                    ],
+                    'pro-comfort-cvt-1-5' => [
+                        'name' => 'GX3 Pro Comfort CVT 1.5',
+                        'specs' => [
+                            'Cilindrada:' => '1.498 cc con 103 HP',
+                            'Transmisión:' => 'Automática',
+                            'Tracción:' => '4x2',
+                            'Plataforma:' => ''
+                        ],
+                        'pricing' => [
+                            'year' => 2026,
+                            'list_price' => 30490,
+                            'discount' => 500,
+                            'final_price' => 29990,
+                            'currency' => '$us.'
+                        ],
+                        'tab_content' => [
+                            'motor' => [
+                                'tipo_motor' => '1.498 c.c con 103 HP',
+                                'potencia' => '103 HP',
+                                'torque' => '140',
+                                'combustible' => 'Gasolina',
+                                'consumo_ciudad' => '15.4 L/100km',
+                                'consumo_carretera' => '18 L/100km'
+                            ],
+                            'equipamiento' => [
+                                'pantalla' => 'Táctil de 8”',
+                                'asientos' => 'Cuero sintético',
+                                'climatizador' => 'Automático',
+                                'camara' => 'Reversa',
+                                'sensores' => 'Estacionamiento',
+                                'conectividad' => 'CarLink'
+                            ],
+                            'seguridad' => [
+                                'airbags' => '2 bolsas de aire ',
+                                'abs' => 'Sistema ABS + EBD',
+                                'control_estabilidad' => 'ESP',
+                                'asistente_frenado' => 'EBA',
+                                'control_traccion' => 'TCS',
+                                'cinturones' => 'Pretensores + limitadores'
+                            ]
+                        ],
+                        'colors' => [
+                            'red' => [
+                                'name' => 'Rojo',
+                                'hex' => '#a11218',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Roja PNG.png'
+                            ],
+                            'blanco' => [
+                                'name' => 'Blanco',
+                                'hex' => '#ffffff',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Blanca PNG.png'
+                            ],
+                            'gris' => [
+                                'name' => 'Gris',
+                                'hex' => '#64676c',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Gris PNG.png'
+                            ],
+                            'azul' => [
+                                'name' => 'Azul',
+                                'hex' => '#004a79',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Azul PNG.png'
+                            ],
+                            'dorado' => [
+                                'name' => 'Dorado',
+                                'hex' => '#7f776d',
+                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Dorada PNG.png'
+                            ]
+                        ],
+                        'images' => [
+                            'interior' => [
+                                'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior.jpg'
+                            ]
+                        ]
+                    ],
+                ],
+            ]
+        ];
+
+        return $configs[$slug] ?? [];
+    }
+
     // Agregar método para cambiar tab
     public function selectTab($tab)
     {
@@ -193,11 +573,18 @@ class VehicleVersions extends Component
         return $currentVersion['tab_content'][$this->selectedTab] ?? [];
     }
 
-    public function mount($category, $slug,$versionsData = [])
+    public function mount($vehicle = [], $category, $slug, $versionsData = [])
     {
+        $this->vehicle = $vehicle;
         $this->category = $category;
         $this->slug = $slug;
-        $this->versionsData = array_merge($this->defaultVersionsData, $versionsData);
+
+        // Obtener configuración específica del vehículo ANTES del merge
+        $vehicleSlug = $vehicle['slug'] ?? 'default';
+        $vehicleConfig = $this->getVehicleConfig($vehicleSlug);
+
+        // Merge con orden de prioridad: default -> vehicle -> custom
+        $this->versionsData = array_merge($this->defaultVersionsData, $vehicleConfig, $versionsData);
 
         // Verificar que versions existe y tiene elementos
         if (empty($this->versionsData['versions'])) {
@@ -212,6 +599,7 @@ class VehicleVersions extends Component
             $this->selectedColor = array_key_first($currentVersion['colors']);
         }
     }
+
 
     public function selectVersion($version)
     {
@@ -263,14 +651,38 @@ class VehicleVersions extends Component
 
     public function downloadCatalog()
     {
-        $pdfPath = 'frontend/images/vehicles/starray/Ficha Tecnica Geely Starray.pdf'; // Ruta relativa desde public/
+        $vehicleSlug = $this->vehicle['slug'] ?? 'starray';
+        $vehicleName = $this->vehicle['name'] ?? 'Geely';
+
+        // Configuración de PDFs por vehículo
+        $catalogConfig = $this->getCatalogConfig($vehicleSlug);
+
+        $pdfPath = $catalogConfig['pdf_path'];
+        $fileName = $catalogConfig['file_name'];
         $fullPath = public_path($pdfPath);
 
         if (file_exists($fullPath)) {
-            return response()->download($fullPath, 'Catálogo-Geely-Starray.pdf');
+            return response()->download($fullPath, $fileName);
         }
 
         session()->flash('error', 'El catálogo no está disponible en este momento.');
+    }
+
+    private function getCatalogConfig($slug)
+    {
+        $configs = [
+            'starray' => [
+                'pdf_path' => 'frontend/images/vehicles/starray/Ficha Tecnica Geely Starray.pdf',
+                'file_name' => 'Catálogo-Geely-Starray.pdf'
+            ],
+            'gx3-pro' => [
+                'pdf_path' => 'frontend/images/vehicles/gx3pro/Ficha Teecnica GX3 PRO.pdf',
+                'file_name' => 'Catálogo-Geely-GX3-Pro.pdf'
+            ]
+        ];
+
+        // Fallback a starray si no existe configuración
+        return $configs[$slug] ?? $configs['starray'];
     }
 
     public function scheduleTestDrive()

@@ -9,6 +9,7 @@ class PromotionsSliderSection extends Component
 
     public $currentSlide = 0;
     public $promotionsData = [];
+    public $vehicle = [];
 
     private $defaultPromotionsData = [
         'section_background' => 'bg-gray-50',
@@ -86,10 +87,66 @@ class PromotionsSliderSection extends Component
         ]
     ];
 
-    public function mount($promotionsData = [])
+    public function mount($vehicle = [], $promotionsData = [])
     {
-        $this->promotionsData = array_merge($this->defaultPromotionsData, $promotionsData);
+        $this->vehicle = $vehicle;
+
+        // Obtener configuración específica del vehículo ANTES del merge
+        $vehicleSlug = $vehicle['slug'] ?? 'default';
+        $vehicleConfig = $this->getVehicleConfig($vehicleSlug);
+
+        // Merge con orden de prioridad: default -> vehicle -> custom
+        $this->promotionsData = array_merge($this->defaultPromotionsData, $vehicleConfig, $promotionsData);
         $this->currentSlide = 0;
+    }
+
+    private function getVehicleConfig($slug)
+    {
+        $configs = [
+            'starray' => [
+                'slides' => [
+                    [
+                        'id' => 'starray-50-discount',
+                        'title' => '$us. 1,000',
+                        'subtitle' => 'DE DESCUENTO',
+                        'description' => 'Aprovecha los precios de preventa para comprar tu Geely Starray. Válido en todas sus versiones.',
+                        'vehicle_model' => 'STARRAY',
+                        'vehicle_subtitle' => 'El SUV ultra moderno',
+                        'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
+                        'text_color' => 'text-gray-800',
+                        'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
+                        'image' => 'frontend/images/prom1.png',
+                        'button' => [
+                            'text' => 'Obtener promo',
+                            'style' => 'bg-white text-blue-600 hover:bg-gray-100'
+                        ]
+                    ],
+                ],
+            ],
+
+            'gx3-pro' => [
+                'slides' => [
+                    [
+                        'id' => 'gx3pro-50-discount',
+                        'title' => '$us. 1,000',
+                        'subtitle' => 'DE DESCUENTO',
+                        'description' => 'Aprovecha los precios de preventa para comprar tu Geely GX3 Pro. Válido en todas sus versiones.',
+                        'vehicle_model' => 'Gx3 Pro',
+                        'vehicle_subtitle' => 'El SUV ultra moderno',
+                        'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
+                        'text_color' => 'text-gray-800',
+                        'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
+                        'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Frontal Roja PNG.png',
+                        'button' => [
+                            'text' => 'Obtener promo',
+                            'style' => 'bg-white text-blue-600 hover:bg-gray-100'
+                        ]
+                    ],
+                ]
+            ]
+        ];
+
+        return $configs[$slug] ?? [];
     }
 
     public function goToSlide($index)

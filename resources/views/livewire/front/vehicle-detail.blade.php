@@ -10,26 +10,27 @@
 
     <section id="versiones" data-section="versiones">
         <livewire:front.vehicle-versions
+            :vehicle="$vehicle"
             :category="$categorySlug"
             :slug="$vehicleSlug"
         />
     </section>
 
-    {{--    --}}{{-- Action Boxes --}}
+    {{-- Action Boxes --}}
     <section id="servicios">
         <livewire:front.action-boxes-section/>
     </section>
 
 
     <section id="slider">
-        <livewire:front.promotions-slider-section/>
+        <livewire:front.promotions-slider-section :vehicle="$vehicle" />
     </section>
 
     <section id="beneficios">
         <livewire:front.BenefitsSection/>
     </section>
 
-    <livewire:front.video-reviews-section/>
+    <livewire:front.video-reviews-section :vehicle="$vehicle" />
 
     <livewire:front.section-breaker-section :breakerData="[
         'section_background' => 'bg-gray-50',
