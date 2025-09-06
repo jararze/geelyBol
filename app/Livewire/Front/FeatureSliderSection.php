@@ -330,8 +330,8 @@ class FeatureSliderSection extends Component
                             'title' => 'Visión de Starray de 540°',
                             'subtitle' => '',
                             'description' => 'Elimina todos los puntos ciegos con la visión panorámica de 540°, para una precisión milimétrica en estacionamientos y maniobras.',
-                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad2.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad2.jpg',
+                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad2.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad2.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
                         ],
                         [
@@ -339,8 +339,8 @@ class FeatureSliderSection extends Component
                             'title' => 'Control Crucero Adaptativo',
                             'subtitle' => '',
                             'description' => 'Es un asistente inteligente que se encarga de mantener automáticamente una distancia segura con el vehículo de adelante, frenando y acelerando por ti.',
-                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad3.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad3.jpg',
+                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad3.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad3.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'
                         ],
                         [
@@ -348,8 +348,8 @@ class FeatureSliderSection extends Component
                             'title' => '',
                             'subtitle' => '',
                             'description' => '',
-                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad4.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad4.jpg',
+                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad4.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad4.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
                         ],
                         [
@@ -357,8 +357,8 @@ class FeatureSliderSection extends Component
                             'title' => '',
                             'subtitle' => '',
                             'description' => '',
-                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad5.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad5.jpg',
+                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad5.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad5.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
                         ],
                         [
@@ -366,8 +366,8 @@ class FeatureSliderSection extends Component
                             'title' => '',
                             'subtitle' => '',
                             'description' => '',
-                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad6.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad6.jpg',
+                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad6.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad6.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
                         ],
                         [
@@ -375,8 +375,8 @@ class FeatureSliderSection extends Component
                             'title' => '',
                             'subtitle' => '',
                             'description' => '',
-                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad7.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad7.jpg',
+                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad7.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad7.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'
                         ],
                         [
@@ -384,8 +384,8 @@ class FeatureSliderSection extends Component
                             'title' => '',
                             'subtitle' => '',
                             'description' => '',
-                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad8.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad8.jpg',
+                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad8.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad8.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
                         ],
                         [
@@ -393,8 +393,8 @@ class FeatureSliderSection extends Component
                             'title' => '',
                             'subtitle' => '',
                             'description' => '',
-                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad9.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_Seguridad9.jpg',
+                            'main_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad9.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/seguridad/Geely_Bolivia_Starray_seguridad9.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
                         ]
 
