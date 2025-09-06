@@ -10,6 +10,7 @@ class VehicleDetail extends Component
     public $vehicleSlug;
     public $categorySlug;
     public $vehicle;
+
     public $relatedVehicles = [];
 
     // Datos estáticos (mover aquí desde tu ModelSection)
@@ -57,10 +58,10 @@ class VehicleDetail extends Component
             ],
             [
                 'id' => 2,
-                'slug' => 'citiray',
-                'name' => 'CITIRAY',
-                'description' => 'SUV urbano con diseño moderno',
-                'long_description' => 'El CITIRAY está diseñado para la vida urbana moderna. Con un diseño elegante y funcionalidades pensadas para el día a día en la ciudad.',
+                'slug' => 'gx3-pro',
+                'name' => 'GX3 PRO',
+                'description' => 'La SUV Moderna, Práctica y Accesible ',
+                'long_description' => '',
                 'image' => 'frontend/images/vehicles/starray/IMAGEN-TARJETA-MODELO-425x165-.png',
                 'gallery' => [],
                 'category' => 'SUV',

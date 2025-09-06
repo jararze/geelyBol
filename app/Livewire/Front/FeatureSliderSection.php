@@ -40,7 +40,7 @@ class FeatureSliderSection extends Component
 
 
         'autoplay' => [
-            'enabled' => true,
+            'enabled' => false,
             'delay' => 7000
         ],
 
@@ -89,11 +89,6 @@ class FeatureSliderSection extends Component
         $totalSlides = count($this->featureData['slides']);
         $this->currentSlide = ($this->currentSlide + 1) % $totalSlides;
 
-        // Forzar re-render
-        $this->dispatch('slideChanged', [
-            'currentSlide' => $this->currentSlide,
-            'timestamp' => now()->timestamp
-        ]);
     }
 
     public function prevSlide()

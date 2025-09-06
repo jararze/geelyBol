@@ -9,6 +9,7 @@ class VehicleFeatures extends Component
 
     public $layout = 'three-columns'; // three-columns, two-columns, four-columns
     public $featuresData = [];
+    public $vehicle = [];
 
     private $defaultFeaturesData = [
         'section_background' => 'bg-gray-50',
@@ -71,18 +72,131 @@ class VehicleFeatures extends Component
         ]
     ];
 
-    public function mount($layout = 'three-columns', $featuresData = [])
+    public function mount($vehicle = [], $layout = 'three-columns', $featuresData = [])
     {
+        $this->vehicle = $vehicle;
         $this->layout = $layout;
+
+        $vehicleSlug = $vehicle['slug'] ?? 'default';
+        $vehicleConfig = $this->getVehicleConfig($vehicleSlug);
 
         // Merge profundo para el header
         $defaultHeader = $this->defaultFeaturesData['header'];
+        $vehicleHeader = $vehicleConfig['header'] ?? [];
         $customHeader = $featuresData['header'] ?? [];
-        $mergedHeader = array_merge($defaultHeader, $customHeader);
+        $mergedHeader = array_merge($defaultHeader, $vehicleHeader, $customHeader);
 
-        // Merge el resto de datos
-        $this->featuresData = array_merge($this->defaultFeaturesData, $featuresData);
+        // Merge el resto de datos (orden de prioridad: default -> vehicle -> custom)
+        $this->featuresData = array_merge($this->defaultFeaturesData, $vehicleConfig, $featuresData);
         $this->featuresData['header'] = $mergedHeader;
+
+    }
+
+    private function getVehicleConfig($slug)
+    {
+        $configs = [
+            'starray' => [
+                'header' => [
+                    'title' => 'EL SUV ULTRA MODERNO',
+                    'title_color' => '#1f2937', // text-gray-900
+                    'title_size' => 'text-3xl lg:text-4xl',
+                    'title_weight' => 'font-bold',
+                    'subtitle' => '3 Razones para elegir a Geely Starray:',
+                    'subtitle_color' => '#6b7280', // text-gray-600
+                    'subtitle_size' => 'text-lg',
+                    'text_align' => 'text-left', // AGREGAR ESTA LÍNEA
+                    'margin_bottom' => 'mb-12'
+                ],
+
+                'features' => [
+                    [
+                        'id' => 'lujo',
+                        'title' => 'Lujo',
+                        'subtitle' => 'Acabados premium',
+                        'image' => 'frontend/images/image.png',
+                        'text_position' => 'bottom-left', // bottom-left, bottom-right, bottom-center, top-left, top-right, top-center, center
+                        'text_color' => '#ffffff',
+                        'text_background' => 'bg-black bg-opacity-50',
+                        'overlay' => 'bg-black bg-opacity-30',
+                        'hover_effect' => true
+                    ],
+                    [
+                        'id' => 'tecnologia',
+                        'title' => 'Tecnología',
+                        'subtitle' => 'Pantalla de 13.2',
+                        'image' => 'frontend/images/image tablet.png',
+                        'text_position' => 'bottom-left',
+                        'text_color' => '#ffffff',
+                        'text_background' => 'bg-black bg-opacity-50',
+                        'overlay' => 'bg-black bg-opacity-30',
+                        'hover_effect' => true
+                    ],
+                    [
+                        'id' => 'diseno',
+                        'title' => 'Diseño futurista',
+                        'subtitle' => 'En exterior e interior',
+                        'image' => 'frontend/images/Foto inferior.png',
+                        'text_position' => 'bottom-left',
+                        'text_color' => '#ffffff',
+                        'text_background' => 'bg-black bg-opacity-50',
+                        'overlay' => 'bg-black bg-opacity-30',
+                        'hover_effect' => true
+                    ]
+                ],
+            ],
+
+            'gx3-pro' => [
+                'header' => [
+                    'title' => 'Multiplica tus posibilidades',
+                    'title_color' => '#1f2937', // text-gray-900
+                    'title_size' => 'text-3xl lg:text-4xl',
+                    'title_weight' => 'font-bold',
+                    'subtitle' => '3 razones para elegir a Geely GX3 Pro:',
+                    'subtitle_color' => '#6b7280', // text-gray-600
+                    'subtitle_size' => 'text-lg',
+                    'text_align' => 'text-left', // AGREGAR ESTA LÍNEA
+                    'margin_bottom' => 'mb-12'
+                ],
+
+                'features' => [
+                    [
+                        'id' => 'lujo',
+                        'title' => 'Totalmente equipado',
+                        'subtitle' => 'El equipamiento que necesitas y más',
+                        'image' => 'frontend/images/vehicles/gx3pro/features/GX3 Pro Pasajero.jpg',
+                        'text_position' => 'bottom-left', // bottom-left, bottom-right, bottom-center, top-left, top-right, top-center, center
+                        'text_color' => '#ffffff',
+                        'text_background' => 'bg-black bg-opacity-50',
+                        'overlay' => 'bg-black bg-opacity-30',
+                        'hover_effect' => true
+                    ],
+                    [
+                        'id' => 'tecnologia',
+                        'title' => 'Seguridad integral ',
+                        'subtitle' => 'La tranquilidad que necesitas',
+                        'image' => 'frontend/images/vehicles/gx3pro/features/GX3 Pro Airbags.jpg',
+                        'text_position' => 'bottom-left',
+                        'text_color' => '#ffffff',
+                        'text_background' => 'bg-black bg-opacity-50',
+                        'overlay' => 'bg-black bg-opacity-30',
+                        'hover_effect' => true
+                    ],
+                    [
+                        'id' => 'diseno',
+                        'title' => 'Amplitud',
+                        'subtitle' => 'El espacio que necesitas',
+                        'image' => 'frontend/images/vehicles/gx3pro/features/GX3 Pro Maletera.jpg',
+                        'text_position' => 'bottom-left',
+                        'text_color' => '#ffffff',
+                        'text_background' => 'bg-black bg-opacity-50',
+                        'overlay' => 'bg-black bg-opacity-30',
+                        'hover_effect' => true
+                    ]
+                ],
+            ]
+        ];
+
+        return $configs[$slug] ?? [];
     }
     public function render()
     {

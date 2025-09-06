@@ -2,9 +2,18 @@
     <section class="vehicle-hero relative {{ $heroData['section_height'] }} overflow-hidden">
         {{-- Imagen de fondo --}}
         <div class="absolute inset-0">
+            {{-- Imagen para móvil --}}
+            @if(isset($heroData['background_image_mobile']) && $heroData['background_image_mobile'])
+                <img src="{{ asset($heroData['background_image_mobile']) }}"
+                     alt="{{ $heroData['title'] }}"
+                     class="w-full h-full object-cover block md:hidden"
+                     style="object-position: {{ $heroData['background_position'] }};">
+            @endif
+
+            {{-- Imagen para desktop --}}
             <img src="{{ asset($heroData['background_image']) }}"
                  alt="{{ $heroData['title'] }}"
-                 class="w-full h-full object-cover"
+                 class="w-full h-full object-cover hidden md:block"
                  style="object-position: {{ $heroData['background_position'] }};">
 
             {{-- Overlay base --}}
@@ -163,7 +172,6 @@
         </div>
 
         {{-- Especificaciones técnicas --}}
-        {{-- Especificaciones técnicas --}}
         @if($heroData['show_specs'])
             <div class="absolute bottom-0 left-0 right-0 z-20">
                 <div class="container mx-auto px-4">
@@ -174,10 +182,16 @@
                                 @foreach($heroData['selected_specs'] as $key => $spec)
                                     <div class="text-center">
                                         <div class="flex items-baseline justify-center gap-1 mb-2">
-                                    <span class="{{ $heroData['specs_value_size'] }} font-bold {{ $heroData['specs_font_family'] }}"
-                                          style="color: {{ $heroData['specs_text_color'] }};">
-                                        {{ $spec['value'] }}
-                                    </span>
+                                            @if(isset($spec['prefix']) && $spec['prefix'])
+                                                <span class="{{ $heroData['specs_prefix_size'] ?? 'text-sm' }} font-medium {{ $heroData['specs_font_family'] }}"
+                                                      style="color: {{ $heroData['specs_text_color'] }};">
+                                                    {{ $spec['prefix'] }}
+                                                </span>
+                                            @endif
+                                            <span class="{{ $heroData['specs_value_size'] }} font-bold {{ $heroData['specs_font_family'] }}"
+                                                  style="color: {{ $heroData['specs_text_color'] }};">
+                                                {{ $spec['value'] }}
+                                            </span>
                                             @if($spec['unit'])
                                                 <span class="{{ $heroData['specs_unit_size'] }} font-medium {{ $heroData['specs_font_family'] }}"
                                                       style="color: {{ $heroData['specs_text_color'] }};">
@@ -199,6 +213,12 @@
                             @foreach($heroData['selected_specs'] as $key => $spec)
                                 <div class="text-center md:text-left">
                                     <div class="flex items-baseline gap-1 mb-2">
+                                        @if(isset($spec['prefix']) && $spec['prefix'])
+                                            <span class="{{ $heroData['specs_prefix_size'] ?? 'text-sm' }} font-medium {{ $heroData['specs_font_family'] }}"
+                                                  style="color: {{ $heroData['specs_text_color'] }};">
+                                                    {{ $spec['prefix'] }}
+                                                </span>
+                                        @endif
                                 <span class="text-2xl lg:text-3xl font-bold {{ $heroData['specs_font_family'] }}"
                                       style="color: {{ $heroData['specs_text_color'] }};">
                                     {{ $spec['value'] }}
@@ -224,6 +244,12 @@
                                 @foreach($heroData['selected_specs'] as $key => $spec)
                                     <div class="text-center md:text-right">
                                         <div class="flex items-baseline justify-center md:justify-end gap-1 mb-2">
+                                            @if(isset($spec['prefix']) && $spec['prefix'])
+                                                <span class="{{ $heroData['specs_prefix_size'] ?? 'text-sm' }} font-medium {{ $heroData['specs_font_family'] }}"
+                                                      style="color: {{ $heroData['specs_text_color'] }};">
+                                                    {{ $spec['prefix'] }}
+                                                </span>
+                                            @endif
                                     <span class="text-2xl lg:text-3xl font-bold {{ $heroData['specs_font_family'] }}"
                                           style="color: {{ $heroData['specs_text_color'] }};">
                                         {{ $spec['value'] }}

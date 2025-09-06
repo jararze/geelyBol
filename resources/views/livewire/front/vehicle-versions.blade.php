@@ -181,17 +181,17 @@
                                         <span class="font-medium text-sm">{{ $seguridad['airbags'] ?? 'N/A' }}</span>
                                     </div>
                                     <div class="flex justify-between">
-                                        <span class="text-gray-600 text-sm">Sistema ABS:</span>
+                                        <span class="text-gray-600 text-sm">Sistema de frenado:</span>
                                         <span class="font-medium text-sm">{{ $seguridad['abs'] ?? 'N/A' }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-gray-600 text-sm">Control estabilidad:</span>
                                         <span class="font-medium text-sm">{{ $seguridad['control_estabilidad'] ?? 'N/A' }}</span>
                                     </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600 text-sm">Asistente frenado:</span>
-                                        <span class="font-medium text-sm">{{ $seguridad['asistente_frenado'] ?? 'N/A' }}</span>
-                                    </div>
+{{--                                    <div class="flex justify-between">--}}
+{{--                                        <span class="text-gray-600 text-sm">Asistente frenado:</span>--}}
+{{--                                        <span class="font-medium text-sm">{{ $seguridad['asistente_frenado'] ?? 'N/A' }}</span>--}}
+{{--                                    </div>--}}
                                     <div class="flex justify-between">
                                         <span class="text-gray-600 text-sm">Control tracción:</span>
                                         <span class="font-medium text-sm">{{ $seguridad['control_traccion'] ?? 'N/A' }}</span>

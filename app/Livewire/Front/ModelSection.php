@@ -69,7 +69,7 @@ class ModelSection extends Component
                     'slug' => 'starray', // AGREGAR
                     'category' => 'suv', // AGREGAR
                     'name' => 'STARRAY',
-                    'description' => 'SUV de alta gama con avanzada tecnología y completa seguridad',
+                    'description' => 'La SUV Ultra-moderna',
                     'image' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Home.png',
                     'position' => 'center', // center, left, right
                     'featured' => true, // Si es el destacado en el centro
@@ -160,7 +160,7 @@ class ModelSection extends Component
                     'name' => 'GX3 PRO',
                     'slug' => 'gx3-pro', // AGREGAR
                     'category' => 'suv', // AGREGAR
-                    'description' => 'SUV compacto de alta performance',
+                    'description' => 'La SUV Moderna, Práctica y Accesible',
                     'image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Home.png',
                     'position' => 'right',
                     'featured' => true,
@@ -316,7 +316,8 @@ class ModelSection extends Component
     public function setActiveCategory($category)
     {
         $this->activeCategory = $category;
-        $this->currentIndex = 0;
+        $this->currentIndex = 0; // Reset al cambiar categoría
+        $this->updateTotalVehicles();
     }
 
     public function nextSlide()
@@ -325,7 +326,9 @@ class ModelSection extends Component
         $totalVehicles = count($vehicles);
 
         if ($totalVehicles > 0) {
-            $this->currentSlide = ($this->currentSlide + 1) % $totalVehicles;
+            $this->currentIndex = ($this->currentIndex + 1) % $totalVehicles;
+            // Debug temporal
+            session()->flash('debug', 'Next: ' . $this->currentIndex);
         }
     }
 
@@ -335,7 +338,9 @@ class ModelSection extends Component
         $totalVehicles = count($vehicles);
 
         if ($totalVehicles > 0) {
-            $this->currentSlide = $this->currentSlide > 0 ? $this->currentSlide - 1 : $totalVehicles - 1;
+            $this->currentIndex = $this->currentIndex > 0 ? $this->currentIndex - 1 : $totalVehicles - 1;
+            // Debug temporal
+            session()->flash('debug', 'Prev: ' . $this->currentIndex);
         }
     }
 
@@ -359,7 +364,7 @@ class ModelSection extends Component
 
     public function goToSlide($index): void
     {
-        $this->currentSlide = $index;
+        $this->currentIndex = $index;
     }
 
 

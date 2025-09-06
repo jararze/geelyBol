@@ -38,7 +38,7 @@
             <a
                 href="{{ route('vehicle.detail', ['category' => strtolower($vehicle['category']), 'slug' => $vehicle['slug']]) }}"
                 class="view-model-btn {{ $buttonTextSize }} {{ $buttonPadding }} {{ $isCenter ? 'min-w-[140px]' : 'min-w-[100px]' }}">
-                {{ $isCenter ? $vehicle['button_primary']['text'] : 'Ver más' }}
+                {{ $isCenter ? $vehicle['button_primary']['text'] : 'Ver modelo' }}
             </a>
         @endif
     </div>

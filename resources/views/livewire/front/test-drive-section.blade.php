@@ -30,9 +30,15 @@
                     @if($sectionData['show_image'])
                         <div class="{{ $imageHeight['image'] }} flex items-center justify-center py-8">
                             <div class="max-w-4xl w-full h-full">
+                                {{-- Imagen para móvil (visible en pantallas pequeñas) --}}
+                                <img src="{{ asset($sectionData['background_image_mobile']) }}"
+                                     alt="Test Drive"
+                                     class="w-full h-full object-cover rounded-lg shadow-lg block md:hidden">
+
+                                {{-- Imagen para desktop (visible en pantallas medianas y grandes) --}}
                                 <img src="{{ asset($sectionData['background_image']) }}"
                                      alt="Test Drive"
-                                     class="w-full h-full object-cover rounded-lg shadow-lg">
+                                     class="w-full h-full object-cover rounded-lg shadow-lg hidden md:block">
                             </div>
                         </div>
                     @endif
@@ -88,36 +94,43 @@
 
             @if($sectionData['show_image'])
                 <div class="absolute inset-0 z-0 w-full h-full">
+                    {{-- Imagen para móvil (visible en pantallas pequeñas) --}}
+                    <img src="{{ asset($sectionData['background_image_mobile']) }}"
+                         alt="Test Drive"
+                         class="block md:hidden"
+                         style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+
+                    {{-- Imagen para desktop (visible en pantallas medianas y grandes) --}}
                     <img src="{{ asset($sectionData['background_image']) }}"
                          alt="Test Drive"
+                         class="hidden md:block"
                          style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
                 </div>
             @endif
 
-            <div class="relative z-10 container mx-auto px-4 h-full">
-                <div class="flex items-start h-full pt-30 pb-16 px-4">
-                    <div class="max-w-lg">
-                        <h2 class="text-3xl lg:text-5xl font-bold mb-6"
-                            style="color: {{ $sectionData['text_color'] }};">
-                            {{ $sectionData['title'] }}
-                        </h2>
+                <div class="relative z-10 container mx-auto px-4 h-full">
+                    <div class="flex items-start h-full pt-8 md:pt-30 pb-16 px-4">
+                        <div class="max-w-lg">
+                            <h2 class="text-3xl lg:text-5xl font-bold mb-6 text-black md:text-white">
+                                {{ $sectionData['title'] }}
+                            </h2>
 
-                        <div class="mb-8 space-y-2">
-                            <p class="text-base leading-relaxed" style="color: {{ $sectionData['text_color'] }};">
-                                {{ $sectionData['description'] }}
-                            </p>
-                            <p class="text-base font-bold" style="color: {{ $sectionData['text_color'] }};">
-                                {{ $sectionData['cta_text'] }}
-                            </p>
+                            <div class="mb-8 space-y-2">
+                                <p class="text-base leading-relaxed text-black md:text-white">
+                                    {{ $sectionData['description'] }}
+                                </p>
+                                <p class="text-base font-bold text-black md:text-white">
+                                    {{ $sectionData['cta_text'] }}
+                                </p>
+                            </div>
+
+                            <a href="{{ $sectionData['button_url'] }}"
+                               class="inline-block px-8 py-3 bg-black hover:bg-gray-800 text-white font-medium transition-colors duration-300">
+                                {{ $sectionData['button_text'] }}
+                            </a>
                         </div>
-
-                        <a href="{{ $sectionData['button_url'] }}"
-                           class="inline-block px-8 py-3 bg-black hover:bg-gray-800 text-white font-medium transition-colors duration-300">
-                            {{ $sectionData['button_text'] }}
-                        </a>
                     </div>
                 </div>
-            </div>
         </section>
 
     @elseif($layout === 'banner')

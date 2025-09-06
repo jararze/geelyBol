@@ -18,7 +18,7 @@ class DireccionesSection extends Component
         'button_text' => 'Agenda ahora',
         'button_url' => '#',
         'show_map' => true,
-        'show_button' => true,
+        'show_button' => false,
         'locations' => [
             [
                 'name' => 'SANTA CRUZ',

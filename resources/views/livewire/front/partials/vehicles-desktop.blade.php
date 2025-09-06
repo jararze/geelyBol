@@ -3,7 +3,7 @@
     $currentSet = $this->getCurrentSet();
 @endphp
 
-<div class="relative w-full">
+<div class="relative w-full" wire:key="desktop-vehicles-{{ $activeCategory }}-{{ $currentIndex }}">
     {{-- Navigation Arrows --}}
     @if(count($modelsConfig['vehicles'][$activeCategory]) > 1)
         <button

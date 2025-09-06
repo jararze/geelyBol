@@ -17,6 +17,7 @@ class PostventaSection extends Component
         'button_text' => 'Agenda ahora',
         'button_url' => '#',
         'building_image' => 'frontend/images/geely-building.png',
+        'building_image_mobile' => 'frontend/images/Geely_Bolivia_building_mobile.jpg',
         'background_color' => '#ffffff',
         'text_color' => '#333333',
         'show_image' => true,

@@ -16,6 +16,7 @@ class TestDriveSection extends Component
         'button_text' => 'Agenda ahora',
         'button_url' => '#',
         'background_image' => 'frontend/images/7080348 1.png',
+        'background_image_mobile' => 'frontend/images/Geely_Test_Drive_Mobile.jpg',
         'text_color' => '#ffffff',
         'show_image' => true,
         'show_features' => false,

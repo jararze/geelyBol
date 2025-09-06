@@ -8,9 +8,17 @@
                 {{-- Imagen (2/3 del espacio) --}}
                 @if($sectionData['show_image'])
                     <div class="relative lg:col-span-2 order-2 lg:order-1">
+                        {{-- Imagen para móvil --}}
+                        @if(isset($sectionData['building_image_mobile']) && $sectionData['building_image_mobile'])
+                            <img src="{{ asset($sectionData['building_image_mobile']) }}"
+                                 alt="{{ $sectionData['title'] }}"
+                                 class="w-full h-full object-cover min-h-[500px] block md:hidden">
+                        @endif
+
+                        {{-- Imagen para desktop --}}
                         <img src="{{ asset($sectionData['building_image']) }}"
                              alt="{{ $sectionData['title'] }}"
-                             class="w-full h-full object-cover min-h-[500px]">
+                             class="w-full h-full object-cover min-h-[500px] hidden md:block">
                     </div>
                 @endif
 
@@ -52,9 +60,17 @@
                     {{-- Imagen (2/3 del espacio) --}}
                     @if($sectionData['show_image'])
                         <div class="lg:col-span-2">
+                            {{-- Imagen para móvil --}}
+                            @if(isset($sectionData['building_image_mobile']) && $sectionData['building_image_mobile'])
+                                <img src="{{ asset($sectionData['building_image_mobile']) }}"
+                                     alt="{{ $sectionData['title'] }}"
+                                     class="w-full h-auto rounded-lg shadow-lg block md:hidden">
+                            @endif
+
+                            {{-- Imagen para desktop --}}
                             <img src="{{ asset($sectionData['building_image']) }}"
                                  alt="{{ $sectionData['title'] }}"
-                                 class="w-full h-auto rounded-lg shadow-lg">
+                                 class="w-full h-auto rounded-lg shadow-lg hidden md:block">
                         </div>
                     @endif
 
@@ -90,8 +106,18 @@
         <section class="posventa-overlay relative {{ $sectionData['section_height'] }}">
             @if($sectionData['show_image'])
                 <div class="absolute inset-0 z-0">
+                    {{-- Imagen para móvil --}}
+                    @if(isset($sectionData['building_image_mobile']) && $sectionData['building_image_mobile'])
+                        <img src="{{ asset($sectionData['building_image_mobile']) }}"
+                             alt="{{ $sectionData['title'] }}"
+                             class="block md:hidden"
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    @endif
+
+                    {{-- Imagen para desktop --}}
                     <img src="{{ asset($sectionData['building_image']) }}"
                          alt="{{ $sectionData['title'] }}"
+                         class="hidden md:block"
                          style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             @endif

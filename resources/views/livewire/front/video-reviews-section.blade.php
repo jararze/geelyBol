@@ -51,13 +51,12 @@
 
                     {{-- Video Player --}}
                     <div class="relative aspect-video" x-data="{ playing: false }">
-                        {{-- Thumbnail (se oculta cuando se reproduce) --}}
+                        {{-- Thumbnail --}}
                         <div x-show="!playing" class="relative w-full h-full">
                             <img src="{{ asset($currentVideo['thumbnail'] ?? 'frontend/images/default-video.jpg') }}"
                                  alt="{{ $currentVideo['title'] ?? 'Video' }}"
                                  class="w-full h-full object-cover">
 
-                            {{-- Play Button Overlay --}}
                             <div class="absolute inset-0 flex items-center justify-center">
                                 <button @click="playing = true"
                                         class="bg-black bg-opacity-50 rounded-full p-4 hover:bg-opacity-70 transition-all transform hover:scale-110">
@@ -67,21 +66,14 @@
                                 </button>
                             </div>
 
-                            {{-- Duration Badge --}}
                             <div class="absolute bottom-4 right-4 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">
                                 {{ $currentVideo['duration'] ?? '00:00' }}
                             </div>
                         </div>
 
-                        {{-- YouTube iframe SIN AUTOPLAY --}}
-                        <iframe x-show="playing"
-                                src="{{ $currentVideo['video_url'] ?? '' }}"
-                                class="w-full h-full"
-                                frameborder="0"
-                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
-                                referrerpolicy="strict-origin-when-cross-origin">
-                        </iframe>
+                        {{-- YouTube iframe con construcción dinámica --}}
+                        <div x-show="playing" x-html="playing ? '<iframe src=&quot;https://www.youtube.com/embed/POBCHlhgO0Q&quot; class=&quot;w-full h-full&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; allowfullscreen referrerpolicy=&quot;strict-origin-when-cross-origin&quot;></iframe>' : ''">
+                        </div>
                     </div>
 
                     {{-- Video Info abajo --}}

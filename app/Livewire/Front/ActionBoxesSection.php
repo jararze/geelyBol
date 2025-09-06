@@ -12,45 +12,63 @@ class ActionBoxesSection extends Component
 
     public function mount()
     {
-        $this->loadStaticBoxes();
+        $this->boxes = $this->getBoxesProperty();
+
     }
 
-    private function loadStaticBoxes()
+    public function getBoxesProperty()
     {
-        $this->boxes = [
+        return [
             [
                 'id' => 'test-drive',
                 'title' => 'TEST DRIVE',
                 'svg_icon' => file_get_contents(public_path("assets/images/icons/whatsapp.svg")),
-                'route' => 'test-drive',
-                'color' => '#2563eb'
+                'route' => 'forms.base',
+                'color' => '#2563eb',
+                'is_anchor' => false
             ],
             [
                 'id' => 'cotiza',
                 'title' => 'COTIZAR',
                 'svg_icon' => file_get_contents(public_path("assets/images/icons/credit.svg")),
-                'route' => 'cotizar',
-                'color' => '#2563eb'
+                'route' => 'forms.base',
+                'color' => '#2563eb',
+                'is_anchor' => false
             ],
             [
                 'id' => 'direcciones',
                 'title' => 'DIRECCIONES',
                 'svg_icon' => file_get_contents(public_path("assets/images/icons/location.svg")),
-                'route' => 'direcciones',
-                'color' => '#2563eb'
+                'route' => '#direcciones',
+                'color' => '#2563eb',
+                'is_anchor' => true
             ],
             [
                 'id' => 'contactanos',
                 'title' => 'CONTÁCTANOS',
                 'svg_icon' => file_get_contents(public_path("assets/images/icons/contact.svg")),
-                'route' => 'contacto',
-                'color' => '#2563eb'
+                'route' => 'forms.base',
+                'color' => '#2563eb',
+                'is_anchor' => false
             ]
         ];
     }
 
+    private function getCachedSvg($iconName)
+    {
+        return cache()->remember("svg_icon_{$iconName}", 3600, function() use ($iconName) {
+            return file_get_contents(public_path("assets/images/icons/{$iconName}.svg"));
+        });
+    }
+
     public function redirectTo($route)
     {
+        // Si es un ancla, no hacer nada (dejar que el href maneje)
+        if (str_starts_with($route, '#')) {
+            return;
+        }
+
+        // Si es una ruta normal, redirigir
         return redirect()->route($route);
     }
     public function render()

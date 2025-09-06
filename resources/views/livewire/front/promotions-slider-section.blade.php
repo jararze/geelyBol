@@ -37,7 +37,7 @@
             <div class="relative rounded-2xl overflow-hidden shadow-xl max-w-4xl mx-auto">
                 @php $currentSlide = $this->getCurrentSlide(); @endphp
 
-                <div class="relative h-[500px] {{ $currentSlide['background_color'] ?? 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300' }}">
+                <div class="relative h-[600px] sm:h-[550px] lg:h-[500px] {{ $currentSlide['background_color'] ?? 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300' }}">
                     {{-- Slide Content --}}
                     <div class="flex flex-col lg:grid lg:grid-cols-2 h-full">
                         {{-- Left Content --}}

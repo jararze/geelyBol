@@ -30,30 +30,10 @@ class VideoReviewsSection extends Component
                 'subtitle' => 'REVIEW GX3 PRO',
                 'channel' => 'CARS & LIFESTYLES',
                 'thumbnail' => '/frontend/images/1.png',
-                'video_url' => 'https://www.youtube-nocookie.com/embed/Vma3TAjyeC0',
+                'video_url' => 'https://www.youtube-nocookie.com/embed/POBCHlhgO0Q?rel=0&modestbranding=1',
                 'duration' => '05:31',
                 'views' => '125K views'
             ],
-            [
-                'id' => 'video-2',
-                'title' => 'Análisis completo del nuevo Starray',
-                'subtitle' => 'REVIEW COMPLETO',
-                'channel' => 'AUTO REVIEW',
-                'thumbnail' => '/frontend/images/1.png',
-                'video_url' => 'https://www.youtube-nocookie.com/embed/Vma3TAjyeC0',
-                'duration' => '12:45',
-                'views' => '89K views'
-            ],
-            [
-                'id' => 'video-3',
-                'title' => 'Prueba de manejo en ciudad y carretera',
-                'subtitle' => 'TEST DRIVE',
-                'channel' => 'MOTOR TOTAL',
-                'thumbnail' => '/frontend/images/1.png',
-                'video_url' => 'https://www.youtube-nocookie.com/embed/Vma3TAjyeC0',
-                'duration' => '08:22',
-                'views' => '156K views'
-            ]
         ],
 
         'autoplay' => [
