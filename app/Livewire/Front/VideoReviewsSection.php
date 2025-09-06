@@ -9,6 +9,7 @@ class VideoReviewsSection extends Component
 
     public $currentSlide = 0;
     public $videosData = [];
+    public $vehicle = [];
 
     private $defaultVideosData = [
         'section_background' => 'bg-black',
@@ -49,10 +50,72 @@ class VideoReviewsSection extends Component
         ]
     ];
 
-    public function mount($videosData = [])
+    public function mount($vehicle = [], $videosData = [])
     {
-        $this->videosData = array_merge($this->defaultVideosData, $videosData);
+        $this->vehicle = $vehicle;
+
+        // Obtener configuración específica del vehículo ANTES del merge
+        $vehicleSlug = $vehicle['slug'] ?? 'default';
+        $vehicleConfig = $this->getVehicleConfig($vehicleSlug);
+
+        // Merge con orden de prioridad: default -> vehicle -> custom
+        $this->videosData = array_merge($this->defaultVideosData, $vehicleConfig, $videosData);
         $this->currentSlide = 0;
+    }
+
+    private function getVehicleConfig($slug)
+    {
+        $configs = [
+            'starray' => [
+                'header' => [
+                    'title' => 'VIDEOS Y RESEÑAS',
+                    'subtitle' => 'Conoce todo sobre Geely Starray con los siguientes videos',
+                    'title_size' => 'text-3xl lg:text-4xl',
+                    'subtitle_size' => 'text-lg',
+                    'title_color' => 'text-white',
+                    'subtitle_color' => 'text-gray-300'
+                ],
+
+                'videos' => [
+                    [
+                        'id' => 'video-1',
+                        'title' => 'This is where the ride can get for your video',
+                        'subtitle' => 'REVIEW STARRAY',
+                        'channel' => 'Reseñas',
+                        'thumbnail' => '/frontend/images/1.png',
+                        'video_url' => 'https://www.youtube-nocookie.com/embed/POBCHlhgO0Q?rel=0&modestbranding=1',
+                        'duration' => '05:31',
+                        'views' => '125K views'
+                    ],
+                ],
+            ],
+
+            'gx3-pro' => [
+                'header' => [
+                    'title' => 'VIDEOS Y RESEÑAS',
+                    'subtitle' => 'Conoce todo sobre Geely Starray con los siguientes videos',
+                    'title_size' => 'text-3xl lg:text-4xl',
+                    'subtitle_size' => 'text-lg',
+                    'title_color' => 'text-white',
+                    'subtitle_color' => 'text-gray-300'
+                ],
+
+                'videos' => [
+                    [
+                        'id' => 'video-1',
+                        'title' => 'This is where the ride can get for your video',
+                        'subtitle' => 'REVIEW GX3 PRO',
+                        'channel' => 'Reseñas',
+                        'thumbnail' => '/frontend/images/1.png',
+                        'video_url' => 'https://www.youtube-nocookie.com/embed/POBCHlhgO0Q?rel=0&modestbranding=1',
+                        'duration' => '05:31',
+                        'views' => '125K views'
+                    ],
+                ],
+            ]
+        ];
+
+        return $configs[$slug] ?? [];
     }
 
     public function goToSlide($index)
