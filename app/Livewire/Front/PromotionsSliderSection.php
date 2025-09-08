@@ -128,7 +128,7 @@ class PromotionsSliderSection extends Component
                 'slides' => [
                     [
                         'id' => 'gx3pro-50-discount',
-                        'title' => '$us. 1,000',
+                        'title' => '$us. 500',
                         'subtitle' => 'DE DESCUENTO',
                         'description' => 'Aprovecha los precios de preventa para comprar tu Geely GX3 Pro. Válido en todas sus versiones.',
                         'vehicle_model' => 'Gx3 Pro',
@@ -136,7 +136,7 @@ class PromotionsSliderSection extends Component
                         'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
                         'text_color' => 'text-gray-800',
                         'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
-                        'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Frontal Roja PNG.png',
+                        'image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Promo.png',
                         'button' => [
                             'text' => 'Obtener promo',
                             'style' => 'bg-white text-blue-600 hover:bg-gray-100'

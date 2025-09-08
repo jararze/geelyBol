@@ -106,7 +106,7 @@ class VideoReviewsSection extends Component
                         'title' => 'This is where the ride can get for your video',
                         'subtitle' => 'REVIEW GX3 PRO',
                         'channel' => 'Reseñas',
-                        'thumbnail' => '/frontend/images/1.png',
+                        'thumbnail' => '/frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Portada_Reviews.jpg',
                         'video_url' => 'https://www.youtube-nocookie.com/embed/POBCHlhgO0Q?rel=0&modestbranding=1',
                         'duration' => '05:31',
                         'views' => '125K views'

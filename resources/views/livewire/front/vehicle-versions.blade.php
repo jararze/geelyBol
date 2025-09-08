@@ -268,10 +268,10 @@
                                     </div>
                                 @else
                                     {{-- Imagen exterior con efectos similares --}}
-                                    <div class="relative w-full h-96 bg-gradient-to-br rounded-lg overflow-hidden group">
+                                    <div class="relative w-full h-[300px] md:h-[400px]  rounded-lg overflow-hidden group">
                                         <img src="{{ asset($this->getCurrentImage()) }}"
-                                             alt="Starray exterior"
-                                             class="w-full h-full object-contain transition-all duration-500 ease-out group-hover:scale-102 group-hover:brightness-105">
+                                             alt="exterior"
+                                             class="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-102 group-hover:brightness-105">
 
                                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-300"></div>
                                     </div>

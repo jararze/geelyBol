@@ -54,9 +54,9 @@
                         @if($heroData['title_type'] === 'image')
                             <img src="{{ asset($heroData['title_image']) }}"
                                  alt="{{ $heroData['title_image_alt'] ?: $heroData['title'] }}"
-                                 class="{{ $heroData['title_image_width'] }} {{ $heroData['title_image_height'] }} mx-auto mb-2">
+                                 class="{{ $heroData['title_image_width'] }} {{ $heroData['title_image_height'] }} mx-auto mb-2 ">
                         @else
-                            <h1 class="{{ $heroData['title_size'] }} {{ $heroData['title_weight'] }} {{ $heroData['title_spacing'] }} mb-2"
+                            <h1 class="{{ $heroData['title_size'] }} {{ $heroData['title_weight'] }} {{ $heroData['title_spacing'] }} mb-2 ml-7"
                                 style="color: {{ $heroData['title_color'] }};">
                                 {{ $heroData['title'] }}
                             </h1>
@@ -76,7 +76,7 @@
                                  alt="{{ $heroData['title_image_alt'] ?: $heroData['title'] }}"
                                  class="{{ $heroData['title_image_width'] }} {{ $heroData['title_image_height'] }} mx-auto mb-4">
                         @else
-                            <h1 class="{{ $heroData['title_size'] }} {{ $heroData['title_weight'] }} {{ $heroData['title_spacing'] }} mb-4"
+                            <h1 class="{{ $heroData['title_size'] }} {{ $heroData['title_weight'] }} {{ $heroData['title_spacing'] }} mb-4 ml-5"
                                 style="color: {{ $heroData['title_color'] }};">
                                 {{ $heroData['title'] }}
                             </h1>
@@ -114,9 +114,9 @@
                         @if($heroData['title_type'] === 'image')
                             <img src="{{ asset($heroData['title_image']) }}"
                                  alt="{{ $heroData['title_image_alt'] ?: $heroData['title'] }}"
-                                 class="{{ $heroData['title_image_width'] }} {{ $heroData['title_image_height'] }} mx-auto mb-2">
+                                 class="{{ $heroData['title_image_width'] }} {{ $heroData['title_image_height'] }} mx-auto mb-2 ml-7">
                         @else
-                            <h1 class="{{ $heroData['title_size'] }} {{ $heroData['title_weight'] }} {{ $heroData['title_spacing'] }} mb-2"
+                            <h1 class="{{ $heroData['title_size'] }} {{ $heroData['title_weight'] }} {{ $heroData['title_spacing'] }} mb-2 ml-7"
                                 style="color: {{ $heroData['title_color'] }};">
                                 {{ $heroData['title'] }}
                             </h1>

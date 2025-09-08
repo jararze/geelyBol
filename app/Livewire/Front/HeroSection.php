@@ -41,6 +41,10 @@ class HeroSection extends Component
                 'object_position_desktop' => '50% 50%', // En desktop enfoca el centro
                 'overlay_opacity' => 0.4,
                 'only_image' => true,
+                'buttons' => false,
+                'show_title' => false,    // Ocultar título
+                'show_subtitle' => false, // Ocultar subtítulo
+                'show_description' => false, // Ocultar descripción
 
                 'title' => [
                     'text' => 'BIENVENIDO A GEELY',
@@ -103,27 +107,12 @@ class HeroSection extends Component
                     'max_width' => 'max-w-2xl',
                 ],
 
-                'secondary_button' => [
-                    'text' => 'Ver catálogo',
-                    'show' => true,
-                    'style' => 'outline',
-                    'bg_color' => 'bg-transparent',
-                    'text_color' => 'text-white',
-                    'border_color' => 'border-white/70',
-                    'border_width' => 'border-2',
-                    'hover_bg' => 'hover:bg-white/10',
-                    'size' => 'px-8 py-4 text-lg',
-                    'font_weight' => 'font-semibold',
-                    'border_radius' => 'rounded-lg',
-                    'icon' => 'none',
-                    'action' => 'open-catalog',
-                ],
 
                 'button_container' => [
                     'layout' => 'flex-col sm:flex-row',
                     'gap' => 'gap-4',
-                    'position' => 'top-left', // Posición del contenedor de botones
-                    'margin_top' => 'mt-0', // Margen superior
+                    'position' => 'bottom-left', // Posición del contenedor de botones
+                    'margin_top' => 'mt-auto', // Margen superior
                     'margin_bottom' => 'mb-6', // Margen inferior
                 ]
             ],
@@ -144,6 +133,10 @@ class HeroSection extends Component
                 'only_image' => true,
                 'media_fit' => 'contain', // cover, contain, fill, scale-down
                 'media_position' => 'center', // center, top, bottom, left, right
+                'buttons' => false,
+                'show_title' => false,    // Ocultar título
+                'show_subtitle' => false, // Ocultar subtítulo
+                'show_description' => false, // Ocultar descripción
 
 
                 'title' => [
@@ -212,6 +205,10 @@ class HeroSection extends Component
                 'object_position_desktop' => '50% 50%', // En desktop enfoca el centro
                 'overlay_opacity' => 0.3,
                 'only_image' => true,
+                'buttons' => false,
+                'show_title' => false,    // Ocultar título
+                'show_subtitle' => false, // Ocultar subtítulo
+                'show_description' => false, // Ocultar descripción
 
                 'title' => [
                     'text' => 'GX3 PRO LLEGÓ',

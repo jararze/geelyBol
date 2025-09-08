@@ -395,7 +395,7 @@ class VehicleVersions extends Component
                         ],
                         'images' => [
                             'interior' => [
-                                'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior.jpg'
+                                'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_GX3_PRO_Interior.jpg'
                             ]
                         ]
                     ],
@@ -444,27 +444,27 @@ class VehicleVersions extends Component
                             'red' => [
                                 'name' => 'Rojo',
                                 'hex' => '#a11218',
-                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Roja PNG.png'
+                                'image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3PRO_Rojo.png'
                             ],
                             'blanco' => [
                                 'name' => 'Blanco',
                                 'hex' => '#ffffff',
-                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Blanca PNG.png'
+                                'image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3PRO_Blanco.png'
                             ],
                             'gris' => [
-                                'name' => 'Gris',
+                                'name' => 'Plata',
                                 'hex' => '#64676c',
-                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Gris PNG.png'
+                                'image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3PRO_Plata.png'
                             ],
                             'azul' => [
                                 'name' => 'Azul',
                                 'hex' => '#004a79',
-                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Azul PNG.png'
+                                'image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3PRO_Azul.png'
                             ],
                             'dorado' => [
-                                'name' => 'Dorado',
+                                'name' => 'Cafe',
                                 'hex' => '#7f776d',
-                                'image' => 'frontend/images/vehicles/gx3pro/GX3 Pro Lado Izquierdo Dorada PNG.png'
+                                'image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3PRO_Cafe.png'
                             ]
                         ],
                         'images' => [

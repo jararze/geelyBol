@@ -110,8 +110,8 @@ class VehicleHero extends Component
             ],
 
             'gx3-pro' => [
-                'background_image' => 'frontend/images/vehicles/gx3pro/Banner GX3.jpg',
-                'background_image_mobile' => 'frontend/images/vehicles/gx3pro/Banner GX3.jpg',
+                'background_image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3PRO_Hero_Desktop.jpg',
+                'background_image_mobile' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3PRO_Hero_Mobile.jpg',
                 'title_type' => 'text',
                 'title' => 'GX3 PRO',
                 'title_color' => '#000',
@@ -124,7 +124,7 @@ class VehicleHero extends Component
                 'subtitle_weight' => 'font-light',
                 'subtitle_spacing' => 'tracking-wide',
                 'selected_specs' => [
-                    'motor' => ['prefix' => '', 'value' => '1.5', 'unit' => 'Turbo', 'label' => 'Motor'],
+                    'motor' => ['prefix' => '', 'value' => '1.5', 'unit' => '', 'label' => 'Motor'],
                     'potencia' => ['prefix' => '', 'value' => '103', 'unit' => 'hp', 'label' => 'Potencia'],
                     'velocidades' => ['prefix' => '', 'value' => '8', 'unit' => '', 'label' => 'Velocidades'],
                     'traccion' => ['prefix' => '', 'value' => 'CVT', 'unit' => '', 'label' => 'Transmisión']

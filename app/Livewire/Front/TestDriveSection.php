@@ -14,7 +14,7 @@ class TestDriveSection extends Component
         'description' => 'Descubre por ti mismo la calidad y tecnología de Geely.',
         'cta_text' => 'Agenda tu Test Drive ahora.',
         'button_text' => 'Agenda ahora',
-        'button_url' => '#',
+        'button_url' => '/forms',
         'background_image' => 'frontend/images/7080348 1.png',
         'background_image_mobile' => 'frontend/images/Geely_Test_Drive_Mobile.jpg',
         'text_color' => '#ffffff',

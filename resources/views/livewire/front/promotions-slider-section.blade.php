@@ -80,7 +80,7 @@
                                 <div class="relative w-full h-full flex items-center justify-center">
                                     <img src="{{ asset($currentSlide['image'] ?? 'frontend/images/default-car.jpg') }}"
                                          alt="{{ $currentSlide['vehicle_model'] ?? 'Vehículo' }}"
-                                         class="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+                                         class="max-w-full max-h-full  oobject-contain transition-transform duration-300 hover:scale-105">
                                 </div>
                             </div>
 

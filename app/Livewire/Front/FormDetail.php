@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Front;
 
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
+use App\Models\FormSubmission;
 
 class FormDetail extends Component
 {
@@ -139,6 +141,7 @@ class FormDetail extends Component
         return $this->availableVehicles[$category][$slug] ?? ucfirst($slug);
     }
 
+
     public function setActiveTab($tab)
     {
         $this->activeTab = $tab;
@@ -192,13 +195,28 @@ class FormDetail extends Component
     {
         $data = [
             'tipo_formulario' => $this->activeTab,
-            'datos' => $this->formData,
-            'vehiculo_seleccionado' => $this->selectedVehicle,
-            'timestamp' => now()
+            'nombre' => $this->formData['nombre'],
+            'email' => $this->formData['email'],
+            'telefono' => $this->formData['telefono'],
+            'codigo_pais' => $this->formData['codigo_pais'],
+            'ciudad' => $this->formData['ciudad'],
+            'vehiculo' => $this->formData['vehiculo'],
+            'mensaje' => $this->formData['mensaje'] ?? null,
+            'receive_offers' => $this->formData['receive_offers'],
+            'categoria_vehiculo' => $this->selectedVehicle['category'] ?? null,
+            'slug_vehiculo' => $this->selectedVehicle['slug'] ?? null,
+            'datos_completos' => [
+                'formData' => $this->formData,
+                'selectedVehicle' => $this->selectedVehicle,
+                'timestamp' => now()
+            ]
         ];
 
-        // Aquí puedes guardar en base de datos, enviar email, etc.
-        \Log::info('Formulario enviado:', $data);
+        // Guardar en base de datos
+        FormSubmission::create($data);
+
+        // Log para debugging
+        Log::info('Formulario guardado en BD:', $data);
     }
 
     public function cambiarPais($pais)

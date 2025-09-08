@@ -188,12 +188,12 @@
             @endif
 
             {{-- Overlay --}}
-            @if(!($slide['only_image'] ?? false))
+            @if(!($slide['only_image'] ?? false) || ($slide['buttons'] ?? false))
                 <div class="absolute inset-0 bg-black" style="opacity: {{ $slide['overlay_opacity'] }}"></div>
             @endif
 
             {{-- Content Container con Grid 3x3 - Solo si no es only_image --}}
-            @if(!($slide['only_image'] ?? false))
+            @if(!($slide['only_image'] ?? false) || ($slide['buttons'] ?? false))
                 <div class="relative z-10 container mx-auto px-4 h-screen">
                     <div class="h-full grid grid-rows-3 grid-cols-3">
 
@@ -283,6 +283,7 @@
                                 {{-- Renderizar elementos en orden --}}
                                 @foreach($elements as $elementIndex => $element)
                                     @if($element['type'] === 'title')
+                                        @if(!($slide['only_image'] ?? false) || ($slide['show_title'] ?? false))
                                         <div class="
                                 {{ $element['data']['margin_top'] ?? 'mt-6' }}
                                 {{ $element['data']['margin_bottom'] ?? 'mb-4' }}
@@ -309,43 +310,47 @@
                                                 @endif
                                             </h1>
                                         </div>
+                                        @endif
 
                                     @elseif($element['type'] === 'subtitle')
-                                        <div class="
-                                {{ $element['data']['margin_top'] ?? 'mt-6' }}
-                                {{ $element['data']['margin_bottom'] ?? 'mb-4' }}
-                                @if(str_contains($position, 'middle')) text-center
-                                @elseif(str_contains($position, 'right')) text-right
-                                @else text-left
-                                @endif
-                                {{ $element['data']['max_width'] ?? 'max-w-2xl' }}
-                            ">
-                                            <h3 class="{{ $element['data']['font_size'] ?? 'text-xl md:text-2xl' }} {{ $element['data']['font_weight'] ?? 'font-light' }} {{ $element['data']['text_color'] ?? 'text-white/90' }}
-                                    @if(($element['data']['line_wrap'] ?? 'wrap') === 'nowrap') whitespace-nowrap
-                                    @elseif(($element['data']['line_wrap'] ?? 'wrap') === 'break-words') break-words
-                                    @else whitespace-normal
-                                    @endif
-                                ">
-                                                {{ $element['data']['text'] }}
-                                            </h3>
-                                        </div>
+                                        @if(!($slide['only_image'] ?? false) || ($slide['show_subtitle'] ?? false))
+                                            <div class="
+                                                {{ $element['data']['margin_top'] ?? 'mt-6' }}
+                                                {{ $element['data']['margin_bottom'] ?? 'mb-4' }}
+                                                @if(str_contains($position, 'middle')) text-center
+                                                @elseif(str_contains($position, 'right')) text-right
+                                                @else text-left
+                                                @endif
+                                                {{ $element['data']['max_width'] ?? 'max-w-2xl' }}
+                                            ">
+                                                <h3 class="{{ $element['data']['font_size'] ?? 'text-xl md:text-2xl' }} {{ $element['data']['font_weight'] ?? 'font-light' }} {{ $element['data']['text_color'] ?? 'text-white/90' }}
+                                                    @if(($element['data']['line_wrap'] ?? 'wrap') === 'nowrap') whitespace-nowrap
+                                                    @elseif(($element['data']['line_wrap'] ?? 'wrap') === 'break-words') break-words
+                                                    @else whitespace-normal
+                                                    @endif
+                                                ">
+                                                    {{ $element['data']['text'] }}
+                                                </h3>
+                                            </div>
+                                        @endif
 
                                     @elseif($element['type'] === 'description')
+                                        @if(!($slide['only_image'] ?? false) || ($slide['show_description'] ?? false))
                                         <div class="
-                                {{ $element['data']['margin_top'] ?? 'mt-6' }}
-                                {{ $element['data']['margin_bottom'] ?? 'mb-4' }}
-                                @if(str_contains($position, 'middle')) text-center
-                                @elseif(str_contains($position, 'right')) text-right
-                                @else text-left
-                                @endif
-                                {{ $element['data']['max_width'] ?? 'max-w-2xl' }}
-                            ">
+                                            {{ $element['data']['margin_top'] ?? 'mt-6' }}
+                                            {{ $element['data']['margin_bottom'] ?? 'mb-4' }}
+                                            @if(str_contains($position, 'middle')) text-center
+                                            @elseif(str_contains($position, 'right')) text-right
+                                            @else text-left
+                                            @endif
+                                            {{ $element['data']['max_width'] ?? 'max-w-2xl' }}
+                                        ">
                                             <p class="{{ $element['data']['font_size'] ?? 'text-lg' }} {{ $element['data']['font_weight'] ?? 'font-normal' }} {{ $element['data']['text_color'] ?? 'text-white/80' }}
-                                    @if(($element['data']['line_wrap'] ?? 'wrap') === 'nowrap') whitespace-nowrap
-                                    @elseif(($element['data']['line_wrap'] ?? 'wrap') === 'break-words') break-words
-                                    @else whitespace-normal
-                                    @endif
-                                ">
+                                                @if(($element['data']['line_wrap'] ?? 'wrap') === 'nowrap') whitespace-nowrap
+                                                @elseif(($element['data']['line_wrap'] ?? 'wrap') === 'break-words') break-words
+                                                @else whitespace-normal
+                                                @endif
+                                            ">
                                                 @if(isset($element['data']['highlight_text']) && $element['data']['highlight_text'])
                                                     {!! str_replace(
                                                         $element['data']['highlight_text'],
@@ -357,48 +362,52 @@
                                                 @endif
                                             </p>
                                         </div>
+                                        @endif
 
                                     @elseif($element['type'] === 'buttons')
-                                        <div class="
-                                @if($elementIndex > 0) {{ $element['data']['button_container']['margin_top'] ?? 'mt-6' }} @endif
-                                {{ $element['data']['button_container']['margin_bottom'] ?? '' }}
-                                @if(str_contains($position, 'middle')) flex justify-center
-                                @elseif(str_contains($position, 'right')) flex justify-end
-                                @else flex justify-start
-                                @endif
-                            ">
-                                            <div class="flex {{ $element['data']['button_container']['layout'] ?? 'flex-col sm:flex-row' }} {{ $element['data']['button_container']['gap'] ?? 'gap-4' }}">
-                                                {{-- Primary Button --}}
-                                                <button class="{{ $element['data']['primary_button']['bg_color'] ?? 'bg-black' }} {{ $element['data']['primary_button']['text_color'] ?? 'text-white' }} {{ $element['data']['primary_button']['hover_bg'] ?? 'hover:bg-black/90' }} {{ $element['data']['primary_button']['hover_scale'] ?? 'hover:scale-105' }} {{ $element['data']['primary_button']['size'] ?? 'px-8 py-4 text-lg' }} {{ $element['data']['primary_button']['font_weight'] ?? 'font-semibold' }} {{ $element['data']['primary_button']['border_radius'] ?? 'rounded-lg' }} transition-all duration-300 flex items-center gap-2
-                                        @if(($element['data']['primary_button']['style'] ?? 'solid') === 'outline')
-                                            border-2 border-current bg-transparent
-                                        @endif
-                                    ">
-                                                    {{-- Icon Left --}}
-                                                    @if(($element['data']['primary_button']['icon_position'] ?? 'right') === 'left' && ($element['data']['primary_button']['icon'] ?? 'arrow-right') !== 'none')
-                                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                                        </svg>
-                                                    @endif
-
-                                                    {{ $element['data']['primary_button']['text'] ?? 'Botón' }}
-
-                                                    {{-- Icon Right --}}
-                                                    @if(($element['data']['primary_button']['icon_position'] ?? 'right') === 'right' && ($element['data']['primary_button']['icon'] ?? 'arrow-right') !== 'none')
-                                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                                        </svg>
-                                                    @endif
-                                                </button>
-
-                                                {{-- Secondary Button --}}
-                                                @if(isset($element['data']['secondary_button']['show']) && $element['data']['secondary_button']['show'])
-                                                    <button class="{{ $element['data']['secondary_button']['bg_color'] ?? 'bg-transparent' }} {{ $element['data']['secondary_button']['text_color'] ?? 'text-white' }} {{ $element['data']['secondary_button']['border_width'] ?? 'border-2' }} {{ $element['data']['secondary_button']['border_color'] ?? 'border-white/70' }} {{ $element['data']['secondary_button']['hover_bg'] ?? 'hover:bg-white/10' }} {{ $element['data']['secondary_button']['size'] ?? 'px-8 py-4 text-lg' }} {{ $element['data']['secondary_button']['font_weight'] ?? 'font-semibold' }} {{ $element['data']['secondary_button']['border_radius'] ?? 'rounded-lg' }} transition-all duration-300">
-                                                        {{ $element['data']['secondary_button']['text'] ?? 'Botón 2' }}
-                                                    </button>
+                                        {{-- Solo mostrar botones si no es only_image O si buttons está habilitado --}}
+                                        @if(!($slide['only_image'] ?? false) || ($slide['buttons'] ?? false))
+                                            <div class="
+                                                @if($elementIndex > 0) {{ $element['data']['button_container']['margin_top'] ?? 'mt-6' }} @endif
+                                                {{ $element['data']['button_container']['margin_bottom'] ?? '' }}
+                                                @if(str_contains($position, 'middle')) flex justify-center
+                                                @elseif(str_contains($position, 'right')) flex justify-end
+                                                @else flex justify-start
                                                 @endif
+                                            ">
+                                                <div class="flex {{ $element['data']['button_container']['layout'] ?? 'flex-col sm:flex-row' }} {{ $element['data']['button_container']['gap'] ?? 'gap-4' }}">
+                                                    {{-- Primary Button --}}
+                                                    <button class="{{ $element['data']['primary_button']['bg_color'] ?? 'bg-black' }} {{ $element['data']['primary_button']['text_color'] ?? 'text-white' }} {{ $element['data']['primary_button']['hover_bg'] ?? 'hover:bg-black/90' }} {{ $element['data']['primary_button']['hover_scale'] ?? 'hover:scale-105' }} {{ $element['data']['primary_button']['size'] ?? 'px-8 py-4 text-lg' }} {{ $element['data']['primary_button']['font_weight'] ?? 'font-semibold' }} {{ $element['data']['primary_button']['border_radius'] ?? 'rounded-lg' }} transition-all duration-300 flex items-center gap-2
+                                                        @if(($element['data']['primary_button']['style'] ?? 'solid') === 'outline')
+                                                            border-2 border-current bg-transparent
+                                                        @endif
+                                                    ">
+                                                        {{-- Icon Left --}}
+                                                        @if(($element['data']['primary_button']['icon_position'] ?? 'right') === 'left' && ($element['data']['primary_button']['icon'] ?? 'arrow-right') !== 'none')
+                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                            </svg>
+                                                        @endif
+
+                                                        {{ $element['data']['primary_button']['text'] ?? 'Botón' }}
+
+                                                        {{-- Icon Right --}}
+                                                        @if(($element['data']['primary_button']['icon_position'] ?? 'right') === 'right' && ($element['data']['primary_button']['icon'] ?? 'arrow-right') !== 'none')
+                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                            </svg>
+                                                        @endif
+                                                    </button>
+
+                                                    {{-- Secondary Button --}}
+                                                    @if(isset($element['data']['secondary_button']['show']) && $element['data']['secondary_button']['show'])
+                                                        <button class="{{ $element['data']['secondary_button']['bg_color'] ?? 'bg-transparent' }} {{ $element['data']['secondary_button']['text_color'] ?? 'text-white' }} {{ $element['data']['secondary_button']['border_width'] ?? 'border-2' }} {{ $element['data']['secondary_button']['border_color'] ?? 'border-white/70' }} {{ $element['data']['secondary_button']['hover_bg'] ?? 'hover:bg-white/10' }} {{ $element['data']['secondary_button']['size'] ?? 'px-8 py-4 text-lg' }} {{ $element['data']['secondary_button']['font_weight'] ?? 'font-semibold' }} {{ $element['data']['secondary_button']['border_radius'] ?? 'rounded-lg' }} transition-all duration-300">
+                                                            {{ $element['data']['secondary_button']['text'] ?? 'Botón 2' }}
+                                                        </button>
+                                                    @endif
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     @endif
                                 @endforeach
                             </div>
