@@ -141,10 +141,10 @@
                             </p>
                         </div>
 
-                        <a href="{{ $sectionData['button_url'] }}"
-                           class="inline-block px-8 py-3 bg-black hover:bg-gray-800 text-white font-medium transition-colors duration-300">
-                            {{ $sectionData['button_text'] }}
-                        </a>
+{{--                        <a href="{{ $sectionData['button_url'] }}"--}}
+{{--                           class="inline-block px-8 py-3 bg-black hover:bg-gray-800 text-white font-medium transition-colors duration-300">--}}
+{{--                            {{ $sectionData['button_text'] }}--}}
+{{--                        </a>--}}
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@ class AboutSection extends Component
         'title' => 'GEELY',
         'description' => 'En Geely Bolivia, ofrecemos vehículos que combinan seguridad, tecnología avanzada y un diseño de vanguardia. Creemos que la movilidad de calidad debe ser una experiencia al alcance de todos. Es por eso que cada uno de nuestros autos está creado para quienes valoran la innovación, la eficiencia y las nuevas formas de moverse con libertad y confianza.',
         'button_text' => 'Descubre más',
-        'button_url' => '#',
+        'button_url' => 'https://global.geely.com/',
         'background_color' => '#000000',
         'text_color' => '#fff',
         'car_image' => 'frontend/images/7080348 1.png',
