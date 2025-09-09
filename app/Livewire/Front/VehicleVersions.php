@@ -345,9 +345,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 59990,
+                            'list_price' => 25990,
                             'discount' => 500,
-                            'final_price' => 59490,
+                            'final_price' => 25490,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -405,7 +405,7 @@ class VehicleVersions extends Component
                         ],
                         'images' => [
                             'interior' => [
-                                'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_GX3_PRO_Interior.jpg'
+                                'default' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Interior.jpg'
                             ]
                         ]
                     ],
@@ -479,7 +479,7 @@ class VehicleVersions extends Component
                         ],
                         'images' => [
                             'interior' => [
-                                'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior.jpg'
+                                'default' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_Starray_Interior.jpg'
                             ]
                         ]
                     ],
@@ -553,7 +553,7 @@ class VehicleVersions extends Component
                         ],
                         'images' => [
                             'interior' => [
-                                'default' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Interior.jpg'
+                                'default' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_Starray_Interior.jpg'
                             ]
                         ]
                     ],
@@ -686,7 +686,7 @@ class VehicleVersions extends Component
                 'file_name' => 'Catálogo-Geely-Starray.pdf'
             ],
             'gx3-pro' => [
-                'pdf_path' => 'frontend/images/vehicles/gx3pro/Ficha Teecnica GX3 PRO.pdf',
+                'pdf_path' => 'frontend/images/vehicles/gx3pro/Ficha Técnica GX3 PRO V2.pdf',
                 'file_name' => 'Catálogo-Geely-GX3-Pro.pdf'
             ]
         ];

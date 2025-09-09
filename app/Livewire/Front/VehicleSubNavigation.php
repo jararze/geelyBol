@@ -15,7 +15,7 @@ class VehicleSubNavigation extends Component
         [
             'id' => 'starray',
             'label' => 'Starray',
-            'anchor' => '#starray',
+            'anchor' => '#hero',
             'active' => true
         ],
         [
@@ -51,14 +51,14 @@ class VehicleSubNavigation extends Component
     {
         $configs = [
             'starray' => [
-                ['id' => 'starray', 'label' => 'Starray', 'anchor' => '#starray', 'active' => true],
+                ['id' => 'starray', 'label' => 'Starray', 'anchor' => '#hero', 'active' => true],
                 ['id' => 'versiones', 'label' => 'Versiones', 'anchor' => '#versiones', 'active' => true],
                 ['id' => 'tecnologia', 'label' => 'Tecnología', 'anchor' => '#tecnologia', 'active' => true],
                 ['id' => 'diseno', 'label' => 'Diseño', 'anchor' => '#diseno', 'active' => true]
             ],
 
             'gx3-pro' => [
-                ['id' => 'gx3pro', 'label' => 'Gx3 Pro', 'anchor' => '#starray', 'active' => true],
+                ['id' => 'gx3pro', 'label' => 'Gx3 Pro', 'anchor' => '#hero', 'active' => true],
                 ['id' => 'versiones', 'label' => 'Versiones', 'anchor' => '#versiones', 'active' => true],
                 ['id' => 'tecnologia', 'label' => 'Tecnología', 'anchor' => '#tecnologia', 'active' => true],
                 ['id' => 'diseno', 'label' => 'Diseño', 'anchor' => '#diseno', 'active' => true]

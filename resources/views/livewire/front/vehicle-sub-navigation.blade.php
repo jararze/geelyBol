@@ -1,7 +1,9 @@
 <div>
     <div x-data="vehicleSubNav()"
          x-init="init()"
-         class="vehicle-sub-nav sticky top-16 lg:top-20 z-40 bg-black shadow-lg">
+         :class="isSticky ? 'fixed top-0' : 'relative'"
+         @scroll.window="isSticky = window.scrollY > 100"
+         class="vehicle-sub-nav z-50 bg-black shadow-lg w-full transition-all">
 
         <div class="container mx-auto px-4">
             <nav class="flex justify-center">
@@ -35,34 +37,55 @@
             function vehicleSubNav() {
                 return {
                     activeSection: @entangle('activeSection'),
-
+                    showNav: true,
                     init() {
-                        this.setupIntersectionObserver();
-                        this.setupSmoothScroll();
+                        // Esperar a que Livewire termine de renderizar todos los componentes
+                        this.$nextTick(() => {
+                            setTimeout(() => {
+                                this.setupIntersectionObserver();
+                                this.setupSmoothScroll();
+                            }, 100); // Pequeño delay para asegurar que todo esté listo
+                        });
                     },
 
                     scrollToSection(sectionId, anchor, event) {
                         event.preventDefault();
 
                         const target = document.querySelector(anchor);
+
                         if (target) {
-                            const navHeight = document.querySelector('.vehicle-sub-nav').offsetHeight;
-                            const mainNavHeight = document.querySelector('header').offsetHeight;
-                            const offset = navHeight + mainNavHeight + 20;
-
-                            const targetPosition = target.offsetTop - offset;
-
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
+                            // Método simple y directo
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
                             });
+
+                            // Ajustar después del scroll para compensar navs fijos
+                            setTimeout(() => {
+                                const navHeight = document.querySelector('.vehicle-sub-nav')?.offsetHeight || 0;
+                                const mainNavHeight = document.querySelector('header')?.offsetHeight || 0;
+                                const adjustment = navHeight + mainNavHeight + 20;
+
+                                window.scrollBy({
+                                    top: -adjustment,
+                                    behavior: 'smooth'
+                                });
+                            }, 100);
 
                             this.activeSection = sectionId;
                         }
                     },
 
                     setupIntersectionObserver() {
+                        // Buscar de nuevo las secciones por si se renderizaron después
                         const sections = document.querySelectorAll('[data-section]');
+                        console.log('Secciones encontradas:', sections);
+
+                        if (sections.length === 0) {
+                            console.warn('No se encontraron secciones, reintentando en 500ms...');
+                            setTimeout(() => this.setupIntersectionObserver(), 500);
+                            return;
+                        }
 
                         const observer = new IntersectionObserver((entries) => {
                             entries.forEach(entry => {

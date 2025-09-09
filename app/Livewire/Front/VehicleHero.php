@@ -118,7 +118,7 @@ class VehicleHero extends Component
                 'title_size' => 'text-5xl lg:text-7xl',
                 'title_weight' => 'font-bold',
                 'title_spacing' => 'tracking-wider',
-                'subtitle' => 'SUV compacto de alta performance',
+                'subtitle' => 'SUV Práctico y dinámico',
                 'subtitle_color' => '#000',
                 'subtitle_size' => 'text-xl lg:text-2xl',
                 'subtitle_weight' => 'font-light',

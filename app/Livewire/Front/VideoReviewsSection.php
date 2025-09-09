@@ -93,7 +93,7 @@ class VideoReviewsSection extends Component
             'gx3-pro' => [
                 'header' => [
                     'title' => 'VIDEOS Y RESEÑAS',
-                    'subtitle' => 'Conoce todo sobre Geely Starray con los siguientes videos',
+                    'subtitle' => 'Conoce todo sobre Geely GX3 PRO con los siguientes videos',
                     'title_size' => 'text-3xl lg:text-4xl',
                     'subtitle_size' => 'text-lg',
                     'title_color' => 'text-white',
