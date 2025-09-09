@@ -682,7 +682,7 @@ class VehicleVersions extends Component
     {
         $configs = [
             'starray' => [
-                'pdf_path' => 'frontend/images/vehicles/starray/Ficha Tecnica Geely Starray.pdf',
+                'pdf_path' => 'frontend/images/vehicles/starray/Ficha Técnica Geely Starray V2.pdf',
                 'file_name' => 'Catálogo-Geely-Starray.pdf'
             ],
             'gx3-pro' => [
