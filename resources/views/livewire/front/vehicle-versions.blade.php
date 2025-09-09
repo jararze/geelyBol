@@ -268,7 +268,7 @@
                                     </div>
                                 @else
                                     {{-- Imagen exterior con efectos similares --}}
-                                    <div class="relative w-full h-[300px] md:h-[400px]  rounded-lg overflow-hidden group">
+                                    <div class="relative w-full h-[175px] md:h-[275px]  rounded-lg overflow-hidden group">
                                         <img src="{{ asset($this->getCurrentImage()) }}"
                                              alt="exterior"
                                              class="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-102 group-hover:brightness-105">

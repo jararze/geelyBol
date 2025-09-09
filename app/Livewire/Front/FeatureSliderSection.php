@@ -170,39 +170,39 @@ class FeatureSliderSection extends Component
                     'slides' => [
                         [
                             'id' => 'interno-1',
-                            'title' => 'Sistema de Sonido',
-                            'subtitle' => 'Infinity by Harman',
-                            'description' => '9 parlantes diseñados para envolverte en un sonido multidimensional y de alta calidad.',
+                            'title' => 'Espacios de Almacenamiento',
+                            'subtitle' => '',
+                            'description' => 'Con 32 espacios de almacenamiento inteligentemente ubicados en toda la cabina, Starray está diseñada para adaptarse a todas tus necesidades de espacio y confort.',
                             'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior10.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior10.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
                         ],
                         [
-                            'id' => 'interno-2',
-                            'title' => 'Techo Panorámico',
-                            'subtitle' => 'Más Grande de su Clase',
-                            'description' => 'El lujo es espacio y luminosidad. El techo panorámico de Starray llena la cabina de luz natural, creando una sensación de apertura sin límites.',
-                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior1.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior1.jpg',
+                            'id' => 'interno-2a',
+                            'title' => 'Pantalla 13.2” HD',
+                            'subtitle' => '',
+                            'description' => 'Experimenta la pantalla de Starray con una visualización nítida y una interfaz intuitiva diseñada para una interacción fluida y sin distracciones.',
+                            'main_image' => 'frontend/images/vehicles/starray/interior/Starray Pantalla.png',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Starray Pantalla.png',
                             'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
                         ],
                         [
-                            'id' => 'interno-3',
-                            'title' => 'Espacios de Almacenamiento',
+                            'id' => 'interno-10',
+                            'title' => 'Diseño y Comodidad',
                             'subtitle' => '',
-                            'description' => 'Con 32 espacios de almacenamiento inteligentemente ubicados en toda la cabina, Starray está diseñada para adaptarse a todas tus necesidades de espacio y confort.',
-                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior2.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior2.jpg',
+                            'description' => 'Relájate en asientos de ecocuero de alta calidad, que combinan una estética moderna con un soporte superior, ajuste eléctrico y función de memoria.',
+                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior8.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior8.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'
                         ],
                         [
-                            'id' => 'interno-4',
-                            'title' => 'Diseño y Comodidad',
-                            'subtitle' => '',
-                            'description' => 'Relájate en asientos de ecocuero de alta calidad, que combinan una estética moderna con un soporte superior, ajuste eléctrico y función de memoria. ',
-                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior9.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior9.jpg',
-                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                            'id' => 'interno-3',
+                            'title' => 'Techo Panorámico',
+                            'subtitle' => 'Más Grande de su Clase',
+                            'description' => 'El lujo es espacio y luminosidad. El techo panorámico de Starray llena la cabina de luz natural, creando una sensaciòn de apertura sin límites.',
+                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior2.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior2.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'
                         ],
                         [
                             'id' => 'interno-5',
@@ -214,50 +214,65 @@ class FeatureSliderSection extends Component
                             'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
                         ],
                         [
-                            'id' => 'interno-6',
-                            'title' => '',
-                            'subtitle' => '',
-                            'description' => '',
-                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior4.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior4.jpg',
-                            'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'
-                        ],
-                        [
                             'id' => 'interno-7',
-                            'title' => '',
-                            'subtitle' => '',
-                            'description' => '',
+                            'title' => 'Sistema de Sonido',
+                            'subtitle' => 'Infinity by Harman',
+                            'description' => '9 parlantes diseñados para envolverte en un sonido multidimensional y de alta calidad.',
                             'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior5.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior5.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'
                         ],
                         [
-                            'id' => 'interno-8',
-                            'title' => '',
+                            'id' => 'interno-6',
+                            'title' => 'Cargador Inalámbrico',
                             'subtitle' => '',
-                            'description' => '',
-                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior6.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior6.jpg',
-                            'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
+                            'description' => 'Mantén tu celular con energía gracias al cargador inalámbrico de 15 watts.',
+                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior4.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior4.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'
                         ],
+                        [
+                            'id' => 'interno-4',
+                            'title' => 'HUD Holográfico de 25.2”',
+                            'subtitle' => '',
+                            'description' => 'El copiloto que te permite mantener la mirada en el camino, proyectando información vital como la velocidad y las indicaciones de navegación directamente en tu campo de visión. ',
+                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior9.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior9.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+//                        [
+//                            'id' => 'interno-2',
+//                            'title' => 'Techo Panorámico',
+//                            'subtitle' => 'Más Grande de su Clase',
+//                            'description' => 'El lujo es espacio y luminosidad. El techo panorámico de Starray llena la cabina de luz natural, creando una sensación de apertura sin límites.',
+//                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior1.jpg',
+//                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior1.jpg',
+//                            'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
+//                        ],
+
+
+
+
+
+//                        [
+//                            'id' => 'interno-8',
+//                            'title' => '',
+//                            'subtitle' => '',
+//                            'description' => '',
+//                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior6.jpg',
+//                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior6.jpg',
+//                            'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
+//                        ],
                         [
                             'id' => 'interno-9',
-                            'title' => '',
+                            'title' => 'Visores de Sol con Lentes Integradas',
                             'subtitle' => '',
-                            'description' => '',
-                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior7.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior7.jpg',
+                            'description' => 'El lujo está en los pequeños detalles: los visores de sol de Starray, únicos en el mundo, reducen el resplandor y mejoran la visibilidad en los días soleados.',
+                            'main_image' => 'frontend/images/vehicles/starray/interior/ViseraStarray-ezgif.com-webp-to-jpg-converter.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/ViseraStarray-ezgif.com-webp-to-jpg-converter.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'
                         ],
-                        [
-                            'id' => 'interno-10',
-                            'title' => '',
-                            'subtitle' => '',
-                            'description' => '',
-                            'main_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior8.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/starray/interior/Geely_Bolivia_Starray_Interior8.jpg',
-                            'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'
-                        ]
+
                     ]
                 ],
                 'tecnologia' => [
@@ -302,9 +317,9 @@ class FeatureSliderSection extends Component
                         ],
                         [
                             'id' => 'tecnologia-5',
-                            'title' => '',
-                            'subtitle' => '',
-                            'description' => '',
+                            'title' => 'Sistema de Sonido',
+                            'subtitle' => 'Infinity by Harman',
+                            'description' => '9 parlantes diseñados para envolverte en un sonido multidimensional y de alta calidad.',
                             'main_image' => 'frontend/images/vehicles/starray/tecnologia/Geely_Bolivia_Starray_Tecnologia5.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/starray/tecnologia/Geely_Bolivia_Starray_Tecnologia5.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
