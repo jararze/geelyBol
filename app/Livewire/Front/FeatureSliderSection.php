@@ -424,45 +424,45 @@ class FeatureSliderSection extends Component
                     'slides' => [
                         [
                             'id' => 'motor-turbo',
-                            'title' => '1.5 Motor',
-                            'subtitle' => '103 HP Potencia',
-                            'description' => 'La SUV que necesitas para la ciudad y la vida urbana. ',
+                            'title' => '',
+                            'subtitle' => '',
+                            'description' => '',
                             'main_image' => 'frontend/images/vehicles/gx3pro/potenteydinamico/GX3 Pro Aro.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/gx3pro/potenteydinamico/GX3 Pro Aro.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
                         ],
                         [
                             'id' => 'motor-turbo2',
-                            'title' => '1.5 Motor',
-                            'subtitle' => '103 HP Potencia',
-                            'description' => 'La SUV que necesitas para la ciudad y la vida urbana. ',
+                            'title' => '',
+                            'subtitle' => '',
+                            'description' => '',
                             'main_image' => 'frontend/images/vehicles/gx3pro/potenteydinamico/Geely_Bolivia_GX3_PRO_2.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/gx3pro/potenteydinamico/Geely_Bolivia_GX3_PRO_2.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
                         ],
                         [
                             'id' => 'motor-turbo3',
-                            'title' => '1.5 Motor',
-                            'subtitle' => '103 HP Potencia',
-                            'description' => 'La SUV que necesitas para la ciudad y la vida urbana. ',
+                            'title' => '',
+                            'subtitle' => '',
+                            'description' => '',
                             'main_image' => 'frontend/images/vehicles/gx3pro/potenteydinamico/Geely_Bolivia_GX3_PRO_3.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/gx3pro/potenteydinamico/Geely_Bolivia_GX3_PRO_3.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
                         ],
                         [
                             'id' => 'motor-turbo4',
-                            'title' => '1.5 Motor',
-                            'subtitle' => '103 HP Potencia',
-                            'description' => 'La SUV que necesitas para la ciudad y la vida urbana. ',
+                            'title' => '',
+                            'subtitle' => '',
+                            'description' => '',
                             'main_image' => 'frontend/images/vehicles/gx3pro/potenteydinamico/Geely_Bolivia_GX3_PRO_4.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/gx3pro/potenteydinamico/Geely_Bolivia_GX3_PRO_4.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
                         ],
                         [
                             'id' => 'motor-turbo5',
-                            'title' => '1.5 Motor',
-                            'subtitle' => '103 HP Potencia',
-                            'description' => 'La SUV que necesitas para la ciudad y la vida urbana. ',
+                            'title' => '',
+                            'subtitle' => '',
+                            'description' => '',
                             'main_image' => 'frontend/images/vehicles/gx3pro/potenteydinamico/Geely_Bolivia_GX3_PRO_11.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/gx3pro/potenteydinamico/Geely_Bolivia_GX3_PRO_11.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
@@ -477,7 +477,7 @@ class FeatureSliderSection extends Component
                             'id' => 'interno-1',
                             'title' => '',
                             'subtitle' => '',
-                            'description' => 'Pantalla de 8” con CarLink, asientos de ecocuero y techo solar',
+                            'description' => '',
                             'main_image' => 'frontend/images/vehicles/gx3pro/interior/Geely_Bolivia_GX3_PRO_Interior_1.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/gx3pro/interior/Geely_Bolivia_GX3_PRO_Interior_1.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
@@ -486,7 +486,7 @@ class FeatureSliderSection extends Component
                             'id' => 'interno-1',
                             'title' => '',
                             'subtitle' => '',
-                            'description' => 'Pantalla de 8” con CarLink, asientos de ecocuero y techo solar',
+                            'description' => '',
                             'main_image' => 'frontend/images/vehicles/gx3pro/interior/Geely_Bolivia_GX3_PRO_Interior_2.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/gx3pro/interior/Geely_Bolivia_GX3_PRO_Interior_2.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
@@ -495,7 +495,7 @@ class FeatureSliderSection extends Component
                             'id' => 'interno-1',
                             'title' => '',
                             'subtitle' => '',
-                            'description' => 'Pantalla de 8” con CarLink, asientos de ecocuero y techo solar',
+                            'description' => '',
                             'main_image' => 'frontend/images/vehicles/gx3pro/interior/Geely_Bolivia_GX3_PRO_Interior_9.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/gx3pro/interior/Geely_Bolivia_GX3_PRO_Interior_9.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
@@ -504,7 +504,7 @@ class FeatureSliderSection extends Component
                             'id' => 'interno-1',
                             'title' => '',
                             'subtitle' => '',
-                            'description' => 'Pantalla de 8” con CarLink, asientos de ecocuero y techo solar',
+                            'description' => '',
                             'main_image' => 'frontend/images/vehicles/gx3pro/interior/Geely_Bolivia_GX3_PRO_Interior_10.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/gx3pro/interior/Geely_Bolivia_GX3_PRO_Interior_10.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
@@ -513,7 +513,7 @@ class FeatureSliderSection extends Component
                             'id' => 'interno-1',
                             'title' => '',
                             'subtitle' => '',
-                            'description' => 'Pantalla de 8” con CarLink, asientos de ecocuero y techo solar',
+                            'description' => '',
                             'main_image' => 'frontend/images/vehicles/gx3pro/interior/Geely_Bolivia_GX3_PRO_Interior_12.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/gx3pro/interior/Geely_Bolivia_GX3_PRO_Interior_12.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
@@ -545,7 +545,7 @@ class FeatureSliderSection extends Component
                             'id' => 'seguridad-1',
                             'title' => '',
                             'subtitle' => '',
-                            'description' => 'Carrocería diseñada para absorber y disipar la energía de un impacto, protegiendo la integridad de los pasajeros.',
+                            'description' => '',
                             'main_image' => 'frontend/images/vehicles/gx3pro/seguridad/Geely_Bolivia_GX3_PRO_5.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/gx3pro/seguridad/Geely_Bolivia_GX3_PRO_5.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
@@ -554,7 +554,7 @@ class FeatureSliderSection extends Component
                             'id' => 'seguridad-1',
                             'title' => '',
                             'subtitle' => '',
-                            'description' => 'Carrocería diseñada para absorber y disipar la energía de un impacto, protegiendo la integridad de los pasajeros.',
+                            'description' => '',
                             'main_image' => 'frontend/images/vehicles/gx3pro/seguridad/Geely_Bolivia_GX3_PRO_8.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/gx3pro/seguridad/Geely_Bolivia_GX3_PRO_8.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
