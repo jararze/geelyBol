@@ -290,18 +290,18 @@ class FeatureSliderSection extends Component
                         ],
                         [
                             'id' => 'tecnologia-2',
-                            'title' => 'HUD Holográfico de 25.2',
+                            'title' => 'Pantalla 13.2” HDHUD Holográfico de 25.2',
                             'subtitle' => '',
-                            'description' => 'El copiloto que te permite mantener la mirada en el camino, proyectando información vital como la velocidad y las indicaciones de navegación directamente en tu campo de visión. ',
+                            'description' => 'Experimenta la pantalla de Starray con una visualización nítida y una interfaz intuitiva diseñada para una interacción fluida y sin distracciones.',
                             'main_image' => 'frontend/images/vehicles/starray/tecnologia/Geely_Bolivia_Starray_Tecnologia2.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/starray/tecnologia/Geely_Bolivia_Starray_Tecnologia2.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-purple-600/80 to-transparent'
                         ],
                         [
                             'id' => 'tecnologia-3',
-                            'title' => 'Visores de Sol con Lentes Integradas',
+                            'title' => 'Pantalla 13.2” HD',
                             'subtitle' => '',
-                            'description' => 'El lujo está en los pequeños detalles: los visores de sol de Starray, únicos en el mundo, reducen el resplandor y mejora la visibilidad en días soleados.',
+                            'description' => 'El copiloto que te permite mantener la mirada en el camino, proyectando información vital como la velocidad y las indicaciones de navegación directamente en tu campo de visión. ',
                             'main_image' => 'frontend/images/vehicles/starray/tecnologia/Geely_Bolivia_Starray_Tecnologia3.jpg',
                             'thumbnail_image' => 'frontend/images/vehicles/starray/tecnologia/Geely_Bolivia_Starray_Tecnologia3.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-green-600/80 to-transparent'
