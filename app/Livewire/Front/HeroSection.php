@@ -30,6 +30,93 @@ class HeroSection extends Component
 
         'slides' => [
             [
+                'id' => 4,
+                'media_type' => 'image', // image, video
+                'media_src' => 'frontend/images/Geely_Bolivia_Autos_Chinos_Banner_Web_Preventa.jpg',
+                'media_src_mobile' => 'frontend/images/Geely_Bolivia_Autos_Chinos_Banner_Mobile_Preventa.jpg',
+                'media_fit' => 'contain', // cover, contain, fill, scale-down
+                'media_position' => 'center', // center, top, bottom, left, right
+                'media_background' => 'bg-black', // Color de fondo si la imagen no cubre todo
+                'object_position_mobile' => '20% 40%', // En móvil enfoca el auto (parte inferior)
+                'object_position_desktop' => '50% 50%', // En desktop enfoca el centro
+                'overlay_opacity' => 0.4,
+                'only_image' => true,
+                'buttons' => false,
+                'show_title' => false,    // Ocultar título
+                'show_subtitle' => false, // Ocultar subtítulo
+                'show_description' => false, // Ocultar descripción
+
+                'title' => [
+                    'text' => 'BIENVENIDO A GEELY',
+                    'highlight_text' => 'BIENVENIDO A GEELY',
+                    'gradient_from' => '#f97316',
+                    'gradient_to' => '#fb923c',
+                    'font_size' => 'text-4xl md:text-6xl',
+                    'font_weight' => 'font-bold',
+                    'text_color' => 'text-white',
+                    'position' => 'top-left', // top-left, top-middle, top-right, middle-left, middle-middle, middle-right, bottom-left, bottom-middle, bottom-right
+                    'margin_top' => 'mt-20', // Margen superior
+                    'margin_bottom' => 'mb-6', // Margen inferior
+                    'line_height' => 'leading-tight',
+                    'letter_spacing' => 'tracking-normal',
+                    'line_wrap' => 'nowrap', // nowrap, wrap, break-words
+                    'max_width' => 'max-w-none', // max-w-none para una línea, max-w-2xl para wrap
+                ],
+
+                'subtitle' => [
+                    'text' => 'UN MUNDO DE TECNOLOGÍA, SEGURIDAD Y DISEÑO.',
+                    'font_size' => 'text-xl md:text-2xl',
+                    'font_weight' => 'font-light',
+                    'text_color' => 'text-white/90',
+                    'position' => 'top-left', // Independiente del título
+                    'margin_top' => 'mt-0', // Margen superior
+                    'margin_bottom' => 'mb-6', // Margen inferior
+                    'line_wrap' => 'nowrap', // nowrap, wrap, break-words
+                    'max_width' => 'max-w-none', // max-w-none para una línea, max-w-2xl para wrap
+                ],
+
+                'description' => [
+                    'text' => 'La marca que revolucionó Asia y Europa, llega a Bolivia.',
+                    'highlight_text' => 'llega a Bolivia',
+                    'highlight_style' => 'font-semibold text-white',
+                    'font_size' => 'text-lg',
+                    'font_weight' => 'font-normal',
+                    'text_color' => 'text-white/80',
+                    'position' => 'top-left', // Independiente
+                    'margin_top' => 'mt-0', // Margen superior
+                    'margin_bottom' => 'mb-[600px]', // Margen inferior
+                    'line_wrap' => 'wrap',
+                    'max_width' => 'max-w-xl',
+                ],
+
+                'primary_button' => [
+                    'text' => 'Descubre más',
+                    'show' => true,
+                    'style' => 'solid', // solid, outline, ghost
+                    'bg_color' => 'bg-black',
+                    'text_color' => 'text-white',
+                    'hover_bg' => 'hover:bg-black/90',
+                    'hover_scale' => 'hover:scale-105',
+                    'size' => 'px-8 py-4 text-lg',
+                    'font_weight' => 'font-semibold',
+                    'border_radius' => 'rounded-lg',
+                    'icon' => 'arrow-right',
+                    'icon_position' => 'right', // left, right, none
+                    'action' => 'scroll-to-models',
+                    'line_wrap' => 'wrap',
+                    'max_width' => 'max-w-2xl',
+                ],
+
+
+                'button_container' => [
+                    'layout' => 'flex-col sm:flex-row',
+                    'gap' => 'gap-4',
+                    'position' => 'bottom-left', // Posición del contenedor de botones
+                    'margin_top' => 'mt-auto', // Margen superior
+                    'margin_bottom' => 'mb-6', // Margen inferior
+                ]
+            ],
+            [
                 'id' => 1,
                 'media_type' => 'image', // image, video
                 'media_src' => 'frontend/images/Banner 1.jpg',
@@ -263,93 +350,7 @@ class HeroSection extends Component
                     'margin_bottom' => 'mb-6', // Margen inferior
                 ]
             ],
-            [
-                'id' => 4,
-                'media_type' => 'image', // image, video
-                'media_src' => 'frontend/images/Geely_Bolivia_Autos_Chinos_Banner_Web_Preventa.jpg',
-                'media_src_mobile' => 'frontend/images/Geely_Bolivia_Autos_Chinos_Banner_Mobile_Preventa.jpg',
-                'media_fit' => 'contain', // cover, contain, fill, scale-down
-                'media_position' => 'center', // center, top, bottom, left, right
-                'media_background' => 'bg-black', // Color de fondo si la imagen no cubre todo
-                'object_position_mobile' => '20% 40%', // En móvil enfoca el auto (parte inferior)
-                'object_position_desktop' => '50% 50%', // En desktop enfoca el centro
-                'overlay_opacity' => 0.4,
-                'only_image' => true,
-                'buttons' => false,
-                'show_title' => false,    // Ocultar título
-                'show_subtitle' => false, // Ocultar subtítulo
-                'show_description' => false, // Ocultar descripción
 
-                'title' => [
-                    'text' => 'BIENVENIDO A GEELY',
-                    'highlight_text' => 'BIENVENIDO A GEELY',
-                    'gradient_from' => '#f97316',
-                    'gradient_to' => '#fb923c',
-                    'font_size' => 'text-4xl md:text-6xl',
-                    'font_weight' => 'font-bold',
-                    'text_color' => 'text-white',
-                    'position' => 'top-left', // top-left, top-middle, top-right, middle-left, middle-middle, middle-right, bottom-left, bottom-middle, bottom-right
-                    'margin_top' => 'mt-20', // Margen superior
-                    'margin_bottom' => 'mb-6', // Margen inferior
-                    'line_height' => 'leading-tight',
-                    'letter_spacing' => 'tracking-normal',
-                    'line_wrap' => 'nowrap', // nowrap, wrap, break-words
-                    'max_width' => 'max-w-none', // max-w-none para una línea, max-w-2xl para wrap
-                ],
-
-                'subtitle' => [
-                    'text' => 'UN MUNDO DE TECNOLOGÍA, SEGURIDAD Y DISEÑO.',
-                    'font_size' => 'text-xl md:text-2xl',
-                    'font_weight' => 'font-light',
-                    'text_color' => 'text-white/90',
-                    'position' => 'top-left', // Independiente del título
-                    'margin_top' => 'mt-0', // Margen superior
-                    'margin_bottom' => 'mb-6', // Margen inferior
-                    'line_wrap' => 'nowrap', // nowrap, wrap, break-words
-                    'max_width' => 'max-w-none', // max-w-none para una línea, max-w-2xl para wrap
-                ],
-
-                'description' => [
-                    'text' => 'La marca que revolucionó Asia y Europa, llega a Bolivia.',
-                    'highlight_text' => 'llega a Bolivia',
-                    'highlight_style' => 'font-semibold text-white',
-                    'font_size' => 'text-lg',
-                    'font_weight' => 'font-normal',
-                    'text_color' => 'text-white/80',
-                    'position' => 'top-left', // Independiente
-                    'margin_top' => 'mt-0', // Margen superior
-                    'margin_bottom' => 'mb-[600px]', // Margen inferior
-                    'line_wrap' => 'wrap',
-                    'max_width' => 'max-w-xl',
-                ],
-
-                'primary_button' => [
-                    'text' => 'Descubre más',
-                    'show' => true,
-                    'style' => 'solid', // solid, outline, ghost
-                    'bg_color' => 'bg-black',
-                    'text_color' => 'text-white',
-                    'hover_bg' => 'hover:bg-black/90',
-                    'hover_scale' => 'hover:scale-105',
-                    'size' => 'px-8 py-4 text-lg',
-                    'font_weight' => 'font-semibold',
-                    'border_radius' => 'rounded-lg',
-                    'icon' => 'arrow-right',
-                    'icon_position' => 'right', // left, right, none
-                    'action' => 'scroll-to-models',
-                    'line_wrap' => 'wrap',
-                    'max_width' => 'max-w-2xl',
-                ],
-
-
-                'button_container' => [
-                    'layout' => 'flex-col sm:flex-row',
-                    'gap' => 'gap-4',
-                    'position' => 'bottom-left', // Posición del contenedor de botones
-                    'margin_top' => 'mt-auto', // Margen superior
-                    'margin_bottom' => 'mb-6', // Margen inferior
-                ]
-            ],
         ]
     ];
 
