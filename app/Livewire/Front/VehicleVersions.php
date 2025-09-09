@@ -196,9 +196,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 53490,
+                            'list_price' => 53990,
                             'discount' => 1000,
-                            'final_price' => 52490,
+                            'final_price' => 52990,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -228,6 +228,11 @@ class VehicleVersions extends Component
                             ]
                         ],
                         'colors' => [
+                            'blue' => [
+                                'name' => 'Azul',
+                                'hex' => '#0000ff',
+                                'image' => 'frontend/images/vehicles/starray/Starray Blue.png'
+                            ],
                             'silver' => [
                                 'name' => 'Plata',
                                 'hex' => '#C0C0C0',
@@ -260,9 +265,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 60490,
+                            'list_price' => 60990,
                             'discount' => 1000,
-                            'final_price' => 59490,
+                            'final_price' => 59990,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -292,6 +297,11 @@ class VehicleVersions extends Component
                             ]
                         ],
                         'colors' => [
+                            'blue' => [
+                                'name' => 'Azul',
+                                'hex' => '#0000ff',
+                                'image' => 'frontend/images/vehicles/starray/Starray Blue.png'
+                            ],
                             'silver' => [
                                 'name' => 'Plata',
                                 'hex' => '#C0C0C0',
@@ -335,9 +345,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 26690,
-                            'discount' => 300,
-                            'final_price' => 26390,
+                            'list_price' => 59990,
+                            'discount' => 500,
+                            'final_price' => 59490,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -409,9 +419,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 27690,
-                            'discount' => 300,
-                            'final_price' => 27390,
+                            'list_price' => 26990,
+                            'discount' => 500,
+                            'final_price' => 26490,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -483,9 +493,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 30490,
+                            'list_price' => 29990,
                             'discount' => 500,
-                            'final_price' => 29990,
+                            'final_price' => 29490,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [

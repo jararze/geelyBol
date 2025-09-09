@@ -15,8 +15,8 @@ class TestDriveSection extends Component
         'cta_text' => 'Agenda tu Test Drive ahora.',
         'button_text' => 'Agenda ahora',
         'button_url' => '/forms',
-        'background_image' => 'frontend/images/7080348 1.png',
-        'background_image_mobile' => 'frontend/images/Geely_Test_Drive_Mobile.jpg',
+        'background_image' => 'frontend/images/vehicles/starray/7080348 1.png',
+        'background_image_mobile' => 'frontend/images/vehicles/starray/Geely_Test_Drive_Mobile.jpg',
         'text_color' => '#ffffff',
         'show_image' => true,
         'show_features' => false,
@@ -52,8 +52,38 @@ class TestDriveSection extends Component
 
     public function mount($layout = 'hero', $sectionData = [])
     {
-        $this->layout = $layout;
-        $this->sectionData = array_merge($this->defaultSectionData, $sectionData);
+        $currentRoute = request()->route();
+        $vehicleSlug = null;
+
+        if ($currentRoute && $currentRoute->hasParameter('slug')) {
+            $vehicleSlug = $currentRoute->parameter('slug');
+        }
+
+        // Obtener configuración específica del vehículo
+        $vehicleConfig = $this->getVehicleConfig($vehicleSlug);
+
+        // Merge: default -> vehicle -> custom
+        $this->sectionData = array_merge($this->defaultSectionData, $vehicleConfig, $sectionData);
+    }
+    private function getVehicleConfig($slug)
+    {
+        $configs = [
+            'starray' => [
+                'background_image' => 'frontend/images/vehicles/starray/7080348 1.png',
+                'background_image_mobile' => 'frontend/images/vehicles/starray/Geely_Test_Drive_Mobile.jpg',
+                'title' => 'TEST DRIVE STARRAY',
+                'description' => 'Descubre por ti mismo la potencia y tecnología del Geely Starray.',
+            ],
+
+            'gx3-pro' => [
+                'background_image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_Test_Drive_Desktop.jpg',
+                'background_image_mobile' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Test_Drive_Mobile.jpg',
+                'title' => 'TEST DRIVE GX3 PRO',
+                'description' => 'Experimenta la eficiencia y versatilidad del Geely GX3 Pro.',
+            ]
+        ];
+
+        return $configs[$slug] ?? [];
     }
     public function render()
     {
