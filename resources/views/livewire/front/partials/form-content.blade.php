@@ -156,7 +156,7 @@
 
         {{-- Botón enviar --}}
         <button type="submit"
-                class="bg-gray-400 hover:bg-gray-500 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200 whitespace-nowrap">
+                class="bg-[#194BFF] hover:bg-gray-500 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200 whitespace-nowrap">
             Enviar
         </button>
     </div>
