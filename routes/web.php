@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Front\FormDetail;
+use App\Livewire\Front\Fortune;
 use App\Livewire\Front\VehicleDetail;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
@@ -10,7 +11,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/vehiculos/{category}/{slug}', VehicleDetail::class)->name('vehicle.detail');
-
+Route::get('/fortuna', Fortune::class)->name('fortune');
 
 Route::get('/forms', FormDetail::class)->name('forms.base');
 Route::get('/forms/{category}', FormDetail::class)->name('forms.category');
