@@ -83,10 +83,17 @@ class TestDriveSection extends Component
             ],
 
             'cityray' => [
-                'background_image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_GX3_Test_Drive_Desktop.jpg',
-                'background_image_mobile' => 'frontend/images/vehicles/cityray/Geely_Bolivia_GX3_PRO_Test_Drive_Mobile.jpg',
-                'title' => 'TEST DRIVE GX3 PRO',
-                'description' => 'Experimenta la eficiencia y versatilidad del Geely GX3 Pro.',
+                'background_image' => 'frontend/images/vehicles/cityray/Geely_Test_Drive_Desktop_Cityray.jpg',
+                'background_image_mobile' => 'frontend/images/vehicles/cityray/Geely_Test_Drive_Mobile_Cityray.jpg',
+                'title' => 'TEST DRIVE CITYRAY',
+                'description' => 'Experimenta la eficiencia y versatilidad del Geely Cityray.',
+            ],
+
+            'coolray' => [
+                'background_image' => 'frontend/images/vehicles/coolray/Geely_Test_Drive_Desktop_Coolray.jpg',
+                'background_image_mobile' => 'frontend/images/vehicles/coolray/Geely_Test_Drive_Mobile_Coolray.jpg',
+                'title' => 'TEST DRIVE COOLRAY',
+                'description' => 'Experimenta la eficiencia y versatilidad del Geely Coolray.',
             ],
         ];
 
