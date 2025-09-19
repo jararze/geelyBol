@@ -197,8 +197,8 @@ class VehicleVersions extends Component
                         'pricing' => [
                             'year' => 2026,
                             'list_price' => 53990,
-                            'discount' => 1000,
-                            'final_price' => 52990,
+                            'discount' => 2000,
+                            'final_price' => 51990,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -266,8 +266,8 @@ class VehicleVersions extends Component
                         'pricing' => [
                             'year' => 2026,
                             'list_price' => 60990,
-                            'discount' => 1000,
-                            'final_price' => 59990,
+                            'discount' => 2000,
+                            'final_price' => 58990,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -346,8 +346,8 @@ class VehicleVersions extends Component
                         'pricing' => [
                             'year' => 2026,
                             'list_price' => 25990,
-                            'discount' => 500,
-                            'final_price' => 25490,
+                            'discount' => 100,
+                            'final_price' => 24990,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -420,8 +420,8 @@ class VehicleVersions extends Component
                         'pricing' => [
                             'year' => 2026,
                             'list_price' => 26990,
-                            'discount' => 500,
-                            'final_price' => 26490,
+                            'discount' => 100,
+                            'final_price' => 25990,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -494,8 +494,8 @@ class VehicleVersions extends Component
                         'pricing' => [
                             'year' => 2026,
                             'list_price' => 29990,
-                            'discount' => 500,
-                            'final_price' => 29490,
+                            'discount' => 100,
+                            'final_price' => 28990,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -558,7 +558,374 @@ class VehicleVersions extends Component
                         ]
                     ],
                 ],
-            ]
+            ],
+
+            'cityray' => [
+                'header' => [
+                    'title' => 'VERSIONES Y PRECIOS',
+                    'subtitle' => 'Elige tu versión de Cityray',
+                    'title_size' => 'text-3xl lg:text-4xl',
+                    'subtitle_size' => 'text-lg'
+                ],
+                'versions' => [
+                    'Platinum' => [
+                        'name' => 'Platinum',
+                        'specs' => [
+                            'Cilindrada:' => '1499 cc 174/5500 hp/rpm',
+                            'Transmisión:' => '7 velocidades doble embrague',
+                            'Tracción:' => 'FWD Delantera ',
+                            'Plataforma:' => 'Economy/Sport/Comfort/Intelligent'
+                        ],
+                        'pricing' => [
+                            'year' => 2026,
+                            'list_price' => 47990,
+                            'discount' => 2000,
+                            'final_price' => 45990,
+                            'currency' => '$us.'
+                        ],
+                        'tab_content' => [
+                            'motor' => [
+                                'tipo_motor' => '4 cilindros en línea',
+                                'potencia' => '174/5500 hp/rpm',
+                                'torque' => '290/2000-3500 Nm/rpm',
+                                'traccion' => 'Gasolina',
+                                'consumo_ciudad' => 'FWD Delantera',
+                                'consumo_carretera' => 'Euro VI B'
+                            ],
+                            'equipamiento' => [
+                                'pantalla' => 'Panel de instrumentos digital LCD de 10.2"',
+                                'asientos' => 'Cuero sintético',
+                                'climatizador' => 'Asientos delanteros calefactados',
+                                'camara' => '360° que te muestra todo lo que hay alrededor del auto',
+                                'sensores' => 'Sensores de estacionamiento traseros',
+                                'conectividad' => 'Pantalla táctil HD de 13.2"'
+                            ],
+                            'seguridad' => [
+                                'airbags' => 'Frontales, laterales y de cortina',
+                                'abs' => 'Sistema de frenos ABS con EBD y BA',
+                                'control_estabilidad' => 'Sistema electrónico de estabilidad (ESP®)',
+                                'asistente_frenado' => '-',
+                                'control_traccion' => 'FWD Delantera',
+                                'cinturones' => 'Delanteros con limitador de fuerza y traseros sin limitador de fuerza'
+                            ]
+                        ],
+                        'colors' => [
+                            'azul' => [
+                                'name' => 'Azul',
+                                'hex' => '#004a79',
+                                'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray Azul.png'
+                            ],
+                            'blanco' => [
+                                'name' => 'Blanco',
+                                'hex' => '#ffffff',
+                                'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray Blanca.png'
+                            ],
+                            'gris' => [
+                                'name' => 'Gris',
+                                'hex' => '#64676c',
+                                'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray Gris.png'
+                            ],
+                            'plata' => [
+                                'name' => 'Plata',
+                                'hex' => '#7f776d',
+                                'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray Plata.png'
+                            ]
+                        ],
+                        'images' => [
+                            'interior' => [
+                                'default' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Interior.jpg'
+                            ]
+                        ]
+                    ],
+                    'Signature' => [
+                        'name' => 'Signature',
+                        'specs' => [
+                            'Cilindrada:' => '1499 cc 174/5500 hp/rpm',
+                            'Transmisión:' => '7 velocidades doble embrague',
+                            'Tracción:' => 'FWD Delantera',
+                            'Plataforma:' => 'Economy/Sport/Comfort/Intelligent'
+                        ],
+                        'pricing' => [
+                            'year' => 2026,
+                            'list_price' => 44990,
+                            'discount' => 2000,
+                            'final_price' => 42990,
+                            'currency' => '$us.'
+                        ],
+                        'tab_content' => [
+                            'motor' => [
+                                'tipo_motor' => '4 cilindros en línea',
+                                'potencia' => '174/5500 hp/rpm',
+                                'torque' => '290/2000-3500 Nm/rpm',
+                                'traccion' => 'Gasolina',
+                                'consumo_ciudad' => 'FWD Delantera',
+                                'consumo_carretera' => 'Euro VI B'
+                            ],
+                            'equipamiento' => [
+                                'pantalla' => 'Panel de instrumentos digital LCD de 10.2"',
+                                'asientos' => 'Cuero sintético',
+                                'climatizador' => 'Asientos delanteros calefactados',
+                                'camara' => '360° que te muestra todo lo que hay alrededor del auto',
+                                'sensores' => 'Sensores de estacionamiento traseros',
+                                'conectividad' => 'Pantalla táctil HD de 13.2"'
+                            ],
+                            'seguridad' => [
+                                'airbags' => 'Frontales, laterales y de cortina',
+                                'abs' => 'Sistema de frenos ABS con EBD y BA',
+                                'control_estabilidad' => 'Sistema electrónico de estabilidad (ESP®)',
+                                'asistente_frenado' => '-',
+                                'control_traccion' => 'FWD Delantera',
+                                'cinturones' => 'Delanteros con limitador de fuerza y traseros sin limitador de fuerza'
+                            ]
+                        ],
+                        'colors' => [
+                            'azul' => [
+                                'name' => 'Azul',
+                                'hex' => '#004a79',
+                                'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray Azul.png'
+                            ],
+                            'blanco' => [
+                                'name' => 'Blanco',
+                                'hex' => '#ffffff',
+                                'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray Blanca.png'
+                            ],
+                            'gris' => [
+                                'name' => 'Gris',
+                                'hex' => '#64676c',
+                                'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray Gris.png'
+                            ],
+                            'plata' => [
+                                'name' => 'Plata',
+                                'hex' => '#7f776d',
+                                'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray Plata.png'
+                            ]
+                        ],
+                        'images' => [
+                            'interior' => [
+                                'default' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Interior.jpg'
+                            ]
+                        ]
+                    ],
+                    'Comfort' => [
+                        'name' => 'Comfort',
+                        'specs' => [
+                            'Cilindrada:' => '1499 cc 174/5500 hp/rpm',
+                            'Transmisión:' => '7 velocidades doble embrague',
+                            'Tracción:' => 'FWD Delantera',
+                            'Plataforma:' => 'Economy/Sport/Comfort/Intelligent'
+                        ],
+                        'pricing' => [
+                            'year' => 2026,
+                            'list_price' => 41990,
+                            'discount' => 2000,
+                            'final_price' => 39990,
+                            'currency' => '$us.'
+                        ],
+                        'tab_content' => [
+                            'motor' => [
+                                'tipo_motor' => '4 cilindros en línea',
+                                'potencia' => '174/5500 hp/rpm',
+                                'torque' => '290/2000-3500 Nm/rpm',
+                                'traccion' => 'Gasolina',
+                                'consumo_ciudad' => 'FWD Delantera',
+                                'consumo_carretera' => 'Euro VI B'
+                            ],
+                            'equipamiento' => [
+                                'pantalla' => 'Panel de instrumentos digital LCD de 10.2"',
+                                'asientos' => 'Cuero sintético',
+                                'climatizador' => 'Automático',
+                                'camara' => 'De reversa',
+                                'sensores' => '-',
+                                'conectividad' => 'Pantalla táctil HD de 13.2"'
+                            ],
+                            'seguridad' => [
+                                'airbags' => 'Frontales, laterales y de cortina',
+                                'abs' => 'Sistema de frenos ABS con EBD y BA',
+                                'control_estabilidad' => 'Sistema electrónico de estabilidad (ESP®)',
+                                'asistente_frenado' => '-',
+                                'control_traccion' => 'FWD Delantera',
+                                'cinturones' => 'Delanteros con limitador de fuerza y traseros sin limitador de fuerza'
+                            ]
+                        ],
+                        'colors' => [
+                            'azul' => [
+                                'name' => 'Azul',
+                                'hex' => '#004a79',
+                                'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray Azul.png'
+                            ],
+                            'blanco' => [
+                                'name' => 'Blanco',
+                                'hex' => '#ffffff',
+                                'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray Blanca.png'
+                            ],
+                            'gris' => [
+                                'name' => 'Gris',
+                                'hex' => '#64676c',
+                                'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray Gris.png'
+                            ],
+                            'plata' => [
+                                'name' => 'Plata',
+                                'hex' => '#7f776d',
+                                'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray Plata.png'
+                            ]
+                        ],
+                        'images' => [
+                            'interior' => [
+                                'default' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Interior.jpg'
+                            ]
+                        ]
+                    ],
+                ],
+            ],
+
+            'coolray' => [
+                'header' => [
+                    'title' => 'VERSIONES Y PRECIOS',
+                    'subtitle' => 'Elige tu versión de Cityray',
+                    'title_size' => 'text-3xl lg:text-4xl',
+                    'subtitle_size' => 'text-lg'
+                ],
+                'versions' => [
+                    'Comfort-MT' => [
+                        'name' => 'COMFORT MT',
+                        'specs' => [
+                            'Cilindrada:' => '1499 cc con 122 HP',
+                            'Transmisión:' => '5MT',
+                            'Tracción:' => 'FWD Delantera ',
+                            'Plataforma:' => '-'
+                        ],
+                        'pricing' => [
+                            'year' => 2026,
+                            'list_price' => 32990,
+                            'discount' => 1500,
+                            'final_price' => 31490,
+                            'currency' => '$us.'
+                        ],
+                        'tab_content' => [
+                            'motor' => [
+                                'tipo_motor' => '1499 c.c. con 122 HP',
+                                'potencia' => '122 HP',
+                                'torque' => '152',
+                                'traccion' => 'FWD Delantera',
+                                'consumo_ciudad' => 'FWD Delantera',
+                                'consumo_carretera' => 'Euro VI'
+                            ],
+                            'equipamiento' => [
+                                'pantalla' => 'Táctil de 8"',
+                                'asientos' => 'Tapiz en eco-cuero',
+                                'climatizador' => 'Delanteros de halógeno / automáticos con sensor de luz',
+                                'camara' => 'Reversa',
+                                'sensores' => 'Estacionamiento',
+                                'conectividad' => 'Controles de audio y teléfono en el volante'
+                            ],
+                            'seguridad' => [
+                                'airbags' => '2 bolsas de aire',
+                                'abs' => 'Sistema ABS + EBD',
+                                'control_estabilidad' => 'Sistema electrónico de estabilidad (ESP®)',
+                                'asistente_frenado' => 'Monitor de presión TPMS',
+                                'control_traccion' => 'Sensibles a la velocidad',
+                                'cinturones' => 'Limitadores'
+                            ]
+                        ],
+                        'colors' => [
+                            'azul' => [
+                                'name' => 'Azul',
+                                'hex' => '#004a79',
+                                'image' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_BLUE.png'
+                            ],
+                            'blanco' => [
+                                'name' => 'Blanco',
+                                'hex' => '#ffffff',
+                                'image' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_WHITE.png'
+                            ],
+                            'gris' => [
+                                'name' => 'Gris',
+                                'hex' => '#64676c',
+                                'image' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_GREY.png'
+                            ],
+                            'plata' => [
+                                'name' => 'Plata',
+                                'hex' => '#7f776d',
+                                'image' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_SILVER.png'
+                            ]
+                        ],
+                        'images' => [
+                            'interior' => [
+                                'default' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_INTERIOR_COOLRAYLITE.jpg'
+                            ]
+                        ]
+                    ],
+                    'Comfort-CVT' => [
+                        'name' => 'COMFORT CVT',
+                        'specs' => [
+                            'Cilindrada:' => '1499 cc con 122 HP',
+                            'Transmisión:' => 'CVT',
+                            'Tracción:' => 'FWD Delantera',
+                            'Plataforma:' => '-'
+                        ],
+                        'pricing' => [
+                            'year' => 2026,
+                            'list_price' => 34990,
+                            'discount' => 1500,
+                            'final_price' => 33490,
+                            'currency' => '$us.'
+                        ],
+                        'tab_content' => [
+                            'motor' => [
+                                'tipo_motor' => '1499 c.c. con 122 HP',
+                                'potencia' => '122 HP',
+                                'torque' => '152',
+                                'traccion' => 'FWD Delantera',
+                                'consumo_ciudad' => 'FWD Delantera',
+                                'consumo_carretera' => 'Euro VI'
+                            ],
+                            'equipamiento' => [
+                                'pantalla' => 'Táctil de 8"',
+                                'asientos' => 'Tapiz en eco-cuero',
+                                'climatizador' => 'Delanteros de halógeno / automáticos con sensor de luz',
+                                'camara' => 'Reversa',
+                                'sensores' => 'Estacionamiento',
+                                'conectividad' => 'Controles de audio y teléfono en el volante'
+                            ],
+                            'seguridad' => [
+                                'airbags' => '2 bolsas de aire',
+                                'abs' => 'Sistema ABS + EBD',
+                                'control_estabilidad' => 'ESC',
+                                'asistente_frenado' => 'Monitor de presión TPMS',
+                                'control_traccion' => 'TCS',
+                                'cinturones' => 'Limitadores'
+                            ]
+                        ],
+                        'colors' => [
+                            'azul' => [
+                                'name' => 'Azul',
+                                'hex' => '#004a79',
+                                'image' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_BLUE.png'
+                            ],
+                            'blanco' => [
+                                'name' => 'Blanco',
+                                'hex' => '#ffffff',
+                                'image' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_WHITE.png'
+                            ],
+                            'gris' => [
+                                'name' => 'Gris',
+                                'hex' => '#64676c',
+                                'image' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_GREY.png'
+                            ],
+                            'plata' => [
+                                'name' => 'Plata',
+                                'hex' => '#7f776d',
+                                'image' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_SILVER.png'
+                            ]
+                        ],
+                        'images' => [
+                            'interior' => [
+                                'default' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_INTERIOR_COOLRAYLITE.jpg'
+                            ]
+                        ]
+                    ],
+                ],
+            ],
         ];
 
         return $configs[$slug] ?? [];
@@ -682,13 +1049,21 @@ class VehicleVersions extends Component
     {
         $configs = [
             'starray' => [
-                'pdf_path' => 'frontend/images/vehicles/starray/Ficha Técnica Geely Starray V2.pdf',
+                'pdf_path' => 'frontend/images/vehicles/starray/Ficha web Starray.pdf',
                 'file_name' => 'Catálogo-Geely-Starray.pdf'
             ],
             'gx3-pro' => [
-                'pdf_path' => 'frontend/images/vehicles/gx3pro/Ficha Técnica GX3 PRO V2.pdf',
+                'pdf_path' => 'frontend/images/vehicles/gx3pro/Ficha web GX3 PRO.pdf',
                 'file_name' => 'Catálogo-Geely-GX3-Pro.pdf'
-            ]
+            ],
+            'cityray' => [
+                'pdf_path' => 'frontend/images/vehicles/cityray/Ficha web CityRay.pdf',
+                'file_name' => 'Catálogo-Geely-GX3-Pro.pdf'
+            ],
+            'coolray' => [
+                'pdf_path' => 'frontend/images/vehicles/coolray/Ficha web CoolRay.pdf',
+                'file_name' => 'Catálogo-Geely-GX3-Pro.pdf'
+            ],
         ];
 
         // Fallback a starray si no existe configuración

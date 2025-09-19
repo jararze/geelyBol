@@ -129,7 +129,53 @@ class SectionBreakerSection extends Component
                     'subtitle_gradient' => false,
                     'subtitle_gradient_colors' => 'bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent'
                 ]
-            ]
+            ],
+
+            'cityray' => [
+                'content' => [
+                    'title' => 'GEELY CITYRAY',
+                    'subtitle' => 'Caracteristicas',
+                    'title_size' => 'text-4xl lg:text-4xl',
+                    'subtitle_size' => 'text-lg lg:text-xl',
+                    'title_color' => 'text-blue-900',
+                    'subtitle_color' => 'text-black',
+                    'title_font_weight' => 'font-bold',
+                    'subtitle_font_weight' => 'font-normal',
+                    'text_align' => 'text-left',
+                    'max_width' => 'max-w-full',
+                    'spacing' => 'space-y-4'
+                ],
+
+                'styles' => [
+                    'title_gradient' => false,
+                    'title_gradient_colors' => 'bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent',
+                    'subtitle_gradient' => false,
+                    'subtitle_gradient_colors' => 'bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent'
+                ]
+            ],
+
+            'coolray' => [
+                'content' => [
+                    'title' => 'GEELY COOLDAY',
+                    'subtitle' => 'Caracteristicas',
+                    'title_size' => 'text-4xl lg:text-4xl',
+                    'subtitle_size' => 'text-lg lg:text-xl',
+                    'title_color' => 'text-blue-900',
+                    'subtitle_color' => 'text-black',
+                    'title_font_weight' => 'font-bold',
+                    'subtitle_font_weight' => 'font-normal',
+                    'text_align' => 'text-left',
+                    'max_width' => 'max-w-full',
+                    'spacing' => 'space-y-4'
+                ],
+
+                'styles' => [
+                    'title_gradient' => false,
+                    'title_gradient_colors' => 'bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent',
+                    'subtitle_gradient' => false,
+                    'subtitle_gradient_colors' => 'bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent'
+                ]
+            ],
         ];
 
         return $configs[$slug] ?? [];

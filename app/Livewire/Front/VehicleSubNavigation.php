@@ -62,7 +62,21 @@ class VehicleSubNavigation extends Component
                 ['id' => 'versiones', 'label' => 'Versiones', 'anchor' => '#versiones', 'active' => true],
                 ['id' => 'tecnologia', 'label' => 'Tecnología', 'anchor' => '#tecnologia', 'active' => true],
                 ['id' => 'diseno', 'label' => 'Diseño', 'anchor' => '#diseno', 'active' => true]
-            ]
+            ],
+
+            'cityray' => [
+                ['id' => 'cityray', 'label' => 'Cityray', 'anchor' => '#hero', 'active' => true],
+                ['id' => 'versiones', 'label' => 'Versiones', 'anchor' => '#versiones', 'active' => true],
+                ['id' => 'tecnologia', 'label' => 'Tecnología', 'anchor' => '#tecnologia', 'active' => true],
+                ['id' => 'diseno', 'label' => 'Diseño', 'anchor' => '#diseno', 'active' => true]
+            ],
+
+            'coolray' => [
+                ['id' => 'coolray', 'label' => 'Coolray', 'anchor' => '#hero', 'active' => true],
+                ['id' => 'versiones', 'label' => 'Versiones', 'anchor' => '#versiones', 'active' => true],
+                ['id' => 'tecnologia', 'label' => 'Tecnología', 'anchor' => '#tecnologia', 'active' => true],
+                ['id' => 'diseno', 'label' => 'Diseño', 'anchor' => '#diseno', 'active' => true]
+            ],
         ];
 
         return $configs[$slug] ?? [];

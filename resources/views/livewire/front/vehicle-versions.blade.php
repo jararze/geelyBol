@@ -102,7 +102,7 @@
                                     </div>
 
                                     <div class="flex justify-between">
-                                        <span class="text-gray-600 text-sm">Descuento:</span>
+                                        <span class="text-gray-600 text-sm">Descuento Expocruz:</span>
                                         <span class="font-medium text-green-600 text-sm">{{ $pricing['currency'] ?? '$' }} {{ number_format($pricing['discount'] ?? 0) }}</span>
                                     </div>
 

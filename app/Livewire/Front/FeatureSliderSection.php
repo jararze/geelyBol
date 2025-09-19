@@ -562,7 +562,437 @@ class FeatureSliderSection extends Component
 
                     ]
                 ]
-            ]
+            ],
+
+            'cityray' => [
+                'potente_dinamico' => [
+                    'header' => ['title' => 'POTENTE Y DINÁMICO'],
+                    'layout' => ['direction' => 'left'],
+                    'slides' => [
+                        [
+                            'id' => 'motor-turbo',
+                            'title' => 'Motor',
+                            'subtitle' => '1.5 Turbo ',
+                            'description' => 'Con 174 hp para un desempeño dinámico',
+                            'main_image' => 'frontend/images/vehicles/cityray/potenteydinamico/1.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/potenteydinamico/1.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'motor-turbo2',
+                            'title' => 'Potente',
+                            'subtitle' => 'Dinámico',
+                            'description' => 'Transmisión DCT de 7 velocidades que entrega un manejo ágil y eficiente',
+                            'main_image' => 'frontend/images/vehicles/cityray/potenteydinamico/2.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/potenteydinamico/2.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'motor-turbo3',
+                            'title' => 'Frenado',
+                            'subtitle' => '',
+                            'description' => 'Sistema de frenado avanzado con ABS, EBD y BA que conforman un sistema de conducción inteligente y urbano',
+                            'main_image' => 'frontend/images/vehicles/cityray/potenteydinamico/3.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/potenteydinamico/3.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'motor-turbo4',
+                            'title' => 'Conducción',
+                            'subtitle' => '',
+                            'description' => '4 modos de conducción Economy/Sport/Comfort/Intelligent que se ajustan a tus preferencias',
+                            'main_image' => 'frontend/images/vehicles/cityray/potenteydinamico/4.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/potenteydinamico/4.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'motor-turbo5',
+                            'title' => 'Seguridad avanzada ',
+                            'subtitle' => '',
+                            'description' => 'con control crucero adaptativo para mantener una velocidad constante y una distancia segura, lo que permite un viaje más suave y menos estresante.',
+                            'main_image' => 'frontend/images/vehicles/cityray/potenteydinamico/5.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/potenteydinamico/5.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                    ]
+                ],
+                'interior_lujoso' => [
+                    'header' => ['title' => 'INTERIOR LUJOSO Y TOTALMENTE EQUIPADO'],
+                    'layout' => ['direction' => 'right'],
+                    'slides' => [
+                        [
+                            'id' => 'interno-1',
+                            'title' => 'Interior Premium',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/interior/1 Geely_Bolivia_Techo Solar Pano.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/interior/1 Geely_Bolivia_Techo Solar Pano.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'interno-2',
+                            'title' => 'Techo solar panorámico',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/interior/2 Geely_Bolivia_Techo Solar Pano.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/interior/2 Geely_Bolivia_Techo Solar Pano.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'interno-3',
+                            'title' => 'Pantalla táctil HD de 13.2”',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/interior/3 Geely_Bolivia_Pantalla Tactil HD.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/interior/3 Geely_Bolivia_Pantalla Tactil HD.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'interno-4',
+                            'title' => 'Diseño moderno',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/interior/4 Geely_Bolvia_Diseño Moderno.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/interior/4 Geely_Bolvia_Diseño Moderno.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'interno-5',
+                            'title' => 'Interior Premium con Iluminación ambiente',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/interior/5 Geely_Bolivia_Interior premium iluminado.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/interior/5 Geely_Bolivia_Interior premium iluminado.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'interno-6',
+                            'title' => 'Cargador inalámbrico',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/interior/6 Geely_Bolivia_Cargador Inalambrico.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/interior/6 Geely_Bolivia_Cargador Inalambrico.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'interno-7',
+                            'title' => 'Espacios amplios',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/interior/7 Geely_Bolivia_Espacios Amplios.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/interior/7 Geely_Bolivia_Espacios Amplios.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'interno-8',
+                            'title' => 'Detalles Estilizados',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/interior/8.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/interior/8.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'interno-9',
+                            'title' => 'Comodidad',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/interior/9.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/interior/9.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'interno-10',
+                            'title' => 'Confort',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/interior/10.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/interior/10.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+
+                    ]
+                ],
+                'tecnologia' => [
+                    'header' => ['title' => 'TECNOLOGÍA: TABLET, HUD HOLOGRÁFICO Y MÁS'],
+                    'layout' => ['direction' => 'left'],
+                    'slides' => [
+                        [
+                            'id' => 'tecnologia-1',
+                            'title' => 'Pantalla táctil HD de 13.2”',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/tecnologia/1 Geely_Bolivia_Pantalla Tactil HD.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/tecnologia/1 Geely_Bolivia_Pantalla Tactil HD.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'tecnologia-2',
+                            'title' => 'Panel de instrumentos digital LCD de 10.2”',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/tecnologia/2 Geely_Bolivia_Panel de instrumentos.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/tecnologia/2 Geely_Bolivia_Panel de instrumentos.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'tecnologia-3',
+                            'title' => 'Apple CarPlay® ',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/tecnologia/3 Geely_Bolivia_AppleCarPlay.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/tecnologia/3 Geely_Bolivia_AppleCarPlay.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'tecnologia-4',
+                            'title' => 'Tablero Ergonómico intuitivo ',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/tecnologia/4.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/tecnologia/4.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'tecnologia-5',
+                            'title' => 'Portón trasero eléctrico',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/tecnologia/5.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/tecnologia/5.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+
+                    ]
+                ],
+                'seguridad' => [
+                    'header' => ['title' => 'SEGURIDAD TOTAL: MÁS DE 8 ASISTENTES SMART'],
+                    'layout' => ['direction' => 'right'],
+                    'slides' => [
+                        [
+                            'id' => 'seguridad-1',
+                            'title' => 'Cámara 360° ',
+                            'subtitle' => '',
+                            'description' => 'Que te muestran todo lo que hay alrededor del auto y debajo, para no tener ningún obstáculo',
+                            'main_image' => 'frontend/images/vehicles/cityray/seguridad/1 Geely_Bolivia_Camara 360.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/seguridad/1 Geely_Bolivia_Camara 360.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'seguridad-2',
+                            'title' => 'Control Crucero Adaptativo',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/seguridad/2 Geely_Bolivia_Control Crucero.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/seguridad/2 Geely_Bolivia_Control Crucero.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'seguridad-3',
+                            'title' => 'Bolsas de aire frontales, laterales y de cortina  ',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/seguridad/3 Geely_Bolivia_Airbags.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/seguridad/3 Geely_Bolivia_Airbags.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'seguridad-4',
+                            'title' => 'Sistema de control de tracción (TCS), Sistema electrónico de estabilidad (ESP®), Asistente de ascenso en pendiente (HAC) y Asistente de descenso en pendiente (HDC) ',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/seguridad/4.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/seguridad/4.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'seguridad-5',
+                            'title' => 'Frenado automático de emergencia (AEB)',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/seguridad/5.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/seguridad/5.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'seguridad-6',
+                            'title' => '',
+                            'subtitle' => '',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/seguridad/6.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/seguridad/6.jpg',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+
+                    ]
+                ]
+            ],
+
+            'coolray' => [
+                'potente_dinamico' => [
+                    'header' => ['title' => 'MODERNA Y EXCLUSIVA'],
+                    'layout' => ['direction' => 'left'],
+                    'slides' => [
+                        [
+                            'id' => 'motor-turbo',
+                            'title' => 'Motor 1.5 Turbo',
+                            'subtitle' => ' 122 HP Potencia',
+                            'description' => 'La SUV que necesitas para la ciudad y la vida urbana',
+                            'main_image' => 'frontend/images/vehicles/coolray/potenteydinamico/1.png',
+                            'thumbnail_image' => 'frontend/images/vehicles/coolray/potenteydinamico/1.png',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'motor-turbo2',
+                            'title' => 'Estilo Moderno y Vanguardista',
+                            'subtitle' => '',
+                            'description' => 'Combinando tecnología y diseño para destacar en cada recorrido',
+                            'main_image' => 'frontend/images/vehicles/coolray/potenteydinamico/2.png',
+                            'thumbnail_image' => 'frontend/images/vehicles/coolray/potenteydinamico/2.png',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'motor-turbo3',
+                            'title' => 'Diseño Moderno y Elegante',
+                            'subtitle' => '',
+                            'description' => 'Un estilo urbano que combina dinamismo y sofisticación.',
+                            'main_image' => 'frontend/images/vehicles/coolray/potenteydinamico/3.png',
+                            'thumbnail_image' => 'frontend/images/vehicles/coolray/potenteydinamico/3.png',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'motor-turbo4',
+                            'title' => 'Espacio Versátil y Práctico',
+                            'subtitle' => '',
+                            'description' => 'Un maletero amplio que se adapta a tus aventuras y necesidades diarias.',
+                            'main_image' => 'frontend/images/vehicles/coolray/potenteydinamico/4.png',
+                            'thumbnail_image' => 'frontend/images/vehicles/coolray/potenteydinamico/4.png',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'motor-turbo5',
+                            'title' => 'Luces LED de Última Generación',
+                            'subtitle' => '',
+                            'description' => 'Un diseño distintivo que realza la seguridad y la personalidad del vehículo.',
+                            'main_image' => 'frontend/images/vehicles/coolray/potenteydinamico/5.png',
+                            'thumbnail_image' => 'frontend/images/vehicles/coolray/potenteydinamico/5.png',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                    ]
+                ],
+                'interior_lujoso' => [
+                    'header' => ['title' => 'TOTALMENTE EQUIPADA Y VERSÁTIL'],
+                    'layout' => ['direction' => 'right'],
+                    'slides' => [
+                        [
+                            'id' => 'interno-1',
+                            'title' => 'Elegancia en Cada Detalle',
+                            'subtitle' => '',
+                            'description' => 'Asientos de ecocuero que brindan comodidad y estilo',
+                            'main_image' => 'frontend/images/vehicles/coolray/interior/1.png',
+                            'thumbnail_image' => 'frontend/images/vehicles/coolray/interior/1.png',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'interno-2',
+                            'title' => 'Volante Multi-Función',
+                            'subtitle' => '',
+                            'description' => 'Control total al alcance de tus manos para una conducción cómoda y segura.',
+                            'main_image' => 'frontend/images/vehicles/coolray/interior/2.png',
+                            'thumbnail_image' => 'frontend/images/vehicles/coolray/interior/2.png',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'interno-3',
+                            'title' => 'Transmisión Eficiente',
+                            'subtitle' => '',
+                            'description' => 'Cambios suaves y precisos que garantizan una experiencia de manejo fluida.',
+                            'main_image' => 'frontend/images/vehicles/coolray/interior/3.png',
+                            'thumbnail_image' => 'frontend/images/vehicles/coolray/interior/3.png',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+
+                    ]
+                ],
+//                'tecnologia' => [
+//                    'header' => ['title' => 'TECNOLOGÍA: TABLET, HUD HOLOGRÁFICO Y MÁS'],
+//                    'layout' => ['direction' => 'left'],
+//                    'slides' => [
+//                        [
+//                            'id' => 'tecnologia-1',
+//                            'title' => 'Pantalla táctil HD de 13.2”',
+//                            'subtitle' => '',
+//                            'description' => '',
+//                            'main_image' => 'frontend/images/vehicles/cityray/tecnologia/1 Geely_Bolivia_Pantalla Tactil HD.jpg',
+//                            'thumbnail_image' => 'frontend/images/vehicles/cityray/tecnologia/1 Geely_Bolivia_Pantalla Tactil HD.jpg',
+//                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+//                        ],
+//                        [
+//                            'id' => 'tecnologia-2',
+//                            'title' => 'Panel de instrumentos digital LCD de 10.2”',
+//                            'subtitle' => '',
+//                            'description' => '',
+//                            'main_image' => 'frontend/images/vehicles/cityray/tecnologia/2 Geely_Bolivia_Panel de instrumentos.jpg',
+//                            'thumbnail_image' => 'frontend/images/vehicles/cityray/tecnologia/2 Geely_Bolivia_Panel de instrumentos.jpg',
+//                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+//                        ],
+//                        [
+//                            'id' => 'tecnologia-3',
+//                            'title' => 'Apple CarPlay® ',
+//                            'subtitle' => '',
+//                            'description' => '',
+//                            'main_image' => 'frontend/images/vehicles/cityray/tecnologia/3 Geely_Bolivia_AppleCarPlay.jpg',
+//                            'thumbnail_image' => 'frontend/images/vehicles/cityray/tecnologia/3 Geely_Bolivia_AppleCarPlay.jpg',
+//                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+//                        ],
+//                        [
+//                            'id' => 'tecnologia-4',
+//                            'title' => 'Tablero Ergonómico intuitivo ',
+//                            'subtitle' => '',
+//                            'description' => '',
+//                            'main_image' => 'frontend/images/vehicles/cityray/tecnologia/4.jpg',
+//                            'thumbnail_image' => 'frontend/images/vehicles/cityray/tecnologia/4.jpg',
+//                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+//                        ],
+//                        [
+//                            'id' => 'tecnologia-5',
+//                            'title' => 'Portón trasero eléctrico',
+//                            'subtitle' => '',
+//                            'description' => '',
+//                            'main_image' => 'frontend/images/vehicles/cityray/tecnologia/5.jpg',
+//                            'thumbnail_image' => 'frontend/images/vehicles/cityray/tecnologia/5.jpg',
+//                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+//                        ],
+//
+//                    ]
+//                ],
+                'seguridad' => [
+                    'header' => ['title' => 'SEGURIDAD INTEGRAL'],
+                    'layout' => ['direction' => 'left'],
+                    'slides' => [
+                        [
+                            'id' => 'seguridad-1',
+                            'title' => 'Seguridad al Estacionar',
+                            'subtitle' => '',
+                            'description' => 'Sensores traseros que cuidan cada maniobra.',
+                            'main_image' => 'frontend/images/vehicles/coolray/seguridad/1.png',
+                            'thumbnail_image' => 'frontend/images/vehicles/coolray/seguridad/1.png',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+                        [
+                            'id' => 'seguridad-2',
+                            'title' => 'Confianza en Cada Ruta',
+                            'subtitle' => '',
+                            'description' => 'Sistema de frenos ABS+EBD que responde cuando más lo necesitas.',
+                            'main_image' => 'frontend/images/vehicles/coolray/seguridad/2.png',
+                            'thumbnail_image' => 'frontend/images/vehicles/coolray/seguridad/2.png',
+                            'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
+                        ],
+
+
+                    ]
+                ]
+            ],
         ];
 
         return $configs[$slug] ?? [];

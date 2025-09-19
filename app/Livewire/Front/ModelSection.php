@@ -81,7 +81,7 @@ class ModelSection extends Component
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '52990',
+                        'price_now' => '51990',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-2xl',
                         'price_now_weight' => 'font-bold',
@@ -113,22 +113,22 @@ class ModelSection extends Component
 
                 [
                     'id' => 2,
-                    'name' => 'MUY PRONTO',
-                    'slug' => 'muy-pronto', // AGREGAR
+                    'name' => 'CityRay',
+                    'slug' => 'cityray', // AGREGAR
                     'category' => 'suv', // AGREGAR
-                    'description' => '',
-                    'image' => 'frontend/images/vehicles/citray/Geely_Bolivia_Cityray_Home_Cover.png',
+                    'description' => 'El SUV que impone Estilo y Tecnología',
+                    'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray_Home.jpg',
                     'position' => 'left',
-                    'featured' => false,
+                    'featured' => true,
 
                     'pricing' => [
                         'currency_before' => 'Bs.',
-                        'price_before' => '500000',
+                        'price_before' => '41990',
                         'price_before_color' => 'text-gray-500',
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '39000',
+                        'price_now' => '39990',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-xl',
                         'price_now_weight' => 'font-bold',
@@ -167,12 +167,12 @@ class ModelSection extends Component
 
                     'pricing' => [
                         'currency_before' => '$us',
-                        'price_before' => '26990',
+                        'price_before' => '25990',
                         'price_before_color' => 'text-gray-500',
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '26490',
+                        'price_now' => '24990',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-xl',
                         'price_now_weight' => 'font-bold',
@@ -200,7 +200,54 @@ class ModelSection extends Component
                         'badge_color' => 'bg-green-500 text-white',
                         'badge_position' => 'top-right'
                     ]
-                ]
+                ],
+
+                [
+                    'id' => 4,
+                    'name' => 'Coolray',
+                    'slug' => 'coolray', // AGREGAR
+                    'category' => 'suv', // AGREGAR
+                    'description' => 'La SUV PERFECTA PARA LA VIDA URBANA',
+                    'image' => 'frontend/images/vehicles/coolray/Geely_Bolivia_Coolray_Home.png',
+                    'position' => 'right',
+                    'featured' => true,
+
+                    'pricing' => [
+                        'currency_before' => '$us',
+                        'price_before' => '32990',
+                        'price_before_color' => 'text-gray-500',
+                        'price_before_decoration' => 'line-through',
+
+                        'currency_now' => '$us.',
+                        'price_now' => '31490',
+                        'price_now_color' => 'text-blue-600',
+                        'price_now_size' => 'text-xl',
+                        'price_now_weight' => 'font-bold',
+
+                        'discount_label' => 'Preventa',
+                        'discount_label_color' => 'text-blue-600',
+                        'show_from_label' => true,
+                        'from_label' => 'Desde'
+                    ],
+
+                    'button_primary' => [
+                        'text' => 'Ver modelo',
+                        'bg_color' => 'bg-black',
+                        'text_color' => 'text-white',
+                        'hover_bg' => 'hover:bg-gray-800',
+                        'size' => 'px-6 py-2',
+                        'border_radius' => 'rounded-lg',
+                        'font_weight' => 'font-medium',
+                        'show' => true
+                    ],
+
+                    'features' => [
+                        'show_badge' => false,
+                        'badge_text' => 'POPULAR',
+                        'badge_color' => 'bg-green-500 text-white',
+                        'badge_position' => 'top-right'
+                    ]
+                ],
             ],
 
             'ELECTRICOS' => [

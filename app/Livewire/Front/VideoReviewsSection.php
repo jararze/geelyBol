@@ -112,7 +112,55 @@ class VideoReviewsSection extends Component
                         'views' => '125K views'
                     ],
                 ],
-            ]
+            ],
+
+            'cityray' => [
+                'header' => [
+                    'title' => 'VIDEOS Y RESEÑAS',
+                    'subtitle' => 'Conoce todo sobre Geely CITYRAY con los siguientes videos',
+                    'title_size' => 'text-3xl lg:text-4xl',
+                    'subtitle_size' => 'text-lg',
+                    'title_color' => 'text-white',
+                    'subtitle_color' => 'text-gray-300'
+                ],
+
+                'videos' => [
+                    [
+                        'id' => 'video-1',
+                        'title' => 'This is where the ride can get for your video',
+                        'subtitle' => 'REVIEW CITYRAY',
+                        'channel' => 'Reseñas',
+                        'thumbnail' => '/frontend/images/vehicles/cityray/Geely Cityray Review Poratada.jpg',
+                        'video_url' => 'https://www.youtube.com/embed/fcVfqc5WCHc?si=WIvSDGyFGt73yByX',
+                        'duration' => '05:31',
+                        'views' => '125K views'
+                    ],
+                ],
+            ],
+
+            'coolray' => [
+                'header' => [
+                    'title' => 'VIDEOS Y RESEÑAS',
+                    'subtitle' => 'Conoce todo sobre Geely COOLRAY con los siguientes videos',
+                    'title_size' => 'text-3xl lg:text-4xl',
+                    'subtitle_size' => 'text-lg',
+                    'title_color' => 'text-white',
+                    'subtitle_color' => 'text-gray-300'
+                ],
+
+                'videos' => [
+                    [
+                        'id' => 'video-1',
+                        'title' => 'This is where the ride can get for your video',
+                        'subtitle' => 'REVIEW COOLRAY',
+                        'channel' => 'Reseñas',
+                        'thumbnail' => '/frontend/images/vehicles/coolray/GEELY_BOLIVIA_PORTADA VIDEO.png',
+                        'video_url' => 'https://www.youtube.com/embed/Nc0YfZ8V0Mw?si=daSCvgg7By0CppXT',
+                        'duration' => '05:31',
+                        'views' => '125K views'
+                    ],
+                ],
+            ],
         ];
 
         return $configs[$slug] ?? [];

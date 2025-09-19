@@ -90,7 +90,77 @@ class VehicleDetail extends Component
                     'Control de crucero',
                     'Luces LED automáticas'
                 ]
-            ]
+            ],
+            [
+                'id' => 3,
+                'slug' => 'cityray',
+                'name' => 'CITYRAY',
+                'description' => 'El SUV que impone Estilo y Tecnología ',
+                'long_description' => '',
+                'image' => 'frontend/images/vehicles/starray/IMAGEN-TARJETA-MODELO-425x165-.png',
+                'gallery' => [],
+                'category' => 'SUV',
+                'featured' => false,
+                'pricing' => [
+                    'currency_before' => 'Bs.',
+                    'price_before' => '500000',
+                    'currency_now' => '$us.',
+                    'price_now' => '25990',
+                    'discount_label' => 'Ahora',
+                    'from_label' => 'Desde'
+                ],
+                'specifications' => [
+                    'Motor' => '1.4L Turbo',
+                    'Potencia' => '150 HP',
+                    'Transmisión' => 'Manual 6 velocidades',
+                    'Tracción' => 'FWD',
+                    'Combustible' => 'Gasolina',
+                    'Capacidad' => '5 pasajeros',
+                    'Año' => '2024'
+                ],
+                'features' => [
+                    'Pantalla táctil de 10"',
+                    'Sistema de audio premium',
+                    'Conectividad Bluetooth',
+                    'Control de crucero',
+                    'Luces LED automáticas'
+                ]
+            ],
+            [
+                'id' => 4,
+                'slug' => 'coolray',
+                'name' => 'COOLRAY',
+                'description' => 'SUV PERFECTA PARA LA VIDA URBANA',
+                'long_description' => '',
+                'image' => 'frontend/images/vehicles/starray/IMAGEN-TARJETA-MODELO-425x165-.png',
+                'gallery' => [],
+                'category' => 'SUV',
+                'featured' => false,
+                'pricing' => [
+                    'currency_before' => 'Bs.',
+                    'price_before' => '500000',
+                    'currency_now' => '$us.',
+                    'price_now' => '25990',
+                    'discount_label' => 'Ahora',
+                    'from_label' => 'Desde'
+                ],
+                'specifications' => [
+                    'Motor' => '1.4L Turbo',
+                    'Potencia' => '150 HP',
+                    'Transmisión' => 'Manual 6 velocidades',
+                    'Tracción' => 'FWD',
+                    'Combustible' => 'Gasolina',
+                    'Capacidad' => '5 pasajeros',
+                    'Año' => '2024'
+                ],
+                'features' => [
+                    'Pantalla táctil de 10"',
+                    'Sistema de audio premium',
+                    'Conectividad Bluetooth',
+                    'Control de crucero',
+                    'Luces LED automáticas'
+                ]
+            ],
         ],
         'electricos' => [
             [

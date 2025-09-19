@@ -71,7 +71,7 @@
             :sectionData="[
                 'section_height' => 'min-h-[600px]',
                 'show_image' => true,
-                'background_image' => 'frontend/images/7080348 1.png'
+                'background_image' => 'frontend/images/vehicles/starray/7080348 1.png'
         ]"/>
 
 

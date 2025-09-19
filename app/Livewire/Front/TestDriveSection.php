@@ -80,7 +80,14 @@ class TestDriveSection extends Component
                 'background_image_mobile' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Test_Drive_Mobile.jpg',
                 'title' => 'TEST DRIVE GX3 PRO',
                 'description' => 'Experimenta la eficiencia y versatilidad del Geely GX3 Pro.',
-            ]
+            ],
+
+            'cityray' => [
+                'background_image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_GX3_Test_Drive_Desktop.jpg',
+                'background_image_mobile' => 'frontend/images/vehicles/cityray/Geely_Bolivia_GX3_PRO_Test_Drive_Mobile.jpg',
+                'title' => 'TEST DRIVE GX3 PRO',
+                'description' => 'Experimenta la eficiencia y versatilidad del Geely GX3 Pro.',
+            ],
         ];
 
         return $configs[$slug] ?? [];

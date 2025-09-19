@@ -193,7 +193,108 @@ class VehicleFeatures extends Component
                         'hover_effect' => true
                     ]
                 ],
-            ]
+            ],
+
+            'cityray' => [
+                'header' => [
+                    'title' => 'El SUV Tecnológico',
+                    'title_color' => '#1f2937', // text-gray-900
+                    'title_size' => 'text-3xl lg:text-4xl',
+                    'title_weight' => 'font-bold',
+                    'subtitle' => '3 razones para elegir a Geely Cityray:',
+                    'subtitle_color' => '#6b7280', // text-gray-600
+                    'subtitle_size' => 'text-lg',
+                    'text_align' => 'text-left', // AGREGAR ESTA LÍNEA
+                    'margin_bottom' => 'mb-12'
+                ],
+
+                'features' => [
+                    [
+                        'id' => 'lujo',
+                        'title' => 'Elegancia',
+                        'subtitle' => 'Interior de cuero y techo solar panorámico',
+                        'image' => 'frontend/images/vehicles/cityray/features/Geely_Bolivia_Elegancia.jpg',
+                        'text_position' => 'bottom-left', // bottom-left, bottom-right, bottom-center, top-left, top-right, top-center, center
+                        'text_color' => '#ffffff',
+                        'text_background' => 'bg-black bg-opacity-50',
+                        'overlay' => 'bg-black bg-opacity-30',
+                        'hover_effect' => true
+                    ],
+                    [
+                        'id' => 'tecnologia',
+                        'title' => 'Innovación',
+                        'subtitle' => 'Pantalla táctil HD de 13.2',
+                        'image' => 'frontend/images/vehicles/cityray/features/Geely_Bolivia_Innovacion.jpg',
+                        'text_position' => 'bottom-left',
+                        'text_color' => '#ffffff',
+                        'text_background' => 'bg-black bg-opacity-50',
+                        'overlay' => 'bg-black bg-opacity-30',
+                        'hover_effect' => true
+                    ],
+                    [
+                        'id' => 'diseno',
+                        'title' => 'Modernidad',
+                        'subtitle' => 'Cargador inalámbrico',
+                        'image' => 'frontend/images/vehicles/cityray/features/Geely_Bolivia_Modernidad.jpg',
+                        'text_position' => 'bottom-left',
+                        'text_color' => '#ffffff',
+                        'text_background' => 'bg-black bg-opacity-50',
+                        'overlay' => 'bg-black bg-opacity-30',
+                        'hover_effect' => true
+                    ]
+                ],
+            ],
+
+            'coolray' => [
+                'header' => [
+                    'title' => 'Donde lo urbano se vuelve Premium',
+                    'title_color' => '#1f2937', // text-gray-900
+                    'title_size' => 'text-3xl lg:text-4xl',
+                    'title_weight' => 'font-bold',
+                    'subtitle' => '3 razones para elegir a Geely COOLRAY',
+                    'subtitle_color' => '#6b7280', // text-gray-600
+                    'subtitle_size' => 'text-lg',
+                    'text_align' => 'text-left', // AGREGAR ESTA LÍNEA
+                    'margin_bottom' => 'mb-12'
+                ],
+
+                'features' => [
+                    [
+                        'id' => 'lujo',
+                        'title' => 'Confort',
+                        'subtitle' => 'Asientos de ecocuero',
+                        'image' => 'frontend/images/vehicles/coolray/features/1_GEELY_BOLIVIA_CONFORT.png',
+                        'text_position' => 'bottom-left', // bottom-left, bottom-right, bottom-center, top-left, top-right, top-center, center
+                        'text_color' => '#ffffff',
+                        'text_background' => 'bg-black bg-opacity-50',
+                        'overlay' => 'bg-black bg-opacity-30',
+                        'hover_effect' => true
+                    ],
+                    [
+                        'id' => 'tecnologia',
+                        'title' => 'Estilo',
+                        'subtitle' => 'PDiseño deportivo',
+                        'image' => 'frontend/images/vehicles/coolray/features/2_GEELY_BOLIVIA_ESTILO.png',
+                        'text_position' => 'bottom-left',
+                        'text_color' => '#ffffff',
+                        'text_background' => 'bg-black bg-opacity-50',
+                        'overlay' => 'bg-black bg-opacity-30',
+                        'hover_effect' => true
+                    ],
+                    [
+                        'id' => 'diseno',
+                        'title' => 'Comodidad',
+                        'subtitle' => 'Amplio espacio interior',
+                        'image' => 'frontend/images/vehicles/coolray/features/3_GEELY_BOLIVIA_COMODIDAD.png',
+                        'text_position' => 'bottom-left',
+                        'text_color' => '#ffffff',
+                        'text_background' => 'bg-black bg-opacity-50',
+                        'overlay' => 'bg-black bg-opacity-30',
+                        'hover_effect' => true
+                    ]
+                ],
+            ],
+
         ];
 
         return $configs[$slug] ?? [];

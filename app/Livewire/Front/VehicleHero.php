@@ -129,7 +129,51 @@ class VehicleHero extends Component
                     'velocidades' => ['prefix' => '', 'value' => '8', 'unit' => '', 'label' => 'Velocidades'],
                     'traccion' => ['prefix' => '', 'value' => 'CVT', 'unit' => '', 'label' => 'Transmisión']
                 ]
-            ]
+            ],
+
+            'cityray' => [
+                'background_image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray_Hero_Desktop.jpg',
+                'background_image_mobile' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray_Hero_Mobile.jpg',
+                'title_type' => 'text',
+                'title' => 'CITYRAY',
+                'title_color' => '#FFF',
+                'title_size' => 'text-5xl lg:text-7xl',
+                'title_weight' => 'font-bold',
+                'title_spacing' => 'tracking-wider',
+                'subtitle' => 'La SUV que impone Estilo y Tecnología ',
+                'subtitle_color' => '#FFF',
+                'subtitle_size' => 'text-xl lg:text-2xl',
+                'subtitle_weight' => 'font-light',
+                'subtitle_spacing' => 'tracking-wide',
+                'selected_specs' => [
+                    'motor' => ['prefix' => '', 'value' => '1.5', 'unit' => 'Turbo', 'label' => 'Motor'],
+                    'potencia' => ['prefix' => '', 'value' => '174', 'unit' => 'hp', 'label' => 'Potencia'],
+                    'velocidades' => ['prefix' => '', 'value' => '7', 'unit' => 'Velocidades', 'label' => 'Transmisión DCT'],
+                    'traccion' => ['prefix' => '', 'value' => '4', 'unit' => '', 'label' => 'Modos de conducción']
+                ]
+            ],
+
+            'coolray' => [
+                'background_image' => 'frontend/images/vehicles/coolray/1 GEELY_BOLIVIA_COOLRAY.jpg',
+                'background_image_mobile' => 'frontend/images/vehicles/coolray/Geely_Bolivia_Coolray_Hero_Mobile.jpg',
+                'title_type' => 'text',
+                'title' => 'COOLRAY',
+                'title_color' => '#FFF',
+                'title_size' => 'text-5xl lg:text-7xl',
+                'title_weight' => 'font-bold',
+                'title_spacing' => 'tracking-wider',
+                'subtitle' => 'SUV PERFECTA PARA LA VIDA URBANA',
+                'subtitle_color' => '#FFF',
+                'subtitle_size' => 'text-xl lg:text-2xl',
+                'subtitle_weight' => 'font-light',
+                'subtitle_spacing' => 'tracking-wide',
+                'selected_specs' => [
+                    'motor' => ['prefix' => '', 'value' => '1.5', 'unit' => '', 'label' => 'Motor'],
+                    'potencia' => ['prefix' => '', 'value' => '122', 'unit' => 'hp', 'label' => 'Potencia'],
+                    'velocidades' => ['prefix' => '', 'value' => '5', 'unit' => '', 'label' => 'Velocidades'],
+                    'traccion' => ['prefix' => '', 'value' => '5', 'unit' => 'MT|CVT', 'label' => 'Transmisión']
+                ]
+            ],
         ];
 
         return $configs[$slug] ?? [];

@@ -143,7 +143,49 @@ class PromotionsSliderSection extends Component
                         ]
                     ],
                 ]
-            ]
+            ],
+
+            'cityray' => [
+                'slides' => [
+                    [
+                        'id' => 'cityray-50-discount',
+                        'title' => '$us. 2000',
+                        'subtitle' => 'DE DESCUENTO',
+                        'description' => 'Aprovecha los precios de Expocruz para comprar tu Geely Cityray. Valido en todas sus versiones. ',
+                        'vehicle_model' => 'CITYRAY',
+                        'vehicle_subtitle' => 'El SUV tecnológico',
+                        'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
+                        'text_color' => 'text-gray-800',
+                        'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
+                        'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Promociones.png',
+                        'button' => [
+                            'text' => 'Obtener promo',
+                            'style' => 'bg-white text-blue-600 hover:bg-gray-100'
+                        ]
+                    ],
+                ]
+            ],
+
+            'coolray' => [
+                'slides' => [
+                    [
+                        'id' => 'coolray-50-discount',
+                        'title' => 'Por Pre-venta ',
+                        'subtitle' => '$us. 1500 DE DESCUENTO',
+                        'description' => 'Es tu momento de estrenar un Geely Coolray con precios de preventa.',
+                        'vehicle_model' => 'COOLRAY',
+                        'vehicle_subtitle' => 'SUV PERFECTA PARA LA VIDA URBANA',
+                        'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
+                        'text_color' => 'text-gray-800',
+                        'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
+                        'image' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_COOLRAY_DESCUENTOS.png',
+                        'button' => [
+                            'text' => 'Obtener promo',
+                            'style' => 'bg-white text-blue-600 hover:bg-gray-100'
+                        ]
+                    ],
+                ]
+            ],
         ];
 
         return $configs[$slug] ?? [];

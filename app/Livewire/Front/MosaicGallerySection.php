@@ -138,7 +138,95 @@ class MosaicGallerySection extends Component
                         'overlay' => false
                     ]
                 ]
-            ]
+            ],
+
+            'cityray' => [
+                'layout' => [
+                    'columns' => 3,
+                    'gap' => 'gap-0',
+                    'container_height' => 'h-[700px]'
+                ],
+
+                'images' => [
+                    // Columna 1 (2 filas)
+                    [
+                        'column' => 1,
+                        'row_span' => 1,
+                        'image' => 'frontend/images/vehicles/cityray/mosaic/1.jpg',
+                        'alt' => 'Interior detail',
+                        'overlay' => false
+                    ],
+                    [
+                        'column' => 1,
+                        'row_span' => 1,
+                        'image' => 'frontend/images/vehicles/cityray/mosaic/2.jpg',
+                        'alt' => 'Seat detail',
+                        'overlay' => false
+                    ],
+                    // Columna 2 (1 fila completa)
+                    [
+                        'column' => 2,
+                        'row_span' => 2,
+                        'image' => 'frontend/images/vehicles/cityray/mosaic/3.jpg',
+                        'alt' => 'Car front view',
+                        'overlay' => false
+                    ],
+                    // Columna 3 (2 filas)
+                    [
+                        'column' => 2,
+                        'row_span' => 2,
+                        'image' => 'frontend/images/vehicles/cityray/mosaic/4.jpg',
+                        'alt' => 'Grille detail',
+                        'overlay' => false
+                    ],
+                    [
+                        'column' => 3,
+                        'row_span' => 1,
+                        'image' => 'frontend/images/vehicles/cityray/mosaic/5.jpg',
+                        'alt' => 'Dashboard',
+                        'overlay' => false
+                    ],
+                    [
+                        'column' => 3,
+                        'row_span' => 2,
+                        'image' => 'frontend/images/vehicles/cityray/mosaic/6.jpg',
+                        'alt' => 'Dashboard',
+                        'overlay' => false
+                    ]
+                ]
+            ],
+
+            'coolray' => [
+                'layout' => [
+                    'columns' => 3,
+                    'gap' => 'gap-0',
+                    'container_height' => 'h-[700px]'
+                ],
+
+                'images' => [
+                    [
+                        'column' => 1,
+                        'row_span' => 2,
+                        'image' => 'frontend/images/vehicles/coolray/mosaic/1.jpg',
+                        'alt' => 'Interior detail',
+                        'overlay' => false
+                    ],
+                    [
+                        'column' => 2,
+                        'row_span' => 2,
+                        'image' => 'frontend/images/vehicles/coolray/mosaic/2.jpg',
+                        'alt' => 'Seat detail',
+                        'overlay' => false
+                    ],
+                    [
+                        'column' => 3,
+                        'row_span' => 2,
+                        'image' => 'frontend/images/vehicles/coolray/mosaic/3.jpg',
+                        'alt' => 'Grille detail',
+                        'overlay' => false
+                    ],
+                ]
+            ],
         ];
 
         return $configs[$slug] ?? [];
