@@ -156,7 +156,7 @@ class SectionBreakerSection extends Component
 
             'coolray' => [
                 'content' => [
-                    'title' => 'GEELY COOLDAY',
+                    'title' => 'GEELY COOLRAY',
                     'subtitle' => 'Caracteristicas',
                     'title_size' => 'text-4xl lg:text-4xl',
                     'subtitle_size' => 'text-lg lg:text-xl',

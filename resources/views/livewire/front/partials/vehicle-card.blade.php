@@ -28,11 +28,13 @@
 
     {{-- Vehicle Image --}}
     <div class="{{ $imageHeight }} flex items-center justify-center ">
-        <img
-            src="{{ asset($vehicle['image']) }}"
-            alt="{{ $vehicle['name'] }}"
-            class="w-full h-full object-contain"
-        >
+        <a href="{{ route('vehicle.detail', ['category' => strtolower($vehicle['category']), 'slug' => $vehicle['slug']]) }}">
+            <img
+                src="{{ asset($vehicle['image']) }}"
+                alt="{{ $vehicle['name'] }}"
+                class="w-full h-full object-contain"
+            >
+        </a>
     </div>
 
     {{-- Vehicle Info para laterales --}}

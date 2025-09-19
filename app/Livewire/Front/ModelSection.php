@@ -122,7 +122,7 @@ class ModelSection extends Component
                     'featured' => true,
 
                     'pricing' => [
-                        'currency_before' => 'Bs.',
+                        'currency_before' => '$us.',
                         'price_before' => '41990',
                         'price_before_color' => 'text-gray-500',
                         'price_before_decoration' => 'line-through',
@@ -252,12 +252,12 @@ class ModelSection extends Component
 
             'ELECTRICOS' => [
                 [
-                    'id' => 4,
-                    'name' => 'MUY PRONTO',
-                    'slug' => 'muy-pronto', // AGREGAR
+                    'id' => 5,
+                    'name' => 'Galaxy E5',
+                    'slug' => 'galaxy-e5', // AGREGAR
                     'category' => 'electricos', // AGREGAR
                     'description' => '',
-                    'image' => 'frontend/images/vehicles/electrico/Geely_Bolivia_Electrico_Home_Cover.png',
+                    'image' => 'frontend/images/vehicles/ex5/Geely_Bolivia_Ex5_Home.png',
                     'position' => 'center',
                     'featured' => false,
 
@@ -301,7 +301,7 @@ class ModelSection extends Component
 
             'CAMIONETAS' => [
                 [
-                    'id' => 5,
+                    'id' => 6,
                     'name' => 'MUY PRONTO',
                     'slug' => 'muy-pronto', // AGREGAR
                     'category' => 'camionetas', // AGREGAR

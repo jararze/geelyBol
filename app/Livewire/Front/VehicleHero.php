@@ -174,6 +174,24 @@ class VehicleHero extends Component
                     'traccion' => ['prefix' => '', 'value' => '5', 'unit' => 'MT|CVT', 'label' => 'Transmisión']
                 ]
             ],
+
+            'galaxy-e5' => [
+                'background_image' => 'frontend/images/vehicles/ex5/Geely_Bolivia_EX5_Desktop.jpg',
+                'background_image_mobile' => 'frontend/images/vehicles/ex5/Geely_Bolivia_EX5_Mobile.jpg',
+                'title_type' => 'image',
+                'title_image' => 'frontend/images/vehicles/ex5/logo_EX5_web.png',
+                'subtitle' => '',
+                'subtitle_color' => '#FFF',
+                'subtitle_size' => 'text-xl lg:text-2xl',
+                'subtitle_weight' => 'font-light',
+                'subtitle_spacing' => 'tracking-wide',
+                'selected_specs' => [
+                    'motor' => ['prefix' => '', 'value' => '', 'unit' => '', 'label' => ''],
+                    'potencia' => ['prefix' => '', 'value' => '', 'unit' => '', 'label' => ''],
+                    'velocidades' => ['prefix' => '', 'value' => '', 'unit' => '', 'label' => ''],
+                    'traccion' => ['prefix' => '', 'value' => '', 'unit' => '', 'label' => '']
+                ]
+            ],
         ];
 
         return $configs[$slug] ?? [];

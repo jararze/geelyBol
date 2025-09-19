@@ -9,9 +9,11 @@
 
             {{-- Vehicle Image --}}
             <div class="relative mb-6">
-                <img src="{{ asset($vehicle['image']) }}"
-                     alt="{{ $vehicle['name'] }}"
-                     class="w-full h-auto max-w-sm mx-auto">
+                <a href="{{ route('vehicle.detail', ['category' => strtolower($vehicle['category']), 'slug' => $vehicle['slug']]) }}">
+                    <img src="{{ asset($vehicle['image']) }}"
+                         alt="{{ $vehicle['name'] }}"
+                         class="w-full h-auto max-w-sm mx-auto">
+                </a>
             </div>
 
             {{-- Solo mostrar pricing si show_badge es true --}}
@@ -25,12 +27,15 @@
                     @endif
 
                     {{-- Contenedor tipo píldora unificado --}}
-                    <div class="inline-flex items-stretch bg-white rounded-full shadow-lg overflow-hidden border border-gray-200 mx-auto">
+                    <div
+                        class="inline-flex items-stretch bg-white rounded-full shadow-lg overflow-hidden border border-gray-200 mx-auto">
                         {{-- Sección del precio (lado izquierdo) --}}
                         <div class="px-6 py-3 bg-gray-50 flex items-center">
                             <div class="text-center">
-                                <span class="text-blue-600 text-xs font-medium block mb-1">{{ $vehicle['pricing']['discount_label'] }}</span>
-                                <span class="text-gray-900 text-lg font-bold">{{ $vehicle['pricing']['currency_now'] }} {{ number_format($vehicle['pricing']['price_now']) }}</span>
+                                <span
+                                    class="text-blue-600 text-xs font-medium block mb-1">{{ $vehicle['pricing']['discount_label'] }}</span>
+                                <span
+                                    class="text-gray-900 text-lg font-bold">{{ $vehicle['pricing']['currency_now'] }} {{ number_format($vehicle['pricing']['price_now']) }}</span>
                             </div>
                         </div>
 

@@ -164,7 +164,7 @@ class VehicleDetail extends Component
         ],
         'electricos' => [
             [
-                'id' => 4,
+                'id' => 5,
                 'slug' => 'galaxy-e5',
                 'name' => 'GALAXY E5',
                 'description' => 'SUV 100% eléctrico con autonomía extendida',
@@ -175,9 +175,9 @@ class VehicleDetail extends Component
                 'featured' => true,
                 'pricing' => [
                     'currency_before' => 'Bs.',
-                    'price_before' => '600000',
+                    'price_before' => '-',
                     'currency_now' => '$us.',
-                    'price_now' => '45000',
+                    'price_now' => '-',
                     'discount_label' => 'Ahora',
                     'from_label' => 'Desde'
                 ],
