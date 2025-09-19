@@ -155,7 +155,7 @@
                                         <span class="font-medium text-sm">{{ $equipamiento['asientos'] ?? 'N/A' }}</span>
                                     </div>
                                     <div class="flex justify-between">
-                                        <span class="text-gray-600 text-sm">Climatizador:</span>
+                                        <span class="text-gray-600 text-sm">{{ ($vehicle["slug"] == "coolray") ? "Faros:" : "Climatizador:" }}</span>
                                         <span class="font-medium text-sm">{{ $equipamiento['climatizador'] ?? 'N/A' }}</span>
                                     </div>
                                     <div class="flex justify-between">
@@ -185,7 +185,7 @@
                                         <span class="font-medium text-sm">{{ $seguridad['abs'] ?? 'N/A' }}</span>
                                     </div>
                                     <div class="flex justify-between">
-                                        <span class="text-gray-600 text-sm">Control estabilidad:</span>
+                                        <span class="text-gray-600 text-sm">{{ ($vehicle["slug"] == "coolray") ? "Neumáticos:" : "Control estabilidad:" }}</span>
                                         <span class="font-medium text-sm">{{ $seguridad['control_estabilidad'] ?? 'N/A' }}</span>
                                     </div>
 {{--                                    <div class="flex justify-between">--}}
@@ -193,7 +193,7 @@
 {{--                                        <span class="font-medium text-sm">{{ $seguridad['asistente_frenado'] ?? 'N/A' }}</span>--}}
 {{--                                    </div>--}}
                                     <div class="flex justify-between">
-                                        <span class="text-gray-600 text-sm">Control tracción:</span>
+                                        <span class="text-gray-600 text-sm">{{ ($vehicle["slug"] == "coolray") ? "Seguros:" : "Control tracción:" }}</span>
                                         <span class="font-medium text-sm">{{ $seguridad['control_traccion'] ?? 'N/A' }}</span>
                                     </div>
                                     <div class="flex justify-between">
