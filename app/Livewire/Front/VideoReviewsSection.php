@@ -155,7 +155,7 @@ class VideoReviewsSection extends Component
                         'subtitle' => 'REVIEW COOLRAY',
                         'channel' => 'Reseñas',
                         'thumbnail' => '/frontend/images/vehicles/coolray/GEELY_BOLIVIA_PORTADA VIDEO.png',
-                        'video_url' => 'https://www.youtube.com/embed/Nc0YfZ8V0Mw?si=daSCvgg7By0CppXT',
+                        'video_url' => 'https://www.youtube.com/embed/Nc0YfZ8V0Mw?si=vgXDbQiE-KlljUlq',
                         'duration' => '05:31',
                         'views' => '125K views'
                     ],

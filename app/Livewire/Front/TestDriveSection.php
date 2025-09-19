@@ -17,7 +17,8 @@ class TestDriveSection extends Component
         'button_url' => '/forms',
         'background_image' => 'frontend/images/vehicles/starray/7080348 1.png',
         'background_image_mobile' => 'frontend/images/vehicles/starray/Geely_Test_Drive_Mobile.jpg',
-        'text_color' => '#ffffff',
+        'text_color' => '#fff',
+        'text_color_phone' => '#fff',
         'show_image' => true,
         'show_features' => false,
         'image_border_radius' => 'rounded-lg', // rounded-lg, rounded-xl, rounded-none
@@ -73,6 +74,7 @@ class TestDriveSection extends Component
                 'background_image_mobile' => 'frontend/images/vehicles/starray/Geely_Test_Drive_Mobile.jpg',
                 'title' => 'TEST DRIVE STARRAY',
                 'description' => 'Descubre por ti mismo la potencia y tecnología del Geely Starray.',
+                'text_color' => 'black',
             ],
 
             'gx3-pro' => [
@@ -80,6 +82,7 @@ class TestDriveSection extends Component
                 'background_image_mobile' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Test_Drive_Mobile.jpg',
                 'title' => 'TEST DRIVE GX3 PRO',
                 'description' => 'Experimenta la eficiencia y versatilidad del Geely GX3 Pro.',
+                'text_color' => 'black',
             ],
 
             'cityray' => [
@@ -87,6 +90,7 @@ class TestDriveSection extends Component
                 'background_image_mobile' => 'frontend/images/vehicles/cityray/Geely_Test_Drive_Mobile_Cityray.jpg',
                 'title' => 'TEST DRIVE CITYRAY',
                 'description' => 'Experimenta la eficiencia y versatilidad del Geely Cityray.',
+                'text_color' => 'black',
             ],
 
             'coolray' => [
@@ -94,6 +98,7 @@ class TestDriveSection extends Component
                 'background_image_mobile' => 'frontend/images/vehicles/coolray/Geely_Test_Drive_Mobile_Coolray.jpg',
                 'title' => 'TEST DRIVE COOLRAY',
                 'description' => 'Experimenta la eficiencia y versatilidad del Geely Coolray.',
+                'text_color' => 'white',
             ],
         ];
 

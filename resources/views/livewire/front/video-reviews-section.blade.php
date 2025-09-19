@@ -49,30 +49,55 @@
                         </p>
                     </div>
 
-                    {{-- Video Player --}}
-                    <div class="relative aspect-video" x-data="{ playing: false }">
-                        {{-- Thumbnail --}}
-                        <div x-show="!playing" class="relative w-full h-full">
-                            <img src="{{ asset($currentVideo['thumbnail'] ?? 'frontend/images/default-video.jpg') }}"
-                                 alt="{{ $currentVideo['title'] ?? 'Video' }}"
-                                 class="w-full h-full object-cover">
+                    {{-- Video Player con altura mínima mejorada para móviles --}}
+                    <div class="w-full max-w-6xl mx-auto px-2 sm:px-4">
+                        <div class="relative bg-black rounded-lg overflow-hidden shadow-2xl">
+                            <div class="relative w-full"
+                                 style="aspect-ratio: 16/9; min-height: 300px;"
+                                 x-data="{
+                                    playing: false,
+                                    videoUrl: '{{ $currentVideo['video_url'] ?? 'https://www.youtube.com/embed/POBCHlhgO0Q' }}',
+                                    getEmbedUrl() {
+                                        // Agregar autoplay cuando se reproduce
+                                        return this.videoUrl + (this.videoUrl.includes('?') ? '&' : '?') + 'autoplay=1&rel=0&modestbranding=1';
+                                    }
+                                 }">
 
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <button @click="playing = true"
-                                        class="bg-black bg-opacity-50 rounded-full p-4 hover:bg-opacity-70 transition-all transform hover:scale-110">
-                                    <svg class="w-12 h-12 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </button>
+                                {{-- Thumbnail --}}
+                                <div x-show="!playing" class="relative w-full h-full">
+                                    <img src="{{ asset($currentVideo['thumbnail'] ?? 'frontend/images/default-video.jpg') }}"
+                                         alt="{{ $currentVideo['title'] ?? 'Video' }}"
+                                         class="w-full h-full object-cover">
+
+                                    {{-- Play Button con tamaño responsive mejorado --}}
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <button @click="playing = true"
+                                                class="bg-black bg-opacity-60 rounded-full p-6 sm:p-8 hover:bg-opacity-80 transition-all transform hover:scale-110 active:scale-95 shadow-2xl">
+                                            {{-- Icono más grande --}}
+                                            <svg class="w-16 h-16 sm:w-20 sm:h-20 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M8 5v14l11-7z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    {{-- Duration Badge --}}
+                                    <div class="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 bg-black bg-opacity-80 text-white px-3 py-2 rounded-md text-sm sm:text-base font-medium">
+                                        {{ $currentVideo['duration'] ?? '00:00' }}
+                                    </div>
+                                </div>
+
+                                {{-- YouTube iframe dinámico --}}
+                                <div x-show="playing" x-transition class="w-full h-full">
+                                    <iframe x-show="playing"
+                                            :src="playing ? getEmbedUrl() : ''"
+                                            class="w-full h-full border-0"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen
+                                            referrerpolicy="strict-origin-when-cross-origin">
+                                    </iframe>
+                                </div>
                             </div>
-
-                            <div class="absolute bottom-4 right-4 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">
-                                {{ $currentVideo['duration'] ?? '00:00' }}
-                            </div>
-                        </div>
-
-                        {{-- YouTube iframe con construcción dinámica --}}
-                        <div x-show="playing" x-html="playing ? '<iframe src=&quot;https://www.youtube.com/embed/POBCHlhgO0Q&quot; class=&quot;w-full h-full&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; allowfullscreen referrerpolicy=&quot;strict-origin-when-cross-origin&quot;></iframe>' : ''">
                         </div>
                     </div>
 

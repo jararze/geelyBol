@@ -273,7 +273,7 @@ class VehicleFeatures extends Component
                     [
                         'id' => 'tecnologia',
                         'title' => 'Estilo',
-                        'subtitle' => 'PDiseño deportivo',
+                        'subtitle' => 'Diseño deportivo',
                         'image' => 'frontend/images/vehicles/coolray/features/2_GEELY_BOLIVIA_ESTILO.png',
                         'text_position' => 'bottom-left',
                         'text_color' => '#ffffff',

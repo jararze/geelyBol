@@ -113,7 +113,7 @@ class ModelSection extends Component
 
                 [
                     'id' => 2,
-                    'name' => 'CityRay',
+                    'name' => 'CITYRAY',
                     'slug' => 'cityray', // AGREGAR
                     'category' => 'suv', // AGREGAR
                     'description' => 'El SUV que impone Estilo y Tecnología',
@@ -204,7 +204,7 @@ class ModelSection extends Component
 
                 [
                     'id' => 4,
-                    'name' => 'Coolray',
+                    'name' => 'COOLRAY',
                     'slug' => 'coolray', // AGREGAR
                     'category' => 'suv', // AGREGAR
                     'description' => 'La SUV PERFECTA PARA LA VIDA URBANA',
@@ -253,7 +253,7 @@ class ModelSection extends Component
             'ELECTRICOS' => [
                 [
                     'id' => 5,
-                    'name' => 'Galaxy E5',
+                    'name' => 'GALAXY E5',
                     'slug' => 'galaxy-e5', // AGREGAR
                     'category' => 'electricos', // AGREGAR
                     'description' => '',

@@ -746,7 +746,7 @@ class FeatureSliderSection extends Component
                         ],
                         [
                             'id' => 'tecnologia-4',
-                            'title' => 'Tablero Ergonómico intuitivo ',
+                            'title' => 'Portón trasero eléctrico',
                             'subtitle' => '',
                             'description' => '',
                             'main_image' => 'frontend/images/vehicles/cityray/tecnologia/4.jpg',
@@ -755,7 +755,7 @@ class FeatureSliderSection extends Component
                         ],
                         [
                             'id' => 'tecnologia-5',
-                            'title' => 'Portón trasero eléctrico',
+                            'title' => 'Tablero Ergonómico intuitivo ',
                             'subtitle' => '',
                             'description' => '',
                             'main_image' => 'frontend/images/vehicles/cityray/tecnologia/5.jpg',
@@ -770,14 +770,15 @@ class FeatureSliderSection extends Component
                     'layout' => ['direction' => 'right'],
                     'slides' => [
                         [
-                            'id' => 'seguridad-1',
+                            'id' => 'seguridad-6',
                             'title' => 'Cámara 360° ',
-                            'subtitle' => '',
-                            'description' => 'Que te muestran todo lo que hay alrededor del auto y debajo, para no tener ningún obstáculo',
-                            'main_image' => 'frontend/images/vehicles/cityray/seguridad/1 Geely_Bolivia_Camara 360.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/cityray/seguridad/1 Geely_Bolivia_Camara 360.jpg',
+                            'subtitle' => 'Que te muestran todo lo que hay alrededor del auto y debajo, para no tener ningún obstáculo',
+                            'description' => '',
+                            'main_image' => 'frontend/images/vehicles/cityray/seguridad/6.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/seguridad/6.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
                         ],
+
                         [
                             'id' => 'seguridad-2',
                             'title' => 'Control Crucero Adaptativo',
@@ -815,14 +816,15 @@ class FeatureSliderSection extends Component
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
                         ],
                         [
-                            'id' => 'seguridad-6',
+                            'id' => 'seguridad-1',
                             'title' => '',
                             'subtitle' => '',
                             'description' => '',
-                            'main_image' => 'frontend/images/vehicles/cityray/seguridad/6.jpg',
-                            'thumbnail_image' => 'frontend/images/vehicles/cityray/seguridad/6.jpg',
+                            'main_image' => 'frontend/images/vehicles/cityray/seguridad/1 Geely_Bolivia_Camara 360.jpg',
+                            'thumbnail_image' => 'frontend/images/vehicles/cityray/seguridad/1 Geely_Bolivia_Camara 360.jpg',
                             'background_overlay' => 'bg-gradient-to-r from-blue-600/80 to-transparent'
                         ],
+
 
                     ]
                 ]

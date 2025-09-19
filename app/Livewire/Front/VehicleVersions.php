@@ -346,7 +346,7 @@ class VehicleVersions extends Component
                         'pricing' => [
                             'year' => 2026,
                             'list_price' => 25990,
-                            'discount' => 100,
+                            'discount' => 1000,
                             'final_price' => 24990,
                             'currency' => '$us.'
                         ],
@@ -420,7 +420,7 @@ class VehicleVersions extends Component
                         'pricing' => [
                             'year' => 2026,
                             'list_price' => 26990,
-                            'discount' => 100,
+                            'discount' => 1000,
                             'final_price' => 25990,
                             'currency' => '$us.'
                         ],
@@ -494,7 +494,7 @@ class VehicleVersions extends Component
                         'pricing' => [
                             'year' => 2026,
                             'list_price' => 29990,
-                            'discount' => 100,
+                            'discount' => 1000,
                             'final_price' => 28990,
                             'currency' => '$us.'
                         ],
@@ -568,19 +568,19 @@ class VehicleVersions extends Component
                     'subtitle_size' => 'text-lg'
                 ],
                 'versions' => [
-                    'Platinum' => [
-                        'name' => 'Platinum',
+                    'Comfort' => [
+                        'name' => 'Comfort',
                         'specs' => [
                             'Cilindrada:' => '1499 cc 174/5500 hp/rpm',
                             'Transmisión:' => '7 velocidades doble embrague',
-                            'Tracción:' => 'FWD Delantera ',
+                            'Tracción:' => 'FWD Delantera',
                             'Plataforma:' => 'Economy/Sport/Comfort/Intelligent'
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 47990,
+                            'list_price' => 41990,
                             'discount' => 2000,
-                            'final_price' => 45990,
+                            'final_price' => 39990,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -595,9 +595,9 @@ class VehicleVersions extends Component
                             'equipamiento' => [
                                 'pantalla' => 'Panel de instrumentos digital LCD de 10.2"',
                                 'asientos' => 'Cuero sintético',
-                                'climatizador' => 'Asientos delanteros calefactados',
-                                'camara' => '360° que te muestra todo lo que hay alrededor del auto',
-                                'sensores' => 'Sensores de estacionamiento traseros',
+                                'climatizador' => 'Automático',
+                                'camara' => 'De reversa',
+                                'sensores' => '-',
                                 'conectividad' => 'Pantalla táctil HD de 13.2"'
                             ],
                             'seguridad' => [
@@ -706,19 +706,19 @@ class VehicleVersions extends Component
                             ]
                         ]
                     ],
-                    'Comfort' => [
-                        'name' => 'Comfort',
+                    'Platinum' => [
+                        'name' => 'Platinum',
                         'specs' => [
                             'Cilindrada:' => '1499 cc 174/5500 hp/rpm',
                             'Transmisión:' => '7 velocidades doble embrague',
-                            'Tracción:' => 'FWD Delantera',
+                            'Tracción:' => 'FWD Delantera ',
                             'Plataforma:' => 'Economy/Sport/Comfort/Intelligent'
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 41990,
+                            'list_price' => 47990,
                             'discount' => 2000,
-                            'final_price' => 39990,
+                            'final_price' => 45990,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -733,9 +733,9 @@ class VehicleVersions extends Component
                             'equipamiento' => [
                                 'pantalla' => 'Panel de instrumentos digital LCD de 10.2"',
                                 'asientos' => 'Cuero sintético',
-                                'climatizador' => 'Automático',
-                                'camara' => 'De reversa',
-                                'sensores' => '-',
+                                'climatizador' => 'Asientos delanteros calefactados',
+                                'camara' => '360° que te muestra todo lo que hay alrededor del auto',
+                                'sensores' => 'Sensores de estacionamiento traseros',
                                 'conectividad' => 'Pantalla táctil HD de 13.2"'
                             ],
                             'seguridad' => [
@@ -775,13 +775,15 @@ class VehicleVersions extends Component
                             ]
                         ]
                     ],
+
+
                 ],
             ],
 
             'coolray' => [
                 'header' => [
                     'title' => 'VERSIONES Y PRECIOS',
-                    'subtitle' => 'Elige tu versión de Cityray',
+                    'subtitle' => 'Elige tu versión de COOLRAY',
                     'title_size' => 'text-3xl lg:text-4xl',
                     'subtitle_size' => 'text-lg'
                 ],

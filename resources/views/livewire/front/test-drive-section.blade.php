@@ -109,17 +109,18 @@
             @endif
 
                 <div class="relative z-10 container mx-auto px-4 h-full">
-                    <div class="flex items-start h-full pt-8 md:pt-30 pb-16 px-4">
+                    <div class="flex items-start h-full pt-8 md:pt-15 pb-16 px-4">
                         <div class="max-w-lg">
-                            <h2 class="text-3xl lg:text-5xl font-bold mb-6 text-black md:text-white">
+                            <h2 class="text-3xl lg:text-5xl font-bold mb-6 text-{{ $sectionData['text_color_phone'] }} md:text-{{ $sectionData['text_color'] }}">
+{{--                                @dd($sectionData['text_color_phone'],  $sectionData['text_color'])--}}
                                 {{ $sectionData['title'] }}
                             </h2>
 
                             <div class="mb-8 space-y-2">
-                                <p class="text-base leading-relaxed text-black md:text-white">
+                                <p class="text-base leading-relaxed text-{{ $sectionData['text_color_phone'] }} md:text-{{ $sectionData['text_color'] }}">
                                     {{ $sectionData['description'] }}
                                 </p>
-                                <p class="text-base font-bold text-black md:text-white">
+                                <p class="text-base font-bold text-{{ $sectionData['text_color_phone'] }} md:text-{{ $sectionData['text_color'] }}">
                                     {{ $sectionData['cta_text'] }}
                                 </p>
                             </div>
