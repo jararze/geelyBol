@@ -83,7 +83,7 @@ class VideoReviewsSection extends Component
                         'subtitle' => 'REVIEW STARRAY',
                         'channel' => 'Reseñas',
                         'thumbnail' => '/frontend/images/1.png',
-                        'video_url' => 'https://www.youtube-nocookie.com/embed/POBCHlhgO0Q?rel=0&modestbranding=1',
+                        'video_url' => 'https://www.youtube.com/embed/XFKtYQuqWPI',
                         'duration' => '05:31',
                         'views' => '125K views'
                     ],
