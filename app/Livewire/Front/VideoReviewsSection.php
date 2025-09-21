@@ -87,6 +87,16 @@ class VideoReviewsSection extends Component
                         'duration' => '05:31',
                         'views' => '125K views'
                     ],
+                    [
+                        'id' => 'video-2',
+                        'title' => 'This is where the ride can get for your video',
+                        'subtitle' => 'REVIEW STARRAY',
+                        'channel' => 'Reseñas',
+                        'thumbnail' => '/frontend/images/1.png',
+                        'video_url' => 'https://www.youtube.com/embed/Bi1i4T8tMGM?si=TA5Vvy3PptKLwG5p',
+                        'duration' => '05:31',
+                        'views' => '125K views'
+                    ],
                 ],
             ],
 
@@ -108,6 +118,16 @@ class VideoReviewsSection extends Component
                         'channel' => 'Reseñas',
                         'thumbnail' => '/frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Portada_Reviews.jpg',
                         'video_url' => 'https://www.youtube.com/embed/631B54-0P80?si=foam_lPDmAwoHR5G',
+                        'duration' => '05:31',
+                        'views' => '125K views'
+                    ],
+                    [
+                        'id' => 'video-2',
+                        'title' => 'This is where the ride can get for your video',
+                        'subtitle' => 'REVIEW GX3 PRO',
+                        'channel' => 'Reseñas',
+                        'thumbnail' => '/frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Portada_Reviews.jpg',
+                        'video_url' => 'https://www.youtube.com/embed/8oVUOlZtQ9U?si=Ov1jSCoJ26OrX2nM',
                         'duration' => '05:31',
                         'views' => '125K views'
                     ],

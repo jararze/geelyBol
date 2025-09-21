@@ -282,8 +282,8 @@ class HeroSection extends Component
             [
                 'id' => 3,
                 'media_type' => 'image',
-                'media_src' => 'frontend/images/banner1Desktop.png',
-                'media_src_mobile' => 'frontend/images/banner1phone.png',
+                'media_src' => 'frontend/images/banner1Desktop.jpg',
+                'media_src_mobile' => 'frontend/images/banner1phone.jpg',
                 'media_fit' => 'contain', // cover, contain, fill, scale-down
                 'media_position' => 'center', // center, top, bottom, left, right
                 'media_background' => 'bg-black', // Color de fondo si la imagen no cubre todo
