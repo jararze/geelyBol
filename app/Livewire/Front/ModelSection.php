@@ -253,7 +253,7 @@ class ModelSection extends Component
             'ELECTRICOS' => [
                 [
                     'id' => 5,
-                    'name' => 'GALAXY E5',
+                    'name' => 'EX5',
                     'slug' => 'galaxy-e5', // AGREGAR
                     'category' => 'electricos', // AGREGAR
                     'description' => '',

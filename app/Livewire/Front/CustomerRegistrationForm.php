@@ -62,7 +62,8 @@ class CustomerRegistrationForm extends Component
     public $vehicles = [
         'starray' => 'Starray',
         'gx3-pro' => 'GX3 Pro',
-        'citiray' => 'Citiray'
+        'cityray' => 'Cityray',
+        'coolray' => 'Coolray Lite',
     ];
 
     public $hobbiesOptions = [

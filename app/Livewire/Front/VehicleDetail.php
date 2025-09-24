@@ -166,7 +166,7 @@ class VehicleDetail extends Component
             [
                 'id' => 5,
                 'slug' => 'galaxy-e5',
-                'name' => 'GALAXY E5',
+                'name' => 'EX5',
                 'description' => 'SUV 100% eléctrico con autonomía extendida',
                 'long_description' => 'El futuro de la movilidad llega con el GALAXY E5. Este SUV 100% eléctrico ofrece una autonomía excepcional y tecnología de vanguardia.',
                 'image' => 'frontend/images/vehicles/starray/starray.jpg',
