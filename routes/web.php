@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Front\CustomerRegistrationForm;
 use App\Livewire\Front\FormDetail;
 use App\Livewire\Front\Fortune;
 use App\Livewire\Front\VehicleDetail;
@@ -16,6 +17,8 @@ Route::get('/fortuna', Fortune::class)->name('fortune');
 Route::get('/forms', FormDetail::class)->name('forms.base');
 Route::get('/forms/{category}', FormDetail::class)->name('forms.category');
 Route::get('/forms/{category}/{slug}', FormDetail::class)->name('forms.detail');
+
+Route::get('/clientegeely', CustomerRegistrationForm::class)->name('purchased.vehicle.form');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
