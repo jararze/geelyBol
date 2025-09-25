@@ -53,13 +53,13 @@ class ModelSection extends Component
                 'inactive_color' => 'text-gray-600 hover:text-purple-600',
                 'border_color' => 'border-purple-600'
             ],
-            [
-                'id' => 'CAMIONETAS',
-                'label' => 'CAMIONETAS',
-                'active_color' => 'bg-purple-600 text-white',
-                'inactive_color' => 'text-gray-600 hover:text-purple-600',
-                'border_color' => 'border-purple-600'
-            ]
+//            [
+//                'id' => 'CAMIONETAS',
+//                'label' => 'CAMIONETAS',
+//                'active_color' => 'bg-purple-600 text-white',
+//                'inactive_color' => 'text-gray-600 hover:text-purple-600',
+//                'border_color' => 'border-purple-600'
+//            ]
         ],
 
         'vehicles' => [
@@ -253,11 +253,11 @@ class ModelSection extends Component
             'ELECTRICOS' => [
                 [
                     'id' => 5,
-                    'name' => 'EX5',
-                    'slug' => 'galaxy-e5', // AGREGAR
+                    'name' => 'MUY PRONTO',
+                    'slug' => 'muy-pronto', // AGREGAR
                     'category' => 'electricos', // AGREGAR
                     'description' => '',
-                    'image' => 'frontend/images/vehicles/ex5/Geely_Bolivia_Ex5_Home.png',
+                    'image' => 'frontend/images/vehicles/electrico/Geely_Bolivia_Electrico_Home_Cover.png',
                     'position' => 'center',
                     'featured' => false,
 
@@ -299,54 +299,54 @@ class ModelSection extends Component
                 ]
             ],
 
-            'CAMIONETAS' => [
-                [
-                    'id' => 6,
-                    'name' => 'MUY PRONTO',
-                    'slug' => 'muy-pronto', // AGREGAR
-                    'category' => 'camionetas', // AGREGAR
-                    'description' => '',
-                    'image' => 'frontend/images/vehicles/camionetas/Geely_Bolivia_Riddara_Home_Cover.png',
-                    'position' => 'center',
-                    'featured' => false,
-
-                    'pricing' => [
-                        'currency_before' => 'Bs.',
-                        'price_before' => '450000',
-                        'price_before_color' => 'text-gray-500',
-                        'price_before_decoration' => 'line-through',
-
-                        'currency_now' => '$us.',
-                        'price_now' => '35000',
-                        'price_now_color' => 'text-orange-600',
-                        'price_now_size' => 'text-2xl',
-                        'price_now_weight' => 'font-bold',
-
-                        'discount_label' => 'Ahora',
-                        'discount_label_color' => 'text-orange-600',
-                        'show_from_label' => true,
-                        'from_label' => 'Desde'
-                    ],
-
-                    'button_primary' => [
-                        'text' => 'Ver modelo',
-                        'bg_color' => 'bg-orange-600',
-                        'text_color' => 'text-white',
-                        'hover_bg' => 'hover:bg-orange-700',
-                        'size' => 'px-8 py-3',
-                        'border_radius' => 'rounded-lg',
-                        'font_weight' => 'font-medium',
-                        'show' => true
-                    ],
-
-                    'features' => [
-                        'show_badge' => false,
-                        'badge_text' => '4x4',
-                        'badge_color' => 'bg-orange-500 text-white',
-                        'badge_position' => 'top-right'
-                    ]
-                ]
-            ]
+//            'CAMIONETAS' => [
+//                [
+//                    'id' => 6,
+//                    'name' => 'MUY PRONTO',
+//                    'slug' => 'muy-pronto', // AGREGAR
+//                    'category' => 'camionetas', // AGREGAR
+//                    'description' => '',
+//                    'image' => 'frontend/images/vehicles/camionetas/Geely_Bolivia_Riddara_Home_Cover.png',
+//                    'position' => 'center',
+//                    'featured' => false,
+//
+//                    'pricing' => [
+//                        'currency_before' => 'Bs.',
+//                        'price_before' => '450000',
+//                        'price_before_color' => 'text-gray-500',
+//                        'price_before_decoration' => 'line-through',
+//
+//                        'currency_now' => '$us.',
+//                        'price_now' => '35000',
+//                        'price_now_color' => 'text-orange-600',
+//                        'price_now_size' => 'text-2xl',
+//                        'price_now_weight' => 'font-bold',
+//
+//                        'discount_label' => 'Ahora',
+//                        'discount_label_color' => 'text-orange-600',
+//                        'show_from_label' => true,
+//                        'from_label' => 'Desde'
+//                    ],
+//
+//                    'button_primary' => [
+//                        'text' => 'Ver modelo',
+//                        'bg_color' => 'bg-orange-600',
+//                        'text_color' => 'text-white',
+//                        'hover_bg' => 'hover:bg-orange-700',
+//                        'size' => 'px-8 py-3',
+//                        'border_radius' => 'rounded-lg',
+//                        'font_weight' => 'font-medium',
+//                        'show' => true
+//                    ],
+//
+//                    'features' => [
+//                        'show_badge' => false,
+//                        'badge_text' => '4x4',
+//                        'badge_color' => 'bg-orange-500 text-white',
+//                        'badge_position' => 'top-right'
+//                    ]
+//                ]
+//            ]
         ]
     ];
 
