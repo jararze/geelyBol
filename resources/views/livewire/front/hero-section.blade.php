@@ -168,7 +168,7 @@
                     <img
                         src="{{ $slide['media_src'] }}"
                         alt="Hero background"
-                        class="absolute inset-0 w-full h-full object-fill hidden sm:block"
+                        class="absolute inset-0 w-full h-full object-cover hidden sm:block"
                     />
 
                     {{-- Imagen Mobile --}}
@@ -176,13 +176,13 @@
                         <img
                             src="{{ $slide['media_src_mobile'] }}"
                             alt="Hero background mobile"
-                            class="absolute inset-0 w-full h-full object-fill block sm:hidden"
+                            class="absolute inset-0 w-full h-full object-cover block sm:hidden"
                         />
                     @else
                         <img
                             src="{{ $slide['media_src'] }}"
                             alt="Hero background"
-                            class="absolute inset-0 w-full h-full object-fill block sm:hidden"
+                            class="absolute inset-0 w-full h-full object-cover block sm:hidden"
                         />
                     @endif
             @endif
