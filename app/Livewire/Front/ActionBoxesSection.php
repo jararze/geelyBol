@@ -21,11 +21,13 @@ class ActionBoxesSection extends Component
         return [
             [
                 'id' => 'test-drive',
-                'title' => 'TEST DRIVE',
+                'title' => 'WHATSAPP',
                 'svg_icon' => file_get_contents(public_path("assets/images/icons/whatsapp.svg")),
-                'route' => 'forms.base',
+                'route' => 'https://wa.me/59177595558?text=Hola%2C%20vi%20el%20sitio%20web%20Geely%20y%20deseo%20atenci%C3%B3n%20personalizada&utm_source=web%20visit&utm_medium=website&utm_campaign=none',
                 'color' => '#2563eb',
-                'is_anchor' => false
+                'is_anchor' => false,
+                'is_external' => true, // Nueva propiedad
+                'target' => '_blank' // Nueva propiedad
             ],
             [
                 'id' => 'cotiza',
@@ -33,7 +35,9 @@ class ActionBoxesSection extends Component
                 'svg_icon' => file_get_contents(public_path("assets/images/icons/credit.svg")),
                 'route' => 'forms.base',
                 'color' => '#2563eb',
-                'is_anchor' => false
+                'is_anchor' => false,
+                'is_external' => false, // Nueva propiedad
+                'target' => '_self' // Nueva propiedad
             ],
             [
                 'id' => 'direcciones',
@@ -41,7 +45,9 @@ class ActionBoxesSection extends Component
                 'svg_icon' => file_get_contents(public_path("assets/images/icons/location.svg")),
                 'route' => '#direcciones',
                 'color' => '#2563eb',
-                'is_anchor' => true
+                'is_anchor' => true,
+                'is_external' => false, // Nueva propiedad
+                'target' => '_self' // Nueva propiedad
             ],
             [
                 'id' => 'contactanos',
@@ -49,7 +55,9 @@ class ActionBoxesSection extends Component
                 'svg_icon' => file_get_contents(public_path("assets/images/icons/contact.svg")),
                 'route' => 'forms.base',
                 'color' => '#2563eb',
-                'is_anchor' => false
+                'is_anchor' => false,
+                'is_external' => false, // Nueva propiedad
+                'target' => '_self' // Nueva propiedad
             ]
         ];
     }

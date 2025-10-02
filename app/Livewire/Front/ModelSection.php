@@ -86,7 +86,7 @@ class ModelSection extends Component
                         'price_now_size' => 'text-2xl',
                         'price_now_weight' => 'font-bold',
 
-                        'discount_label' => 'Preventa',
+                        'discount_label' => 'Lanzamiento',
                         'discount_label_color' => 'text-blue-600',
                         'show_from_label' => true,
                         'from_label' => 'Desde'
@@ -133,7 +133,7 @@ class ModelSection extends Component
                         'price_now_size' => 'text-xl',
                         'price_now_weight' => 'font-bold',
 
-                        'discount_label' => 'Preventa',
+                        'discount_label' => 'Lanzamiento',
                         'discount_label_color' => 'text-blue-600',
                         'show_from_label' => true,
                         'from_label' => 'Desde'
@@ -177,7 +177,7 @@ class ModelSection extends Component
                         'price_now_size' => 'text-xl',
                         'price_now_weight' => 'font-bold',
 
-                        'discount_label' => 'Preventa',
+                        'discount_label' => 'Lanzamiento',
                         'discount_label_color' => 'text-blue-600',
                         'show_from_label' => true,
                         'from_label' => 'Desde'
@@ -224,7 +224,7 @@ class ModelSection extends Component
                         'price_now_size' => 'text-xl',
                         'price_now_weight' => 'font-bold',
 
-                        'discount_label' => 'Preventa',
+                        'discount_label' => 'Lanzamiento',
                         'discount_label_color' => 'text-blue-600',
                         'show_from_label' => true,
                         'from_label' => 'Desde'

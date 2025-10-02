@@ -178,10 +178,10 @@
 
                     @if($heroData['specs_position'] === 'bottom-center')
                         <div class="flex justify-center">
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 {{ $heroData['specs_background'] }} rounded-t-2xl px-8 py-6">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-10 {{ $heroData['specs_background'] }} rounded-t-2xl px-8 py-6">
                                 @foreach($heroData['selected_specs'] as $key => $spec)
                                     <div class="text-center">
-                                        <div class="flex items-baseline justify-center gap-1 mb-2">
+                                        <div class="flex items-baseline justify-center gap-1">
                                             @if(isset($spec['prefix']) && $spec['prefix'])
                                                 <span class="{{ $heroData['specs_prefix_size'] ?? 'text-sm' }} font-medium {{ $heroData['specs_font_family'] }}"
                                                       style="color: {{ $heroData['specs_text_color'] }};">

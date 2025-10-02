@@ -102,7 +102,7 @@
                                     </div>
 
                                     <div class="flex justify-between">
-                                        <span class="text-gray-600 text-sm">Descuento Expocruz:</span>
+                                        <span class="text-gray-600 text-sm">Descuento Lanzamiento:</span>
                                         <span class="font-medium text-green-600 text-sm">{{ $pricing['currency'] ?? '$' }} {{ number_format($pricing['discount'] ?? 0) }}</span>
                                     </div>
 
@@ -221,6 +221,23 @@
                                     class="w-full py-2 border border-gray-400 text-gray-700 rounded font-medium transition-colors hover:bg-black hover:text-white text-sm">
                                 {{ $versionsData['buttons']['test_drive']['text'] }}
                             </button>
+
+                            <a href="#"
+                               wire:click.prevent="contactWhatsapp"
+                               target="_blank"
+                               class="w-full py-2 border border-gray-400 text-gray-700 rounded font-medium transition-colors hover:bg-black hover:text-white text-sm inline-block text-center">
+                                {{ $versionsData['buttons']['whatsapp']['text'] }}
+                            </a>
+
+                            @push('scripts')
+                                <script>
+                                    document.addEventListener('livewire:init', () => {
+                                        Livewire.on('openWhatsapp', (event) => {
+                                            window.open(event.url, '_blank');
+                                        });
+                                    });
+                                </script>
+                            @endpush
                         </div>
                     </div>
 
@@ -250,7 +267,7 @@
                                         $currentVersion = $this->getCurrentVersion();
                                         $interiorImage = $currentVersion['images']['interior']['default'] ?? '';
                                     @endphp
-                                    <div class="relative w-full h-96 bg-gradient-to-br  rounded-lg overflow-hidden group shadow-lg">
+                                    <div class="relative w-full h-[175px] md:h-[550px] lg:h-[600px] bg-gradient-to-br rounded-lg overflow-hidden group shadow-lg">
                                         <img src="{{ asset($interiorImage) }}"
                                              alt="Interior del vehículo"
                                              class="w-full h-full object-contain transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110">
@@ -268,10 +285,10 @@
                                     </div>
                                 @else
                                     {{-- Imagen exterior con efectos similares --}}
-                                    <div class="relative w-full h-[175px] md:h-[275px]  rounded-lg overflow-hidden group">
+                                    <div class="relative w-full h-[175px] md:h-[450px] lg:h-[500px] rounded-lg overflow-hidden group">
                                         <img src="{{ asset($this->getCurrentImage()) }}"
                                              alt="exterior"
-                                             class="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-102 group-hover:brightness-105">
+                                             class="w-full h-full object-contain transition-all duration-500 ease-out group-hover:scale-102 group-hover:brightness-105">
 
                                         <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-300"></div>
                                     </div>

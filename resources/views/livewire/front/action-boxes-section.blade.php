@@ -6,11 +6,24 @@
         <div class="action-boxes__grid">
             @foreach($this->boxes as $box)
                 @php
+                    $isExternal = $box['is_external'] ?? false;
                     $isAnchor = ($box['is_anchor'] ?? false) || str_starts_with($box['route'], '#');
-                    $href = $isAnchor ? $box['route'] : route($box['route']);
+
+                    if ($isExternal) {
+                        $href = $box['route'];
+                    } elseif ($isAnchor) {
+                        $href = $box['route'];
+                    } else {
+                        $href = route($box['route']);
+                    }
+
+                    $target = $box['target'] ?? '_self';
+                    $rel = $isExternal ? 'noopener noreferrer' : '';
                 @endphp
 
-                <a href="{{ $href }}">
+                <a href="{{ $href }}"
+                   target="{{ $target }}"
+                   @if($rel) rel="{{ $rel }}" @endif>
                     <div class="action-box" style="--box-color: {{ $box['color'] }}">
                         <div class="action-box__icon" style="color: {{ $box['color'] }}">
                             {!! $box['svg_icon'] !!}

@@ -171,7 +171,8 @@ class VehicleVersions extends Component
         'buttons' => [
             'quote' => ['text' => 'Obtener Cotización', 'style' => 'bg-black text-white'],
             'catalog' => ['text' => 'Descargar Catálogo', 'style' => 'border border-gray-400 text-gray-700'],
-            'test_drive' => ['text' => 'Agendar Test Drive', 'style' => 'border border-gray-400 text-gray-700']
+            'test_drive' => ['text' => 'Agendar Test Drive', 'style' => 'border border-gray-400 text-gray-700'],
+            'whatsapp' => ['text' => 'Consulta por Whatsapp', 'style' => 'border border-gray-400 text-gray-700'],
         ]
     ];
 
@@ -1078,6 +1079,30 @@ class VehicleVersions extends Component
             'category' => $this->category,
             'slug' => $this->slug
         ])->with('activeTab', 'test-drive');
+    }
+
+    public function contactWhatsapp()
+    {
+        $phoneNumber = '59177595558';
+
+        $vehicleName = str_replace('-', ' ', ucwords($this->slug, '-'));
+        $vehicleCategory = strtoupper($this->category);
+        $vehicleUrl = route('vehicle.detail', [
+            'category' => strtolower($this->category),
+            'slug' => $this->slug
+        ]);
+
+        // Construir mensaje simple sin emojis problemáticos
+        $message = "Hola!\n\n";
+        $message .= "Estoy interesado en el {$vehicleCategory} {$vehicleName}\n\n";
+        $message .= "Link: {$vehicleUrl}\n\n";
+        $message .= "Podrian brindarme mas informacion?";
+
+        // Usar api.whatsapp.com que funciona mejor con la app de escritorio
+        $whatsappUrl = "https://api.whatsapp.com/send?phone={$phoneNumber}&text=" . urlencode($message);
+
+        // Emitir evento JavaScript para abrir en nueva ventana
+        $this->dispatch('openWhatsapp', url: $whatsappUrl);
     }
 
     public function render()
