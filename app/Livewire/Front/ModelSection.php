@@ -26,11 +26,11 @@ class ModelSection extends Component
 
         'header' => [
             'title' => 'MODELOS',
-            'subtitle_mobile' => 'Accede a la pre-venta exclusiva de los 2 primeros modelos que llegarán a Bolivia.',
+            'subtitle_mobile' => 'Desliza para conocer la línea de vehículos Geely disponible en Bolivia.',
             'title_color' => 'text-gray-900',
             'title_size' => 'text-4xl md:text-5xl',
             'title_weight' => 'font-bold',
-            'subtitle' => 'Accede a la pre-venta exclusiva de los 2 primeros modelos que llegarán a Bolivia.',
+            'subtitle' => 'Desliza para conocer la línea de vehículos Geely disponible en Bolivia.',
             'subtitle_color' => 'text-gray-600',
             'subtitle_size' => 'text-lg',
             'subtitle_max_width' => 'max-w-2xl',
