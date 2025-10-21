@@ -81,7 +81,7 @@ class ModelSection extends Component
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '51990',
+                        'price_now' => '53990',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-2xl',
                         'price_now_weight' => 'font-bold',
@@ -214,7 +214,7 @@ class ModelSection extends Component
 
                     'pricing' => [
                         'currency_before' => '$us',
-                        'price_before' => '32990',
+                        'price_before' => '31990',
                         'price_before_color' => 'text-gray-500',
                         'price_before_decoration' => 'line-through',
 

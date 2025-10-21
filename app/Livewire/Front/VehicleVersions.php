@@ -41,9 +41,9 @@ class VehicleVersions extends Component
                 ],
                 'pricing' => [
                     'year' => 2026,
-                    'list_price' => 53490,
-                    'discount' => 1000,
-                    'final_price' => 52490,
+                    'list_price' => 45500,
+                    'discount' => 2000,
+                    'final_price' => 43500,
                     'currency' => '$us.'
                 ],
                 'tab_content' => [
@@ -105,9 +105,9 @@ class VehicleVersions extends Component
                 ],
                 'pricing' => [
                     'year' => 2026,
-                    'list_price' => 60490,
-                    'discount' => 1000,
-                    'final_price' => 59490,
+                    'list_price' => 51500,
+                    'discount' => 2000,
+                    'final_price' => 49500,
                     'currency' => '$us.'
                 ],
                 'tab_content' => [
@@ -346,9 +346,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 25990,
-                            'discount' => 1000,
-                            'final_price' => 24990,
+                            'list_price' => 21700,
+                            'discount' => 500,
+                            'final_price' => 21200,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -420,9 +420,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 26990,
-                            'discount' => 1000,
-                            'final_price' => 25990,
+                            'list_price' => 22700,
+                            'discount' => 500,
+                            'final_price' => 22200,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -494,9 +494,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 29990,
-                            'discount' => 1000,
-                            'final_price' => 28990,
+                            'list_price' => 25200,
+                            'discount' => 500,
+                            'final_price' => 24700,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -579,9 +579,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 41990,
-                            'discount' => 2000,
-                            'final_price' => 39990,
+                            'list_price' => 35500,
+                            'discount' => 1500,
+                            'final_price' => 34000,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -648,9 +648,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 44990,
-                            'discount' => 2000,
-                            'final_price' => 42990,
+                            'list_price' => 37900,
+                            'discount' => 1500,
+                            'final_price' => 36400,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -717,9 +717,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 47990,
-                            'discount' => 2000,
-                            'final_price' => 45990,
+                            'list_price' => 40500,
+                            'discount' => 1500,
+                            'final_price' => 39000,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -799,9 +799,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 32990,
-                            'discount' => 1500,
-                            'final_price' => 31490,
+                            'list_price' => 26900,
+                            'discount' => 1000,
+                            'final_price' => 25900,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -868,9 +868,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 34990,
-                            'discount' => 1500,
-                            'final_price' => 33490,
+                            'list_price' => 28500,
+                            'discount' => 1000,
+                            'final_price' => 27500,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
