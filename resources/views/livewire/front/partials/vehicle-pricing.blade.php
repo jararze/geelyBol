@@ -14,7 +14,7 @@
 
 <div class="vehicle-pricing-wrapper {{ $wrapperScale }}">
     {{-- Precio anterior (fuera del componente principal) --}}
-    @if($vehicle['pricing']['price_before'] ?? false)
+    @if($vehicle['pricing']['show_from_label'] ?? false)
         <div class="price-before-external {{ $priceBeforeSize }}">
             Desde {{ $vehicle['pricing']['currency_before'] }}{{ number_format($vehicle['pricing']['price_before']) }}
         </div>

@@ -70,7 +70,7 @@ class VehicleDetail extends Component
                     'currency_before' => 'Bs.',
                     'price_before' => '500000',
                     'currency_now' => '$us.',
-                    'price_now' => '25990',
+                    'price_now' => '24990',
                     'discount_label' => 'Ahora',
                     'from_label' => 'Desde'
                 ],
@@ -105,7 +105,7 @@ class VehicleDetail extends Component
                     'currency_before' => 'Bs.',
                     'price_before' => '500000',
                     'currency_now' => '$us.',
-                    'price_now' => '25990',
+                    'price_now' => '41990',
                     'discount_label' => 'Ahora',
                     'from_label' => 'Desde'
                 ],
@@ -140,7 +140,7 @@ class VehicleDetail extends Component
                     'currency_before' => 'Bs.',
                     'price_before' => '500000',
                     'currency_now' => '$us.',
-                    'price_now' => '25990',
+                    'price_now' => '31990',
                     'discount_label' => 'Ahora',
                     'from_label' => 'Desde'
                 ],

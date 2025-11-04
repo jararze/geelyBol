@@ -96,7 +96,7 @@
 
 
         <section id="slider">
-            <livewire:front.promotions-slider-section :vehicle="$vehicle"/>
+{{--            <livewire:front.promotions-slider-section :vehicle="$vehicle"/>--}}
         </section>
 
         <section id="beneficios">

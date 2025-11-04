@@ -81,7 +81,7 @@ class ModelSection extends Component
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '53990',
+                        'price_now' => '51990',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-2xl',
                         'price_now_weight' => 'font-bold',
@@ -89,7 +89,7 @@ class ModelSection extends Component
                         'discount_label' => 'Lanzamiento',
                         'discount_label_color' => 'text-blue-600',
                         'show_from_label' => true,
-                        'from_label' => 'Desde'
+                        'from_label' => 'Lanzamiento'
                     ],
 
                     'button_primary' => [
@@ -128,7 +128,7 @@ class ModelSection extends Component
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '39990',
+                        'price_now' => '40490',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-xl',
                         'price_now_weight' => 'font-bold',
@@ -136,7 +136,7 @@ class ModelSection extends Component
                         'discount_label' => 'Lanzamiento',
                         'discount_label_color' => 'text-blue-600',
                         'show_from_label' => true,
-                        'from_label' => 'Desde'
+                        'from_label' => 'Lanzamiento'
                     ],
 
                     'button_primary' => [
@@ -167,12 +167,12 @@ class ModelSection extends Component
 
                     'pricing' => [
                         'currency_before' => '$us',
-                        'price_before' => '25990',
+                        'price_before' => '24990',
                         'price_before_color' => 'text-gray-500',
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '24990',
+                        'price_now' => '24490',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-xl',
                         'price_now_weight' => 'font-bold',
@@ -180,7 +180,7 @@ class ModelSection extends Component
                         'discount_label' => 'Lanzamiento',
                         'discount_label_color' => 'text-blue-600',
                         'show_from_label' => true,
-                        'from_label' => 'Desde'
+                        'from_label' => 'Lanzamiento'
                     ],
 
                     'button_primary' => [
@@ -219,7 +219,7 @@ class ModelSection extends Component
                         'price_before_decoration' => 'line-through',
 
                         'currency_now' => '$us.',
-                        'price_now' => '31490',
+                        'price_now' => '30990',
                         'price_now_color' => 'text-blue-600',
                         'price_now_size' => 'text-xl',
                         'price_now_weight' => 'font-bold',
@@ -227,7 +227,7 @@ class ModelSection extends Component
                         'discount_label' => 'Lanzamiento',
                         'discount_label_color' => 'text-blue-600',
                         'show_from_label' => true,
-                        'from_label' => 'Desde'
+                        'from_label' => 'Lanzamiento'
                     ],
 
                     'button_primary' => [
@@ -275,7 +275,7 @@ class ModelSection extends Component
 
                         'discount_label' => 'Ahora',
                         'discount_label_color' => 'text-green-600',
-                        'show_from_label' => true,
+                        'show_from_label' => false,
                         'from_label' => 'Desde'
                     ],
 

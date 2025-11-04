@@ -37,6 +37,15 @@ class DireccionesSection extends Component
                 'city' => 'El Alto - Bolivia',
                 'map_link' => 'https://maps.app.goo.gl/veuGtGn2iECCP9Ez8',
                 'icon' => 'location'
+            ],
+            [
+                'name' => 'ORURO',
+                'address' => 'Av. 6 de Agosto #853',
+                'phone' => '',
+                'hours' => '',
+                'city' => 'Oruro - Bolivia',
+                'map_link' => 'https://maps.app.goo.gl/DBPsGLxpBea5TroT6',
+                'icon' => 'location'
             ]
         ]
     ];

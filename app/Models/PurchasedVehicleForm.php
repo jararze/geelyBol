@@ -9,35 +9,7 @@ class PurchasedVehicleForm extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'first_name',
-        'last_name',
-        'second_last_name',
-        'gender',
-        'nationality',
-        'id_document',
-        'birth_date',
-        'mobile_phone',
-        'email',
-        'wants_promotions',
-        'promo_whatsapp',
-        'promo_email',
-        'promo_sms',
-        'no_promotions',
-        'city',
-        'neighborhood',
-        'full_address',
-        'marital_status',
-        'has_children',
-        'number_of_children',
-        'work_field',
-        'sales_advisor_name',
-        'purchased_vehicle',
-        'vehicle_attractive_feature',
-        'hobbies',
-        'education_level',
-        'main_driver'
-    ];
+    protected $guarded = [];
 
     protected $casts = [
         'birth_date' => 'date',
@@ -47,7 +19,7 @@ class PurchasedVehicleForm extends Model
         'promo_sms' => 'boolean',
         'no_promotions' => 'boolean',
         'has_children' => 'boolean',
-        'hobbies' => 'array'
+        'hobbies' => 'array',
     ];
 
     public function getFullNameAttribute()

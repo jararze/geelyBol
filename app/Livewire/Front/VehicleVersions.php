@@ -346,9 +346,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 21700,
+                            'list_price' => 24990,
                             'discount' => 500,
-                            'final_price' => 21200,
+                            'final_price' => 24490,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -420,9 +420,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 22700,
+                            'list_price' => 25990,
                             'discount' => 500,
-                            'final_price' => 22200,
+                            'final_price' => 25490,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -494,9 +494,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 25200,
+                            'list_price' => 28990,
                             'discount' => 500,
-                            'final_price' => 24700,
+                            'final_price' => 28490,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -579,9 +579,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 35500,
+                            'list_price' => 41990,
                             'discount' => 1500,
-                            'final_price' => 34000,
+                            'final_price' => 40490,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -648,9 +648,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 37900,
+                            'list_price' => 44990,
                             'discount' => 1500,
-                            'final_price' => 36400,
+                            'final_price' => 43490,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -717,9 +717,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 40500,
+                            'list_price' => 47990,
                             'discount' => 1500,
-                            'final_price' => 39000,
+                            'final_price' => 46490,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -799,9 +799,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 26900,
+                            'list_price' => 31990,
                             'discount' => 1000,
-                            'final_price' => 25900,
+                            'final_price' => 30990,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [
@@ -868,9 +868,9 @@ class VehicleVersions extends Component
                         ],
                         'pricing' => [
                             'year' => 2026,
-                            'list_price' => 28500,
+                            'list_price' => 33990,
                             'discount' => 1000,
-                            'final_price' => 27500,
+                            'final_price' => 32990,
                             'currency' => '$us.'
                         ],
                         'tab_content' => [

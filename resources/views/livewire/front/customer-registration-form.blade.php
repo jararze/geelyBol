@@ -12,14 +12,28 @@
 
         {{-- Mensajes Flash --}}
         @if (session()->has('success'))
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
-                {{ session('success') }}
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6" role="alert">
+                <strong class="font-bold">¡Éxito!</strong>
+                <span class="block sm:inline">{{ session('success') }}</span>
             </div>
         @endif
 
         @if (session()->has('error'))
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-                {{ session('error') }}
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6" role="alert">
+                <strong class="font-bold">Error:</strong>
+                <span class="block sm:inline">{{ session('error') }}</span>
+            </div>
+        @endif
+
+        {{-- Resumen de errores --}}
+        @if ($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6" role="alert">
+                <strong class="font-bold">Por favor corrija los siguientes errores:</strong>
+                <ul class="list-disc list-inside mt-2">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
         @endif
 
@@ -39,8 +53,8 @@
                                 Nombre *
                             </label>
                             <input type="text"
-                                   wire:model.defer="formData.first_name"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                   wire:model.blur="formData.first_name"
+                                   class="w-full px-3 py-2 border @error('formData.first_name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('formData.first_name')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -52,8 +66,8 @@
                                 Apellido Paterno *
                             </label>
                             <input type="text"
-                                   wire:model.defer="formData.last_name"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                   wire:model.blur="formData.last_name"
+                                   class="w-full px-3 py-2 border @error('formData.last_name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('formData.last_name')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -65,8 +79,8 @@
                                 Apellido Materno *
                             </label>
                             <input type="text"
-                                   wire:model.defer="formData.second_last_name"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                   wire:model.blur="formData.second_last_name"
+                                   class="w-full px-3 py-2 border @error('formData.second_last_name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('formData.second_last_name')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -77,8 +91,8 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 Sexo *
                             </label>
-                            <select wire:model.defer="formData.gender"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <select wire:model.blur="formData.gender"
+                                    class="w-full px-3 py-2 border @error('formData.gender') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="">Seleccionar</option>
                                 <option value="masculino">Masculino</option>
                                 <option value="femenino">Femenino</option>
@@ -94,8 +108,8 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 Nacionalidad *
                             </label>
-                            <select wire:model.defer="formData.nationality"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <select wire:model.blur="formData.nationality"
+                                    class="w-full px-3 py-2 border @error('formData.nationality') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 @foreach($nationalities as $nationality)
                                     <option value="{{ $nationality }}">{{ $nationality }}</option>
                                 @endforeach
@@ -111,8 +125,8 @@
                                 Carnet de Identidad / Pasaporte *
                             </label>
                             <input type="text"
-                                   wire:model.defer="formData.id_document"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                   wire:model.blur="formData.id_document"
+                                   class="w-full px-3 py-2 border @error('formData.id_document') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('formData.id_document')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -124,8 +138,8 @@
                                 Fecha de Nacimiento *
                             </label>
                             <input type="date"
-                                   wire:model.defer="formData.birth_date"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                   wire:model.blur="formData.birth_date"
+                                   class="w-full px-3 py-2 border @error('formData.birth_date') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('formData.birth_date')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -137,8 +151,8 @@
                                 Número de Teléfono Móvil *
                             </label>
                             <input type="tel"
-                                   wire:model.defer="formData.mobile_phone"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                   wire:model.blur="formData.mobile_phone"
+                                   class="w-full px-3 py-2 border @error('formData.mobile_phone') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('formData.mobile_phone')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -151,8 +165,8 @@
                                 <span class="text-xs text-gray-500 block">Para mensajes importantes (Facturas, documentos, alertas, etc.)</span>
                             </label>
                             <input type="email"
-                                   wire:model.defer="formData.email"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                   wire:model.blur="formData.email"
+                                   class="w-full px-3 py-2 border @error('formData.email') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('formData.email')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -213,8 +227,8 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 Ciudad Residencia *
                             </label>
-                            <select wire:model.defer="formData.city"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <select wire:model.blur="formData.city"
+                                    class="w-full px-3 py-2 border @error('formData.city') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="">Seleccionar ciudad</option>
                                 @foreach($cities as $city)
                                     <option value="{{ $city }}">{{ $city }}</option>
@@ -231,8 +245,8 @@
                                 Zona o Barrio de Domicilio *
                             </label>
                             <input type="text"
-                                   wire:model.defer="formData.neighborhood"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                   wire:model.blur="formData.neighborhood"
+                                   class="w-full px-3 py-2 border @error('formData.neighborhood') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('formData.neighborhood')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -243,9 +257,9 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 Dirección Completa de Domicilio *
                             </label>
-                            <textarea wire:model.defer="formData.full_address"
+                            <textarea wire:model.blur="formData.full_address"
                                       rows="2"
-                                      class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                      class="w-full px-3 py-2 border @error('formData.full_address') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                       placeholder="Ej: Av. Banzer #123, entre 2do y 3er anillo"></textarea>
                             @error('formData.full_address')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -266,8 +280,8 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 Estado Civil *
                             </label>
-                            <select wire:model.defer="formData.marital_status"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <select wire:model.blur="formData.marital_status"
+                                    class="w-full px-3 py-2 border @error('formData.marital_status') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="">Seleccionar</option>
                                 <option value="soltero">Soltero/a</option>
                                 <option value="casado">Casado/a</option>
@@ -280,7 +294,7 @@
                         </div>
 
                         {{-- Tiene Hijos --}}
-                        <div>
+                        <div class="md:col-span-2 lg:col-span-3">
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 ¿Tiene hijos? *
                             </label>
@@ -300,19 +314,22 @@
                                     <span class="ml-2 text-sm text-gray-700">No</span>
                                 </label>
                             </div>
+                            @error('formData.has_children')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         {{-- Número de Hijos - Solo aparece si selecciona SÍ --}}
                         @if($formData['has_children'] === 'si')
-                            <div class="mt-4">
+                            <div class="md:col-span-2 lg:col-span-3">
                                 <label class="block text-sm font-medium text-gray-700 mb-2">
                                     Número de Hijos *
                                 </label>
                                 <input type="number"
-                                       wire:model.defer="formData.number_of_children"
+                                       wire:model.blur="formData.number_of_children"
                                        min="1"
                                        max="20"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                       class="w-full md:w-1/3 px-3 py-2 border @error('formData.number_of_children') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                        placeholder="¿Cuántos hijos tiene?">
                                 @error('formData.number_of_children')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -335,8 +352,8 @@
                                 Campo de Ejercicio Laboral *
                             </label>
                             <input type="text"
-                                   wire:model.defer="formData.work_field"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                   wire:model.blur="formData.work_field"
+                                   class="w-full px-3 py-2 border @error('formData.work_field') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                    placeholder="Ej: Medicina, Ingeniería, Comercio, etc.">
                             @error('formData.work_field')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -349,8 +366,8 @@
                                 Nombre de su Asesor Profesional de Ventas *
                             </label>
                             <input type="text"
-                                   wire:model.defer="formData.sales_advisor_name"
-                                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                   wire:model.blur="formData.sales_advisor_name"
+                                   class="w-full px-3 py-2 border @error('formData.sales_advisor_name') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             @error('formData.sales_advisor_name')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -361,8 +378,8 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">
                                 Vehículo Adquirido *
                             </label>
-                            <select wire:model.defer="formData.purchased_vehicle"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <select wire:model.blur="formData.purchased_vehicle"
+                                    class="w-full px-3 py-2 border @error('formData.purchased_vehicle') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                 <option value="">Seleccionar vehículo</option>
                                 @foreach($vehicles as $key => $vehicle)
                                     <option value="{{ $vehicle }}">{{ $vehicle }}</option>
@@ -379,9 +396,9 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">
                             ¿Qué característica del vehículo adquirido le llamó más la atención? *
                         </label>
-                        <textarea wire:model.defer="formData.vehicle_attractive_feature"
+                        <textarea wire:model.blur="formData.vehicle_attractive_feature"
                                   rows="3"
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                  class="w-full px-3 py-2 border @error('formData.vehicle_attractive_feature') border-red-500 @else border-gray-300 @enderror rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                   placeholder="Describa qué aspecto del vehículo le resultó más atractivo..."></textarea>
                         @error('formData.vehicle_attractive_feature')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -470,8 +487,10 @@
                 {{-- Botón Submit --}}
                 <div class="pt-6 border-t border-gray-200">
                     <button type="submit"
-                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-4 px-8 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                        Registrar Información
+                            wire:loading.attr="disabled"
+                            class="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-medium py-4 px-8 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        <span wire:loading.remove>Registrar Información</span>
+                        <span wire:loading>Procesando...</span>
                     </button>
                 </div>
             </form>
