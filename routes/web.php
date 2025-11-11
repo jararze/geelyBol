@@ -20,11 +20,13 @@ Route::get('/forms/{category}/{slug}', FormDetail::class)->name('forms.detail');
 
 Route::get('/clientegeely', CustomerRegistrationForm::class)->name('purchased.vehicle.form');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::view('dashboard', 'dashboard')->name('dashboard');
+
+    Volt::route('backend/upload', 'backend.upload')->name('upload');
+
     Route::redirect('settings', 'settings/profile');
 
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');

@@ -1,8 +1,7 @@
 <!-- resources/views/livewire/hero-section.blade.php -->
 {{--<section class="relative min-h-[65vh] sm:min-h-[75vh] md:min-h-[80vh] lg:min-h-[85vh] xl:min-h-[90vh] overflow-hidden"--}}
-<section class="relative overflow-hidden"
+<section class="relative overflow-hidden bg-black lg:!h-[calc(100vh-80px)] lg:!h-[calc(100svh-80px)]"
          style="height: calc(100vh - 64px); height: calc(100svh - 64px);"
-         class="lg:!h-[calc(100vh-80px)] lg:!h-[calc(100svh-80px)]"
          x-data="{
                 currentSlide: @entangle('currentSlide'),
                 totalSlides: {{ count($heroConfig['slides']) }},

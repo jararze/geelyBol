@@ -2,18 +2,17 @@
 
 namespace App\Livewire\Front;
 
-use Illuminate\Support\Facades\View;
+use App\Models\Vehicle;
+use App\Models\VehicleCategory;
 use Livewire\Component;
 
 class ModelSection extends Component
 {
-
     public $currentSlide = 0;
     public $activeCategory = 'SUV';
     public $totalSlides = 0;
     public $currentIndex = 0;
     public $totalVehicles = 0;
-
 
     public $modelsConfig = [
         'section_settings' => [
@@ -37,322 +36,102 @@ class ModelSection extends Component
             'text_align' => 'text-center',
             'margin_bottom' => 'mb-16'
         ],
-
-        'categories' => [
-            [
-                'id' => 'SUV',
-                'label' => 'SUV',
-                'active_color' => 'bg-purple-600 text-white',
-                'inactive_color' => 'text-gray-600 hover:text-purple-600',
-                'border_color' => 'border-purple-600'
-            ],
-            [
-                'id' => 'ELECTRICOS',
-                'label' => 'ELÉCTRICOS',
-                'active_color' => 'bg-purple-600 text-white',
-                'inactive_color' => 'text-gray-600 hover:text-purple-600',
-                'border_color' => 'border-purple-600'
-            ],
-//            [
-//                'id' => 'CAMIONETAS',
-//                'label' => 'CAMIONETAS',
-//                'active_color' => 'bg-purple-600 text-white',
-//                'inactive_color' => 'text-gray-600 hover:text-purple-600',
-//                'border_color' => 'border-purple-600'
-//            ]
-        ],
-
-        'vehicles' => [
-            'SUV' => [
-                [
-                    'id' => 1,
-                    'slug' => 'starray', // AGREGAR
-                    'category' => 'suv', // AGREGAR
-                    'name' => 'STARRAY',
-                    'description' => 'La SUV Ultra-moderna',
-                    'image' => 'frontend/images/vehicles/starray/Geely_Bolivia_Starray_Home.png',
-                    'position' => 'center', // center, left, right
-                    'featured' => true, // Si es el destacado en el centro
-
-                    'pricing' => [
-                        'currency_before' => '$us.',
-                        'price_before' => '53990',
-                        'price_before_color' => 'text-gray-500',
-                        'price_before_decoration' => 'line-through',
-
-                        'currency_now' => '$us.',
-                        'price_now' => '51990',
-                        'price_now_color' => 'text-blue-600',
-                        'price_now_size' => 'text-2xl',
-                        'price_now_weight' => 'font-bold',
-
-                        'discount_label' => 'Lanzamiento',
-                        'discount_label_color' => 'text-blue-600',
-                        'show_from_label' => true,
-                        'from_label' => 'Lanzamiento'
-                    ],
-
-                    'button_primary' => [
-                        'text' => 'Ver modelo',
-                        'bg_color' => 'bg-black',
-                        'text_color' => 'text-white',
-                        'hover_bg' => 'hover:bg-gray-800',
-                        'size' => 'px-8 py-3',
-                        'border_radius' => 'rounded-lg',
-                        'font_weight' => 'font-medium',
-                        'show' => true
-                    ],
-
-                    'features' => [
-                        'show_badge' => false,
-                        'badge_text' => 'NUEVO',
-                        'badge_color' => 'bg-red-500 text-white',
-                        'badge_position' => 'top-right'
-                    ]
-                ],
-
-                [
-                    'id' => 2,
-                    'name' => 'CITYRAY',
-                    'slug' => 'cityray', // AGREGAR
-                    'category' => 'suv', // AGREGAR
-                    'description' => 'El SUV que impone Estilo y Tecnología',
-                    'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray_Home.jpg',
-                    'position' => 'left',
-                    'featured' => true,
-
-                    'pricing' => [
-                        'currency_before' => '$us.',
-                        'price_before' => '41990',
-                        'price_before_color' => 'text-gray-500',
-                        'price_before_decoration' => 'line-through',
-
-                        'currency_now' => '$us.',
-                        'price_now' => '40490',
-                        'price_now_color' => 'text-blue-600',
-                        'price_now_size' => 'text-xl',
-                        'price_now_weight' => 'font-bold',
-
-                        'discount_label' => 'Lanzamiento',
-                        'discount_label_color' => 'text-blue-600',
-                        'show_from_label' => true,
-                        'from_label' => 'Lanzamiento'
-                    ],
-
-                    'button_primary' => [
-                        'text' => 'Ver modelo',
-                        'bg_color' => 'bg-black',
-                        'text_color' => 'text-white',
-                        'hover_bg' => 'hover:bg-gray-800',
-                        'size' => 'px-6 py-2',
-                        'border_radius' => 'rounded-lg',
-                        'font_weight' => 'font-medium',
-                        'show' => true
-                    ],
-
-                    'features' => [
-                        'show_badge' => false
-                    ]
-                ],
-
-                [
-                    'id' => 3,
-                    'name' => 'GX3 PRO',
-                    'slug' => 'gx3-pro', // AGREGAR
-                    'category' => 'suv', // AGREGAR
-                    'description' => 'La SUV Moderna, Práctica y Accesible',
-                    'image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Home.png',
-                    'position' => 'right',
-                    'featured' => true,
-
-                    'pricing' => [
-                        'currency_before' => '$us',
-                        'price_before' => '24990',
-                        'price_before_color' => 'text-gray-500',
-                        'price_before_decoration' => 'line-through',
-
-                        'currency_now' => '$us.',
-                        'price_now' => '24490',
-                        'price_now_color' => 'text-blue-600',
-                        'price_now_size' => 'text-xl',
-                        'price_now_weight' => 'font-bold',
-
-                        'discount_label' => 'Lanzamiento',
-                        'discount_label_color' => 'text-blue-600',
-                        'show_from_label' => true,
-                        'from_label' => 'Lanzamiento'
-                    ],
-
-                    'button_primary' => [
-                        'text' => 'Ver modelo',
-                        'bg_color' => 'bg-black',
-                        'text_color' => 'text-white',
-                        'hover_bg' => 'hover:bg-gray-800',
-                        'size' => 'px-6 py-2',
-                        'border_radius' => 'rounded-lg',
-                        'font_weight' => 'font-medium',
-                        'show' => true
-                    ],
-
-                    'features' => [
-                        'show_badge' => false,
-                        'badge_text' => 'POPULAR',
-                        'badge_color' => 'bg-green-500 text-white',
-                        'badge_position' => 'top-right'
-                    ]
-                ],
-
-                [
-                    'id' => 4,
-                    'name' => 'COOLRAY',
-                    'slug' => 'coolray', // AGREGAR
-                    'category' => 'suv', // AGREGAR
-                    'description' => 'La SUV PERFECTA PARA LA VIDA URBANA',
-                    'image' => 'frontend/images/vehicles/coolray/Geely_Bolivia_Coolray_Home.png',
-                    'position' => 'right',
-                    'featured' => true,
-
-                    'pricing' => [
-                        'currency_before' => '$us',
-                        'price_before' => '31990',
-                        'price_before_color' => 'text-gray-500',
-                        'price_before_decoration' => 'line-through',
-
-                        'currency_now' => '$us.',
-                        'price_now' => '30990',
-                        'price_now_color' => 'text-blue-600',
-                        'price_now_size' => 'text-xl',
-                        'price_now_weight' => 'font-bold',
-
-                        'discount_label' => 'Lanzamiento',
-                        'discount_label_color' => 'text-blue-600',
-                        'show_from_label' => true,
-                        'from_label' => 'Lanzamiento'
-                    ],
-
-                    'button_primary' => [
-                        'text' => 'Ver modelo',
-                        'bg_color' => 'bg-black',
-                        'text_color' => 'text-white',
-                        'hover_bg' => 'hover:bg-gray-800',
-                        'size' => 'px-6 py-2',
-                        'border_radius' => 'rounded-lg',
-                        'font_weight' => 'font-medium',
-                        'show' => true
-                    ],
-
-                    'features' => [
-                        'show_badge' => false,
-                        'badge_text' => 'POPULAR',
-                        'badge_color' => 'bg-green-500 text-white',
-                        'badge_position' => 'top-right'
-                    ]
-                ],
-            ],
-
-            'ELECTRICOS' => [
-                [
-                    'id' => 5,
-                    'name' => 'MUY PRONTO',
-                    'slug' => 'muy-pronto', // AGREGAR
-                    'category' => 'electricos', // AGREGAR
-                    'description' => '',
-                    'image' => 'frontend/images/vehicles/electrico/Geely_Bolivia_Electrico_Home_Cover.png',
-                    'position' => 'center',
-                    'featured' => false,
-
-                    'pricing' => [
-                        'currency_before' => 'Bs.',
-                        'price_before' => '600000',
-                        'price_before_color' => 'text-gray-500',
-                        'price_before_decoration' => 'line-through',
-
-                        'currency_now' => '$us.',
-                        'price_now' => '45000',
-                        'price_now_color' => 'text-green-600',
-                        'price_now_size' => 'text-2xl',
-                        'price_now_weight' => 'font-bold',
-
-                        'discount_label' => 'Ahora',
-                        'discount_label_color' => 'text-green-600',
-                        'show_from_label' => false,
-                        'from_label' => 'Desde'
-                    ],
-
-                    'button_primary' => [
-                        'text' => 'Ver modelo',
-                        'bg_color' => 'bg-green-600',
-                        'text_color' => 'text-white',
-                        'hover_bg' => 'hover:bg-green-700',
-                        'size' => 'px-8 py-3',
-                        'border_radius' => 'rounded-lg',
-                        'font_weight' => 'font-medium',
-                        'show' => true
-                    ],
-
-                    'features' => [
-                        'show_badge' => false,
-                        'badge_text' => 'ELÉCTRICO',
-                        'badge_color' => 'bg-green-500 text-white',
-                        'badge_position' => 'top-right'
-                    ]
-                ]
-            ],
-
-//            'CAMIONETAS' => [
-//                [
-//                    'id' => 6,
-//                    'name' => 'MUY PRONTO',
-//                    'slug' => 'muy-pronto', // AGREGAR
-//                    'category' => 'camionetas', // AGREGAR
-//                    'description' => '',
-//                    'image' => 'frontend/images/vehicles/camionetas/Geely_Bolivia_Riddara_Home_Cover.png',
-//                    'position' => 'center',
-//                    'featured' => false,
-//
-//                    'pricing' => [
-//                        'currency_before' => 'Bs.',
-//                        'price_before' => '450000',
-//                        'price_before_color' => 'text-gray-500',
-//                        'price_before_decoration' => 'line-through',
-//
-//                        'currency_now' => '$us.',
-//                        'price_now' => '35000',
-//                        'price_now_color' => 'text-orange-600',
-//                        'price_now_size' => 'text-2xl',
-//                        'price_now_weight' => 'font-bold',
-//
-//                        'discount_label' => 'Ahora',
-//                        'discount_label_color' => 'text-orange-600',
-//                        'show_from_label' => true,
-//                        'from_label' => 'Desde'
-//                    ],
-//
-//                    'button_primary' => [
-//                        'text' => 'Ver modelo',
-//                        'bg_color' => 'bg-orange-600',
-//                        'text_color' => 'text-white',
-//                        'hover_bg' => 'hover:bg-orange-700',
-//                        'size' => 'px-8 py-3',
-//                        'border_radius' => 'rounded-lg',
-//                        'font_weight' => 'font-medium',
-//                        'show' => true
-//                    ],
-//
-//                    'features' => [
-//                        'show_badge' => false,
-//                        'badge_text' => '4x4',
-//                        'badge_color' => 'bg-orange-500 text-white',
-//                        'badge_position' => 'top-right'
-//                    ]
-//                ]
-//            ]
-        ]
     ];
 
     public function mount(): void
     {
+        // Cargar categorías desde BD
+        $this->modelsConfig['categories'] = $this->loadCategories();
+
+        // Cargar vehículos desde BD
+        $this->modelsConfig['vehicles'] = $this->loadAllVehicles();
+
         $this->updateTotalVehicles();
+    }
+
+    /**
+     * Cargar categorías desde la BD
+     */
+    private function loadCategories()
+    {
+        return VehicleCategory::active()
+            ->ordered()
+            ->get()
+            ->map(function ($category) {
+                return [
+                    'id' => $category->name, // SUV, ELECTRICOS
+                    'label' => $category->label,
+                    'active_color' => $category->active_color,
+                    'inactive_color' => $category->inactive_color,
+                    'border_color' => $category->border_color,
+                ];
+            })
+            ->toArray();
+    }
+
+    /**
+     * Cargar TODOS los vehículos agrupados por categoría
+     */
+    private function loadAllVehicles()
+    {
+        $categories = VehicleCategory::active()->ordered()->get();
+        $vehiclesByCategory = [];
+
+        foreach ($categories as $category) {
+            $vehicles = Vehicle::where('vehicle_category_id', $category->id)
+                ->active()
+                ->ordered()
+                ->get();
+
+            $vehiclesByCategory[$category->name] = $vehicles->map(function ($vehicle) {
+                return [
+                    'id' => $vehicle->id,
+                    'slug' => $vehicle->slug,
+                    'category' => $vehicle->category->slug,
+                    'name' => $vehicle->name,
+                    'description' => $vehicle->description,
+                    'image' => $vehicle->image,
+                    'position' => $vehicle->position,
+                    'featured' => $vehicle->featured,
+
+                    'pricing' => [
+                        'currency_before' => $vehicle->currency_before,
+                        'price_before' => $vehicle->price_before,
+                        'price_before_color' => $vehicle->price_before_color,
+                        'price_before_decoration' => $vehicle->price_before_decoration,
+                        'currency_now' => $vehicle->currency_now,
+                        'price_now' => $vehicle->price_now,
+                        'price_now_color' => $vehicle->price_now_color,
+                        'price_now_size' => $vehicle->price_now_size,
+                        'price_now_weight' => $vehicle->price_now_weight,
+                        'discount_label' => $vehicle->discount_label,
+                        'discount_label_color' => $vehicle->discount_label_color,
+                        'show_from_label' => $vehicle->show_from_label,
+                        'from_label' => $vehicle->from_label,
+                    ],
+
+                    'button_primary' => [
+                        'text' => 'Ver modelo',
+                        'bg_color' => $vehicle->button_bg_color,
+                        'text_color' => $vehicle->button_text_color,
+                        'hover_bg' => $vehicle->button_hover_bg,
+                        'size' => 'px-8 py-3',
+                        'border_radius' => 'rounded-lg',
+                        'font_weight' => 'font-medium',
+                        'show' => true
+                    ],
+
+                    'features' => [
+                        'show_badge' => $vehicle->show_badge,
+                        'badge_text' => $vehicle->badge_text,
+                        'badge_color' => $vehicle->badge_color,
+                        'badge_position' => $vehicle->badge_position,
+                    ]
+                ];
+            })->toArray();
+        }
+
+        return $vehiclesByCategory;
     }
 
     private function updateTotalVehicles(): void
@@ -363,7 +142,7 @@ class ModelSection extends Component
     public function setActiveCategory($category)
     {
         $this->activeCategory = $category;
-        $this->currentIndex = 0; // Reset al cambiar categoría
+        $this->currentIndex = 0;
         $this->updateTotalVehicles();
     }
 
@@ -374,8 +153,6 @@ class ModelSection extends Component
 
         if ($totalVehicles > 0) {
             $this->currentIndex = ($this->currentIndex + 1) % $totalVehicles;
-            // Debug temporal
-            session()->flash('debug', 'Next: ' . $this->currentIndex);
         }
     }
 
@@ -386,8 +163,6 @@ class ModelSection extends Component
 
         if ($totalVehicles > 0) {
             $this->currentIndex = $this->currentIndex > 0 ? $this->currentIndex - 1 : $totalVehicles - 1;
-            // Debug temporal
-            session()->flash('debug', 'Prev: ' . $this->currentIndex);
         }
     }
 
@@ -413,7 +188,6 @@ class ModelSection extends Component
     {
         $this->currentIndex = $index;
     }
-
 
     public function render()
     {
