@@ -367,7 +367,7 @@ class FormDetail extends Component
 
             // Grupo 2: Oruro, La Paz, El Alto, Potosí
             'oruro' => [
-                ['email' => 'lcupari@taiyomotors.com.bo', 'nombre' => 'Luis Cupari']
+                ['email' => 'ibaptista@taiyomotors.com.bo', 'nombre' => 'Ivan Baptista']
             ],
             'la-paz' => [
                 ['email' => 'lcupari@taiyomotors.com.bo', 'nombre' => 'Luis Cupari']
