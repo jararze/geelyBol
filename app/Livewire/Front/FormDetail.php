@@ -16,6 +16,7 @@ class FormDetail extends Component
     public $selectedVehicle = null;
 
     public $paisSeleccionado = 'bolivia';
+    public $showThankYouModal = false;
 
     public $formData = [
         'nombre' => '',
@@ -104,19 +105,14 @@ class FormDetail extends Component
     ];
 
     // Lista de vehículos disponibles
+    // Lista de vehículos disponibles
     public $availableVehicles = [
         'suv' => [
             'starray' => 'Starray',
+            'cityray' => 'Cityray',
             'gx3-pro' => 'GX3 Pro',
-            'citiray' => 'Citiray'
+            'coolray' => 'Coolray',
         ],
-        'electricos' => [
-            'electric-1' => 'Modelo Eléctrico 1',
-            'electric-2' => 'Modelo Eléctrico 2'
-        ],
-        'camionetas' => [
-            'pickup-1' => 'Pickup Model 1'
-        ]
     ];
 
     public function mount($category = null, $slug = null)
@@ -172,28 +168,31 @@ class FormDetail extends Component
             'formData.ciudad' => 'required|string'
         ];
 
-        // Si no hay vehículo pre-seleccionado, requerirlo
         if (!$this->selectedVehicle) {
             $rules['formData.vehiculo'] = 'required|string';
         }
 
         $this->validate($rules);
 
-        // Procesar formulario según el tab activo
         $formSubmission = $this->processForm();
 
-        // Enviar a Tecnom CRM si es cotización o test drive
         if (in_array($this->activeTab, ['cotizacion', 'test-drive'])) {
             $this->sendToTecnomCRM($formSubmission);
         }
 
-        session()->flash('message', 'Formulario enviado correctamente. Te contactaremos pronto.');
+        // Mostrar modal en lugar de flash message
+        $this->showThankYouModal = true;
+
         $this->reset(['formData']);
 
-        // Mantener vehículo seleccionado si viene por URL
         if ($this->selectedVehicle) {
             $this->formData['vehiculo'] = $this->selectedVehicle['name'];
         }
+    }
+
+    public function closeThankYouModal()
+    {
+        $this->showThankYouModal = false;
     }
 
     private function processForm()
