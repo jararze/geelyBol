@@ -203,6 +203,7 @@ class FormDetail extends Component
             'email' => $this->formData['email'],
             'telefono' => $this->formData['telefono'],
             'codigo_pais' => $this->formData['codigo_pais'],
+            'ip_address' => request()->ip(), // ← Agregar esta línea
             'ciudad' => $this->formData['ciudad'],
             'vehiculo' => $this->formData['vehiculo'],
             'mensaje' => $this->formData['mensaje'] ?? null,
@@ -212,20 +213,41 @@ class FormDetail extends Component
             'datos_completos' => [
                 'formData' => $this->formData,
                 'selectedVehicle' => $this->selectedVehicle,
-                'timestamp' => now()
+                'timestamp' => now(),
+                'ip_address' => $this->getClientIp(),
             ],
-            // Campos iniciales para CRM
             'status' => FormSubmission::STATUS_PENDING,
             'attempt_count' => 0
         ];
 
-        // Guardar en base de datos
         $formSubmission = FormSubmission::create($data);
 
-        // Log para debugging
-        Log::info('Formulario guardado en BD:', ['form_id' => $formSubmission->id, 'tipo' => $this->activeTab]);
+        Log::info('Formulario guardado en BD:', [
+            'form_id' => $formSubmission->id,
+            'tipo' => $this->activeTab,
+            'ip_address' => $this->getClientIp(),
+        ]);
 
         return $formSubmission;
+    }
+
+    /**
+     * Obtener IP real del cliente (compatible con Cloudflare)
+     */
+    private function getClientIp(): string
+    {
+        // Cloudflare
+        if ($ip = request()->header('CF-Connecting-IP')) {
+            return $ip;
+        }
+
+        // Otros proxies (tomar primera IP si hay varias)
+        if ($forwarded = request()->header('X-Forwarded-For')) {
+            return explode(',', $forwarded)[0];
+        }
+
+        // Fallback
+        return request()->ip();
     }
 
     /**
