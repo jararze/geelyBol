@@ -16,7 +16,6 @@ class FormDetail extends Component
     public $selectedVehicle = null;
 
     public $paisSeleccionado = 'bolivia';
-    public $showThankYouModal = false;
 
     public $formData = [
         'nombre' => '',
@@ -105,7 +104,6 @@ class FormDetail extends Component
     ];
 
     // Lista de vehículos disponibles
-    // Lista de vehículos disponibles
     public $availableVehicles = [
         'suv' => [
             'starray' => 'Starray',
@@ -120,7 +118,6 @@ class FormDetail extends Component
         $this->category = $category;
         $this->slug = $slug;
 
-        // Si viene con categoría y slug, pre-seleccionar el vehículo
         if ($this->category && $this->slug) {
             $this->selectedVehicle = [
                 'category' => $this->category,
@@ -128,7 +125,6 @@ class FormDetail extends Component
                 'name' => $this->getVehicleName($this->category, $this->slug)
             ];
             $this->formData['vehiculo'] = $this->selectedVehicle['name'];
-            // Si viene de un auto específico, ir directo a cotización
             $this->activeTab = 'cotizacion';
         }
     }
@@ -180,19 +176,40 @@ class FormDetail extends Component
             $this->sendToTecnomCRM($formSubmission);
         }
 
-        // Mostrar modal en lugar de flash message
-        $this->showThankYouModal = true;
+        // Guardar datos en sesión para la página de agradecimiento
+        session()->flash('form_submission', [
+            'nombre' => $this->formData['nombre'],
+            'email' => $this->formData['email'],
+            'vehiculo' => $this->formData['vehiculo'],
+            'tipo' => $this->activeTab,
+            'id' => $formSubmission->id,
+        ]);
 
-        $this->reset(['formData']);
-
-        if ($this->selectedVehicle) {
-            $this->formData['vehiculo'] = $this->selectedVehicle['name'];
+        // Redirigir a página de agradecimiento
+        if ($this->category && $this->slug) {
+            return redirect()->route('forms.thanks.vehicle', [
+                'category' => $this->category,
+                'slug' => $this->slug,
+            ]);
         }
+
+        return redirect()->route('forms.thanks');
     }
 
-    public function closeThankYouModal()
+    /**
+     * Obtener IP real del cliente (compatible con Cloudflare)
+     */
+    private function getClientIp(): string
     {
-        $this->showThankYouModal = false;
+        if ($ip = request()->header('CF-Connecting-IP')) {
+            return $ip;
+        }
+
+        if ($forwarded = request()->header('X-Forwarded-For')) {
+            return explode(',', $forwarded)[0];
+        }
+
+        return request()->ip();
     }
 
     private function processForm()
@@ -203,7 +220,7 @@ class FormDetail extends Component
             'email' => $this->formData['email'],
             'telefono' => $this->formData['telefono'],
             'codigo_pais' => $this->formData['codigo_pais'],
-            'ip_address' => request()->ip(), // ← Agregar esta línea
+            'ip_address' => $this->getClientIp(),
             'ciudad' => $this->formData['ciudad'],
             'vehiculo' => $this->formData['vehiculo'],
             'mensaje' => $this->formData['mensaje'] ?? null,
@@ -214,7 +231,7 @@ class FormDetail extends Component
                 'formData' => $this->formData,
                 'selectedVehicle' => $this->selectedVehicle,
                 'timestamp' => now(),
-                'ip_address' => $this->getClientIp(),
+                'ip' => $this->getClientIp(),
             ],
             'status' => FormSubmission::STATUS_PENDING,
             'attempt_count' => 0
@@ -225,29 +242,10 @@ class FormDetail extends Component
         Log::info('Formulario guardado en BD:', [
             'form_id' => $formSubmission->id,
             'tipo' => $this->activeTab,
-            'ip_address' => $this->getClientIp(),
+            'ip' => $this->getClientIp()
         ]);
 
         return $formSubmission;
-    }
-
-    /**
-     * Obtener IP real del cliente (compatible con Cloudflare)
-     */
-    private function getClientIp(): string
-    {
-        // Cloudflare
-        if ($ip = request()->header('CF-Connecting-IP')) {
-            return $ip;
-        }
-
-        // Otros proxies (tomar primera IP si hay varias)
-        if ($forwarded = request()->header('X-Forwarded-For')) {
-            return explode(',', $forwarded)[0];
-        }
-
-        // Fallback
-        return request()->ip();
     }
 
     /**
@@ -255,24 +253,17 @@ class FormDetail extends Component
      */
     private function sendToTecnomCRM(FormSubmission $formSubmission)
     {
-        // Incrementar contador de intentos
         $formSubmission->increment('attempt_count');
         $formSubmission->update(['last_attempt_at' => now()]);
 
         try {
-            // Asignar agente basado en la ciudad
             $agent = $this->assignAgent($formSubmission->ciudad);
-
-            // Preparar datos para API
             $apiData = $this->prepareApiDataForTecnom($formSubmission, $agent);
-
-            // Enviar a API
             $response = $this->sendTecnomAPIRequest($apiData);
             $statusCode = $response->getStatusCode();
             $responseBody = $response->getBody()->getContents();
 
             if ($statusCode == 200) {
-                // Caso de éxito
                 $result = json_decode($responseBody, true);
                 $formSubmission->update([
                     'tecnom_id' => $result['id'] ?? null,
@@ -280,7 +271,7 @@ class FormDetail extends Component
                     'sent_to_crm_at' => now(),
                     'agent_assigned' => $agent ? $agent->email : null,
                     'tecnom_response' => $result,
-                    'error_tecnom' => null // Limpiar errores previos
+                    'error_tecnom' => null
                 ]);
 
                 Log::info('Enviado exitosamente a Tecnom CRM:', [
@@ -292,7 +283,6 @@ class FormDetail extends Component
                 ]);
 
             } elseif ($statusCode == 400) {
-                // Error esperado (bad request)
                 $formSubmission->update([
                     'error_tecnom' => 'Error 400 - Bad Request: ' . $responseBody,
                     'status' => FormSubmission::STATUS_ERROR,
@@ -306,7 +296,6 @@ class FormDetail extends Component
                 ]);
 
             } else {
-                // Error inesperado
                 $formSubmission->update([
                     'error_tecnom' => "Error {$statusCode}: {$responseBody}",
                     'status' => FormSubmission::STATUS_ERROR,
@@ -358,7 +347,7 @@ class FormDetail extends Component
     }
 
     /**
-     * Asignar agente basado en la ciudad seleccionada
+     * Asignar agente basado en la ciudad seleccionada (Round-Robin)
      */
     private function assignAgent($ciudad = null)
     {
@@ -405,15 +394,12 @@ class FormDetail extends Component
 
             $agentesDisponibles = $agentes[$ciudad];
 
-            // Si solo hay un agente, asignarlo directamente
             if (count($agentesDisponibles) === 1) {
                 return (object) $agentesDisponibles[0];
             }
 
-            // Contar leads existentes para esta ciudad
+            // Round-robin basado en cantidad total de leads para esta ciudad
             $totalLeadsCiudad = FormSubmission::where('ciudad', $ciudad)->count();
-
-            // Round-robin: el índice alterna según cantidad de leads
             $indiceAgente = $totalLeadsCiudad % count($agentesDisponibles);
             $agenteSeleccionado = $agentesDisponibles[$indiceAgente];
 
@@ -433,19 +419,17 @@ class FormDetail extends Component
     }
 
     /**
-     * Preparar datos para la API de Tecnom usando la estructura exacta del código original
+     * Preparar datos para la API de Tecnom
      */
     private function prepareApiDataForTecnom(FormSubmission $formSubmission, $agent = null)
     {
         $testDrive = $this->activeTab === 'test-drive' ? 'Si' : 'No';
         $tipoContacto = $this->activeTab === 'test-drive' ? 'test-drive' : 'cotizacion';
 
-        // Separar nombre y apellido
         $nombreCompleto = explode(' ', $formSubmission->nombre, 2);
         $nombre = $nombreCompleto[0] ?? $formSubmission->nombre;
         $apellido = $nombreCompleto[1] ?? '';
 
-        // Comentarios en el mismo formato que el código original
         $comentarios = "Cotizacion de pagina web, el id es el: {$formSubmission->id}.\n";
         $comentarios .= "Datos:\n";
         $comentarios .= "Ciudad: {$formSubmission->ciudad}\n";
@@ -458,27 +442,17 @@ class FormDetail extends Component
             $comentarios .= "\nMensaje adicional: {$formSubmission->mensaje}";
         }
 
-        $apiData = [
+        return [
             'prospect' => [
                 'requestdate' => date('c'),
                 'customer' => [
                     'comments' => $comentarios,
                     'contacts' => [
                         [
-                            'emails' => [
-                                [
-                                    'value' => $formSubmission->email
-                                ]
-                            ],
+                            'emails' => [['value' => $formSubmission->email]],
                             'names' => [
-                                [
-                                    'part' => 'first',
-                                    'value' => $nombre
-                                ],
-                                [
-                                    'part' => 'last',
-                                    'value' => $apellido
-                                ]
+                                ['part' => 'first', 'value' => $nombre],
+                                ['part' => 'last', 'value' => $apellido]
                             ],
                             'phones' => [
                                 [
@@ -487,38 +461,29 @@ class FormDetail extends Component
                                 ]
                             ],
                             'addresses' => [
-                                [
-                                    'city' => $formSubmission->ciudad,
-                                    'postalcode' => '591'
-                                ]
+                                ['city' => $formSubmission->ciudad, 'postalcode' => '591']
                             ],
                         ],
                     ]
                 ],
                 'vehicles' => [
                     [
-                        'make' => 'Geely', // Cambiar de Nissan a Geely
+                        'make' => 'Geely',
                         'model' => $formSubmission->vehiculo,
                         'trim' => $formSubmission->vehiculo,
-                        'year' => date('Y') // Año actual como fallback
+                        'year' => date('Y')
                     ]
                 ],
                 'provider' => [
-                    'name' => [
-                        'value' => 'Sitio web'
-                    ],
+                    'name' => ['value' => 'Sitio web Geely'],
                     'service' => ''
                 ],
                 'vendor' => [
                     'contacts' => [],
-                    'vendorname' => [
-                        'value' => $agent ? $agent->email : 'web@geely.com.bo'
-                    ]
+                    'vendorname' => ['value' => $agent ? $agent->email : 'web@geely.com.bo']
                 ]
             ]
         ];
-
-        return $apiData;
     }
 
     /**
@@ -526,8 +491,10 @@ class FormDetail extends Component
      */
     private function sendTecnomAPIRequest(array $apiData)
     {
-        $client = new Client();
+        $client = new Client(['http_errors' => false]);
         $credentials = $this->getTecnomAPICredentials();
+
+        Log::info('Enviando a Tecnom:', ['data' => $apiData]);
 
         $response = $client->post(config('app.api_url'), [
             'json' => $apiData,
@@ -538,6 +505,13 @@ class FormDetail extends Component
                 'Content-Type' => 'application/json',
             ]
         ]);
+
+        Log::info('Respuesta Tecnom:', [
+            'status' => $response->getStatusCode(),
+            'body' => $response->getBody()->getContents()
+        ]);
+
+        $response->getBody()->rewind();
 
         return $response;
     }
