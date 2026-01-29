@@ -10,8 +10,8 @@
 
         <!-- Título -->
         <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            @if(($submission['tipo'] ?? '') === 'registro-cliente')
-                ¡Bienvenido a la familia Geely!
+            @if(isset($submission['tipo']) && $submission['tipo'] === 'registro-cliente')
+                ¡Bienvenido a la familia {{ $submission['marca'] ?? 'Geely' }}!
             @else
                 ¡Gracias por contactarnos!
             @endif
@@ -19,23 +19,23 @@
 
         <!-- Mensaje personalizado -->
         <p class="text-xl text-gray-600 mb-8">
-            @if(!empty($submission['nombre']))
+            @if(isset($submission['nombre']))
                 <span class="font-semibold text-gray-800">{{ $submission['nombre'] }}</span>,
             @endif
-            @if(($submission['tipo'] ?? '') === 'registro-cliente')
-                tu registro como cliente Geely se ha completado exitosamente.
+            @if(isset($submission['tipo']) && $submission['tipo'] === 'registro-cliente')
+                tu registro como cliente {{ $submission['marca'] ?? 'Geely' }} se ha completado exitosamente.
             @else
                 hemos recibido tu solicitud exitosamente.
             @endif
         </p>
 
         <!-- Card con detalles -->
-        @if(!empty($submission))
+        @if($submission)
             <div class="bg-white rounded-2xl shadow-lg p-8 mb-8 text-left">
                 <h2 class="text-lg font-semibold text-gray-800 mb-4 text-center">Resumen de tu solicitud</h2>
 
                 <div class="space-y-4">
-                    @if(!empty($submission['tipo']))
+                    @if(isset($submission['tipo']))
                         <div class="flex justify-between items-center py-3 border-b border-gray-100">
                             <span class="text-gray-500">Tipo de solicitud</span>
                             <span class="font-medium text-gray-900">
@@ -59,14 +59,14 @@
                         </div>
                     @endif
 
-                    @if(!empty($submission['vehiculo']))
+                    @if(isset($submission['vehiculo']) && $submission['vehiculo'])
                         <div class="flex justify-between items-center py-3 border-b border-gray-100">
                             <span class="text-gray-500">Vehículo de interés</span>
                             <span class="font-medium text-gray-900">{{ $submission['vehiculo'] }}</span>
                         </div>
                     @endif
 
-                    @if(!empty($submission['email']))
+                    @if(isset($submission['email']))
                         <div class="flex justify-between items-center py-3 border-b border-gray-100">
                             <span class="text-gray-500">Te contactaremos a</span>
                             <span class="font-medium text-gray-900">{{ $submission['email'] }}</span>
@@ -88,7 +88,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                 </svg>
                 <span class="text-base font-medium">
-                    Un asesor de <strong>Geely Bolivia</strong> te contactará pronto
+                    Un asesor de <strong>{{ $submission['marca'] ?? 'Geely' }} Bolivia</strong> te contactará pronto
                 </span>
             </div>
         </div>
@@ -113,7 +113,7 @@
         </div>
 
         <!-- Número de referencia -->
-        @if(!empty($submission['id']))
+        @if(isset($submission['id']))
             <p class="mt-8 text-sm text-gray-400">
                 Número de referencia: #{{ str_pad($submission['id'], 6, '0', STR_PAD_LEFT) }}
             </p>
