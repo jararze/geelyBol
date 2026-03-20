@@ -145,6 +145,7 @@ class VehicleHero extends Component
                 'subtitle_size' => 'text-xl lg:text-2xl',
                 'subtitle_weight' => 'font-light',
                 'subtitle_spacing' => 'tracking-wide',
+                'specs_text_color' => '#ffffff', // 👈 esto cambia Motor, Potencia, etc.
                 'selected_specs' => [
                     'motor' => ['prefix' => '', 'value' => '1.5', 'unit' => 'Turbo', 'label' => 'Motor'],
                     'potencia' => ['prefix' => '', 'value' => '174', 'unit' => 'hp', 'label' => 'Potencia'],
