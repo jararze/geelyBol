@@ -132,8 +132,8 @@ class VehicleHero extends Component
             ],
 
             'cityray' => [
-                'background_image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray_Hero_Desktop.jpg',
-                'background_image_mobile' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray_Hero_Mobile.jpg',
+                'background_image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray_Hero_Desktop_blanco.jpg.jpeg',
+                'background_image_mobile' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Cityray_Hero_Mobile_blanco.jpg.jpeg',
                 'title_type' => 'text',
                 'title' => 'CITYRAY',
                 'title_color' => '#FFF',
