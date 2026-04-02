@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Front;
 
+use App\Models\SiteSetting;
 use Livewire\Component;
 
 class ActionBoxesSection extends Component
@@ -13,21 +14,24 @@ class ActionBoxesSection extends Component
     public function mount()
     {
         $this->boxes = $this->getBoxesProperty();
-
     }
 
     public function getBoxesProperty()
     {
+        $whatsappNumber = SiteSetting::get('whatsapp_number', 'contact', '59177595558');
+        $whatsappMessage = SiteSetting::get('whatsapp_message', 'contact', 'Hola, vi el sitio web Geely y deseo atención personalizada');
+        $whatsappUrl = 'https://wa.me/' . $whatsappNumber . '?text=' . urlencode($whatsappMessage) . '&utm_source=web%20visit&utm_medium=website&utm_campaign=none';
+
         return [
             [
                 'id' => 'test-drive',
                 'title' => 'WHATSAPP',
                 'svg_icon' => file_get_contents(public_path("assets/images/icons/whatsapp.svg")),
-                'route' => 'https://wa.me/59177595558?text=Hola%2C%20vi%20el%20sitio%20web%20Geely%20y%20deseo%20atenci%C3%B3n%20personalizada&utm_source=web%20visit&utm_medium=website&utm_campaign=none',
+                'route' => $whatsappUrl,
                 'color' => '#2563eb',
                 'is_anchor' => false,
-                'is_external' => true, // Nueva propiedad
-                'target' => '_blank' // Nueva propiedad
+                'is_external' => true,
+                'target' => '_blank',
             ],
             [
                 'id' => 'cotiza',
@@ -36,8 +40,8 @@ class ActionBoxesSection extends Component
                 'route' => 'forms.base',
                 'color' => '#2563eb',
                 'is_anchor' => false,
-                'is_external' => false, // Nueva propiedad
-                'target' => '_self' // Nueva propiedad
+                'is_external' => false,
+                'target' => '_self',
             ],
             [
                 'id' => 'direcciones',
@@ -46,8 +50,8 @@ class ActionBoxesSection extends Component
                 'route' => '#direcciones',
                 'color' => '#2563eb',
                 'is_anchor' => true,
-                'is_external' => false, // Nueva propiedad
-                'target' => '_self' // Nueva propiedad
+                'is_external' => false,
+                'target' => '_self',
             ],
             [
                 'id' => 'contactanos',
@@ -56,9 +60,9 @@ class ActionBoxesSection extends Component
                 'route' => 'forms.base',
                 'color' => '#2563eb',
                 'is_anchor' => false,
-                'is_external' => false, // Nueva propiedad
-                'target' => '_self' // Nueva propiedad
-            ]
+                'is_external' => false,
+                'target' => '_self',
+            ],
         ];
     }
 

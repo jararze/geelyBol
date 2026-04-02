@@ -98,35 +98,60 @@ class VehicleFeatures extends Component
             ];
         })->toArray();
 
-        // Header personalizado según vehículo
-        $headerTitles = [
-            'starray' => [
-                'title' => 'EL SUV ULTRA MODERNO',
-                'subtitle' => '3 Razones para elegir a Geely Starray:',
-            ],
-            'gx3-pro' => [
-                'title' => 'Multiplica tus posibilidades',
-                'subtitle' => '3 razones para elegir a Geely GX3 Pro:',
-            ],
-            'cityray' => [
-                'title' => 'El SUV Tecnológico',
-                'subtitle' => '3 razones para elegir a Geely Cityray:',
-            ],
-            'coolray' => [
-                'title' => 'Donde lo urbano se vuelve Premium',
-                'subtitle' => '3 razones para elegir a Geely COOLRAY',
-            ],
-        ];
+        // Load header from DB vehicle fields
+        $customHeader = $this->loadFeatureHeadersFromDatabase($vehicleModel);
 
-        $customHeader = $headerTitles[$slug] ?? [
-            'title' => 'Características destacadas',
-            'subtitle' => '3 razones para elegir este vehículo:',
-        ];
+        // LEGACY - Hardcoded header titles as fallback
+        if (empty($customHeader)) {
+            $headerTitles = [
+                'starray' => [
+                    'title' => 'EL SUV ULTRA MODERNO',
+                    'subtitle' => '3 Razones para elegir a Geely Starray:',
+                ],
+                'gx3-pro' => [
+                    'title' => 'Multiplica tus posibilidades',
+                    'subtitle' => '3 razones para elegir a Geely GX3 Pro:',
+                ],
+                'cityray' => [
+                    'title' => 'El SUV Tecnológico',
+                    'subtitle' => '3 razones para elegir a Geely Cityray:',
+                ],
+                'coolray' => [
+                    'title' => 'Donde lo urbano se vuelve Premium',
+                    'subtitle' => '3 razones para elegir a Geely COOLRAY',
+                ],
+            ];
+
+            $customHeader = $headerTitles[$slug] ?? [
+                'title' => 'Características destacadas',
+                'subtitle' => '3 razones para elegir este vehículo:',
+            ];
+        }
 
         return [
             'header' => array_merge($this->defaultFeaturesData['header'], $customHeader),
             'features' => $features,
         ];
+    }
+
+    /**
+     * Load feature section headers from vehicle DB fields
+     */
+    private function loadFeatureHeadersFromDatabase(Vehicle $vehicleModel): array
+    {
+        if (!$vehicleModel->feature_title && !$vehicleModel->feature_subtitle) {
+            return [];
+        }
+
+        $header = [];
+        if ($vehicleModel->feature_title) {
+            $header['title'] = $vehicleModel->feature_title;
+        }
+        if ($vehicleModel->feature_subtitle) {
+            $header['subtitle'] = $vehicleModel->feature_subtitle;
+        }
+
+        return $header;
     }
 
     public function render()

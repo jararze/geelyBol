@@ -2,9 +2,12 @@
 
 namespace App\Livewire\Front;
 
+use Exception;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use App\Models\FormSubmission;
+use App\Models\SalesAgent;
+use App\Models\Vehicle;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
@@ -104,7 +107,10 @@ class FormDetail extends Component
     ];
 
     // Lista de vehículos disponibles
-    public $availableVehicles = [
+    public $availableVehicles = [];
+
+    // LEGACY - Hardcoded vehicle list as fallback
+    private $legacyAvailableVehicles = [
         'suv' => [
             'starray' => 'Starray',
             'cityray' => 'Cityray',
@@ -118,6 +124,9 @@ class FormDetail extends Component
         $this->category = $category;
         $this->slug = $slug;
 
+        // Load vehicles from DB
+        $this->availableVehicles = $this->loadVehiclesFromDatabase();
+
         if ($this->category && $this->slug) {
             $this->selectedVehicle = [
                 'category' => $this->category,
@@ -126,6 +135,36 @@ class FormDetail extends Component
             ];
             $this->formData['vehiculo'] = $this->selectedVehicle['name'];
             $this->activeTab = 'cotizacion';
+        }
+    }
+
+    /**
+     * Load vehicles from database, grouped by category slug
+     */
+    private function loadVehiclesFromDatabase(): array
+    {
+        try {
+            $vehicles = Vehicle::with('category')
+                ->active()
+                ->ordered()
+                ->get();
+
+            if ($vehicles->isEmpty()) {
+                // LEGACY fallback
+                return $this->legacyAvailableVehicles;
+            }
+
+            $grouped = [];
+            foreach ($vehicles as $vehicle) {
+                $categorySlug = $vehicle->category->slug ?? 'suv';
+                $grouped[$categorySlug][$vehicle->slug] = $vehicle->name;
+            }
+
+            return $grouped;
+        } catch (Exception $e) {
+            Log::warning('Error loading vehicles from DB for form, using legacy data', ['error' => $e->getMessage()]);
+            // LEGACY fallback
+            return $this->legacyAvailableVehicles;
         }
     }
 
@@ -328,7 +367,7 @@ class FormDetail extends Component
                 'code' => $e->getCode(),
                 'attempts' => $formSubmission->attempt_count
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $formSubmission->update([
                 'error_tecnom' => 'Unexpected Error: ' . $e->getMessage(),
                 'status' => FormSubmission::STATUS_ERROR,
@@ -348,8 +387,88 @@ class FormDetail extends Component
 
     /**
      * Asignar agente basado en la ciudad seleccionada (Round-Robin)
+     * Loads agents from database, falls back to legacy hardcoded data
      */
     private function assignAgent($ciudad = null)
+    {
+        try {
+            // Try loading from database first
+            $agentesFromDb = $this->loadAgentsFromDatabase($ciudad);
+
+            if (!empty($agentesFromDb)) {
+                return $this->selectAgentByRoundRobin($agentesFromDb, $ciudad);
+            }
+
+            // LEGACY fallback - hardcoded agent assignments
+            return $this->assignAgentLegacy($ciudad);
+
+        } catch (Exception $e) {
+            Log::error('Error al asignar agente:', ['error' => $e->getMessage(), 'ciudad' => $ciudad]);
+            return (object) ['email' => 'pbeltran@taiyomotors.com.bo', 'nombre' => 'Pablo Beltrán'];
+        }
+    }
+
+    /**
+     * Load agents from database for a given city
+     */
+    private function loadAgentsFromDatabase($ciudad): array
+    {
+        if (!$ciudad) {
+            return [];
+        }
+
+        $agents = SalesAgent::with('branch')
+            ->where('is_active', true)
+            ->get();
+
+        if ($agents->isEmpty()) {
+            return [];
+        }
+
+        // Filter agents whose served_cities include this city
+        $matchingAgents = $agents->filter(function ($agent) use ($ciudad) {
+            $servedCities = $agent->served_cities ?? [];
+            return in_array($ciudad, $servedCities);
+        });
+
+        if ($matchingAgents->isEmpty()) {
+            return [];
+        }
+
+        return $matchingAgents->map(function ($agent) {
+            return [
+                'email' => $agent->email,
+                'nombre' => $agent->name,
+            ];
+        })->values()->toArray();
+    }
+
+    /**
+     * Select agent using round-robin based on lead count for the city
+     */
+    private function selectAgentByRoundRobin(array $agentesDisponibles, $ciudad)
+    {
+        if (count($agentesDisponibles) === 1) {
+            return (object) $agentesDisponibles[0];
+        }
+
+        $totalLeadsCiudad = FormSubmission::where('ciudad', $ciudad)->count();
+        $indiceAgente = $totalLeadsCiudad % count($agentesDisponibles);
+        $agenteSeleccionado = $agentesDisponibles[$indiceAgente];
+
+        Log::info('Agente asignado por round-robin:', [
+            'ciudad' => $ciudad,
+            'agente' => $agenteSeleccionado['email'],
+            'lead_numero' => $totalLeadsCiudad + 1,
+            'indice' => $indiceAgente,
+            'source' => 'database'
+        ]);
+
+        return (object) $agenteSeleccionado;
+    }
+
+    // LEGACY - Hardcoded agent assignment as fallback
+    private function assignAgentLegacy($ciudad = null)
     {
         $agentes = [
             'santa-cruz' => [
@@ -386,36 +505,12 @@ class FormDetail extends Component
             ]
         ];
 
-        try {
-            if (!$ciudad || !isset($agentes[$ciudad])) {
-                Log::warning('Ciudad no válida para asignación de agente:', ['ciudad' => $ciudad]);
-                return (object) ['email' => 'pbeltran@taiyomotors.com.bo', 'nombre' => 'Pablo Beltrán'];
-            }
-
-            $agentesDisponibles = $agentes[$ciudad];
-
-            if (count($agentesDisponibles) === 1) {
-                return (object) $agentesDisponibles[0];
-            }
-
-            // Round-robin basado en cantidad total de leads para esta ciudad
-            $totalLeadsCiudad = FormSubmission::where('ciudad', $ciudad)->count();
-            $indiceAgente = $totalLeadsCiudad % count($agentesDisponibles);
-            $agenteSeleccionado = $agentesDisponibles[$indiceAgente];
-
-            Log::info('Agente asignado por round-robin:', [
-                'ciudad' => $ciudad,
-                'agente' => $agenteSeleccionado['email'],
-                'lead_numero' => $totalLeadsCiudad + 1,
-                'indice' => $indiceAgente
-            ]);
-
-            return (object) $agenteSeleccionado;
-
-        } catch (\Exception $e) {
-            Log::error('Error al asignar agente:', ['error' => $e->getMessage(), 'ciudad' => $ciudad]);
+        if (!$ciudad || !isset($agentes[$ciudad])) {
+            Log::warning('Ciudad no válida para asignación de agente (legacy):', ['ciudad' => $ciudad]);
             return (object) ['email' => 'pbeltran@taiyomotors.com.bo', 'nombre' => 'Pablo Beltrán'];
         }
+
+        return $this->selectAgentByRoundRobin($agentes[$ciudad], $ciudad);
     }
 
     /**

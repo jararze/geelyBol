@@ -2,109 +2,114 @@
 
 namespace App\Livewire\Front;
 
+use App\Models\HeroSlide;
 use Livewire\Component;
 
 class HeroSection extends Component
 {
-    // Ya NO necesitamos estas propiedades sincronizadas con el servidor
-    // public $currentSlide = 0;
-    // public $videoProgress = 0;
-    // public $videoCurrentTime = 0;
-    // public $videoDuration = 0;
-    // public $isPaused = false;
-
     public $isMobile = false;
 
-    public $heroConfig = [
-        'autoplay' => true,
-        'autoplay_interval' => 8000,
-        'show_dots' => true,
-        'show_arrows' => true,
-        'pause_on_hover' => true,
-        'show_video_controls' => true,
-
-        'layout_config' => [
-            'spacing' => 'space-y-4',
-            'element_order' => ['title', 'subtitle', 'description', 'buttons']
-        ],
-
-        'slides' => [
-            [
-                'id' => 3,
-                'media_type' => 'image',
-                'media_src' => 'frontend/images/ban2710_web.jpg',
-                'media_src_mobile' => 'frontend/images/ban2710_phone.jpg',
-                'media_fit' => 'contain',
-                'media_position' => 'center',
-                'media_background' => 'bg-black',
-                'object_position_mobile' => '50% 70%',
-                'object_position_desktop' => '50% 50%',
-                'overlay_opacity' => 0.3,
-                'only_image' => true,
-                'buttons' => false,
-                'show_title' => false,
-                'show_subtitle' => false,
-                'show_description' => false,
-
-                'title' => [
-                    'text' => 'GX3 PRO LLEGÓ',
-                    'highlight_text' => 'GX3 PRO',
-                    'gradient_from' => '#fbbf24',
-                    'gradient_to' => '#f59e0b',
-                    'font_size' => 'text-4xl md:text-6xl',
-                    'font_weight' => 'font-bold',
-                    'text_color' => 'text-white',
-                    'position' => 'top-left',
-                    'margin_top' => 'mt-0',
-                    'margin_bottom' => 'mb-6',
-                    'line_height' => 'leading-tight',
-                    'letter_spacing' => 'tracking-normal',
-                    'line_wrap' => 'nowrap',
-                    'max_width' => 'max-w-none',
-                ],
-
-                'subtitle' => [
-                    'text' => 'El SUV compacto más esperado del año',
-                    'font_size' => 'text-xl md:text-2xl',
-                    'font_weight' => 'font-light',
-                    'text_color' => 'text-white/90',
-                    'position' => 'top-left',
-                    'margin_top' => 'mt-0',
-                    'margin_bottom' => 'mb-6',
-                    'line_wrap' => 'nowrap',
-                    'max_width' => 'max-w-none',
-                ],
-
-                'primary_button' => [
-                    'text' => 'Descubre más',
-                    'show' => true,
-                    'style' => 'solid',
-                    'bg_color' => 'bg-black',
-                    'text_color' => 'text-white',
-                    'hover_bg' => 'hover:bg-black/90',
-                    'hover_scale' => 'hover:scale-105',
-                    'size' => 'px-8 py-4 text-lg',
-                    'font_weight' => 'font-semibold',
-                    'border_radius' => 'rounded-lg',
-                    'icon' => 'arrow-right',
-                    'icon_position' => 'right',
-                    'action' => 'scroll-to-models',
-                ],
-
-                'button_container' => [
-                    'layout' => 'flex-col sm:flex-row',
-                    'gap' => 'gap-4',
-                    'position' => 'top-left',
-                    'margin_top' => 'mt-0',
-                    'margin_bottom' => 'mb-6',
-                ]
-            ],
-        ]
-    ];
+    public $heroConfig = [];
 
     public function mount()
     {
         $this->isMobile = $this->detectMobile();
+        $this->heroConfig = $this->loadHeroConfig();
+    }
+
+    private function loadHeroConfig()
+    {
+        $dbSlides = HeroSlide::active()->ordered()->get();
+
+        if ($dbSlides->isNotEmpty()) {
+            $slides = $dbSlides->map(function ($slide) {
+                return [
+                    'id' => $slide->id,
+                    'media_type' => $slide->media_type,
+                    'media_src' => $slide->media_src,
+                    'media_src_mobile' => $slide->media_src_mobile,
+                    'media_fit' => 'contain',
+                    'media_position' => 'center',
+                    'media_background' => 'bg-black',
+                    'overlay_opacity' => $slide->overlay_opacity ?? 0,
+                    'only_image' => true,
+                    'buttons' => false,
+                    'show_title' => false,
+                    'show_subtitle' => false,
+                    'show_description' => false,
+                    'title' => [
+                        'text' => $slide->title ?? '',
+                        'gradient_from' => $slide->gradient_from ?? '#fbbf24',
+                        'gradient_to' => $slide->gradient_to ?? '#f59e0b',
+                    ],
+                    'subtitle' => [
+                        'text' => $slide->subtitle ?? '',
+                    ],
+                    'primary_button' => [
+                        'text' => $slide->button_text ?? '',
+                        'show' => !empty($slide->button_text),
+                        'action' => $slide->button_action ?? '',
+                        'url' => $slide->button_url ?? '',
+                    ],
+                ];
+            })->toArray();
+
+            return [
+                'autoplay' => true,
+                'autoplay_interval' => 8000,
+                'show_dots' => true,
+                'show_arrows' => true,
+                'pause_on_hover' => true,
+                'show_video_controls' => true,
+                'slides' => $slides,
+            ];
+        }
+
+        // LEGACY - fallback hardcodeado
+        return $this->getLegacyHeroConfig();
+    }
+
+    // LEGACY - configuración hardcodeada original
+    private function getLegacyHeroConfig()
+    {
+        return [
+            'autoplay' => true,
+            'autoplay_interval' => 8000,
+            'show_dots' => true,
+            'show_arrows' => true,
+            'pause_on_hover' => true,
+            'show_video_controls' => true,
+            'slides' => [
+                [
+                    'id' => 3,
+                    'media_type' => 'image',
+                    'media_src' => 'frontend/images/ban2710_web.jpg',
+                    'media_src_mobile' => 'frontend/images/ban2710_phone.jpg',
+                    'media_fit' => 'contain',
+                    'media_position' => 'center',
+                    'media_background' => 'bg-black',
+                    'overlay_opacity' => 0.3,
+                    'only_image' => true,
+                    'buttons' => false,
+                    'show_title' => false,
+                    'show_subtitle' => false,
+                    'show_description' => false,
+                    'title' => [
+                        'text' => 'GX3 PRO LLEGÓ',
+                        'gradient_from' => '#fbbf24',
+                        'gradient_to' => '#f59e0b',
+                    ],
+                    'subtitle' => [
+                        'text' => 'El SUV compacto más esperado del año',
+                    ],
+                    'primary_button' => [
+                        'text' => 'Descubre más',
+                        'show' => true,
+                        'action' => 'scroll-to-models',
+                    ],
+                ],
+            ],
+        ];
     }
 
     private function detectMobile()

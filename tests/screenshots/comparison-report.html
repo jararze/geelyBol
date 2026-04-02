@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual Comparison: Prod vs Local - Geely Bolivia</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; }
+
+  header { background: #1e293b; padding: 24px 40px; border-bottom: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; }
+  header h1 { font-size: 20px; font-weight: 600; }
+  header span { font-size: 13px; color: #94a3b8; }
+
+  .controls { display: flex; gap: 12px; padding: 16px 40px; background: #1e293b; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 100; }
+  .controls button { padding: 8px 16px; border: 1px solid #475569; border-radius: 6px; background: transparent; color: #e2e8f0; cursor: pointer; font-size: 13px; transition: all .15s; }
+  .controls button:hover, .controls button.active { background: #3b82f6; border-color: #3b82f6; color: #fff; }
+
+  .page-section { padding: 32px 40px; border-bottom: 1px solid #1e293b; }
+  .page-title { font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .page-title .badge { font-size: 11px; padding: 2px 8px; border-radius: 9999px; background: #166534; color: #bbf7d0; }
+
+  /* Side by side mode */
+  .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #334155; border-radius: 8px; overflow: hidden; }
+  .comparison.with-diff { grid-template-columns: 1fr 1fr 1fr; }
+  .col { background: #0f172a; }
+  .col-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; padding: 8px 12px; background: #1e293b; color: #94a3b8; position: sticky; top: 52px; z-index: 10; }
+  .col-label.prod { color: #f97316; }
+  .col-label.local { color: #22d3ee; }
+  .col-label.diff { color: #a78bfa; }
+  .col img { width: 100%; display: block; }
+
+  /* Overlay slider mode */
+  .slider-container { position: relative; border-radius: 8px; overflow: hidden; cursor: col-resize; }
+  .slider-container img { width: 100%; display: block; }
+  .slider-container .overlay { position: absolute; top: 0; left: 0; height: 100%; overflow: hidden; border-right: 2px solid #3b82f6; }
+  .slider-container .overlay img { width: 100%; display: block; min-width: var(--full-width); }
+  .slider-container .label-prod, .slider-container .label-local { position: absolute; top: 8px; padding: 4px 10px; font-size: 11px; font-weight: 600; border-radius: 4px; z-index: 5; }
+  .slider-container .label-prod { left: 8px; background: rgba(249,115,22,.85); color: #fff; }
+  .slider-container .label-local { right: 8px; background: rgba(34,211,238,.85); color: #000; }
+  .slider-handle { position: absolute; top: 0; bottom: 0; width: 2px; background: #3b82f6; z-index: 5; pointer-events: none; }
+  .slider-handle::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 32px; height: 32px; background: #3b82f6; border-radius: 50%; border: 2px solid #fff; }
+  .slider-handle svg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 1; }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Geely Bolivia - Visual Comparison Report</h1>
+  <span>Generated: <script>document.write(new Date().toLocaleString('es-BO'))</script></span>
+</header>
+
+<div class="controls">
+  <button class="active" onclick="setMode('side')">Side by Side</button>
+  <button onclick="setMode('slider')">Overlay Slider</button>
+  <button onclick="setMode('diff')">Show Diff</button>
+</div>
+
+<div id="pages"></div>
+
+<script>
+const pages = [
+  { name: 'Homepage', slug: 'homepage', diff: '0.00%' },
+  { name: 'Starray', slug: 'starray', diff: '0.00%' },
+  { name: 'GX3 Pro', slug: 'gx3-pro', diff: '0.00%' },
+  { name: 'Cityray', slug: 'cityray', diff: '0.00%' },
+];
+
+let mode = 'side';
+
+function setMode(m) {
+  mode = m;
+  document.querySelectorAll('.controls button').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.controls button')[['side','slider','diff'].indexOf(m)].classList.add('active');
+  render();
+}
+
+function render() {
+  const container = document.getElementById('pages');
+  container.innerHTML = pages.map(p => `
+    <div class="page-section">
+      <div class="page-title">
+        ${p.name}
+        <span class="badge">${p.diff} diff</span>
+      </div>
+      ${mode === 'side' ? renderSide(p) : mode === 'slider' ? renderSlider(p) : renderDiff(p)}
+    </div>
+  `).join('');
+
+  if (mode === 'slider') initSliders();
+}
+
+function renderSide(p) {
+  return `<div class="comparison">
+    <div class="col"><div class="col-label prod">Produccion (geely.com.bo)</div><img src="prod/${p.slug}.png" loading="lazy"></div>
+    <div class="col"><div class="col-label local">Local (geely-site.test)</div><img src="local/${p.slug}.png" loading="lazy"></div>
+  </div>`;
+}
+
+function renderDiff(p) {
+  return `<div class="comparison with-diff">
+    <div class="col"><div class="col-label prod">Produccion</div><img src="prod/${p.slug}.png" loading="lazy"></div>
+    <div class="col"><div class="col-label local">Local</div><img src="local/${p.slug}.png" loading="lazy"></div>
+    <div class="col"><div class="col-label diff">Diferencias</div><img src="diff/${p.slug}-diff.png" loading="lazy"></div>
+  </div>`;
+}
+
+function renderSlider(p) {
+  return `<div class="slider-container" data-slug="${p.slug}">
+    <span class="label-prod">PROD</span>
+    <span class="label-local">LOCAL</span>
+    <img src="local/${p.slug}.png" class="base" loading="lazy">
+    <div class="overlay" style="width:50%"><img src="prod/${p.slug}.png" loading="lazy"></div>
+    <div class="slider-handle" style="left:50%">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="white"><path d="M5 3l-4 5 4 5M11 3l4 5-4 5"/></svg>
+    </div>
+  </div>`;
+}
+
+function initSliders() {
+  document.querySelectorAll('.slider-container').forEach(container => {
+    const overlay = container.querySelector('.overlay');
+    const handle = container.querySelector('.slider-handle');
+    const baseImg = container.querySelector('.base');
+
+    function updatePosition(x) {
+      const rect = container.getBoundingClientRect();
+      const pct = Math.max(0, Math.min(1, (x - rect.left) / rect.width));
+      overlay.style.width = (pct * 100) + '%';
+      handle.style.left = (pct * 100) + '%';
+      overlay.querySelector('img').style.minWidth = rect.width + 'px';
+    }
+
+    let dragging = false;
+    container.addEventListener('mousedown', e => { dragging = true; updatePosition(e.clientX); });
+    window.addEventListener('mousemove', e => { if (dragging) updatePosition(e.clientX); });
+    window.addEventListener('mouseup', () => { dragging = false; });
+    container.addEventListener('touchstart', e => { updatePosition(e.touches[0].clientX); });
+    container.addEventListener('touchmove', e => { updatePosition(e.touches[0].clientX); });
+
+    // Set initial overlay image width after load
+    baseImg.addEventListener('load', () => {
+      overlay.querySelector('img').style.minWidth = container.offsetWidth + 'px';
+    });
+  });
+}
+
+render();
+</script>
+</body>
+</html>

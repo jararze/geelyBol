@@ -150,35 +150,60 @@ class VehicleVersions extends Component
             ];
         }
 
-        // Header personalizado por vehículo
-        $headerTitles = [
-            'starray' => [
-                'title' => 'VERSIONES Y PRECIOS',
-                'subtitle' => 'Elige tu versión de Starray',
-            ],
-            'gx3-pro' => [
-                'title' => 'VERSIONES Y PRECIOS',
-                'subtitle' => 'Elige tu versión de GX3 Pro',
-            ],
-            'cityray' => [
-                'title' => 'VERSIONES Y PRECIOS',
-                'subtitle' => 'Elige tu versión de Cityray',
-            ],
-            'coolray' => [
-                'title' => 'VERSIONES Y PRECIOS',
-                'subtitle' => 'Elige tu versión de COOLRAY',
-            ],
-        ];
+        // Load header from DB vehicle fields
+        $customHeader = $this->loadVersionHeadersFromDatabase($vehicleModel);
 
-        $customHeader = $headerTitles[$slug] ?? [
-            'title' => 'VERSIONES Y PRECIOS',
-            'subtitle' => 'Elige tu versión',
-        ];
+        // LEGACY - Hardcoded header titles as fallback
+        if (empty($customHeader)) {
+            $headerTitles = [
+                'starray' => [
+                    'title' => 'VERSIONES Y PRECIOS',
+                    'subtitle' => 'Elige tu versión de Starray',
+                ],
+                'gx3-pro' => [
+                    'title' => 'VERSIONES Y PRECIOS',
+                    'subtitle' => 'Elige tu versión de GX3 Pro',
+                ],
+                'cityray' => [
+                    'title' => 'VERSIONES Y PRECIOS',
+                    'subtitle' => 'Elige tu versión de Cityray',
+                ],
+                'coolray' => [
+                    'title' => 'VERSIONES Y PRECIOS',
+                    'subtitle' => 'Elige tu versión de COOLRAY',
+                ],
+            ];
+
+            $customHeader = $headerTitles[$slug] ?? [
+                'title' => 'VERSIONES Y PRECIOS',
+                'subtitle' => 'Elige tu versión',
+            ];
+        }
 
         return [
             'header' => array_merge($this->defaultVersionsData['header'], $customHeader),
             'versions' => $formattedVersions,
         ];
+    }
+
+    /**
+     * Load version section headers from vehicle DB fields
+     */
+    private function loadVersionHeadersFromDatabase(Vehicle $vehicleModel): array
+    {
+        if (!$vehicleModel->versions_title && !$vehicleModel->versions_subtitle) {
+            return [];
+        }
+
+        $header = [];
+        if ($vehicleModel->versions_title) {
+            $header['title'] = $vehicleModel->versions_title;
+        }
+        if ($vehicleModel->versions_subtitle) {
+            $header['subtitle'] = $vehicleModel->versions_subtitle;
+        }
+
+        return $header;
     }
 
     public function selectTab($tab)

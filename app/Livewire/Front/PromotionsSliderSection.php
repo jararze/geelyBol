@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Front;
 
+use App\Models\Promotion;
+use App\Models\Vehicle;
 use Livewire\Component;
 
 class PromotionsSliderSection extends Component
@@ -14,177 +16,107 @@ class PromotionsSliderSection extends Component
     private $defaultPromotionsData = [
         'section_background' => 'bg-gray-50',
         'section_padding' => 'py-16',
-
         'header' => [
             'title' => 'PROMOCIONES Y OFERTAS',
             'subtitle' => 'Por Pre-venta',
             'title_size' => 'text-3xl lg:text-4xl',
-            'subtitle_size' => 'text-lg'
+            'subtitle_size' => 'text-lg',
         ],
-
-        'slides' => [
-            [
-                'id' => 'starray-50-discount',
-                'title' => '$us. 1,000',
-                'subtitle' => 'DE DESCUENTO',
-                'description' => 'Aprovecha los precios de lanzamiento para comprar tu Geely Starray. Válido en todas sus versiones.',
-                'vehicle_model' => 'STARRAY',
-                'vehicle_subtitle' => 'El SUV ultra moderno',
-                'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
-                'text_color' => 'text-gray-800',
-                'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
-                'image' => 'frontend/images/prom1.png',
-                'button' => [
-                    'text' => 'Obtener promo',
-                    'style' => 'bg-white text-blue-600 hover:bg-gray-100'
-                ]
-            ],
-//            [
-//                'id' => 'starray-financing',
-//                'title' => '0%',
-//                'subtitle' => 'DE INTERÉS',
-//                'description' => 'Financiamiento especial a 48 meses. Sin enganche. Válido para todos los modelos SUV.',
-//                'vehicle_model' => 'STARRAY',
-//                'vehicle_subtitle' => 'TECNOLOGÍA HÍBRIDA AVANZADA',
-//                'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
-//                'text_color' => 'text-gray-800',
-//                'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
-//                'image' => 'frontend/images/prom1.png',
-//                'button' => [
-//                    'text' => 'Más información',
-//                    'style' => 'bg-white text-green-600 hover:bg-gray-100'
-//                ]
-//            ],
-//            [
-//                'id' => 'starray-exchange',
-//                'title' => 'TU AUTO',
-//                'subtitle' => 'COMO PARTE DE PAGO',
-//                'description' => 'Recibe hasta $15,000 adicionales por tu vehículo usado. Evaluación gratuita incluida.',
-//                'vehicle_model' => 'STARRAY',
-//                'vehicle_subtitle' => 'PROGRAMA DE INTERCAMBIO',
-//                'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
-//                'text_color' => 'text-gray-800',
-//                'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
-//                'image' => 'frontend/images/prom1.png',
-//                'button' => [
-//                    'text' => 'Evaluar mi auto',
-//                    'style' => 'bg-white text-purple-600 hover:bg-gray-100'
-//                ]
-//            ]
-        ],
-
+        'slides' => [],
         'autoplay' => [
             'enabled' => true,
-            'delay' => 5000 // 5 segundos
+            'delay' => 5000,
         ],
-
         'navigation' => [
             'dots_style' => 'w-3 h-3 bg-gray-400 hover:bg-gray-500 rounded-full',
             'active_dot_style' => 'w-8 h-3 bg-blue-600 rounded-full',
             'arrows_enabled' => true,
             'dots_container_class' => 'flex justify-center mt-6',
-            'dots_wrapper_class' => 'bg-gray-200 rounded-full px-4 py-2 flex space-x-2'
-        ]
+            'dots_wrapper_class' => 'bg-gray-200 rounded-full px-4 py-2 flex space-x-2',
+        ],
     ];
 
     public function mount($vehicle = [], $promotionsData = [])
     {
         $this->vehicle = $vehicle;
-
-        // Obtener configuración específica del vehículo ANTES del merge
         $vehicleSlug = $vehicle['slug'] ?? 'default';
-        $vehicleConfig = $this->getVehicleConfig($vehicleSlug);
 
-        // Merge con orden de prioridad: default -> vehicle -> custom
-        $this->promotionsData = array_merge($this->defaultPromotionsData, $vehicleConfig, $promotionsData);
+        $dbSlides = $this->loadFromDatabase($vehicleSlug);
+
+        if (!empty($dbSlides)) {
+            $this->promotionsData = array_merge($this->defaultPromotionsData, ['slides' => $dbSlides], $promotionsData);
+        } else {
+            // LEGACY - fallback a datos hardcodeados
+            $vehicleConfig = $this->getLegacyVehicleConfig($vehicleSlug);
+            $this->promotionsData = array_merge($this->defaultPromotionsData, $vehicleConfig, $promotionsData);
+        }
+
         $this->currentSlide = 0;
     }
 
-    private function getVehicleConfig($slug)
+    private function loadFromDatabase(string $slug): array
+    {
+        $vehicleModel = Vehicle::where('slug', $slug)->first();
+
+        $query = Promotion::active()->ordered()->with('vehicle');
+        if ($vehicleModel) {
+            $query->where('vehicle_id', $vehicleModel->id);
+        }
+
+        $promotions = $query->get();
+
+        if ($promotions->isEmpty()) {
+            return [];
+        }
+
+        return $promotions->map(function ($promo) {
+            $titleParts = explode(' DE ', $promo->title, 2);
+            $title = $titleParts[0] ?? $promo->title;
+            $subtitle = isset($titleParts[1]) ? 'DE ' . $titleParts[1] : 'DE DESCUENTO';
+
+            return [
+                'id' => 'promo-' . $promo->id,
+                'title' => $title,
+                'subtitle' => $subtitle,
+                'description' => $promo->description ?? '',
+                'vehicle_model' => $promo->vehicle?->name ?? '',
+                'vehicle_subtitle' => $promo->vehicle?->subtitle ?? '',
+                'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
+                'text_color' => 'text-gray-800',
+                'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
+                'image' => $promo->image ?? 'frontend/images/prom1.png',
+                'image_mobile' => $promo->image_mobile ?? $promo->image ?? 'frontend/images/prom1.png',
+                'button' => [
+                    'text' => $promo->button_text ?? 'Obtener promo',
+                    'style' => 'bg-white text-blue-600 hover:bg-gray-100',
+                ],
+            ];
+        })->toArray();
+    }
+
+    // LEGACY - configuraciones hardcodeadas originales por vehículo
+    private function getLegacyVehicleConfig($slug)
     {
         $configs = [
             'starray' => [
                 'slides' => [
-                    [
-                        'id' => 'starray-50-discount',
-                        'title' => '$us. 1,000',
-                        'subtitle' => 'DE DESCUENTO',
-                        'description' => 'Aprovecha los precios de lanzamiento para comprar tu Geely Starray. Válido en todas sus versiones.',
-                        'vehicle_model' => 'STARRAY',
-                        'vehicle_subtitle' => 'El SUV ultra moderno',
-                        'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
-                        'text_color' => 'text-gray-800',
-                        'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
-                        'image' => 'frontend/images/prom1.png',
-                        'button' => [
-                            'text' => 'Obtener promo',
-                            'style' => 'bg-white text-blue-600 hover:bg-gray-100'
-                        ]
-                    ],
+                    ['id' => 'starray-50-discount', 'title' => '$us. 1,000', 'subtitle' => 'DE DESCUENTO', 'description' => 'Aprovecha los precios de lanzamiento para comprar tu Geely Starray. Válido en todas sus versiones.', 'vehicle_model' => 'STARRAY', 'vehicle_subtitle' => 'El SUV ultra moderno', 'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300', 'text_color' => 'text-gray-800', 'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent', 'image' => 'frontend/images/prom1.png', 'image_mobile' => 'frontend/images/prom1.png', 'button' => ['text' => 'Obtener promo', 'style' => 'bg-white text-blue-600 hover:bg-gray-100']],
                 ],
             ],
-
             'gx3-pro' => [
                 'slides' => [
-                    [
-                        'id' => 'gx3pro-50-discount',
-                        'title' => '$us. 500',
-                        'subtitle' => 'DE DESCUENTO',
-                        'description' => 'Aprovecha los precios de lanzamiento para comprar tu Geely GX3 Pro. Válido en todas sus versiones.',
-                        'vehicle_model' => 'Gx3 Pro',
-                        'vehicle_subtitle' => 'El SUV ultra moderno',
-                        'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
-                        'text_color' => 'text-gray-800',
-                        'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
-                        'image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Promo.png',
-                        'button' => [
-                            'text' => 'Obtener promo',
-                            'style' => 'bg-white text-blue-600 hover:bg-gray-100'
-                        ]
-                    ],
-                ]
+                    ['id' => 'gx3pro-50-discount', 'title' => '$us. 500', 'subtitle' => 'DE DESCUENTO', 'description' => 'Aprovecha los precios de lanzamiento para comprar tu Geely GX3 Pro. Válido en todas sus versiones.', 'vehicle_model' => 'Gx3 Pro', 'vehicle_subtitle' => 'El SUV ultra moderno', 'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300', 'text_color' => 'text-gray-800', 'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent', 'image' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Promo.png', 'image_mobile' => 'frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Promo.png', 'button' => ['text' => 'Obtener promo', 'style' => 'bg-white text-blue-600 hover:bg-gray-100']],
+                ],
             ],
-
             'cityray' => [
                 'slides' => [
-                    [
-                        'id' => 'cityray-50-discount',
-                        'title' => '$us. 2000',
-                        'subtitle' => 'DE DESCUENTO',
-                        'description' => 'Aprovecha los precios de Lanzamiento para comprar tu Geely Cityray. Valido en todas sus versiones. ',
-                        'vehicle_model' => 'CITYRAY',
-                        'vehicle_subtitle' => 'El SUV tecnológico',
-                        'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
-                        'text_color' => 'text-gray-800',
-                        'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
-                        'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Promociones.png',
-                        'button' => [
-                            'text' => 'Obtener promo',
-                            'style' => 'bg-white text-blue-600 hover:bg-gray-100'
-                        ]
-                    ],
-                ]
+                    ['id' => 'cityray-50-discount', 'title' => '$us. 2000', 'subtitle' => 'DE DESCUENTO', 'description' => 'Aprovecha los precios de Lanzamiento para comprar tu Geely Cityray. Valido en todas sus versiones.', 'vehicle_model' => 'CITYRAY', 'vehicle_subtitle' => 'El SUV tecnológico', 'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300', 'text_color' => 'text-gray-800', 'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent', 'image' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Promociones.png', 'image_mobile' => 'frontend/images/vehicles/cityray/Geely_Bolivia_Promociones.png', 'button' => ['text' => 'Obtener promo', 'style' => 'bg-white text-blue-600 hover:bg-gray-100']],
+                ],
             ],
-
             'coolray' => [
                 'slides' => [
-                    [
-                        'id' => 'coolray-50-discount',
-                        'title' => 'Por Pre-venta ',
-                        'subtitle' => '$us. 1500 DE DESCUENTO',
-                        'description' => 'Es tu momento de estrenar un Geely Coolray con precios de lanzamiento.',
-                        'vehicle_model' => 'COOLRAY',
-                        'vehicle_subtitle' => 'SUV PERFECTA PARA LA VIDA URBANA',
-                        'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300',
-                        'text_color' => 'text-gray-800',
-                        'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent',
-                        'image' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_COOLRAY_DESCUENTOS.png',
-                        'button' => [
-                            'text' => 'Obtener promo',
-                            'style' => 'bg-white text-blue-600 hover:bg-gray-100'
-                        ]
-                    ],
-                ]
+                    ['id' => 'coolray-50-discount', 'title' => 'Por Pre-venta', 'subtitle' => '$us. 1500 DE DESCUENTO', 'description' => 'Es tu momento de estrenar un Geely Coolray con precios de lanzamiento.', 'vehicle_model' => 'COOLRAY', 'vehicle_subtitle' => 'SUV PERFECTA PARA LA VIDA URBANA', 'background_color' => 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300', 'text_color' => 'text-gray-800', 'title_gradient' => 'bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent', 'image' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_COOLRAY_DESCUENTOS.png', 'image_mobile' => 'frontend/images/vehicles/coolray/GEELY_BOLIVIA_COOLRAY_DESCUENTOS.png', 'button' => ['text' => 'Obtener promo', 'style' => 'bg-white text-blue-600 hover:bg-gray-100']],
+                ],
             ],
         ];
 

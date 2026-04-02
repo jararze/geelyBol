@@ -2,23 +2,21 @@
 
 namespace App\Livewire\Front;
 
+use App\Models\SiteSetting;
 use Livewire\Component;
 
 class BenefitsSection extends Component
 {
-    public $sectionTitle = 'CON GEELY OBTIENES MÁS';
-    public $sectionDescription = 'Geely te da los mejores beneficios y condiciones del mercado para que puedas empezar a conducir con total tranquilidad.';
+    public $sectionTitle;
+    public $sectionDescription;
 
-
-// Configuración de fondo
-    public $backgroundType = 'image'; // 'gradient' o 'image'
-
-    public $backgroundImage = 'assets/images/bg-benefits.png'; // Tu imagen de fondo
-    public $backgroundOverlay = true; // Mantener overlay para legibilidad del texto
+    public $backgroundType = 'image';
+    public $backgroundImage = 'assets/images/bg-benefits.png';
+    public $backgroundOverlay = true;
     public $backgroundColor = '#3b82f6';
     public $gradientEndColor = '#1e40af';
     public $gradientDirection = '0';
-    public $overlayOpacity = 0; // Opacidad del overlay (0-1)
+    public $overlayOpacity = 0;
 
     public $footerText = 'Lo que ocurra primero';
     public $benefits;
@@ -28,18 +26,6 @@ class BenefitsSection extends Component
     public function mount()
     {
         $this->loadBenefits();
-
-        // Ejemplo 1: Degradado azul (por defecto)
-//         $this->setGradientBackground('#3b82f6', '#1e40af', '135deg');
-
-        // Ejemplo 2: Degradado morado
-        // $this->setGradientBackground('#8b5cf6', '#5b21b6', '135deg');
-
-        // Ejemplo 3: Imagen de fondo con overlay
-//        $this->setImageBackground('assets/images/geely-hero-bg.png', true, 0.5, -90);
-
-        // Ejemplo 4: Imagen sin overlay
-        // $this->setImageBackground('/images/geely-hero-bg.jpg', false);
     }
 
     public function getBackgroundStyle()
@@ -75,35 +61,42 @@ class BenefitsSection extends Component
 
     private function loadBenefits()
     {
+        $benefitsGroup = SiteSetting::getGroup('benefits');
+
+        if (!empty($benefitsGroup)) {
+            $this->sectionTitle = $benefitsGroup['title'] ?? 'CON GEELY OBTIENES MÁS';
+            $this->sectionDescription = $benefitsGroup['description'] ?? '';
+
+            $this->benefits = [];
+            for ($i = 1; $i <= 4; $i++) {
+                $key = "benefit_{$i}";
+                if (!empty($benefitsGroup[$key])) {
+                    $data = json_decode($benefitsGroup[$key], true);
+                    if ($data) {
+                        $this->benefits[] = [
+                            'id' => "benefit-{$i}",
+                            'number' => $data['number'] ?? '',
+                            'unit' => $data['unit'] ?? '',
+                            'label' => $data['label'] ?? '',
+                            'position' => $i,
+                        ];
+                    }
+                }
+            }
+
+            if (!empty($this->benefits)) {
+                return;
+            }
+        }
+
+        // LEGACY - datos hardcodeados
+        $this->sectionTitle = 'CON GEELY OBTIENES MÁS';
+        $this->sectionDescription = 'Geely te da los mejores beneficios y condiciones del mercado para que puedas empezar a conducir con total tranquilidad.';
         $this->benefits = [
-            [
-                'id' => 'warranty-years',
-                'number' => '5',
-                'unit' => 'AÑOS',
-                'label' => 'GARANTÍA EXTENDIDA',
-                'position' => 1
-            ],
-            [
-                'id' => 'warranty-km',
-                'number' => '150.000',
-                'unit' => 'KM',
-                'label' => '',
-                'position' => 2
-            ],
-            [
-                'id' => 'services',
-                'number' => '6',
-                'unit' => 'SERVICIOS',
-                'label' => 'Y MANTENIMIENTOS INCLUIDOS',
-                'position' => 3
-            ],
-            [
-                'id' => 'maintenance-years',
-                'number' => '3',
-                'unit' => 'AÑOS',
-                'label' => 'EN',
-                'position' => 4
-            ]
+            ['id' => 'warranty-years', 'number' => '5', 'unit' => 'AÑOS', 'label' => 'GARANTÍA EXTENDIDA', 'position' => 1],
+            ['id' => 'warranty-km', 'number' => '150.000', 'unit' => 'KM', 'label' => '', 'position' => 2],
+            ['id' => 'services', 'number' => '6', 'unit' => 'SERVICIOS', 'label' => 'Y MANTENIMIENTOS INCLUIDOS', 'position' => 3],
+            ['id' => 'maintenance-years', 'number' => '3', 'unit' => 'AÑOS', 'label' => 'EN', 'position' => 4],
         ];
     }
 

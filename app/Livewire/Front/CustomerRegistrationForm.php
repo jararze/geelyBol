@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Front;
 
+use Illuminate\Validation\ValidationException;
+use Exception;
 use Livewire\Component;
 use App\Models\PurchasedVehicleForm;
 use Illuminate\Support\Facades\Log;
@@ -227,14 +229,14 @@ class CustomerRegistrationForm extends Component
             // Redirigir a página de agradecimiento
             return redirect()->route('purchased.vehicle.thanks');
 
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             Log::warning('Error de validación en formulario:', [
                 'errors' => $e->errors(),
                 'formData' => $this->formData
             ]);
             throw $e;
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             Log::error('Error al enviar formulario de vehículo comprado:', [
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),

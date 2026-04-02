@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find C:UsersjararHerdgeely-site -type f -name *.vue)",
+      "Bash(grep -r Pages C:UsersjararHerdgeely-site --include=*.json --include=*.js --include=*.vue -l)",
+      "Bash(grep -r inertia C:UsersjararHerdgeely-site --include=*.json --include=*.php -i)",
+      "Bash(php artisan:*)",
+      "Bash(composer require:*)"
+    ]
+  }
+}

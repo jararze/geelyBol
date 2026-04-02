@@ -108,4 +108,19 @@ class Vehicle extends Model
     {
         return $this->hasMany(VehicleFeatureCard::class);
     }
+
+    public function heroConfig()
+    {
+        return $this->hasOne(VehicleHeroConfig::class);
+    }
+
+    public function sections()
+    {
+        return $this->hasMany(VehicleSection::class)->orderBy('order');
+    }
+
+    public function promotions()
+    {
+        return $this->hasMany(Promotion::class);
+    }
 }

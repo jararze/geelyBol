@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Front;
 
+use App\Models\Vehicle;
+use App\Models\VehicleSection;
 use Livewire\Component;
 
 class SectionBreakerSection extends Component
@@ -42,7 +44,14 @@ class SectionBreakerSection extends Component
 
         // Obtener configuración específica del vehículo
         $vehicleSlug = $vehicle['slug'] ?? 'default';
-        $vehicleConfig = $this->getVehicleConfig($vehicleSlug);
+
+        // Load from database first
+        $vehicleConfig = $this->loadFromDatabase($vehicleSlug);
+
+        // Fallback to hardcoded config if DB is empty
+        if (empty($vehicleConfig)) {
+            $vehicleConfig = $this->getVehicleConfigLegacy($vehicleSlug);
+        }
 
         // Empezar con configuración por defecto
         $this->breakerData = $this->defaultBreakerData;
@@ -82,7 +91,31 @@ class SectionBreakerSection extends Component
         }
     }
 
-    private function getVehicleConfig($slug)
+    private function loadFromDatabase(string $slug): array
+    {
+        try {
+            $vehicle = Vehicle::where('slug', $slug)->first();
+            if (!$vehicle) {
+                return [];
+            }
+
+            $section = VehicleSection::where('vehicle_id', $vehicle->id)
+                ->where('section_type', 'section_breaker')
+                ->where('is_active', true)
+                ->first();
+
+            if (!$section || empty($section->config)) {
+                return [];
+            }
+
+            return $section->config;
+        } catch (\Exception $e) {
+            return [];
+        }
+    }
+
+    // LEGACY - Hardcoded vehicle configurations (fallback)
+    private function getVehicleConfigLegacy(string $slug): array
     {
         $configs = [
             'starray' => [
@@ -180,6 +213,7 @@ class SectionBreakerSection extends Component
 
         return $configs[$slug] ?? [];
     }
+
     public function render()
     {
         return view('livewire.front.section-breaker-section');

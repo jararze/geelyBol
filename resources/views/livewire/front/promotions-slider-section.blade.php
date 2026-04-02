@@ -78,9 +78,14 @@
                             {{-- Imagen - más arriba en móvil --}}
                             <div class="flex-1 flex items-start lg:items-center justify-center">
                                 <div class="relative w-full h-full flex items-center justify-center">
+                                    {{-- Desktop image --}}
                                     <img src="{{ asset($currentSlide['image'] ?? 'frontend/images/default-car.jpg') }}"
                                          alt="{{ $currentSlide['vehicle_model'] ?? 'Vehículo' }}"
-                                         class="max-w-full max-h-full  oobject-contain transition-transform duration-300 hover:scale-105">
+                                         class="hidden md:block max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
+                                    {{-- Mobile image --}}
+                                    <img src="{{ asset($currentSlide['image_mobile'] ?? $currentSlide['image'] ?? 'frontend/images/default-car.jpg') }}"
+                                         alt="{{ $currentSlide['vehicle_model'] ?? 'Vehículo' }}"
+                                         class="block md:hidden max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-105">
                                 </div>
                             </div>
 

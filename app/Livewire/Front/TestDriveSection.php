@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Front;
 
+use App\Models\Vehicle;
+use App\Models\VehicleSection;
 use Livewire\Component;
 
 class TestDriveSection extends Component
@@ -21,14 +23,14 @@ class TestDriveSection extends Component
         'text_color_phone' => '#fff',
         'show_image' => true,
         'show_features' => false,
-        'image_border_radius' => 'rounded-lg', // rounded-lg, rounded-xl, rounded-none
-        'image_shadow' => 'shadow-2xl', // shadow-xl, shadow-2xl, shadow-none
-        'image_position' => 'top-half', // top-third, top-half, top-two-thirds, top-three-quarters
+        'image_border_radius' => 'rounded-lg',
+        'image_shadow' => 'shadow-2xl',
+        'image_position' => 'top-half',
         'top_background_color' => '#ffffff',
         'background_color' => 'linear-gradient(135deg, #8B1538 0%, #FF6B35 100%)',
-        'overlay_background' => 'bg-black bg-opacity-20 backdrop-blur-sm', // Fondo del contenedor de texto
-        'image_overlay' => 'bg-black bg-opacity-40', // Overlay sobre la imagen
-        'content_padding' => 'p-8', // Padding del contenedor de texto
+        'overlay_background' => 'bg-black bg-opacity-20 backdrop-blur-sm',
+        'image_overlay' => 'bg-black bg-opacity-40',
+        'content_padding' => 'p-8',
         'features' => [
             [
                 'title' => '7 Year Unlimited KM Vehicle Warranty',
@@ -60,13 +62,66 @@ class TestDriveSection extends Component
             $vehicleSlug = $currentRoute->parameter('slug');
         }
 
-        // Obtener configuración específica del vehículo
-        $vehicleConfig = $this->getVehicleConfig($vehicleSlug);
+        // Load from database first
+        $vehicleConfig = $this->loadFromDatabase($vehicleSlug);
+
+        // Fallback to hardcoded config
+        if (empty($vehicleConfig)) {
+            $vehicleConfig = $this->getVehicleConfigLegacy($vehicleSlug);
+        }
 
         // Merge: default -> vehicle -> custom
         $this->sectionData = array_merge($this->defaultSectionData, $vehicleConfig, $sectionData);
     }
-    private function getVehicleConfig($slug)
+
+    private function loadFromDatabase($slug)
+    {
+        if (!$slug) {
+            return [];
+        }
+
+        $vehicle = Vehicle::where('slug', $slug)->first();
+        if (!$vehicle) {
+            return [];
+        }
+
+        $section = VehicleSection::where('vehicle_id', $vehicle->id)
+            ->where('section_type', 'test_drive')
+            ->where('is_active', true)
+            ->first();
+
+        if (!$section) {
+            return [];
+        }
+
+        $config = [
+            'title' => $section->title,
+            'description' => $section->description,
+        ];
+
+        if ($section->config) {
+            if (isset($section->config['background_image'])) {
+                $config['background_image'] = $section->config['background_image'];
+            }
+            if (isset($section->config['background_image_mobile'])) {
+                $config['background_image_mobile'] = $section->config['background_image_mobile'];
+            }
+            if (isset($section->config['text_color'])) {
+                $config['text_color'] = $section->config['text_color'];
+            }
+            if (isset($section->config['button_text'])) {
+                $config['button_text'] = $section->config['button_text'];
+            }
+            if (isset($section->config['button_url'])) {
+                $config['button_url'] = $section->config['button_url'];
+            }
+        }
+
+        return $config;
+    }
+
+    // LEGACY - Hardcoded vehicle configurations (fallback)
+    private function getVehicleConfigLegacy($slug)
     {
         $configs = [
             'starray' => [

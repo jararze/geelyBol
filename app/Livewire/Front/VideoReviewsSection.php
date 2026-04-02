@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Front;
 
+use App\Models\Vehicle;
+use App\Models\VehicleSection;
 use Livewire\Component;
 
 class VideoReviewsSection extends Component
@@ -54,16 +56,68 @@ class VideoReviewsSection extends Component
     {
         $this->vehicle = $vehicle;
 
-        // Obtener configuración específica del vehículo ANTES del merge
         $vehicleSlug = $vehicle['slug'] ?? 'default';
-        $vehicleConfig = $this->getVehicleConfig($vehicleSlug);
 
-        // Merge con orden de prioridad: default -> vehicle -> custom
+        // Load from database first
+        $vehicleConfig = $this->loadFromDatabase($vehicleSlug);
+
+        // Fallback to hardcoded config
+        if (empty($vehicleConfig)) {
+            $vehicleConfig = $this->getVehicleConfigLegacy($vehicleSlug);
+        }
+
+        // Merge with order of priority: default -> vehicle -> custom
         $this->videosData = array_merge($this->defaultVideosData, $vehicleConfig, $videosData);
         $this->currentSlide = 0;
     }
 
-    private function getVehicleConfig($slug)
+    private function loadFromDatabase($slug)
+    {
+        $vehicle = Vehicle::where('slug', $slug)->first();
+        if (!$vehicle) {
+            return [];
+        }
+
+        $section = VehicleSection::where('vehicle_id', $vehicle->id)
+            ->where('section_type', 'video_review')
+            ->where('is_active', true)
+            ->with('items')
+            ->first();
+
+        if (!$section) {
+            return [];
+        }
+
+        $config = [
+            'header' => [
+                'title' => $section->title ?? 'VIDEOS Y RESEÑAS',
+                'subtitle' => $section->subtitle ?? '',
+                'title_size' => 'text-3xl lg:text-4xl',
+                'subtitle_size' => 'text-lg',
+                'title_color' => 'text-white',
+                'subtitle_color' => 'text-gray-300'
+            ],
+            'videos' => [],
+        ];
+
+        foreach ($section->items->where('is_active', true)->sortBy('order') as $item) {
+            $config['videos'][] = [
+                'id' => 'video-' . $item->id,
+                'title' => $item->title ?? '',
+                'subtitle' => $item->subtitle ?? '',
+                'channel' => $item->channel ?? 'Reseñas',
+                'thumbnail' => $item->thumbnail_image ?? '/frontend/images/1.png',
+                'video_url' => $item->video_url ?? '',
+                'duration' => $item->duration ?? '',
+                'views' => $item->views ?? '',
+            ];
+        }
+
+        return !empty($config['videos']) ? $config : [];
+    }
+
+    // LEGACY - Hardcoded vehicle configurations (fallback)
+    private function getVehicleConfigLegacy($slug)
     {
         $configs = [
             'starray' => [
@@ -75,110 +129,28 @@ class VideoReviewsSection extends Component
                     'title_color' => 'text-white',
                     'subtitle_color' => 'text-gray-300'
                 ],
-
                 'videos' => [
-                    [
-                        'id' => 'video-1',
-                        'title' => 'This is where the ride can get for your video',
-                        'subtitle' => 'REVIEW STARRAY',
-                        'channel' => 'Reseñas',
-                        'thumbnail' => '/frontend/images/1.png',
-                        'video_url' => 'https://www.youtube.com/embed/XFKtYQuqWPI',
-                        'duration' => '05:31',
-                        'views' => '125K views'
-                    ],
-                    [
-                        'id' => 'video-2',
-                        'title' => 'This is where the ride can get for your video',
-                        'subtitle' => 'REVIEW STARRAY',
-                        'channel' => 'Reseñas',
-                        'thumbnail' => '/frontend/images/1.png',
-                        'video_url' => 'https://www.youtube.com/embed/Bi1i4T8tMGM?si=TA5Vvy3PptKLwG5p',
-                        'duration' => '05:31',
-                        'views' => '125K views'
-                    ],
+                    ['id' => 'video-1', 'title' => 'This is where the ride can get for your video', 'subtitle' => 'REVIEW STARRAY', 'channel' => 'Reseñas', 'thumbnail' => '/frontend/images/1.png', 'video_url' => 'https://www.youtube.com/embed/XFKtYQuqWPI', 'duration' => '05:31', 'views' => '125K views'],
+                    ['id' => 'video-2', 'title' => 'This is where the ride can get for your video', 'subtitle' => 'REVIEW STARRAY', 'channel' => 'Reseñas', 'thumbnail' => '/frontend/images/1.png', 'video_url' => 'https://www.youtube.com/embed/Bi1i4T8tMGM?si=TA5Vvy3PptKLwG5p', 'duration' => '05:31', 'views' => '125K views'],
                 ],
             ],
-
             'gx3-pro' => [
-                'header' => [
-                    'title' => 'VIDEOS Y RESEÑAS',
-                    'subtitle' => 'Conoce todo sobre Geely GX3 PRO con los siguientes videos',
-                    'title_size' => 'text-3xl lg:text-4xl',
-                    'subtitle_size' => 'text-lg',
-                    'title_color' => 'text-white',
-                    'subtitle_color' => 'text-gray-300'
-                ],
-
+                'header' => ['title' => 'VIDEOS Y RESEÑAS', 'subtitle' => 'Conoce todo sobre Geely GX3 PRO con los siguientes videos', 'title_size' => 'text-3xl lg:text-4xl', 'subtitle_size' => 'text-lg', 'title_color' => 'text-white', 'subtitle_color' => 'text-gray-300'],
                 'videos' => [
-                    [
-                        'id' => 'video-1',
-                        'title' => 'This is where the ride can get for your video',
-                        'subtitle' => 'REVIEW GX3 PRO',
-                        'channel' => 'Reseñas',
-                        'thumbnail' => '/frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Portada_Reviews.jpg',
-                        'video_url' => 'https://www.youtube.com/embed/631B54-0P80?si=foam_lPDmAwoHR5G',
-                        'duration' => '05:31',
-                        'views' => '125K views'
-                    ],
-                    [
-                        'id' => 'video-2',
-                        'title' => 'This is where the ride can get for your video',
-                        'subtitle' => 'REVIEW GX3 PRO',
-                        'channel' => 'Reseñas',
-                        'thumbnail' => '/frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Portada_Reviews.jpg',
-                        'video_url' => 'https://www.youtube.com/embed/8oVUOlZtQ9U?si=Ov1jSCoJ26OrX2nM',
-                        'duration' => '05:31',
-                        'views' => '125K views'
-                    ],
+                    ['id' => 'video-1', 'title' => 'This is where the ride can get for your video', 'subtitle' => 'REVIEW GX3 PRO', 'channel' => 'Reseñas', 'thumbnail' => '/frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Portada_Reviews.jpg', 'video_url' => 'https://www.youtube.com/embed/631B54-0P80?si=foam_lPDmAwoHR5G', 'duration' => '05:31', 'views' => '125K views'],
+                    ['id' => 'video-2', 'title' => 'This is where the ride can get for your video', 'subtitle' => 'REVIEW GX3 PRO', 'channel' => 'Reseñas', 'thumbnail' => '/frontend/images/vehicles/gx3pro/Geely_Bolivia_GX3_PRO_Portada_Reviews.jpg', 'video_url' => 'https://www.youtube.com/embed/8oVUOlZtQ9U?si=Ov1jSCoJ26OrX2nM', 'duration' => '05:31', 'views' => '125K views'],
                 ],
             ],
-
             'cityray' => [
-                'header' => [
-                    'title' => 'VIDEOS Y RESEÑAS',
-                    'subtitle' => 'Conoce todo sobre Geely CITYRAY con los siguientes videos',
-                    'title_size' => 'text-3xl lg:text-4xl',
-                    'subtitle_size' => 'text-lg',
-                    'title_color' => 'text-white',
-                    'subtitle_color' => 'text-gray-300'
-                ],
-
+                'header' => ['title' => 'VIDEOS Y RESEÑAS', 'subtitle' => 'Conoce todo sobre Geely CITYRAY con los siguientes videos', 'title_size' => 'text-3xl lg:text-4xl', 'subtitle_size' => 'text-lg', 'title_color' => 'text-white', 'subtitle_color' => 'text-gray-300'],
                 'videos' => [
-                    [
-                        'id' => 'video-1',
-                        'title' => 'This is where the ride can get for your video',
-                        'subtitle' => 'REVIEW CITYRAY',
-                        'channel' => 'Reseñas',
-                        'thumbnail' => '/frontend/images/vehicles/cityray/Geely Cityray Review Poratada.jpg',
-                        'video_url' => 'https://www.youtube.com/embed/fcVfqc5WCHc?si=WIvSDGyFGt73yByX',
-                        'duration' => '05:31',
-                        'views' => '125K views'
-                    ],
+                    ['id' => 'video-1', 'title' => 'This is where the ride can get for your video', 'subtitle' => 'REVIEW CITYRAY', 'channel' => 'Reseñas', 'thumbnail' => '/frontend/images/vehicles/cityray/Geely Cityray Review Poratada.jpg', 'video_url' => 'https://www.youtube.com/embed/fcVfqc5WCHc?si=WIvSDGyFGt73yByX', 'duration' => '05:31', 'views' => '125K views'],
                 ],
             ],
-
             'coolray' => [
-                'header' => [
-                    'title' => 'VIDEOS Y RESEÑAS',
-                    'subtitle' => 'Conoce todo sobre Geely COOLRAY con los siguientes videos',
-                    'title_size' => 'text-3xl lg:text-4xl',
-                    'subtitle_size' => 'text-lg',
-                    'title_color' => 'text-white',
-                    'subtitle_color' => 'text-gray-300'
-                ],
-
+                'header' => ['title' => 'VIDEOS Y RESEÑAS', 'subtitle' => 'Conoce todo sobre Geely COOLRAY con los siguientes videos', 'title_size' => 'text-3xl lg:text-4xl', 'subtitle_size' => 'text-lg', 'title_color' => 'text-white', 'subtitle_color' => 'text-gray-300'],
                 'videos' => [
-                    [
-                        'id' => 'video-1',
-                        'title' => 'This is where the ride can get for your video',
-                        'subtitle' => 'REVIEW COOLRAY',
-                        'channel' => 'Reseñas',
-                        'thumbnail' => '/frontend/images/vehicles/coolray/GEELY_BOLIVIA_PORTADA VIDEO.png',
-                        'video_url' => 'https://www.youtube.com/embed/Nc0YfZ8V0Mw?si=vgXDbQiE-KlljUlq',
-                        'duration' => '05:31',
-                        'views' => '125K views'
-                    ],
+                    ['id' => 'video-1', 'title' => 'This is where the ride can get for your video', 'subtitle' => 'REVIEW COOLRAY', 'channel' => 'Reseñas', 'thumbnail' => '/frontend/images/vehicles/coolray/GEELY_BOLIVIA_PORTADA VIDEO.png', 'video_url' => 'https://www.youtube.com/embed/Nc0YfZ8V0Mw?si=vgXDbQiE-KlljUlq', 'duration' => '05:31', 'views' => '125K views'],
                 ],
             ],
         ];
@@ -210,7 +182,6 @@ class VideoReviewsSection extends Component
 
     public function playVideo($videoId)
     {
-        // Aquí puedes agregar lógica para abrir el video
         session()->flash('message', 'Reproduciendo video...');
     }
     public function render()

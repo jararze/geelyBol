@@ -3,6 +3,8 @@
 namespace App\Livewire\Front;
 
 use AllowDynamicProperties;
+use App\Models\Vehicle;
+use App\Models\VehicleHeroConfig;
 use Livewire\Component;
 
 #[AllowDynamicProperties]
@@ -20,14 +22,14 @@ class VehicleHero extends Component
         'section_height' => 'min-h-[90vh]',
 
         'fadeout_enabled' => true,
-        'fadeout_direction' => 'to-bottom', // to-bottom, to-top, to-left, to-right
-        'fadeout_color' => '#ffffff', // Color al que se desvanece
-        'fadeout_opacity' => '1', // Opacidad del fadeout (0.1 - 1)
-        'fadeout_height' => '20%', // Altura del fadeout (30%, 50%, 70%)
-        'fadeout_position' => 'bottom', // bottom, top
+        'fadeout_direction' => 'to-bottom',
+        'fadeout_color' => '#ffffff',
+        'fadeout_opacity' => '1',
+        'fadeout_height' => '20%',
+        'fadeout_position' => 'bottom',
 
-        'title_type' => 'image', // 'text' o 'image'
-        'title_image' => 'frontend/images/vehicles/starray/Geely_Starray_Logo.png', // Ruta de la imagen del título
+        'title_type' => 'image',
+        'title_image' => 'frontend/images/vehicles/starray/Geely_Starray_Logo.png',
         'title_image_alt' => '',
         'title_image_width' => 'w-auto',
         'title_image_height' => 'h-20 lg:h-32',
@@ -44,7 +46,7 @@ class VehicleHero extends Component
         'subtitle_spacing' => 'tracking-wide',
 
         'show_specs' => true,
-        'specs_position' => 'bottom-center', // bottom-center, bottom-left, bottom-right
+        'specs_position' => 'bottom-center',
         'specs_background' => '',
         'specs_text_color' => '#000000',
         'specs_font_family' => 'font-geely-title',
@@ -86,13 +88,84 @@ class VehicleHero extends Component
 
         $vehicleSlug = $vehicle['slug'] ?? 'default';
 
-        $vehicleConfig = $this->getVehicleConfig($vehicleSlug);
+        // Load from database first
+        $vehicleConfig = $this->loadFromDatabase($vehicleSlug);
+
+        // Fallback to hardcoded config if DB is empty
+        if (empty($vehicleConfig)) {
+            $vehicleConfig = $this->getVehicleConfigLegacy($vehicleSlug);
+        }
 
         $this->heroData = array_merge($this->defaultHeroData, $vehicleConfig, $heroData);
-
     }
 
-    private function getVehicleConfig($slug)
+    private function loadFromDatabase($slug)
+    {
+        $vehicle = Vehicle::where('slug', $slug)->first();
+        if (!$vehicle) {
+            return [];
+        }
+
+        $heroConfig = VehicleHeroConfig::where('vehicle_id', $vehicle->id)
+            ->where('is_active', true)
+            ->first();
+
+        if (!$heroConfig) {
+            return [];
+        }
+
+        $config = [
+            'background_image' => $heroConfig->background_image,
+            'background_image_mobile' => $heroConfig->background_image_mobile,
+            'title_type' => $heroConfig->title_type ?? 'image',
+            'title' => $heroConfig->title,
+            'subtitle' => $heroConfig->subtitle,
+        ];
+
+        if ($heroConfig->title_image) {
+            $config['title_image'] = $heroConfig->title_image;
+        }
+
+        if ($heroConfig->title_color) {
+            $config['title_color'] = $heroConfig->title_color;
+        }
+
+        if ($heroConfig->subtitle_color) {
+            $config['subtitle_color'] = $heroConfig->subtitle_color;
+        }
+
+        if ($heroConfig->specs_text_color) {
+            $config['specs_text_color'] = $heroConfig->specs_text_color;
+        }
+
+        if ($heroConfig->text_color) {
+            $config['text_color'] = $heroConfig->text_color;
+        }
+
+        // Convert DB spec format to component format
+        if ($heroConfig->selected_specs && is_array($heroConfig->selected_specs)) {
+            $specs = [];
+            foreach ($heroConfig->selected_specs as $spec) {
+                $key = $spec['key'] ?? '';
+                if ($key) {
+                    $specs[$key] = [
+                        'prefix' => $spec['prefix'] ?? '',
+                        'value' => $spec['value'] ?? '',
+                        'unit' => $spec['unit'] ?? '',
+                        'label' => $spec['label'] ?? '',
+                    ];
+                }
+            }
+            if (!empty($specs)) {
+                $config['selected_specs'] = $specs;
+            }
+        }
+
+        return $config;
+    }
+
+    // LEGACY - Hardcoded vehicle configurations (fallback)
+    private function getVehicleConfigLegacy($slug)
     {
         $configs = [
             'starray' => [
@@ -145,7 +218,7 @@ class VehicleHero extends Component
                 'subtitle_size' => 'text-xl lg:text-2xl',
                 'subtitle_weight' => 'font-light',
                 'subtitle_spacing' => 'tracking-wide',
-                'specs_text_color' => '#ffffff', // 👈 esto cambia Motor, Potencia, etc.
+                'specs_text_color' => '#ffffff',
                 'selected_specs' => [
                     'motor' => ['prefix' => '', 'value' => '1.5', 'unit' => 'Turbo', 'label' => 'Motor'],
                     'potencia' => ['prefix' => '', 'value' => '174', 'unit' => 'hp', 'label' => 'Potencia'],
@@ -197,6 +270,7 @@ class VehicleHero extends Component
 
         return $configs[$slug] ?? [];
     }
+
     public function render()
     {
         return view('livewire.front.vehicle-hero');
