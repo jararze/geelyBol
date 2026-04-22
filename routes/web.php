@@ -5,6 +5,7 @@ use App\Livewire\Front\FormDetail;
 use App\Livewire\Front\Fortune;
 use App\Livewire\Front\Thanks;
 use App\Livewire\Front\VehicleDetail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -26,6 +27,32 @@ Route::get('/forms/{category}/{slug}/enviado', Thanks::class)->name('forms.thank
 
 Route::get('/clientegeely', CustomerRegistrationForm::class)->name('purchased.vehicle.form');
 Route::get('/clientegeely/gracias', Thanks::class)->name('purchased.vehicle.thanks');
+
+// TODO: eliminar antes de desplegar a producción — ruta temporal para probar envío SMTP.
+Route::get('/test-email', function () {
+    $testData = [
+        'first_name' => 'Juan',
+        'last_name' => 'Pérez',
+        'second_last_name' => 'García',
+        'email' => 'test@test.com',
+        'mobile_phone' => '77777777',
+        'purchased_vehicle' => 'starray',
+        'sales_advisor_name' => 'Asesor Test',
+        'city' => 'La Paz',
+        'full_address' => 'Av. Test 123',
+        'created_at' => now(),
+    ];
+
+    try {
+        $emails = array_map('trim', explode(',', env('GEELY_NOTIFICATION_EMAILS', 'pcarrasco@nissan.com.bo')));
+        foreach ($emails as $email) {
+            Mail::to($email)->send(new \App\Mail\PurchasedVehicleFormNotification($testData));
+        }
+        return 'Emails individuales enviados correctamente a: ' . implode(', ', $emails);
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+})->name('test.email');
 
 Route::middleware(['auth'])->group(function () {
 

@@ -6,7 +6,9 @@ use Illuminate\Validation\ValidationException;
 use Exception;
 use Livewire\Component;
 use App\Models\PurchasedVehicleForm;
+use App\Mail\PurchasedVehicleFormNotification;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class CustomerRegistrationForm extends Component
 {
@@ -211,6 +213,20 @@ class CustomerRegistrationForm extends Component
                 'vehicle' => $submission->purchased_vehicle,
                 'ip' => $this->getClientIp()
             ]);
+
+            try {
+                $emails = array_map('trim', explode(',', env('GEELY_NOTIFICATION_EMAILS', 'pcarrasco@nissan.com.bo')));
+                $notificationData = array_merge($submission->toArray(), [
+                    'created_at' => $submission->created_at,
+                ]);
+                foreach ($emails as $email) {
+                    Mail::to($email)->send(new PurchasedVehicleFormNotification($notificationData));
+                }
+            } catch (Exception $mailException) {
+                Log::error('Email failed: ' . $mailException->getMessage(), [
+                    'submission_id' => $submission->id,
+                ]);
+            }
 
             // Guardar datos en sesión para la página de agradecimiento
             session()->flash('form_submission', [
