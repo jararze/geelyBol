@@ -6,6 +6,33 @@
         'coolray' => 'Coolray Lite',
     ];
 
+    $genderMap = [
+        'masculino' => 'Masculino',
+        'femenino' => 'Femenino',
+        'otro' => 'Otro',
+    ];
+
+    $maritalStatusMap = [
+        'soltero' => 'Soltero',
+        'casado' => 'Casado',
+        'divorciado' => 'Divorciado',
+        'viudo' => 'Viudo',
+    ];
+
+    $educationLevelMap = [
+        'primaria' => 'Primaria',
+        'secundaria' => 'Secundaria',
+        'universitario' => 'Universitario',
+        'postgrado' => 'Postgrado',
+    ];
+
+    $mainDriverMap = [
+        'yo' => 'Yo mismo',
+        'conyuge' => 'Cónyuge',
+        'hijo' => 'Hijo(a)',
+        'otro' => 'Otro',
+    ];
+
     $fullName = trim(
         ($data['first_name'] ?? '') . ' ' .
         ($data['last_name'] ?? '') . ' ' .
@@ -15,6 +42,20 @@
     $vehicleKey = $data['purchased_vehicle'] ?? '';
     $vehicleLabel = $vehicleMap[$vehicleKey] ?? $vehicleKey;
 
+    $genderLabel = $genderMap[$data['gender'] ?? ''] ?? ($data['gender'] ?? '');
+    $maritalStatusLabel = $maritalStatusMap[$data['marital_status'] ?? ''] ?? ($data['marital_status'] ?? '');
+    $educationLevelLabel = $educationLevelMap[$data['education_level'] ?? ''] ?? ($data['education_level'] ?? '');
+    $mainDriverLabel = $mainDriverMap[$data['main_driver'] ?? ''] ?? ($data['main_driver'] ?? '');
+
+    $birthDate = $data['birth_date'] ?? null;
+    if ($birthDate && !($birthDate instanceof \DateTimeInterface)) {
+        try {
+            $birthDate = \Carbon\Carbon::parse($birthDate);
+        } catch (\Throwable $e) {
+            $birthDate = null;
+        }
+    }
+
     $createdAt = $data['created_at'] ?? now();
     if (!($createdAt instanceof \DateTimeInterface)) {
         try {
@@ -23,6 +64,29 @@
             $createdAt = now();
         }
     }
+
+    $hobbies = $data['hobbies'] ?? null;
+    if (is_string($hobbies)) {
+        $decoded = json_decode($hobbies, true);
+        $hobbies = is_array($decoded) ? $decoded : array_filter(array_map('trim', explode(',', $hobbies)));
+    }
+    if (!is_array($hobbies)) {
+        $hobbies = [];
+    }
+
+    $boolLabel = function ($value) {
+        if (is_null($value) || $value === '') {
+            return '—';
+        }
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN) ? 'Sí' : 'No';
+    };
+
+    $valueOrDash = function ($value) {
+        if (is_null($value) || $value === '') {
+            return '—';
+        }
+        return $value;
+    };
 @endphp
 <!DOCTYPE html>
 <html lang="es">
@@ -60,13 +124,13 @@
                             <h2 style="margin:0 0 8px 0;color:#000000;font-size:20px;">Registro de cliente recibido</h2>
                             <p style="margin:0 0 24px 0;color:#444444;font-size:14px;line-height:1.5;">
                                 Se ha registrado un nuevo cliente a través del formulario en <strong>/clientegeely</strong>.
-                                A continuación los datos principales:
+                                A continuación el detalle completo del registro:
                             </p>
 
                             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:14px;">
                                 <tr>
                                     <td colspan="2" style="background-color:#000000;color:#ffffff;padding:10px 14px;font-weight:bold;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;">
-                                        Datos del cliente
+                                        Datos personales
                                     </td>
                                 </tr>
                                 <tr>
@@ -74,28 +138,56 @@
                                     <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;font-weight:bold;">{{ $fullName ?: '—' }}</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Email</td>
-                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">
-                                        <a href="mailto:{{ $data['email'] ?? '' }}" style="color:#1e5bb8;text-decoration:none;">{{ $data['email'] ?? '—' }}</a>
-                                    </td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Sexo</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($genderLabel) }}</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Teléfono</td>
-                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $data['mobile_phone'] ?? '—' }}</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Nacionalidad</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($data['nationality'] ?? null) }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Carnet / Pasaporte</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($data['id_document'] ?? null) }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Fecha de nacimiento</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $birthDate ? $birthDate->format('d/m/Y') : '—' }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Teléfono móvil</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($data['mobile_phone'] ?? null) }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Correo electrónico</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">
+                                        @if(!empty($data['email']))
+                                            <a href="mailto:{{ $data['email'] }}" style="color:#1e5bb8;text-decoration:none;">{{ $data['email'] }}</a>
+                                        @else
+                                            —
+                                        @endif
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td colspan="2" style="background-color:#000000;color:#ffffff;padding:10px 14px;font-weight:bold;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;">
-                                        Vehículo y asesor
+                                        Preferencias de comunicación
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Vehículo comprado</td>
-                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#1e5bb8;font-weight:bold;">{{ $vehicleLabel ?: '—' }}</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">WhatsApp</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $boolLabel($data['promo_whatsapp'] ?? null) }}</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Asesor de ventas</td>
-                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $data['sales_advisor_name'] ?? '—' }}</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Email</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $boolLabel($data['promo_email'] ?? null) }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">SMS</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $boolLabel($data['promo_sms'] ?? null) }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">No desea promociones</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $boolLabel($data['no_promotions'] ?? null) }}</td>
                                 </tr>
 
                                 <tr>
@@ -105,17 +197,93 @@
                                 </tr>
                                 <tr>
                                     <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Ciudad</td>
-                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $data['city'] ?? '—' }}</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($data['city'] ?? null) }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Zona / Barrio</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($data['neighborhood'] ?? null) }}</td>
                                 </tr>
                                 <tr>
                                     <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Dirección completa</td>
-                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $data['full_address'] ?? '—' }}</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($data['full_address'] ?? null) }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" style="background-color:#000000;color:#ffffff;padding:10px 14px;font-weight:bold;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;">
+                                        Información familiar
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Estado civil</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($maritalStatusLabel) }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Tiene hijos</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $boolLabel($data['has_children'] ?? null) }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Número de hijos</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($data['number_of_children'] ?? null) }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" style="background-color:#000000;color:#ffffff;padding:10px 14px;font-weight:bold;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;">
+                                        Información laboral y vehículo
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Campo laboral</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($data['work_field'] ?? null) }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Asesor de ventas</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($data['sales_advisor_name'] ?? null) }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Vehículo adquirido</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#1e5bb8;font-weight:bold;">{{ $vehicleLabel ?: '—' }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Característica atractiva</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($data['vehicle_attractive_feature'] ?? null) }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" style="background-color:#000000;color:#ffffff;padding:10px 14px;font-weight:bold;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;">
+                                        Información opcional
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;vertical-align:top;">Aficiones</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">
+                                        @if(count($hobbies) > 0)
+                                            <ul style="margin:0;padding-left:18px;">
+                                                @foreach($hobbies as $hobby)
+                                                    <li style="margin:2px 0;">{{ $hobby }}</li>
+                                                @endforeach
+                                            </ul>
+                                        @else
+                                            —
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Nivel de estudios</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($educationLevelLabel) }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Conductor principal</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($mainDriverLabel) }}</td>
                                 </tr>
 
                                 <tr>
                                     <td colspan="2" style="background-color:#000000;color:#ffffff;padding:10px 14px;font-weight:bold;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;">
                                         Registro
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#666666;">Dirección IP</td>
+                                    <td style="padding:10px 14px;border-bottom:1px solid #eeeeee;color:#111111;">{{ $valueOrDash($data['ip_address'] ?? null) }}</td>
                                 </tr>
                                 <tr>
                                     <td style="padding:10px 14px;color:#666666;">Fecha de registro</td>

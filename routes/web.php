@@ -34,21 +34,37 @@ Route::get('/test-email', function () {
         'first_name' => 'Juan',
         'last_name' => 'Pérez',
         'second_last_name' => 'García',
-        'email' => 'test@test.com',
+        'gender' => 'masculino',
+        'nationality' => 'Boliviana',
+        'id_document' => '1234567 LP',
+        'birth_date' => '1990-05-15',
         'mobile_phone' => '77777777',
-        'purchased_vehicle' => 'starray',
-        'sales_advisor_name' => 'Asesor Test',
+        'email' => 'test@test.com',
+        'promo_whatsapp' => true,
+        'promo_email' => true,
+        'promo_sms' => false,
+        'no_promotions' => false,
         'city' => 'La Paz',
-        'full_address' => 'Av. Test 123',
+        'neighborhood' => 'Zona Sur - Calacoto',
+        'full_address' => 'Av. Test 123, entre calle 10 y calle 11',
+        'marital_status' => 'casado',
+        'has_children' => true,
+        'number_of_children' => 2,
+        'work_field' => 'Tecnología / Ingeniería',
+        'sales_advisor_name' => 'Asesor Test',
+        'purchased_vehicle' => 'starray',
+        'vehicle_attractive_feature' => 'Diseño moderno y tecnología avanzada',
+        'hobbies' => ['Deportes', 'Música', 'Viajes'],
+        'education_level' => 'universitario',
+        'main_driver' => 'yo',
+        'ip_address' => '127.0.0.1',
         'created_at' => now(),
     ];
 
     try {
-        $emails = array_map('trim', explode(',', env('GEELY_NOTIFICATION_EMAILS', 'pcarrasco@nissan.com.bo')));
-        foreach ($emails as $email) {
-            Mail::to($email)->send(new \App\Mail\PurchasedVehicleFormNotification($testData));
-        }
-        return 'Emails individuales enviados correctamente a: ' . implode(', ', $emails);
+        Mail::to('jararze@gmail.com')
+            ->send(new \App\Mail\PurchasedVehicleFormNotification($testData));
+        return 'Email de prueba enviado correctamente a: jararze@gmail.com';
     } catch (\Exception $e) {
         return 'Error: ' . $e->getMessage();
     }
