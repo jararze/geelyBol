@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class VehicleVersion extends Model
 {
@@ -15,6 +16,26 @@ class VehicleVersion extends Model
         'discount' => 'decimal:2',
         'final_price' => 'decimal:2',
     ];
+
+    protected static function booted(): void
+    {
+        static::creating(function (self $version): void {
+            if (! empty($version->code)) {
+                return;
+            }
+
+            $base = Str::slug(($version->vehicle?->slug ?? 'vehicle').'-'.($version->name ?? uniqid()));
+            $code = $base;
+            $suffix = 1;
+
+            while (static::where('code', $code)->exists()) {
+                $suffix++;
+                $code = $base.'-'.$suffix;
+            }
+
+            $version->code = $code;
+        });
+    }
 
     // Relación: Pertenece a un vehículo
     public function vehicle()
