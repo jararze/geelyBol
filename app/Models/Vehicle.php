@@ -10,8 +10,11 @@ class Vehicle extends Model
 
     protected $casts = [
         'gallery' => 'array',
+        'page_blocks' => 'array',
+        'specs' => 'array',
         'featured' => 'boolean',
         'is_active' => 'boolean',
+        'is_published' => 'boolean',
         'show_from_label' => 'boolean',
         'show_badge' => 'boolean',
     ];
