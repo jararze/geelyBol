@@ -19,6 +19,7 @@ use Filament\Actions\EditAction;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
@@ -181,20 +182,155 @@ class VehicleResource extends Resource
                                         ->collapsible(),
                                 ]),
 
-                            Block::make('features')
-                                ->label('Caracteristicas')
-                                ->icon('heroicon-o-sparkles')
+                            Block::make('quick_specs')
+                                ->label('Specs destacadas')
+                                ->icon('heroicon-o-bolt')
                                 ->schema([
-                                    TextInput::make('title')->label('Titulo'),
                                     Repeater::make('items')
-                                        ->label('Caracteristicas')
+                                        ->label('Items')
+                                        ->schema([
+                                            TextInput::make('label')->label('Etiqueta')->required(),
+                                            TextInput::make('value')->label('Valor')->required(),
+                                            TextInput::make('suffix')->label('Sufijo')->placeholder('Turbo, hp, Velocidades'),
+                                        ])
+                                        ->columns(3)
+                                        ->reorderable()
+                                        ->collapsible()
+                                        ->defaultItems(4),
+                                ]),
+
+                            Block::make('anchor_nav')
+                                ->label('Navegacion por anclas')
+                                ->icon('heroicon-o-link')
+                                ->schema([
+                                    Repeater::make('links')
+                                        ->label('Links')
+                                        ->schema([
+                                            TextInput::make('label')->label('Texto')->required(),
+                                            TextInput::make('anchor')->label('Ancla')->placeholder('#versiones')->required(),
+                                        ])
+                                        ->columns(2)
+                                        ->reorderable()
+                                        ->collapsible(),
+                                ]),
+
+                            Block::make('three_reasons')
+                                ->label('Tres razones')
+                                ->icon('heroicon-o-trophy')
+                                ->schema([
+                                    TextInput::make('title')->label('Titulo')->default('El SUV ultra moderno'),
+                                    Textarea::make('subtitle')->label('Subtitulo')->rows(2),
+                                    Repeater::make('reasons')
+                                        ->label('Razones')
                                         ->schema([
                                             TextInput::make('title')->label('Titulo')->required(),
-                                            Textarea::make('description')->label('Descripcion')->rows(2),
-                                            TextInput::make('icon')
+                                            Textarea::make('subtitle')->label('Subtitulo')->rows(2),
+                                            FileUpload::make('image')
+                                                ->label('Imagen')
+                                                ->disk('public')
+                                                ->directory('vehicles/blocks/reasons')
+                                                ->visibility('public')
+                                                ->image()
+                                                ->imageEditor(),
+                                        ])
+                                        ->columns(1)
+                                        ->reorderable()
+                                        ->collapsible()
+                                        ->defaultItems(3),
+                                ]),
+
+                            Block::make('versions_pricing')
+                                ->label('Versiones y precios')
+                                ->icon('heroicon-o-currency-dollar')
+                                ->schema([
+                                    TextInput::make('title')->label('Titulo')->default('Versiones y precios'),
+                                    Toggle::make('show_exterior_interior_tabs')
+                                        ->label('Mostrar tabs Exterior / Interior')
+                                        ->default(true),
+                                    Placeholder::make('versions_help')
+                                        ->label('')
+                                        ->content('Las versiones se administran en el RelationManager "Versiones" debajo del formulario.'),
+                                ]),
+
+                            Block::make('quick_actions')
+                                ->label('Acciones rapidas')
+                                ->icon('heroicon-o-rectangle-stack')
+                                ->schema([
+                                    Repeater::make('actions')
+                                        ->label('Acciones')
+                                        ->schema([
+                                            TextInput::make('label')->label('Etiqueta')->required(),
+                                            Select::make('icon')
                                                 ->label('Icono')
-                                                ->placeholder('heroicon-o-bolt')
-                                                ->helperText('Nombre del icono Heroicon u otro nombre simbolico'),
+                                                ->options([
+                                                    'whatsapp' => 'WhatsApp',
+                                                    'phone' => 'Telefono',
+                                                    'map' => 'Mapa',
+                                                    'headset' => 'Headset (contacto)',
+                                                    'mail' => 'Mail',
+                                                    'drive' => 'Drive (test drive / cotizar)',
+                                                ])
+                                                ->required(),
+                                            TextInput::make('link')->label('Link')->required(),
+                                            Select::make('type')
+                                                ->label('Tipo')
+                                                ->options([
+                                                    'external' => 'Externo (nueva pestana)',
+                                                    'internal' => 'Interno',
+                                                    'modal' => 'Modal',
+                                                ])
+                                                ->default('external'),
+                                        ])
+                                        ->columns(2)
+                                        ->reorderable()
+                                        ->collapsible()
+                                        ->defaultItems(4),
+                                ]),
+
+                            Block::make('features')
+                                ->label('Banner de caracteristicas (Geely Obtienes Mas)')
+                                ->icon('heroicon-o-sparkles')
+                                ->schema([
+                                    TextInput::make('title')->label('Titulo')->default('Con Geely Obtienes Mas'),
+                                    Textarea::make('description')->label('Descripcion')->rows(3),
+                                    Repeater::make('highlights')
+                                        ->label('Destacados')
+                                        ->schema([
+                                            TextInput::make('number')->label('Numero')->placeholder('5')->required(),
+                                            TextInput::make('unit')->label('Unidad')->placeholder('ANOS'),
+                                            TextInput::make('separator')->label('Separador')->placeholder('o, EN'),
+                                            TextInput::make('description')->label('Descripcion')->placeholder('Garantia Extendida'),
+                                        ])
+                                        ->columns(2)
+                                        ->reorderable()
+                                        ->collapsible(),
+                                ]),
+
+                            Block::make('feature_carousel')
+                                ->label('Carruseles de caracteristicas')
+                                ->icon('heroicon-o-rectangle-group')
+                                ->schema([
+                                    Repeater::make('sections')
+                                        ->label('Secciones')
+                                        ->schema([
+                                            TextInput::make('title')->label('Titulo de la seccion')->required(),
+                                            Repeater::make('slides')
+                                                ->label('Slides')
+                                                ->schema([
+                                                    TextInput::make('title')->label('Titulo')->required(),
+                                                    Textarea::make('description')->label('Descripcion')->rows(2),
+                                                    TextInput::make('label')->label('Etiqueta sobre la imagen'),
+                                                    FileUpload::make('image')
+                                                        ->label('Imagen')
+                                                        ->disk('public')
+                                                        ->directory('vehicles/blocks/carousel')
+                                                        ->visibility('public')
+                                                        ->image()
+                                                        ->imageEditor(),
+                                                ])
+                                                ->columns(1)
+                                                ->reorderable()
+                                                ->collapsible(),
                                         ])
                                         ->columns(1)
                                         ->reorderable()
@@ -239,7 +375,8 @@ class VehicleResource extends Resource
                                 ->label('Video')
                                 ->icon('heroicon-o-play')
                                 ->schema([
-                                    TextInput::make('title')->label('Titulo'),
+                                    TextInput::make('title')->label('Titulo')->default('Videos y Resenas'),
+                                    Textarea::make('subtitle')->label('Subtitulo')->rows(2),
                                     TextInput::make('youtube_url')
                                         ->label('URL de YouTube')
                                         ->url()
