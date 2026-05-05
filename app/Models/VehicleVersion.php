@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class VehicleVersion extends Model
 {
@@ -10,10 +11,31 @@ class VehicleVersion extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
+        'turbo' => 'boolean',
         'list_price' => 'decimal:2',
         'discount' => 'decimal:2',
         'final_price' => 'decimal:2',
     ];
+
+    protected static function booted(): void
+    {
+        static::creating(function (self $version): void {
+            if (! empty($version->code)) {
+                return;
+            }
+
+            $base = Str::slug(($version->vehicle?->slug ?? 'vehicle').'-'.($version->name ?? uniqid()));
+            $code = $base;
+            $suffix = 1;
+
+            while (static::where('code', $code)->exists()) {
+                $suffix++;
+                $code = $base.'-'.$suffix;
+            }
+
+            $version->code = $code;
+        });
+    }
 
     // Relación: Pertenece a un vehículo
     public function vehicle()
@@ -42,10 +64,19 @@ class VehicleVersion extends Model
     public function getSpecsAttribute()
     {
         $specs = [];
-        if ($this->engine_displacement) $specs['Cilindrada:'] = $this->engine_displacement;
-        if ($this->transmission) $specs['Transmisión:'] = $this->transmission;
-        if ($this->drivetrain) $specs['Tracción:'] = $this->drivetrain;
-        if ($this->platform) $specs['Plataforma:'] = $this->platform;
+        if ($this->engine_displacement) {
+            $specs['Cilindrada:'] = $this->engine_displacement;
+        }
+        if ($this->transmission) {
+            $specs['Transmisión:'] = $this->transmission;
+        }
+        if ($this->drivetrain) {
+            $specs['Tracción:'] = $this->drivetrain;
+        }
+        if ($this->platform) {
+            $specs['Plataforma:'] = $this->platform;
+        }
+
         return $specs;
     }
 
@@ -89,7 +120,7 @@ class VehicleVersion extends Model
                 'asistente_frenado' => $this->brake_assist,
                 'control_traccion' => $this->traction_control,
                 'cinturones' => $this->seatbelts,
-            ]
+            ],
         ];
     }
 }

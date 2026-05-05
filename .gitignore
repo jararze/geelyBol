@@ -22,3 +22,5 @@ yarn-error.log
 /.vscode
 /.zed
 /public/frontend/images.zip
+/storage/framework/views/*
+!/storage/framework/views/.gitignore

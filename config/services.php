@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'geely' => [
+        'whatsapp_number' => env('GEELY_WHATSAPP_NUMBER'),
+        'whatsapp_message' => env('GEELY_WHATSAPP_MESSAGE'),
+    ],
+
 ];
