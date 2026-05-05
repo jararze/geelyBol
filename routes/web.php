@@ -5,6 +5,8 @@ use App\Livewire\Front\FormDetail;
 use App\Livewire\Front\Fortune;
 use App\Livewire\Front\Thanks;
 use App\Livewire\Front\VehicleDetail;
+use App\Livewire\Front\VehicleShow;
+use App\Mail\PurchasedVehicleFormNotification;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
@@ -14,6 +16,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/vehiculos/{category}/{slug}', VehicleDetail::class)->name('vehicle.detail');
+Route::get('/vehiculo/{slug}', VehicleShow::class)->name('vehicle.show');
 Route::get('/fortuna', Fortune::class)->name('fortune');
 
 Route::get('/forms', FormDetail::class)->name('forms.base');
@@ -23,7 +26,6 @@ Route::get('/forms/{category}/{slug}', FormDetail::class)->name('forms.detail');
 // Páginas de agradecimiento (Livewire)
 Route::get('/gracias', Thanks::class)->name('forms.thanks');
 Route::get('/forms/{category}/{slug}/enviado', Thanks::class)->name('forms.thanks.vehicle');
-
 
 Route::get('/clientegeely', CustomerRegistrationForm::class)->name('purchased.vehicle.form');
 Route::get('/clientegeely/gracias', Thanks::class)->name('purchased.vehicle.thanks');
@@ -63,10 +65,11 @@ Route::get('/test-email', function () {
 
     try {
         Mail::to('jararze@gmail.com')
-            ->send(new \App\Mail\PurchasedVehicleFormNotification($testData));
+            ->send(new PurchasedVehicleFormNotification($testData));
+
         return 'Email de prueba enviado correctamente a: jararze@gmail.com';
-    } catch (\Exception $e) {
-        return 'Error: ' . $e->getMessage();
+    } catch (Exception $e) {
+        return 'Error: '.$e->getMessage();
     }
 })->name('test.email');
 
