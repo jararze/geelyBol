@@ -33,6 +33,7 @@
             @includeIf('blocks.' . ($block['type'] ?? ''), [
                 'data' => $block['data'] ?? [],
                 'vehicle' => $vehicle,
+                'versions' => $versions ?? collect(),
             ])
         @endforeach
     @endif
