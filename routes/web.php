@@ -75,6 +75,14 @@ Route::get('/test-email', function () {
 
 Route::middleware(['auth'])->group(function () {
 
+    Route::get('/vehicles/template', function () {
+        $path = public_path('templates/vehicles_template.xlsx');
+
+        abort_unless(file_exists($path), 404, 'Plantilla no generada. Ejecute php artisan vehicles:generate-template.');
+
+        return response()->download($path, 'vehicles_template.xlsx');
+    })->name('vehicles.template');
+
     Route::view('dashboard', 'dashboard')->name('dashboard');
 
     Volt::route('backend/upload', 'backend.upload')->name('upload');
