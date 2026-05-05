@@ -136,7 +136,7 @@ class VehicleBlocksDefaults
                 [
                     'label' => 'WhatsApp',
                     'icon' => 'whatsapp',
-                    'link' => 'https://wa.me/591',
+                    'link' => 'https://wa.me/'.config('services.geely.whatsapp_number').'?text='.urlencode(config('services.geely.whatsapp_message').' '.($v?->name ?? '')),
                     'type' => 'external',
                 ],
                 [
