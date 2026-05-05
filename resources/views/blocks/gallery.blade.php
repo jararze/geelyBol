@@ -2,7 +2,7 @@
     $images = $data['images'] ?? [];
 @endphp
 
-<section class="bg-white py-16 md:py-20">
+<section id="galeria" class="bg-white py-16 md:py-20">
     <div class="max-w-7xl mx-auto px-4">
         @if (!empty($data['title']))
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-10 text-center">{{ $data['title'] }}</h2>

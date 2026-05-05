@@ -9,10 +9,18 @@
     }
 @endphp
 
-<section class="bg-gray-900 py-16 md:py-20">
+<section class="bg-gray-900 py-16 md:py-20 text-white">
     <div class="max-w-5xl mx-auto px-4">
         @if (!empty($data['title']))
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-10 text-center">{{ $data['title'] }}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center uppercase tracking-tight">
+                {{ $data['title'] }}
+            </h2>
+        @endif
+
+        @if (!empty($data['subtitle']))
+            <p class="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-10 text-center">
+                {{ $data['subtitle'] }}
+            </p>
         @endif
 
         @if ($videoId)
@@ -24,6 +32,10 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>
                 </iframe>
+            </div>
+        @else
+            <div class="bg-gray-800 rounded-lg p-12 text-center text-white/60 border border-white/10">
+                Video por agregar.
             </div>
         @endif
     </div>
