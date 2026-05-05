@@ -36,6 +36,11 @@ class VehiclesImport implements ToModel, WithBatchInserts, WithChunkReading, Wit
         'peso',
     ];
 
+    /**
+     * We persist via updateOrCreate inside model() so existing rows are matched
+     * by slug instead of duplicated. Returning null prevents WithBatchInserts
+     * from trying to batch-insert mismatched column sets across rows.
+     */
     public function model(array $row): ?Vehicle
     {
         $name = trim((string) ($row['nombre'] ?? ''));
@@ -68,7 +73,9 @@ class VehiclesImport implements ToModel, WithBatchInserts, WithChunkReading, Wit
             unset($attributes['vehicle_category_id']);
         }
 
-        return Vehicle::updateOrCreate(['slug' => $slug], $attributes);
+        Vehicle::updateOrCreate(['slug' => $slug], $attributes);
+
+        return null;
     }
 
     public function rules(): array
