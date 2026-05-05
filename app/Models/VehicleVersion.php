@@ -10,6 +10,7 @@ class VehicleVersion extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
+        'turbo' => 'boolean',
         'list_price' => 'decimal:2',
         'discount' => 'decimal:2',
         'final_price' => 'decimal:2',
@@ -42,10 +43,19 @@ class VehicleVersion extends Model
     public function getSpecsAttribute()
     {
         $specs = [];
-        if ($this->engine_displacement) $specs['Cilindrada:'] = $this->engine_displacement;
-        if ($this->transmission) $specs['Transmisión:'] = $this->transmission;
-        if ($this->drivetrain) $specs['Tracción:'] = $this->drivetrain;
-        if ($this->platform) $specs['Plataforma:'] = $this->platform;
+        if ($this->engine_displacement) {
+            $specs['Cilindrada:'] = $this->engine_displacement;
+        }
+        if ($this->transmission) {
+            $specs['Transmisión:'] = $this->transmission;
+        }
+        if ($this->drivetrain) {
+            $specs['Tracción:'] = $this->drivetrain;
+        }
+        if ($this->platform) {
+            $specs['Plataforma:'] = $this->platform;
+        }
+
         return $specs;
     }
 
@@ -89,7 +99,7 @@ class VehicleVersion extends Model
                 'asistente_frenado' => $this->brake_assist,
                 'control_traccion' => $this->traction_control,
                 'cinturones' => $this->seatbelts,
-            ]
+            ],
         ];
     }
 }

@@ -28,7 +28,7 @@ class Vehicle extends Model
     // Relación: Tiene muchas versiones
     public function versions()
     {
-        return $this->hasMany(VehicleVersion::class);
+        return $this->hasMany(VehicleVersion::class)->orderBy('order');
     }
 
     // Relación: Tiene muchas especificaciones
@@ -92,7 +92,7 @@ class Vehicle extends Model
             'size' => 'px-8 py-3',
             'border_radius' => 'rounded-lg',
             'font_weight' => 'font-medium',
-            'show' => true
+            'show' => true,
         ];
     }
 
