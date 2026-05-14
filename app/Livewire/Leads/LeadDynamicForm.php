@@ -149,9 +149,7 @@ class LeadDynamicForm extends Component
 
         $this->leadForm->increment('submit_count');
 
-        if (class_exists(\App\Events\LeadCaptured::class)) {
-            event(new \App\Events\LeadCaptured($this->leadForm->fresh(), $lead));
-        }
+        event(new \App\Events\LeadCaptured($this->leadForm->fresh(), $lead));
 
         if ($this->leadForm->redirect_url) {
             return redirect($this->leadForm->redirect_url);
