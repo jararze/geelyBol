@@ -36,6 +36,7 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
                 'Sitio Web',
                 'Vehiculos',
+                'Lead Builder',
                 'Formularios',
                 'Configuracion',
             ])
