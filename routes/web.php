@@ -95,3 +95,31 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// =============================================================================
+// Lead Builder — sistema generico de forms
+// =============================================================================
+
+Route::get('/lead/{leadForm:slug}', \App\Livewire\Leads\LeadDynamicForm::class)->name('leads.show');
+Route::get('/credito', \App\Livewire\Leads\CreditForm::class)->name('credit.show');
+Route::get('/credito/{vehicle:slug}', \App\Livewire\Leads\CreditForm::class)->name('credit.show.vehicle');
+
+// Wildcard catchall para public_url personalizadas configuradas en LeadForm.
+// IMPORTANTE: esta ruta va al final del archivo y excluye TODOS los slugs reservados.
+Route::get('/{publicUrl}', function (string $publicUrl) {
+    $reserved = \App\Filament\Resources\LeadFormResource::RESERVED_PUBLIC_URLS;
+
+    if (in_array($publicUrl, $reserved, true)) {
+        abort(404);
+    }
+
+    $leadForm = \App\Models\LeadForm::where('public_url', $publicUrl)
+        ->where('is_active', true)
+        ->first();
+
+    if (! $leadForm) {
+        abort(404);
+    }
+
+    return view('leads.public', compact('leadForm'));
+})->where('publicUrl', '[a-z0-9-]+')->name('leads.public');
