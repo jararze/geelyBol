@@ -382,6 +382,23 @@ class VehicleResource extends Resource
                                         ->url()
                                         ->placeholder('https://www.youtube.com/watch?v=...'),
                                 ]),
+
+                            Block::make('lead_form')
+                                ->label('Formulario (Lead Builder)')
+                                ->icon('heroicon-o-document-text')
+                                ->schema([
+                                    Select::make('lead_form_id')
+                                        ->label('Formulario')
+                                        ->options(fn () => \App\Models\LeadForm::where('is_active', true)->pluck('name', 'id'))
+                                        ->required()
+                                        ->searchable()
+                                        ->helperText('Solo se muestran formularios activos. Configuralos en Lead Builder > Formularios.'),
+                                    TextInput::make('title')->label('Titulo sobre el form (opcional)'),
+                                    Textarea::make('intro')->label('Texto introductorio (opcional)')->rows(3),
+                                    Toggle::make('show_in_card')
+                                        ->label('Mostrar dentro de card con borde')
+                                        ->default(true),
+                                ]),
                         ])
                         ->collapsible()
                         ->cloneable()
